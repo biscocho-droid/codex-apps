@@ -14,6 +14,7 @@
         --green: #54c776;
         --gold: #f4c96a;
         --blue: #7ab8ff;
+        --red: #ff6f7d;
       }
 
       * {
@@ -99,6 +100,10 @@
         background: linear-gradient(135deg, var(--gold), var(--blue));
       }
 
+      .trend {
+        background: linear-gradient(135deg, var(--red), var(--green));
+      }
+
       h2 {
         margin: 0;
         font-size: 1.15rem;
@@ -151,6 +156,13 @@
           <h2>S&amp;P 500 Value Finder</h2>
           <p>Stock market dashboard for screening and reviewing S&amp;P 500 value opportunities.</p>
           <span class="path">/sp500-value-finder/</span>
+        </a>
+
+        <a class="app-card" href="trend-signal-lab/">
+          <span class="app-icon trend">T</span>
+          <h2>Trend Signal Lab</h2>
+          <p>Trend-first market research dashboard for Google Trends signals, mapped stock exposures, and backtested holding windows.</p>
+          <span class="path">/trend-signal-lab/</span>
         </a>
       </section>
     </main>
