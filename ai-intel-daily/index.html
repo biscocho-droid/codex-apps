@@ -7,7 +7,7 @@
     <title>AI Intel Daily</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="icons/ai-intel-icon.svg" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body>
     <main class="app-shell">
@@ -41,6 +41,16 @@
         </article>
       </section>
 
+      <section class="morning-brief panel" aria-label="Morning brief">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Morning Brief</p>
+            <h2 id="brief-headline">What matters before the open</h2>
+          </div>
+        </div>
+        <div id="brief-grid" class="brief-grid"></div>
+      </section>
+
       <section class="toolbar" aria-label="Feed controls">
         <div>
           <label for="search-input">Search</label>
@@ -66,8 +76,10 @@
             <div>
               <p class="eyebrow">Priority Feed</p>
               <h2 id="feed-title">Highest signal updates</h2>
+              <p id="ticker-context" class="ticker-context"></p>
             </div>
             <div class="button-row">
+              <button id="clear-ticker-button" type="button" hidden>All Tickers</button>
               <button id="top10-button" class="primary-button" type="button">AI + Stocks Top 10</button>
               <button id="refresh-button" type="button">Refresh</button>
             </div>
@@ -97,6 +109,6 @@
       </section>
     </main>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
   </body>
 </html>
