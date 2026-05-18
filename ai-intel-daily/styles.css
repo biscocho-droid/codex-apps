@@ -190,6 +190,25 @@ button:hover {
   border-color: rgba(255, 255, 255, 0.26);
 }
 
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.primary-button {
+  border-color: rgba(100, 211, 138, 0.42);
+  background: rgba(100, 211, 138, 0.13);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.primary-button.active {
+  background: var(--green);
+  color: #09110d;
+}
+
 .layout-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
@@ -259,6 +278,20 @@ button:hover {
   font-weight: 900;
 }
 
+.rank-stack {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.rank {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .summary {
   color: var(--muted);
   line-height: 1.48;
@@ -266,7 +299,8 @@ button:hover {
 
 .meta-row,
 .tag-row,
-.watch-row {
+.watch-row,
+.impact-row {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -303,6 +337,44 @@ button:hover {
 .source-chip {
   background: rgba(255, 255, 255, 0.07);
   color: var(--muted);
+}
+
+.impact-badge {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.impact-badge.bullish {
+  background: rgba(100, 211, 138, 0.14);
+  color: var(--green);
+}
+
+.impact-badge.bearish {
+  background: rgba(255, 123, 123, 0.14);
+  color: var(--red);
+}
+
+.impact-badge.mixed {
+  background: rgba(240, 193, 95, 0.14);
+  color: var(--amber);
+}
+
+.market-score {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.market-read {
+  border-left: 3px solid var(--amber);
+  padding-left: 10px;
+  color: #f1e2bd;
+  line-height: 1.45;
 }
 
 .angle {
@@ -390,5 +462,10 @@ button:hover {
   .panel-head {
     align-items: start;
     flex-direction: column;
+  }
+
+  .button-row,
+  .button-row button {
+    width: 100%;
   }
 }

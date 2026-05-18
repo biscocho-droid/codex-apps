@@ -65,9 +65,12 @@
           <div class="panel-head">
             <div>
               <p class="eyebrow">Priority Feed</p>
-              <h2>Highest signal updates</h2>
+              <h2 id="feed-title">Highest signal updates</h2>
             </div>
-            <button id="refresh-button" type="button">Refresh</button>
+            <div class="button-row">
+              <button id="top10-button" class="primary-button" type="button">AI + Stocks Top 10</button>
+              <button id="refresh-button" type="button">Refresh</button>
+            </div>
           </div>
           <div id="feed-list" class="feed-list" aria-live="polite"></div>
         </article>

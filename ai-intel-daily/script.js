@@ -3,6 +3,7 @@ const state = {
   theme: "all",
   sourceGroup: "all",
   query: "",
+  mode: "all",
 };
 
 const els = {
@@ -13,14 +14,82 @@ const els = {
   search: document.getElementById("search-input"),
   themeFilter: document.getElementById("theme-filter"),
   sourceFilter: document.getElementById("source-filter"),
+  feedTitle: document.getElementById("feed-title"),
   feedList: document.getElementById("feed-list"),
   themeRadar: document.getElementById("theme-radar"),
   watchlist: document.getElementById("watchlist"),
   sourcePolicy: document.getElementById("source-policy"),
   refresh: document.getElementById("refresh-button"),
+  top10: document.getElementById("top10-button"),
 };
 
 const prettyTheme = (value) => value.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+const MARKET_THEME_WEIGHTS = {
+  chips: 28,
+  cloud: 23,
+  enterprise: 20,
+  agents: 18,
+  funding: 17,
+  policy: 16,
+  security: 14,
+  robotics: 14,
+  models: 12,
+  healthcare: 12,
+  research: 6,
+};
+
+const GROUP_WEIGHTS = {
+  "AI infrastructure": 18,
+  Cloud: 13,
+  "Official labs": 12,
+  "Free tech coverage": 9,
+  "Web discovery": 8,
+  Research: 3,
+};
+
+const BULLISH_TERMS = [
+  "demand",
+  "launch",
+  "release",
+  "partnership",
+  "partner",
+  "revenue",
+  "growth",
+  "adoption",
+  "enterprise",
+  "customer",
+  "contract",
+  "wins",
+  "funding",
+  "raises",
+  "chip",
+  "gpu",
+  "capacity",
+  "orders",
+  "beats",
+  "upgrade",
+];
+
+const BEARISH_TERMS = [
+  "regulation",
+  "lawsuit",
+  "ban",
+  "probe",
+  "investigation",
+  "delay",
+  "risk",
+  "safety",
+  "copyright",
+  "export control",
+  "restriction",
+  "outage",
+  "competition",
+  "margin",
+  "cost",
+  "cut",
+  "warning",
+];
 
 function formatDate(value) {
   return new Intl.DateTimeFormat("en-US", {
@@ -63,7 +132,8 @@ function buildControls() {
 
 function filteredItems() {
   const query = state.query.trim().toLowerCase();
-  return state.data.items.filter((item) => {
+  const baseItems = state.mode === "top10" ? rankedMarketItems(state.data.items).slice(0, 10) : state.data.items;
+  return baseItems.filter((item) => {
     const matchesTheme = state.theme === "all" || (item.tags || []).includes(state.theme);
     const matchesGroup = state.sourceGroup === "all" || item.sourceGroup === state.sourceGroup;
     const searchable = `${item.title} ${item.summary} ${item.source} ${(item.tags || []).join(" ")} ${(item.watchlist || []).join(" ")}`.toLowerCase();
@@ -80,9 +150,64 @@ function render() {
   els.sourceCount.textContent = data.sourceCount;
   els.topTheme.textContent = data.topThemes?.[0] ? prettyTheme(data.topThemes[0].tag) : "--";
   els.sourcePolicy.textContent = data.sourcePolicy;
+  els.feedTitle.textContent = state.mode === "top10" ? "Top 10 AI + stock signals" : "Highest signal updates";
+  els.top10.textContent = state.mode === "top10" ? "Show All Updates" : "AI + Stocks Top 10";
+  els.top10.classList.toggle("active", state.mode === "top10");
   renderThemes(data.topThemes || []);
   renderWatchlist(items);
   renderFeed(items);
+}
+
+function rankedMarketItems(items) {
+  return items
+    .map((item) => ({ ...item, marketImpact: marketImpact(item) }))
+    .filter((item) => item.watchlist?.length || item.marketImpact.score >= 78)
+    .sort((a, b) => b.marketImpact.score - a.marketImpact.score || b.signalScore - a.signalScore);
+}
+
+function countTerms(text, terms) {
+  return terms.reduce((count, term) => count + (text.includes(term) ? 1 : 0), 0);
+}
+
+function marketImpact(item) {
+  const text = `${item.title} ${item.summary} ${item.source}`.toLowerCase();
+  const tags = item.tags || [];
+  const themeScore = tags.reduce((total, tag) => total + (MARKET_THEME_WEIGHTS[tag] || 0), 0);
+  const bullish = countTerms(text, BULLISH_TERMS);
+  const bearish = countTerms(text, BEARISH_TERMS);
+  const watchlistBonus = Math.min(20, (item.watchlist || []).length * 3);
+  const sourceBonus = GROUP_WEIGHTS[item.sourceGroup] || 5;
+  const score = Math.min(100, Math.round(item.signalScore * 0.38 + themeScore + bullish * 6 + bearish * 5 + watchlistBonus + sourceBonus));
+  let direction = "mixed";
+  let label = "Mixed / Watch";
+  if (bullish >= bearish + 1 && !tags.includes("policy") && !text.includes("risk")) {
+    direction = "bullish";
+    label = "Likely Bullish";
+  } else if (bearish >= bullish + 1 || tags.includes("policy")) {
+    direction = "bearish";
+    label = "Bearish Risk";
+  }
+  return {
+    score,
+    direction,
+    label,
+    read: marketRead(item, direction),
+  };
+}
+
+function marketRead(item, direction) {
+  const tickers = (item.watchlist || []).slice(0, 5).join(", ") || "mapped AI baskets";
+  const tags = item.tags || [];
+  if (direction === "bullish") {
+    return `Potential upside read for ${tickers}: this looks tied to AI demand, product adoption, or infrastructure spend.`;
+  }
+  if (direction === "bearish") {
+    return `Risk read for ${tickers}: this could pressure sentiment through regulation, competition, costs, or execution concerns.`;
+  }
+  if (tags.includes("research")) {
+    return `Watchlist read for ${tickers}: research signal first; market impact depends on whether it converts into products, compute demand, or platform advantage.`;
+  }
+  return `Mixed read for ${tickers}: relevant to AI exposure, but direction needs confirmation from follow-up coverage or price reaction.`;
 }
 
 function renderThemes(themes) {
@@ -127,25 +252,35 @@ function renderWatchlist(items) {
 function renderFeed(items) {
   els.feedList.innerHTML = items.length
     ? items
-        .map(
-          (item) => `
+        .map((item, index) => {
+          const impact = item.marketImpact || marketImpact(item);
+          const rank = state.mode === "top10" ? `<span class="rank">#${index + 1}</span>` : "";
+          return `
             <article class="feed-card">
               <header>
                 <h3><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></h3>
-                <span class="score">${item.signalScore}</span>
+                <div class="rank-stack">
+                  ${rank}
+                  <span class="score">${state.mode === "top10" ? impact.score : item.signalScore}</span>
+                </div>
               </header>
               <div class="meta-row">
                 <span>${escapeHtml(item.source)}</span>
                 <span>${escapeHtml(item.sourceGroup)}</span>
                 <span>${formatDate(item.publishedAt)}</span>
               </div>
+              <div class="impact-row">
+                <span class="impact-badge ${impact.direction}">${impact.label}</span>
+                <span class="market-score">Market relevance ${impact.score}/100</span>
+              </div>
               <p class="summary">${escapeHtml(item.summary)}</p>
               <div class="tag-row">${(item.tags || []).map((tag) => `<span class="tag">${prettyTheme(tag)}</span>`).join("")}</div>
+              <p class="market-read">${escapeHtml(impact.read)}</p>
               <p class="angle">${escapeHtml(item.angle)}</p>
               <div class="watch-row">${(item.watchlist || []).map((ticker) => `<span class="ticker">${ticker}</span>`).join("")}</div>
             </article>
-          `,
-        )
+          `;
+        })
         .join("")
     : `<div class="empty-state">No items match the current filters.</div>`;
 }
@@ -167,6 +302,11 @@ els.sourceFilter.addEventListener("change", (event) => {
 
 els.refresh.addEventListener("click", () => {
   loadFeed(true).catch(showError);
+});
+
+els.top10.addEventListener("click", () => {
+  state.mode = state.mode === "top10" ? "all" : "top10";
+  render();
 });
 
 function showError(error) {
