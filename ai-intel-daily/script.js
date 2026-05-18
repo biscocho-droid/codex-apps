@@ -5,6 +5,9 @@ const state = {
   query: "",
   mode: "all",
   ticker: null,
+  sourcePreference: "balanced",
+  archiveDate: "latest",
+  archives: [],
 };
 
 const els = {
@@ -16,12 +19,15 @@ const els = {
   search: document.getElementById("search-input"),
   themeFilter: document.getElementById("theme-filter"),
   sourceFilter: document.getElementById("source-filter"),
+  sourcePreference: document.getElementById("source-preference"),
+  archiveSelect: document.getElementById("archive-select"),
   feedTitle: document.getElementById("feed-title"),
   tickerContext: document.getElementById("ticker-context"),
   feedList: document.getElementById("feed-list"),
   themeRadar: document.getElementById("theme-radar"),
   watchlist: document.getElementById("watchlist"),
   sourcePolicy: document.getElementById("source-policy"),
+  sourceTiers: document.getElementById("source-tiers"),
   refresh: document.getElementById("refresh-button"),
   top10: document.getElementById("top10-button"),
   clearTicker: document.getElementById("clear-ticker-button"),
@@ -50,6 +56,15 @@ const PERSONAL_WATCHLIST = [
   "XLK",
 ];
 
+const SOURCE_TIERS = {
+  "AI infrastructure": { tier: 1, label: "Tier 1", quality: "Preferred", top10Weight: 20 },
+  Cloud: { tier: 1, label: "Tier 1", quality: "Preferred", top10Weight: 16 },
+  "Official labs": { tier: 1, label: "Tier 1", quality: "Preferred", top10Weight: 15 },
+  "Free tech coverage": { tier: 2, label: "Tier 2", quality: "Market coverage", top10Weight: 10 },
+  "Web discovery": { tier: 3, label: "Tier 3", quality: "Discovery", top10Weight: 4 },
+  Research: { tier: 4, label: "Tier 4", quality: "Research context", top10Weight: -8 },
+};
+
 const MARKET_THEME_WEIGHTS = {
   chips: 28,
   cloud: 23,
@@ -65,12 +80,12 @@ const MARKET_THEME_WEIGHTS = {
 };
 
 const GROUP_WEIGHTS = {
-  "AI infrastructure": 18,
-  Cloud: 13,
-  "Official labs": 12,
-  "Free tech coverage": 9,
-  "Web discovery": 8,
-  Research: 3,
+  "AI infrastructure": SOURCE_TIERS["AI infrastructure"].top10Weight,
+  Cloud: SOURCE_TIERS.Cloud.top10Weight,
+  "Official labs": SOURCE_TIERS["Official labs"].top10Weight,
+  "Free tech coverage": SOURCE_TIERS["Free tech coverage"].top10Weight,
+  "Web discovery": SOURCE_TIERS["Web discovery"].top10Weight,
+  Research: SOURCE_TIERS.Research.top10Weight,
 };
 
 const BULLISH_TERMS = [
@@ -135,11 +150,25 @@ function escapeHtml(value) {
 
 async function loadFeed(force = false) {
   const cacheBust = force ? `?t=${Date.now()}` : "";
-  const response = await fetch(`data/ai-feed.json${cacheBust}`, { cache: force ? "reload" : "default" });
+  const feedPath = state.archiveDate === "latest" ? "data/ai-feed.json" : `archive/${state.archiveDate}.json`;
+  const response = await fetch(`${feedPath}${cacheBust}`, { cache: force ? "reload" : "default" });
   if (!response.ok) throw new Error(`Feed request failed: ${response.status}`);
   state.data = await response.json();
+  await loadArchiveManifest(force);
   buildControls();
   render();
+}
+
+async function loadArchiveManifest(force = false) {
+  try {
+    const cacheBust = force ? `?t=${Date.now()}` : "";
+    const response = await fetch(`archive/manifest.json${cacheBust}`, { cache: force ? "reload" : "default" });
+    if (!response.ok) return;
+    const data = await response.json();
+    state.archives = data.archives || [];
+  } catch {
+    state.archives = [];
+  }
 }
 
 function buildControls() {
@@ -151,22 +180,39 @@ function buildControls() {
   els.sourceFilter.innerHTML = `<option value="all">All sources</option>${groups
     .map((group) => `<option value="${escapeHtml(group)}">${escapeHtml(group)}</option>`)
     .join("")}`;
+  els.archiveSelect.innerHTML = `<option value="latest">Latest</option>${state.archives
+    .map((archive) => `<option value="${escapeHtml(archive.date)}">${escapeHtml(archive.date)}</option>`)
+    .join("")}`;
   els.themeFilter.value = state.theme;
   els.sourceFilter.value = state.sourceGroup;
+  els.sourcePreference.value = state.sourcePreference;
+  els.archiveSelect.value = state.archiveDate;
 }
 
 function filteredItems() {
   const query = state.query.trim().toLowerCase();
-  const baseItems =
-    state.mode === "top10" && !state.ticker ? rankedMarketItems(state.data.items).slice(0, 10) : state.data.items;
-  return baseItems.filter((item) => {
+  const filterContextItems = state.data.items.filter((item) => {
     const matchesTheme = state.theme === "all" || (item.tags || []).includes(state.theme);
     const matchesGroup = state.sourceGroup === "all" || item.sourceGroup === state.sourceGroup;
     const matchesTicker = !state.ticker || (item.watchlist || []).includes(state.ticker);
+    const matchesPreference = sourcePreferenceMatches(item);
+    return matchesTheme && matchesGroup && matchesTicker && matchesPreference;
+  });
+  const baseItems =
+    state.mode === "top10" && !state.ticker ? rankedMarketItems(filterContextItems).slice(0, 10) : filterContextItems;
+  return baseItems.filter((item) => {
     const searchable = `${item.title} ${item.summary} ${item.source} ${(item.tags || []).join(" ")} ${(item.watchlist || []).join(" ")}`.toLowerCase();
     const matchesQuery = !query || searchable.includes(query);
-    return matchesTheme && matchesGroup && matchesTicker && matchesQuery;
+    return matchesQuery;
   });
+}
+
+function sourcePreferenceMatches(item) {
+  const tier = SOURCE_TIERS[item.sourceGroup]?.tier || 3;
+  if (state.sourcePreference === "preferred") return tier === 1;
+  if (state.sourcePreference === "market") return tier <= 2;
+  if (state.sourcePreference === "no-research") return item.sourceGroup !== "Research";
+  return true;
 }
 
 function render() {
@@ -177,6 +223,7 @@ function render() {
   els.sourceCount.textContent = data.sourceCount;
   els.topTheme.textContent = data.topThemes?.[0] ? prettyTheme(data.topThemes[0].tag) : "--";
   els.sourcePolicy.textContent = data.sourcePolicy;
+  renderSourceTiers(data.items);
   els.feedTitle.textContent = state.ticker
     ? `${state.ticker} signal page`
     : state.mode === "top10"
@@ -236,6 +283,10 @@ function marketImpact(item) {
     read: marketRead(item, direction),
     horizon: impactHorizon(item),
   };
+}
+
+function sourceTier(item) {
+  return SOURCE_TIERS[item.sourceGroup] || { tier: 3, label: "Tier 3", quality: "Discovery", top10Weight: 4 };
 }
 
 function impactHorizon(item) {
@@ -299,6 +350,19 @@ function renderMorningBrief(items) {
       `Themes: ${themeCounts.map(([theme]) => prettyTheme(theme)).join(", ") || "No theme cluster"}.`,
     ),
   ].join("");
+}
+
+function renderSourceTiers(items) {
+  const counts = new Map();
+  for (const item of items) {
+    const tier = sourceTier(item);
+    const key = `${tier.label}: ${tier.quality}`;
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  els.sourceTiers.innerHTML = [...counts.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([label, count]) => `<div class="tier-row"><strong>${escapeHtml(label)}</strong><span>${count} items</span></div>`)
+    .join("");
 }
 
 function briefCard(label, title, body) {
@@ -409,6 +473,18 @@ els.themeFilter.addEventListener("change", (event) => {
 els.sourceFilter.addEventListener("change", (event) => {
   state.sourceGroup = event.target.value;
   render();
+});
+
+els.sourcePreference.addEventListener("change", (event) => {
+  state.sourcePreference = event.target.value;
+  render();
+});
+
+els.archiveSelect.addEventListener("change", (event) => {
+  state.archiveDate = event.target.value;
+  state.ticker = null;
+  state.mode = "all";
+  loadFeed(true).catch(showError);
 });
 
 document.addEventListener("click", (event) => {

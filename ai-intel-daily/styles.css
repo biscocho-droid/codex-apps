@@ -186,7 +186,7 @@ h2 {
 
 .toolbar {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 190px 210px;
+  grid-template-columns: minmax(220px, 1fr) 170px 180px 170px 150px;
   gap: 10px;
   margin-bottom: 16px;
 }
@@ -484,6 +484,28 @@ button.ticker:hover {
 .policy-panel p {
   color: var(--muted);
   line-height: 1.5;
+}
+
+.source-tiers {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tier-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.tier-row strong {
+  color: var(--text);
 }
 
 .empty-state {

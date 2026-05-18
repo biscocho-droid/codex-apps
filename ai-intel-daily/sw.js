@@ -1,9 +1,9 @@
-const CACHE_NAME = "ai-intel-daily-v4";
+const CACHE_NAME = "ai-intel-daily-v5";
 const SHELL_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=4",
-  "./script.js?v=4",
+  "./styles.css?v=5",
+  "./script.js?v=5",
   "./manifest.json",
   "./icons/ai-intel-icon.svg",
 ];

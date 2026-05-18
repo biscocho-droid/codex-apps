@@ -7,7 +7,7 @@
     <title>AI Intel Daily</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="icons/ai-intel-icon.svg" />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=5" />
   </head>
   <body>
     <main class="app-shell">
@@ -68,6 +68,21 @@
             <option value="all">All sources</option>
           </select>
         </div>
+        <div>
+          <label for="source-preference">Source view</label>
+          <select id="source-preference">
+            <option value="balanced">Balanced</option>
+            <option value="preferred">Preferred only</option>
+            <option value="market">Market sources</option>
+            <option value="no-research">Hide research</option>
+          </select>
+        </div>
+        <div>
+          <label for="archive-select">Archive</label>
+          <select id="archive-select">
+            <option value="latest">Latest</option>
+          </select>
+        </div>
       </section>
 
       <section class="layout-grid">
@@ -101,14 +116,15 @@
           </section>
 
           <section class="panel policy-panel">
-            <p class="eyebrow">Source Policy</p>
-            <h2>Free only</h2>
+            <p class="eyebrow">Source Quality</p>
+            <h2>Tiered free sources</h2>
             <p id="source-policy">Public feeds only. No paid APIs.</p>
+            <div id="source-tiers" class="source-tiers"></div>
           </section>
         </aside>
       </section>
     </main>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
