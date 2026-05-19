@@ -1,8 +1,8 @@
 {
   "scan": {
     "mode": "live yfinance",
-    "generated_at": "2026-05-19T16:35:07-05:00",
-    "local_time": "4:35 PM",
+    "generated_at": "2026-05-19T16:50:28-05:00",
+    "local_time": "4:50 PM",
     "timezone": "America/Chicago"
   },
   "rules": {
@@ -18,9 +18,9 @@
   },
   "summary": {
     "ticker_count": 8,
-    "candidate_count": 47,
-    "skipped_for_earnings": 1,
-    "warning_count": 1
+    "candidate_count": 51,
+    "skipped_for_earnings": 0,
+    "warning_count": 0
   },
   "tickers": [
     "SPY",
@@ -48,12 +48,35 @@
       "credit_to_risk": 0.4925,
       "short_mid": 15.175,
       "long_mid": 13.525,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
+      }
+    },
+    {
+      "id": "NVDA-2026-07-17-205-200-P",
+      "ticker": "NVDA",
+      "underlying_price": 220.61,
+      "expiration": "2026-07-17",
+      "dte": 59,
+      "short_put": 205.0,
+      "long_put": 200.0,
+      "short_delta": -0.2839,
+      "delta_source": "black_scholes_estimate",
+      "credit": 1.52,
+      "max_risk": 3.48,
+      "credit_to_risk": 0.4368,
+      "short_mid": 7.6,
+      "long_mid": 6.075,
+      "earnings_date": null,
+      "quality": {
+        "bid_ask": "tight",
+        "open_interest": "strong",
+        "volume": "strong",
+        "earnings": "unknown"
       }
     },
     {
@@ -71,12 +94,12 @@
       "credit_to_risk": 0.4085,
       "short_mid": 9.4,
       "long_mid": 7.95,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -94,12 +117,12 @@
       "credit_to_risk": 0.4085,
       "short_mid": 13.525,
       "long_mid": 12.075,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "good",
         "volume": "good",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -117,12 +140,12 @@
       "credit_to_risk": 0.3699,
       "short_mid": 6.075,
       "long_mid": 4.725,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -140,12 +163,35 @@
       "credit_to_risk": 0.3514,
       "short_mid": 12.075,
       "long_mid": 10.775,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "good",
         "volume": "good",
-        "earnings": "clear"
+        "earnings": "unknown"
+      }
+    },
+    {
+      "id": "NVDA-2026-07-17-200-195-P",
+      "ticker": "NVDA",
+      "underlying_price": 220.61,
+      "expiration": "2026-07-17",
+      "dte": 59,
+      "short_put": 200.0,
+      "long_put": 195.0,
+      "short_delta": -0.2378,
+      "delta_source": "black_scholes_estimate",
+      "credit": 1.28,
+      "max_risk": 3.72,
+      "credit_to_risk": 0.3441,
+      "short_mid": 6.075,
+      "long_mid": 4.8,
+      "earnings_date": null,
+      "quality": {
+        "bid_ask": "tight",
+        "open_interest": "strong",
+        "volume": "strong",
+        "earnings": "unknown"
       }
     },
     {
@@ -186,12 +232,12 @@
       "credit_to_risk": 0.3333,
       "short_mid": 7.95,
       "long_mid": 6.7,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -278,12 +324,12 @@
       "credit_to_risk": 0.3158,
       "short_mid": 10.775,
       "long_mid": 9.575,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -301,12 +347,12 @@
       "credit_to_risk": 0.3055,
       "short_mid": 5.225,
       "long_mid": 4.05,
-      "earnings_date": "2026-04-30",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -370,12 +416,12 @@
       "credit_to_risk": 0.2821,
       "short_mid": 6.7,
       "long_mid": 5.6,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -393,12 +439,12 @@
       "credit_to_risk": 0.2821,
       "short_mid": 9.575,
       "long_mid": 8.475,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -485,12 +531,12 @@
       "credit_to_risk": 0.2563,
       "short_mid": 4.725,
       "long_mid": 3.7,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -517,6 +563,29 @@
       }
     },
     {
+      "id": "NVDA-2026-07-17-195-190-P",
+      "ticker": "NVDA",
+      "underlying_price": 220.61,
+      "expiration": "2026-07-17",
+      "dte": 59,
+      "short_put": 195.0,
+      "long_put": 190.0,
+      "short_delta": -0.1958,
+      "delta_source": "black_scholes_estimate",
+      "credit": 1.0,
+      "max_risk": 4.0,
+      "credit_to_risk": 0.25,
+      "short_mid": 4.8,
+      "long_mid": 3.8,
+      "earnings_date": null,
+      "quality": {
+        "bid_ask": "tight",
+        "open_interest": "strong",
+        "volume": "strong",
+        "earnings": "unknown"
+      }
+    },
+    {
       "id": "TSLA-2026-07-17-350-345-P",
       "ticker": "TSLA",
       "underlying_price": 404.11,
@@ -531,12 +600,12 @@
       "credit_to_risk": 0.2346,
       "short_mid": 8.475,
       "long_mid": 7.525,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -623,12 +692,12 @@
       "credit_to_risk": 0.2136,
       "short_mid": 5.6,
       "long_mid": 4.725,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -692,12 +761,12 @@
       "credit_to_risk": 0.2048,
       "short_mid": 7.525,
       "long_mid": 6.675,
-      "earnings_date": "2026-04-22",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -721,6 +790,29 @@
         "open_interest": "good",
         "volume": "good",
         "earnings": "ETF"
+      }
+    },
+    {
+      "id": "NVDA-2026-07-17-190-185-P",
+      "ticker": "NVDA",
+      "underlying_price": 220.61,
+      "expiration": "2026-07-17",
+      "dte": 59,
+      "short_put": 190.0,
+      "long_put": 185.0,
+      "short_delta": -0.1601,
+      "delta_source": "black_scholes_estimate",
+      "credit": 0.84,
+      "max_risk": 4.16,
+      "credit_to_risk": 0.2019,
+      "short_mid": 3.8,
+      "long_mid": 2.955,
+      "earnings_date": null,
+      "quality": {
+        "bid_ask": "tight",
+        "open_interest": "strong",
+        "volume": "strong",
+        "earnings": "unknown"
       }
     },
     {
@@ -807,12 +899,12 @@
       "credit_to_risk": 0.1905,
       "short_mid": 4.05,
       "long_mid": 3.25,
-      "earnings_date": "2026-04-30",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -830,12 +922,12 @@
       "credit_to_risk": 0.1905,
       "short_mid": 3.7,
       "long_mid": 2.9,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -876,12 +968,12 @@
       "credit_to_risk": 0.182,
       "short_mid": 4.725,
       "long_mid": 3.95,
-      "earnings_date": "2026-04-29",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -1014,12 +1106,12 @@
       "credit_to_risk": 0.1601,
       "short_mid": 3.25,
       "long_mid": 2.56,
-      "earnings_date": "2026-04-30",
+      "earnings_date": null,
       "quality": {
         "bid_ask": "tight",
         "open_interest": "strong",
         "volume": "strong",
-        "earnings": "clear"
+        "earnings": "unknown"
       }
     },
     {
@@ -1115,7 +1207,5 @@
       }
     }
   ],
-  "warnings": [
-    "NVDA: skipped because earnings is 2026-05-20"
-  ]
+  "warnings": []
 }
