@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17212b">
+  <title>Credit Spread Scanner</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Put Credit Spreads</p>
+      <h1>Credit Spread Scanner</h1>
+      <p id="scan-status" class="scan-status">Loading latest scan...</p>
+    </div>
+    <nav class="header-actions" aria-label="App navigation">
+      <a class="nav-link" href="info.html">How it works</a>
+      <div id="market-badge" class="market-badge">45-60 DTE</div>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <section class="metric-grid" aria-label="Scan summary">
+      <article class="metric-card">
+        <span>TICKERS</span>
+        <strong id="ticker-count">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>CANDIDATES</span>
+        <strong id="candidate-count">0</strong>
+      </article>
+      <article class="metric-card">
+        <span>SKIPPED</span>
+        <strong id="skipped-count">0</strong>
+      </article>
+    </section>
+
+    <section class="universe-note">
+      <strong>Configured universe:</strong>
+      <span id="universe-text">SPY, QQQ, IWM, AAPL, AMZN, MSFT, NVDA, TSLA</span>
+    </section>
+
+    <section class="controls" aria-label="Scanner controls">
+      <div class="control-row">
+        <label for="ticker-filter">Ticker</label>
+        <select id="ticker-filter">
+          <option value="all">All tickers</option>
+        </select>
+      </div>
+      <div class="control-row">
+        <label for="min-score">Min score</label>
+        <select id="min-score">
+          <option value="0">Any score</option>
+          <option value="0.12">12%+</option>
+          <option value="0.15">15%+</option>
+          <option value="0.18">18%+</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="section-head">
+      <div>
+        <p class="eyebrow">Ranked Ideas</p>
+        <h2>Top Candidate Spreads</h2>
+      </div>
+      <button id="refresh-button" type="button" class="icon-button" aria-label="Reload latest scan" title="Reload latest scan">
+        <span aria-hidden="true">↻</span>
+      </button>
+    </section>
+
+    <section id="candidate-list" class="candidate-list" aria-live="polite"></section>
+
+    <section id="warning-panel" class="warning-panel" hidden>
+      <h2>Scan Notes</h2>
+      <ul id="warning-list"></ul>
+    </section>
+
+    <section id="detail-panel" class="detail-panel" hidden>
+      <div class="detail-head">
+        <div>
+          <p class="eyebrow">Selected Spread</p>
+          <h2 id="detail-title">Spread details</h2>
+        </div>
+        <button id="close-detail" type="button" class="icon-button" aria-label="Close spread details" title="Close details">×</button>
+      </div>
+      <div id="detail-body" class="detail-body"></div>
+    </section>
+
+    <section class="notes-panel">
+      <h2>Trade Check</h2>
+      <p>Confirm the live quote, spread width, liquidity, and broker fill before entry. Scanner output is idea generation, not an order ticket.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

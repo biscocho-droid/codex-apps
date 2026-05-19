@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17212b">
+  <title>How It Works | Credit Spread Scanner</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Scanner Guide</p>
+      <h1>How It Works</h1>
+      <p class="scan-status">What the dashboard checks before a spread appears.</p>
+    </div>
+    <nav class="header-actions" aria-label="App navigation">
+      <a class="nav-link" href="index.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="app-shell info-shell">
+    <section class="info-card lead-card">
+      <p class="eyebrow">Purpose</p>
+      <h2>Find candidates, then verify with your broker.</h2>
+      <p>
+        This app scans current option chains for put credit spreads that match your rules. It is designed to
+        surface trade ideas quickly on your phone, not place trades or guarantee fills.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Current Rules</h2>
+      <div class="rule-grid">
+        <div><span>Expiration</span><strong>45-60 DTE</strong></div>
+        <div><span>Spread width</span><strong>$5 wide</strong></div>
+        <div><span>Short put delta</span><strong>-0.15 to -0.30</strong></div>
+        <div><span>Minimum credit</span><strong>$0.60</strong></div>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>What Gets Scanned</h2>
+      <p>
+        The first version scans a focused universe: SPY, QQQ, IWM, AAPL, AMZN, MSFT, NVDA, and TSLA.
+        That list is configurable. More tickers can be added later, but a smaller universe keeps the first
+        mobile dashboard faster and easier to trust.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>How Ranking Works</h2>
+      <p>
+        Candidates are ranked by credit divided by max risk. For a $5-wide spread with $1.00 credit, max risk
+        is $4.00, so the score is 25.0%. Higher scores mean more credit per dollar at risk, but they can also
+        reflect higher underlying risk.
+      </p>
+      <div class="example-box">
+        <span>Example</span>
+        <strong>Sell 520 put / buy 515 put for $0.80 credit</strong>
+        <p>Max risk is $4.20, so credit/risk is 19.0% before commissions and slippage.</p>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Why Some Tickers Are Skipped</h2>
+      <p>
+        Single stocks are skipped when Yahoo reports earnings within the next 7 days or within the past 3 days.
+        ETFs do not have company earnings, so they are treated differently.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Important Limits</h2>
+      <ul class="plain-list">
+        <li>Option Greeks are estimated with Black-Scholes when Yahoo does not provide them.</li>
+        <li>Fills use mid-prices, which may not be available in a live broker order ticket.</li>
+        <li>Yahoo/yfinance data can be delayed, missing, or temporarily unavailable.</li>
+        <li>The scanner is for idea generation; final entry should be checked manually.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
