@@ -25,8 +25,18 @@
       <p class="eyebrow">Purpose</p>
       <h2>Find candidates, then verify with your broker.</h2>
       <p>
-        This app scans current option chains for put credit spreads that match your rules. It is designed to
+        This app scans current option chains for credit spreads that match your rules. It is designed to
         surface trade ideas quickly on your phone, not place trades or guarantee fills.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Update Schedule</h2>
+      <p>
+        The app refreshes on market weekdays at 9:15 AM, 12:00 PM, and 2:30 PM Central Time. The first scan is
+        intentionally after the opening rush because option quotes can be wider and less stable during the first
+        30-45 minutes after the 8:30 AM CT market open. The midday scan gives a cleaner second look, and the
+        2:30 PM scan captures a near-close view before the market closes at 3:00 PM CT.
       </p>
     </section>
 
@@ -47,6 +57,9 @@
         <div><span>Short Call Delta</span><strong>0.15 to 0.30</strong></div>
         <div><span>Minimum credit</span><strong>$0.60</strong></div>
       </div>
+      <p class="section-note">
+        A spread only appears if it passes the expiration, width, delta, credit, earnings, quote quality, and liquidity checks.
+      </p>
     </section>
 
     <section class="info-card">
@@ -69,6 +82,20 @@
     </section>
 
     <section class="info-card">
+      <h2>Selection Process</h2>
+      <ol class="plain-list">
+        <li>Pull the latest option chains for the configured tickers.</li>
+        <li>Keep expirations between 45 and 60 days out.</li>
+        <li>Build $5-wide put credit spreads and call credit spreads.</li>
+        <li>Estimate the short-leg delta when Yahoo does not provide Greeks.</li>
+        <li>Reject spreads outside the target delta range or below the minimum credit.</li>
+        <li>Reject spreads with weak open interest, poor volume, or wide bid/ask quotes.</li>
+        <li>Skip single stocks when earnings are too close.</li>
+        <li>Rank the remaining candidates by credit divided by max risk.</li>
+      </ol>
+    </section>
+
+    <section class="info-card">
       <h2>How Ranking Works</h2>
       <p>
         Candidates are ranked by credit divided by max risk. For a $5-wide spread with $1.00 credit, max risk
@@ -80,6 +107,10 @@
         <strong>Sell 520 put / buy 515 put for $0.80 credit</strong>
         <p>Max risk is $4.20, so credit/risk is 19.0% before commissions and slippage.</p>
       </div>
+      <p class="section-note">
+        Higher credit/risk is useful, but it is not automatically better. A very high score can also mean the market is pricing
+        in more risk, so liquidity, trend, earnings, and the nearby spread ladder still matter.
+      </p>
     </section>
 
     <section class="info-card">
@@ -107,7 +138,7 @@
         </div>
         <div>
           <strong>Breakeven</strong>
-          <p>The short put strike minus the credit. The underlying needs to finish above this level at expiration to avoid a loss at settlement.</p>
+          <p>For puts, breakeven is the short put strike minus the credit. For calls, breakeven is the short call strike plus the credit.</p>
         </div>
       </div>
     </section>
