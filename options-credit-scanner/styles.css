@@ -134,6 +134,12 @@ select {
   color: #173a32;
 }
 
+.universe-mode {
+  display: block;
+  margin-top: 6px;
+  color: #42675f;
+}
+
 .metric-card,
 .candidate-card,
 .detail-panel,
@@ -272,24 +278,37 @@ select {
 
 .direction-badge {
   display: inline-grid;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   place-items: center;
   border-radius: 999px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1;
 }
 
 .direction-badge.bullish,
+.inline-direction.bullish,
 .direction-panel.bullish .direction-mark {
   background: #dcfce7;
   color: #047857;
 }
 
 .direction-badge.bearish,
+.inline-direction.bearish,
 .direction-panel.bearish .direction-mark {
   background: #fee2e2;
   color: #b91c1c;
+}
+
+.inline-direction {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .spread-meta {
@@ -386,10 +405,6 @@ select {
 }
 
 .direction-panel {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 12px;
-  align-items: center;
   border: 1px solid #cdeedd;
   border-radius: 8px;
   background: #f0fdf8;

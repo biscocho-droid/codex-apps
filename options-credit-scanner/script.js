@@ -169,8 +169,8 @@ function candidateCard(candidate, index) {
         <div class="ticker">${candidate.ticker}</div>
         <div>
           <div class="strategy-line">
-            <span class="direction-badge ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span>
             <span>${candidate.strategy_label || "Sell Put Spread"} · ${candidate.bias_label || "Bullish"}</span>
+            <span class="direction-badge ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span>
           </div>
           <div class="spread-name">${candidate.short_put} / ${candidate.long_put} Put</div>
           <div class="spread-meta">${candidate.dte} DTE | delta ${formatDelta(candidate.short_delta)} | exp ${candidate.expiration}</div>
@@ -211,9 +211,8 @@ function showDetail(candidate) {
   byId("detail-title").textContent = `${candidate.ticker} ${candidate.short_put} / ${candidate.long_put} Put`;
   byId("detail-body").innerHTML = `
     <div class="direction-panel ${candidate.bias || "bullish"}">
-      <div class="direction-mark">${directionIcon(candidate)}</div>
       <div>
-        <strong>${candidate.strategy_label || "Sell Put Spread"} · ${candidate.bias_label || "Bullish"}</strong>
+        <strong>${candidate.strategy_label || "Sell Put Spread"} · ${candidate.bias_label || "Bullish"} <span class="inline-direction ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span></strong>
         <p>${candidate.desired_move || "Underlying stays above the short put or moves higher."}</p>
       </div>
     </div>
