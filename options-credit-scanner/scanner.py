@@ -235,6 +235,11 @@ def build_spread_candidate(
     candidate = {
         "id": f"{symbol}-{expiration}-{short_strike:g}-{long_strike:g}-P",
         "ticker": symbol,
+        "strategy": "put_credit_spread",
+        "strategy_label": "Sell put spread",
+        "bias": "bullish",
+        "bias_label": "Bullish",
+        "desired_move": "Underlying stays above the short put or moves higher",
         "underlying_price": round(spot, 2),
         "expiration": expiration,
         "dte": dte,

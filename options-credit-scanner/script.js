@@ -45,6 +45,10 @@ function formatMaybeDelta(value) {
   return formatDelta(value);
 }
 
+function directionIcon(candidate) {
+  return candidate.bias === "bearish" ? "↓" : "↑";
+}
+
 function formatScanDate(value) {
   if (!value) return "";
   const date = new Date(value);
@@ -145,6 +149,10 @@ function candidateCard(candidate, index) {
       <div class="candidate-top">
         <div class="ticker">${candidate.ticker}</div>
         <div>
+          <div class="strategy-line">
+            <span class="direction-badge ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span>
+            <span>${candidate.strategy_label || "Sell put spread"} · ${candidate.bias_label || "Bullish"}</span>
+          </div>
           <div class="spread-name">${candidate.short_put} / ${candidate.long_put} Put</div>
           <div class="spread-meta">${candidate.dte} DTE | delta ${formatDelta(candidate.short_delta)} | exp ${candidate.expiration}</div>
         </div>
@@ -183,6 +191,13 @@ function showDetail(candidate) {
   const source = state.data?.scan?.data_source || "Yahoo Finance via yfinance";
   byId("detail-title").textContent = `${candidate.ticker} ${candidate.short_put} / ${candidate.long_put} Put`;
   byId("detail-body").innerHTML = `
+    <div class="direction-panel ${candidate.bias || "bullish"}">
+      <div class="direction-mark">${directionIcon(candidate)}</div>
+      <div>
+        <strong>${candidate.strategy_label || "Sell put spread"} · ${candidate.bias_label || "Bullish"}</strong>
+        <p>${candidate.desired_move || "Underlying stays above the short put or moves higher."}</p>
+      </div>
+    </div>
     <div class="broker-check">
       <div>
         <span>Try limit</span>

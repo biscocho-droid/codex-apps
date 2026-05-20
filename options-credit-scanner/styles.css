@@ -259,6 +259,39 @@ select {
   font-weight: 700;
 }
 
+.strategy-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.direction-badge {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.direction-badge.bullish,
+.direction-panel.bullish .direction-mark {
+  background: #dcfce7;
+  color: #047857;
+}
+
+.direction-badge.bearish,
+.direction-panel.bearish .direction-mark {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
 .spread-meta {
   margin-top: 5px;
   color: var(--muted);
@@ -350,6 +383,40 @@ select {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+}
+
+.direction-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #cdeedd;
+  border-radius: 8px;
+  background: #f0fdf8;
+  padding: 12px;
+}
+
+.direction-panel .direction-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.direction-panel strong {
+  display: block;
+  color: var(--ink);
+}
+
+.direction-panel p {
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .broker-check div {
