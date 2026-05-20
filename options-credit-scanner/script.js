@@ -106,14 +106,11 @@ function renderSummary() {
   const dateText = scanDate ? ` on ${scanDate}` : "";
   const marketText = data.scan.market_status ? ` | Market ${titleCase(data.scan.market_status)}` : "";
   byId("scan-status").textContent = `Last Scan ${data.scan.local_time} CT${dateText} | ${titleCase(data.scan.mode)}${marketText}`;
-  byId("ticker-count").textContent = data.summary.ticker_count;
   byId("candidate-count").textContent = data.summary.candidate_count;
-  byId("skipped-count").textContent = data.summary.skipped_for_earnings;
+  byId("put-count").textContent = data.summary.put_candidate_count ?? 0;
+  byId("call-count").textContent = data.summary.call_candidate_count ?? 0;
   byId("market-badge").textContent = `${data.rules.min_dte}-${data.rules.max_dte} DTE`;
   byId("universe-text").textContent = data.tickers.join(", ");
-  const putCount = data.summary.put_candidate_count ?? 0;
-  const callCount = data.summary.call_candidate_count ?? 0;
-  byId("strategy-counts").textContent = `Current mode: put and call credit spreads. Put spreads are bullish; call spreads are bearish. Current scan: ${putCount} put candidates and ${callCount} call candidates.`;
   renderWarnings(data.warnings || []);
 }
 
