@@ -1,120 +1,720 @@
 const APP_DATA = {
-  generatedAt: "2026-05-18T19:22:53.630751+00:00",
-  signalCount: 7,
-  exposureCount: 17,
-  windows: {
-    "5": { sampleSize: 17, avgExcessReturn: -0.009355402618522935, hitRate: 0.47058823529411764, avgMaxDrawdown: -0.03942280056349821 },
-    "20": { sampleSize: 17, avgExcessReturn: 0.017519425360713742, hitRate: 0.5882352941176471, avgMaxDrawdown: -0.0828834172052229 },
-    "60": { sampleSize: 17, avgExcessReturn: 0.11766641590710858, hitRate: 0.7647058823529411, avgMaxDrawdown: -0.1405715591840624 },
-    "120": { sampleSize: 14, avgExcessReturn: 0.21224834154609265, hitRate: 0.9285714285714286, avgMaxDrawdown: -0.17265028919125133 },
-    "252": { sampleSize: 11, avgExcessReturn: 0.6253393759596579, hitRate: 0.8181818181818182, avgMaxDrawdown: -0.20012607947829875 },
-    "504": { sampleSize: 7, avgExcessReturn: 1.2046787666469265, hitRate: 0.8571428571428571, avgMaxDrawdown: -0.24898829495902725 },
-    "756": { sampleSize: 7, avgExcessReturn: 1.3044047811288955, hitRate: 0.5714285714285714, avgMaxDrawdown: -0.4388184950394188 },
+  "generatedAt": "2026-05-20T10:22:33.005772+00:00",
+  "signalCount": 7,
+  "exposureCount": 17,
+  "windows": {
+    "5": {
+      "sampleSize": 17,
+      "avgExcessReturn": -0.007756005403068109,
+      "hitRate": 0.5882352941176471,
+      "avgMaxDrawdown": -0.04137896549437078
+    },
+    "20": {
+      "sampleSize": 17,
+      "avgExcessReturn": 0.011007747708066189,
+      "hitRate": 0.5294117647058824,
+      "avgMaxDrawdown": -0.08816635683313159
+    },
+    "60": {
+      "sampleSize": 17,
+      "avgExcessReturn": 0.11063761963921297,
+      "hitRate": 0.7647058823529411,
+      "avgMaxDrawdown": -0.1432173605115764
+    },
+    "120": {
+      "sampleSize": 14,
+      "avgExcessReturn": 0.1742933918056701,
+      "hitRate": 0.9285714285714286,
+      "avgMaxDrawdown": -0.1753314126086821
+    },
+    "252": {
+      "sampleSize": 11,
+      "avgExcessReturn": 0.5836431814866655,
+      "hitRate": 0.8181818181818182,
+      "avgMaxDrawdown": -0.20012612528647497
+    },
+    "504": {
+      "sampleSize": 7,
+      "avgExcessReturn": 1.1478245061268315,
+      "hitRate": 0.8571428571428571,
+      "avgMaxDrawdown": -0.24818794982538403
+    },
+    "756": {
+      "sampleSize": 7,
+      "avgExcessReturn": 1.3253817886099661,
+      "hitRate": 0.5714285714285714,
+      "avgMaxDrawdown": -0.4321187428486898
+    }
   },
-  categories: [
-    { slug: "food", label: "Food", windows: {
-      "5": { excess: -0.0367493390051456, hitRate: 0.3333333333333333, samples: 6 },
-      "20": { excess: -0.02364011761408306, hitRate: 0.3333333333333333, samples: 6 },
-      "60": { excess: -0.07609048403259598, hitRate: 0.5, samples: 6 },
-      "120": { excess: -0.015602662003995552, hitRate: 0.6666666666666666, samples: 3 },
-      "252": { excess: null, hitRate: null, samples: 0 },
-      "504": { excess: null, hitRate: null, samples: 0 },
-      "756": { excess: null, hitRate: null, samples: 0 },
-    } },
-    { slug: "health", label: "Health", windows: {
-      "5": { excess: 0.0006034518339024797, hitRate: 0.25, samples: 4 },
-      "20": { excess: 0.060134946571652664, hitRate: 0.75, samples: 4 },
-      "60": { excess: 0.1699498209708707, hitRate: 1, samples: 4 },
-      "120": { excess: 0.3313297302280902, hitRate: 1, samples: 4 },
-      "252": { excess: 0.8691798877414302, hitRate: 1, samples: 4 },
-      "504": { excess: 1.2309058094580476, hitRate: 1, samples: 4 },
-      "756": { excess: 0.6375972250985869, hitRate: 0.5, samples: 4 },
-    } },
-    { slug: "internet", label: "Internet", windows: {
-      "5": { excess: 0.008434340311481967, hitRate: 0.7142857142857143, samples: 7 },
-      "20": { excess: 0.02844730721857447, hitRate: 0.7142857142857143, samples: 7 },
-      "60": { excess: 0.2538675272475627, hitRate: 0.8571428571428571, samples: 7 },
-      "120": { excess: 0.24185226382070332, hitRate: 1, samples: 7 },
-      "252": { excess: 0.486001940655788, hitRate: 0.7142857142857143, samples: 7 },
-      "504": { excess: 1.1697093762320978, hitRate: 0.6666666666666666, samples: 3 },
-      "756": { excess: 2.19348152250264, hitRate: 0.6666666666666666, samples: 3 },
-    } },
+  "categories": [
+    {
+      "slug": "food",
+      "label": "Food",
+      "windows": {
+        "5": {
+          "excess": -0.036749290728878725,
+          "hitRate": 0.3333333333333333,
+          "samples": 6
+        },
+        "20": {
+          "excess": -0.023640069337816132,
+          "hitRate": 0.3333333333333333,
+          "samples": 6
+        },
+        "60": {
+          "excess": -0.07609048403259598,
+          "hitRate": 0.5,
+          "samples": 6
+        },
+        "120": {
+          "excess": -0.015602662003995552,
+          "hitRate": 0.6666666666666666,
+          "samples": 3
+        },
+        "252": {
+          "excess": null,
+          "hitRate": null,
+          "samples": 0
+        },
+        "504": {
+          "excess": null,
+          "hitRate": null,
+          "samples": 0
+        },
+        "756": {
+          "excess": null,
+          "hitRate": null,
+          "samples": 0
+        }
+      }
+    },
+    {
+      "slug": "health",
+      "label": "Health",
+      "windows": {
+        "5": {
+          "excess": 0.007400093169984218,
+          "hitRate": 0.75,
+          "samples": 4
+        },
+        "20": {
+          "excess": 0.032459850471531715,
+          "hitRate": 0.5,
+          "samples": 4
+        },
+        "60": {
+          "excess": 0.14007685242942486,
+          "hitRate": 1.0,
+          "samples": 4
+        },
+        "120": {
+          "excess": 0.19848679578256834,
+          "hitRate": 1.0,
+          "samples": 4
+        },
+        "252": {
+          "excess": 0.7545145165873748,
+          "hitRate": 1.0,
+          "samples": 4
+        },
+        "504": {
+          "excess": 1.1314100789828898,
+          "hitRate": 1.0,
+          "samples": 4
+        },
+        "756": {
+          "excess": 0.6743061105161878,
+          "hitRate": 0.5,
+          "samples": 4
+        }
+      }
+    },
+    {
+      "slug": "internet",
+      "label": "Internet",
+      "windows": {
+        "5": {
+          "excess": 0.008434754263025377,
+          "hitRate": 0.7142857142857143,
+          "samples": 7
+        },
+        "20": {
+          "excess": 0.028447532168270735,
+          "hitRate": 0.7142857142857143,
+          "samples": 7
+        },
+        "60": {
+          "excess": 0.25386786119207094,
+          "hitRate": 0.8571428571428571,
+          "samples": 7
+        },
+        "120": {
+          "excess": 0.24185261259444207,
+          "hitRate": 1.0,
+          "samples": 7
+        },
+        "252": {
+          "excess": 0.4860024185719744,
+          "hitRate": 0.7142857142857143,
+          "samples": 7
+        },
+        "504": {
+          "excess": 1.1697104089854207,
+          "hitRate": 0.6666666666666666,
+          "samples": 3
+        },
+        "756": {
+          "excess": 2.1934826927350035,
+          "hitRate": 0.6666666666666666,
+          "samples": 3
+        }
+      }
+    }
   ],
-  trends: [
-    { slug: "chatgpt", label: "ChatGPT", category: "internet", benchmark: "QQQ", thesis: "Consumer and enterprise AI attention can spill into infrastructure and software winners.", why: "The best outcomes are showing up after the market has time to reprice infrastructure and platform beneficiaries, not in the first few weeks.", windows: {
-      "5": { excess: 0.021354070500110827, hitRate: 0.8333333333333334 },
-      "20": { excess: 0.03876131364380867, hitRate: 0.8333333333333334 },
-      "60": { excess: 0.18653523880955325, hitRate: 0.8333333333333334 },
-      "120": { excess: 0.2746899587248783, hitRate: 1 },
-      "252": { excess: 0.49936799688932965, hitRate: 0.6666666666666666 },
-      "504": { excess: 1.1697093762320978, hitRate: 0.6666666666666666 },
-      "756": { excess: 2.19348152250264, hitRate: 0.6666666666666666 },
-    } },
-    { slug: "ozempic", label: "Ozempic", category: "health", benchmark: "XLV", thesis: "GLP-1 demand can identify direct therapeutic winners before adjacent effects are fully priced.", why: "This family compounds well over longer holds, which makes it more useful as a medium- and long-horizon healthcare signal than a fast trade.", windows: {
-      "5": { excess: 0.003896046107437212, hitRate: 0.5 },
-      "20": { excess: 0.040703983617820516, hitRate: 0.5 },
-      "60": { excess: 0.09544820292573863, hitRate: 1 },
-      "120": { excess: 0.1790544315733411, hitRate: 1 },
-      "252": { excess: 0.7743193823007882, hitRate: 1 },
-      "504": { excess: 1.5265003365378893, hitRate: 1 },
-      "756": { excess: 0.6436654813129313, hitRate: 0.5 },
-    } },
-    { slug: "protein-soda", label: "Protein Soda", category: "food", benchmark: "XLP", thesis: "Functional-beverage attention can reveal emerging consumer taste shifts before broad sell-side coverage.", why: "The theme is still too new and too noisy. It stays in the app as an emerging watchlist signal, not a promoted high-confidence family.", windows: {
-      "5": { excess: -0.0367493390051456, hitRate: 0.3333333333333333 },
-      "20": { excess: -0.02364011761408306, hitRate: 0.3333333333333333 },
-      "60": { excess: -0.07609048403259598, hitRate: 0.5 },
-      "120": { excess: -0.015602662003995552, hitRate: 0.6666666666666666 },
-      "252": { excess: null, hitRate: null },
-      "504": { excess: null, hitRate: null },
-      "756": { excess: null, hitRate: null },
-    } },
-    { slug: "robotaxi", label: "Robotaxi", category: "internet", benchmark: "QQQ", thesis: "Autonomy attention can influence expectations around mobility and AI platform adoption.", why: "The payoff is lumpy because the theme is narrative-driven, but when it hits the mapped winner can outrun the benchmark hard.", windows: {
-      "5": { excess: -0.06908404082029118, hitRate: 0 },
-      "20": { excess: -0.03343673133283076, hitRate: 0 },
-      "60": { excess: 0.6578612578756193, hitRate: 1 },
-      "120": { excess: 0.04482609439565377, hitRate: 1 },
-      "252": { excess: 0.40580560325453807, hitRate: 1 },
-      "504": { excess: null, hitRate: null },
-      "756": { excess: null, hitRate: null },
-    } },
-    { slug: "weight-loss-drugs", label: "Weight Loss Drugs", category: "health", benchmark: "XLV", thesis: "Broader anti-obesity attention can identify second-order healthcare and consumer effects.", why: "This is one of the cleanest families in the model. Both the signal and the exposure mapping stay strong as the horizon extends.", windows: {
-      "5": { excess: -0.0026891424396322527, hitRate: 0 },
-      "20": { excess: 0.07956590952548481, hitRate: 1 },
-      "60": { excess: 0.24445143901600275, hitRate: 1 },
-      "120": { excess: 0.4836050288828393, hitRate: 1 },
-      "252": { excess: 0.9640403931820721, hitRate: 1 },
-      "504": { excess: 0.9353112823782063, hitRate: 1 },
-      "756": { excess: 0.6315289688842425, hitRate: 0.5 },
-    } },
+  "trends": [
+    {
+      "slug": "chatgpt",
+      "label": "Chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "thesis": "Consumer and enterprise AI attention can spill into infrastructure and software winners.",
+      "why": "The best outcomes are showing up after the market has time to reprice infrastructure and platform beneficiaries, not in the first few weeks.",
+      "windows": {
+        "5": {
+          "excess": 0.02135455362131659,
+          "hitRate": 0.8333333333333334
+        },
+        "20": {
+          "excess": 0.03876160846092147,
+          "hitRate": 0.8333333333333334
+        },
+        "60": {
+          "excess": 0.1865356401526925,
+          "hitRate": 0.8333333333333334
+        },
+        "120": {
+          "excess": 0.2746903763822754,
+          "hitRate": 1.0
+        },
+        "252": {
+          "excess": 0.49936856788121936,
+          "hitRate": 0.6666666666666666
+        },
+        "504": {
+          "excess": 1.1697104089854207,
+          "hitRate": 0.6666666666666666
+        },
+        "756": {
+          "excess": 2.1934826927350035,
+          "hitRate": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "slug": "ozempic",
+      "label": "Ozempic",
+      "category": "health",
+      "benchmark": "XLV",
+      "thesis": "GLP-1 demand can identify direct therapeutic winners before adjacent effects are fully priced.",
+      "why": "This family compounds well over longer holds, which makes it more useful as a medium- and long-horizon healthcare signal than a fast trade.",
+      "windows": {
+        "5": {
+          "excess": 0.003896035402214726,
+          "hitRate": 0.5
+        },
+        "20": {
+          "excess": 0.04070403290556501,
+          "hitRate": 0.5
+        },
+        "60": {
+          "excess": 0.0954481197646776,
+          "hitRate": 1.0
+        },
+        "120": {
+          "excess": 0.17905428725203398,
+          "hitRate": 1.0
+        },
+        "252": {
+          "excess": 0.7743189216333541,
+          "hitRate": 1.0
+        },
+        "504": {
+          "excess": 1.5265001831774128,
+          "hitRate": 1.0
+        },
+        "756": {
+          "excess": 0.643665324729782,
+          "hitRate": 0.5
+        }
+      }
+    },
+    {
+      "slug": "protein-soda",
+      "label": "Protein Soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "thesis": "Functional-beverage attention can reveal emerging consumer taste shifts before broad sell-side coverage.",
+      "why": "The theme is still too new and too noisy. It stays in the app as an emerging watchlist signal, not a promoted high-confidence family.",
+      "windows": {
+        "5": {
+          "excess": -0.036749290728878725,
+          "hitRate": 0.3333333333333333
+        },
+        "20": {
+          "excess": -0.023640069337816132,
+          "hitRate": 0.3333333333333333
+        },
+        "60": {
+          "excess": -0.07609048403259598,
+          "hitRate": 0.5
+        },
+        "120": {
+          "excess": -0.015602662003995552,
+          "hitRate": 0.6666666666666666
+        },
+        "252": {
+          "excess": null,
+          "hitRate": null
+        },
+        "504": {
+          "excess": null,
+          "hitRate": null
+        },
+        "756": {
+          "excess": null,
+          "hitRate": null
+        }
+      }
+    },
+    {
+      "slug": "robotaxi",
+      "label": "Robotaxi",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "thesis": "Autonomy attention can influence expectations around mobility and AI platform adoption.",
+      "why": "The payoff is lumpy because the theme is narrative-driven, but when it hits the mapped winner can outrun the benchmark hard.",
+      "windows": {
+        "5": {
+          "excess": -0.0690840418867219,
+          "hitRate": 0.0
+        },
+        "20": {
+          "excess": -0.03343692558763367,
+          "hitRate": 0.0
+        },
+        "60": {
+          "excess": 0.6578611874283418,
+          "hitRate": 1.0
+        },
+        "120": {
+          "excess": 0.04482602986744233,
+          "hitRate": 1.0
+        },
+        "252": {
+          "excess": 0.4058055227165043,
+          "hitRate": 1.0
+        },
+        "504": {
+          "excess": null,
+          "hitRate": null
+        },
+        "756": {
+          "excess": null,
+          "hitRate": null
+        }
+      }
+    },
+    {
+      "slug": "weight-loss-drugs",
+      "label": "Weight Loss Drugs",
+      "category": "health",
+      "benchmark": "XLV",
+      "thesis": "Broader anti-obesity attention can identify second-order healthcare and consumer effects.",
+      "why": "This is one of the cleanest families in the model. Both the signal and the exposure mapping stay strong as the horizon extends.",
+      "windows": {
+        "5": {
+          "excess": 0.01090415093775371,
+          "hitRate": 1.0
+        },
+        "20": {
+          "excess": 0.024215668037498417,
+          "hitRate": 0.5
+        },
+        "60": {
+          "excess": 0.18470558509417212,
+          "hitRate": 1.0
+        },
+        "120": {
+          "excess": 0.2179193043131027,
+          "hitRate": 1.0
+        },
+        "252": {
+          "excess": 0.7347101115413956,
+          "hitRate": 1.0
+        },
+        "504": {
+          "excess": 0.736319974788367,
+          "hitRate": 1.0
+        },
+        "756": {
+          "excess": 0.7049468963025939,
+          "hitRate": 0.5
+        }
+      }
+    }
   ],
-  signals: [
-    { date: "2026-02-01", trend: "protein soda", category: "food", score: 50.3 },
-    { date: "2025-09-01", trend: "protein soda", category: "food", score: 51.5 },
-    { date: "2025-03-01", trend: "chatgpt", category: "internet", score: 66.8 },
-    { date: "2024-10-01", trend: "robotaxi", category: "internet", score: 95 },
-    { date: "2023-03-01", trend: "chatgpt", category: "internet", score: 81.2 },
-    { date: "2023-03-01", trend: "weight loss drugs", category: "health", score: 61.5 },
-    { date: "2022-09-01", trend: "ozempic", category: "health", score: 56.6 },
+  "signals": [
+    {
+      "date": "2026-02-01",
+      "trend": "protein soda",
+      "category": "food",
+      "score": 51.7
+    },
+    {
+      "date": "2025-09-01",
+      "trend": "protein soda",
+      "category": "food",
+      "score": 52.7
+    },
+    {
+      "date": "2025-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "score": 66.4
+    },
+    {
+      "date": "2024-10-01",
+      "trend": "robotaxi",
+      "category": "internet",
+      "score": 95.0
+    },
+    {
+      "date": "2023-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "score": 81.2
+    },
+    {
+      "date": "2023-02-01",
+      "trend": "weight loss drugs",
+      "category": "health",
+      "score": 57.6
+    },
+    {
+      "date": "2022-09-01",
+      "trend": "ozempic",
+      "category": "health",
+      "score": 57.0
+    }
   ],
-  exposures: [
-    { date: "2026-02-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "CELH", role: "beneficiary", rationale: "Health-oriented beverage brand read-through.", windows: { "5": -0.10326386577273872, "20": -0.12037744799446115, "60": -0.3504262124646931, "120": null, "252": null, "504": null, "756": null } },
-    { date: "2026-02-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "MNST", role: "beneficiary", rationale: "Functional beverage adjacency and innovation leverage.", windows: { "5": -0.03714066614781808, "20": -0.06436044137838448, "60": -0.03873648837091637, "120": null, "252": null, "504": null, "756": null } },
-    { date: "2026-02-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "PEP", role: "beneficiary", rationale: "Better-for-you beverage adjacency and distribution scale.", windows: { "5": 0.03794141900533243, "20": 0.024221300032529758, "60": 0.022693901496346314, "120": null, "252": null, "504": null, "756": null } },
-    { date: "2025-09-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "CELH", role: "beneficiary", rationale: "Health-oriented beverage brand read-through.", windows: { "5": -0.08843700508102781, "20": -0.04223104109473608, "60": -0.31665427005510915, "120": -0.303408752985422, "252": null, "504": null, "756": null } },
-    { date: "2025-09-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "MNST", role: "beneficiary", rationale: "Functional beverage adjacency and innovation leverage.", windows: { "5": 0.009858511130082404, "20": 0.09564078855173097, "60": 0.21934508928692986, "120": 0.23559456045825722, "252": null, "504": null, "756": null } },
-    { date: "2025-09-01", trend: "protein soda", category: "food", benchmark: "XLP", ticker: "PEP", role: "beneficiary", rationale: "Better-for-you beverage adjacency and distribution scale.", windows: { "5": -0.03945442716470382, "20": -0.03473386380117738, "60": 0.007235075911866562, "120": 0.02100620651517815, "252": null, "504": null, "756": null } },
-    { date: "2025-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "GOOGL", role: "beneficiary", rationale: "Search and model platform response to generative AI adoption.", windows: { "5": 0.04324640083484532, "20": -0.01781414502843559, "60": -0.0123136505629875, "120": 0.08317508338393664, "252": 0.5871680865446649, "504": null, "756": null } },
-    { date: "2025-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "MSFT", role: "beneficiary", rationale: "Platform distribution and enterprise AI monetization.", windows: { "5": 0.027486619690664016, "20": 0.021466664021148496, "60": 0.1339011229525393, "120": 0.15645260855912269, "252": -0.1839838834988241, "504": null, "756": null } },
-    { date: "2025-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "NVDA", role: "beneficiary", rationale: "AI compute demand and infrastructure bottleneck exposure.", windows: { "5": -0.013143980153922596, "20": 0.005475966173940416, "60": 0.13649429653225487, "120": 0.4070068235224735, "252": 0.3702268234203976, "504": null, "756": null } },
-    { date: "2024-10-01", trend: "robotaxi", category: "internet", benchmark: "QQQ", ticker: "TSLA", role: "beneficiary", rationale: "Direct robotaxi narrative and autonomy optionality exposure.", windows: { "5": -0.06908404082029118, "20": -0.03343673133283076, "60": 0.6578612578756193, "120": 0.04482609439565377, "252": 0.40580560325453807, "504": null, "756": null } },
-    { date: "2023-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "GOOGL", role: "beneficiary", rationale: "Search and model platform response to generative AI adoption.", windows: { "5": 0.02031602181451997, "20": 0.04650345753383123, "60": 0.1981065608295347, "120": 0.176990520419803, "252": -0.023120350473115447, "504": 0.17556421300178715, "756": 1.231920243901103 } },
-    { date: "2023-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "MSFT", role: "beneficiary", rationale: "Platform distribution and enterprise AI monetization.", windows: { "5": 0.007436266562582672, "20": 0.06347072329976622, "60": 0.15789137066075254, "120": 0.06349904280060503, "252": 0.16019238827190607, "504": -0.09188833146720632, "756": -0.39677239652950025 } },
-    { date: "2023-03-01", trend: "chatgpt", category: "internet", benchmark: "QQQ", ticker: "NVDA", role: "beneficiary", rationale: "AI compute demand and infrastructure bottleneck exposure.", windows: { "5": 0.04278309425197557, "20": 0.11346521586260128, "60": 0.5051317324452256, "120": 0.7610156736633287, "252": 2.085724917070949, "504": 3.4254522471617124, "756": 5.7452967201363165 } },
-    { date: "2023-03-01", trend: "weight loss drugs", category: "health", benchmark: "XLV", ticker: "LLY", role: "beneficiary", rationale: "Large-cap anti-obesity leadership and prescribing leverage.", windows: { "5": -0.0003833812779768797, "20": 0.06169120385041049, "60": 0.35319817702723433, "120": 0.7130889292083864, "252": 1.3384249903795304, "504": 1.785774042204293, "756": 1.9588434932626 } },
-    { date: "2023-03-01", trend: "weight loss drugs", category: "health", benchmark: "XLV", ticker: "NVO", role: "beneficiary", rationale: "Large-cap anti-obesity leadership and prescribing leverage.", windows: { "5": -0.004994903601287626, "20": 0.09744061520055913, "60": 0.13570470100477117, "120": 0.2541211285572922, "252": 0.5896557959846138, "504": 0.08484852255211961, "756": -0.6957855554941149 } },
-    { date: "2022-09-01", trend: "ozempic", category: "health", benchmark: "XLV", ticker: "LLY", role: "beneficiary", rationale: "Direct obesity and diabetes drug exposure.", windows: { "5": -0.001375718334833964, "20": 0.08714212466969706, "60": 0.10882900840746768, "120": 0.025110161203698356, "252": 0.7658715048259699, "504": 1.7466001994421925, "756": 1.3419651200230103 } },
-    { date: "2022-09-01", trend: "ozempic", category: "health", benchmark: "XLV", ticker: "NVO", role: "beneficiary", rationale: "Direct obesity and diabetes drug exposure.", windows: { "5": 0.009167810549708388, "20": -0.005734157434056031, "60": 0.0820673974440096, "120": 0.33299870194298387, "252": 0.7827672597756066, "504": 1.3064004736335861, "756": -0.05463415739714761 } },
-  ],
+  "exposures": [
+    {
+      "date": "2026-02-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "CELH",
+      "role": "beneficiary",
+      "rationale": "Health-oriented beverage brand read-through.",
+      "windows": {
+        "5": -0.10326386577273872,
+        "20": -0.12037744799446115,
+        "60": -0.3504262124646931,
+        "120": null,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "MNST",
+      "role": "beneficiary",
+      "rationale": "Functional beverage adjacency and innovation leverage.",
+      "windows": {
+        "5": -0.03714066614781808,
+        "20": -0.06436044137838448,
+        "60": -0.03873648837091637,
+        "120": null,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "PEP",
+      "role": "beneficiary",
+      "rationale": "Better-for-you beverage adjacency and distribution scale.",
+      "windows": {
+        "5": 0.03794141900533243,
+        "20": 0.024221300032529758,
+        "60": 0.022693901496346314,
+        "120": null,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-09-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "CELH",
+      "role": "beneficiary",
+      "rationale": "Health-oriented beverage brand read-through.",
+      "windows": {
+        "5": -0.08843690852849406,
+        "20": -0.04223094454220222,
+        "60": -0.31665427005510915,
+        "120": -0.303408752985422,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-09-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "MNST",
+      "role": "beneficiary",
+      "rationale": "Functional beverage adjacency and innovation leverage.",
+      "windows": {
+        "5": 0.00985860768261615,
+        "20": 0.09564088510426483,
+        "60": 0.21934508928692986,
+        "120": 0.23559456045825722,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-09-01",
+      "trend": "protein soda",
+      "category": "food",
+      "benchmark": "XLP",
+      "ticker": "PEP",
+      "role": "beneficiary",
+      "rationale": "Better-for-you beverage adjacency and distribution scale.",
+      "windows": {
+        "5": -0.039454330612170074,
+        "20": -0.03473376724864352,
+        "60": 0.007235075911866562,
+        "120": 0.02100620651517815,
+        "252": null,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "GOOGL",
+      "role": "beneficiary",
+      "rationale": "Search and model platform response to generative AI adoption.",
+      "windows": {
+        "5": 0.043246459598312526,
+        "20": -0.017814056651331955,
+        "60": -0.012313677749774543,
+        "120": 0.0831750628826704,
+        "252": 0.5871681628499714,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "MSFT",
+      "role": "beneficiary",
+      "rationale": "Platform distribution and enterprise AI monetization.",
+      "windows": {
+        "5": 0.02748667845413122,
+        "20": 0.021466660611336175,
+        "60": 0.13390118755266833,
+        "120": 0.1564526798447725,
+        "252": -0.1839838071935176,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2025-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "NVDA",
+      "role": "beneficiary",
+      "rationale": "AI compute demand and infrastructure bottleneck exposure.",
+      "windows": {
+        "5": -0.013143988301682508,
+        "20": 0.005475962764128095,
+        "60": 0.1364943611323839,
+        "120": 0.40700689480812335,
+        "252": 0.3702268997257041,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2024-10-01",
+      "trend": "robotaxi",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "TSLA",
+      "role": "beneficiary",
+      "rationale": "Direct robotaxi narrative and autonomy optionality exposure.",
+      "windows": {
+        "5": -0.0690840418867219,
+        "20": -0.03343692558763367,
+        "60": 0.6578611874283418,
+        "120": 0.04482602986744233,
+        "252": 0.4058055227165043,
+        "504": null,
+        "756": null
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "GOOGL",
+      "role": "beneficiary",
+      "rationale": "Search and model platform response to generative AI adoption.",
+      "windows": {
+        "5": 0.020317057614566814,
+        "20": 0.04650411138971755,
+        "60": 0.1981072435648601,
+        "120": 0.17699138362905442,
+        "252": -0.02311974753408874,
+        "504": 0.17556521327935548,
+        "756": 1.2319211992065768
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "MSFT",
+      "role": "beneficiary",
+      "rationale": "Platform distribution and enterprise AI monetization.",
+      "windows": {
+        "5": 0.007437063094895446,
+        "20": 0.0634710825334932,
+        "60": 0.15789189465983733,
+        "120": 0.06349948732106392,
+        "252": 0.16019322149481696,
+        "504": -0.09188776997626058,
+        "756": -0.3967718324167795
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "trend": "chatgpt",
+      "category": "internet",
+      "benchmark": "QQQ",
+      "ticker": "NVDA",
+      "role": "beneficiary",
+      "rationale": "AI compute demand and infrastructure bottleneck exposure.",
+      "windows": {
+        "5": 0.04278405126767604,
+        "20": 0.11346589011818575,
+        "60": 0.5051328317561798,
+        "120": 0.7610167498079676,
+        "252": 2.08572667794443,
+        "504": 3.4254537836531664,
+        "756": 5.745298711415214
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "trend": "weight loss drugs",
+      "category": "health",
+      "benchmark": "XLV",
+      "ticker": "LLY",
+      "role": "beneficiary",
+      "rationale": "Large-cap anti-obesity leadership and prescribing leverage.",
+      "windows": {
+        "5": 0.006421038865892736,
+        "20": -0.030713380102927568,
+        "60": 0.15884397672675776,
+        "120": 0.31024430439907746,
+        "252": 0.8907661183600271,
+        "504": 1.3545616971316825,
+        "756": 1.9261219267272345
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "trend": "weight loss drugs",
+      "category": "health",
+      "benchmark": "XLV",
+      "ticker": "NVO",
+      "role": "beneficiary",
+      "rationale": "Large-cap anti-obesity leadership and prescribing leverage.",
+      "windows": {
+        "5": 0.015387263009614682,
+        "20": 0.0791447161779244,
+        "60": 0.21056719346158648,
+        "120": 0.12559430422712792,
+        "252": 0.5786541047227642,
+        "504": 0.11807825244505143,
+        "756": -0.5162281341220467
+      }
+    },
+    {
+      "date": "2022-09-01",
+      "trend": "ozempic",
+      "category": "health",
+      "benchmark": "XLV",
+      "ticker": "LLY",
+      "role": "beneficiary",
+      "rationale": "Direct obesity and diabetes drug exposure.",
+      "windows": {
+        "5": -0.0013759641678661172,
+        "20": 0.08714222434379026,
+        "60": 0.10882881873271555,
+        "120": 0.025109989335354355,
+        "252": 0.7658708558947243,
+        "504": 1.7465996098492487,
+        "756": 1.3419647932932688
+      }
+    },
+    {
+      "date": "2022-09-01",
+      "trend": "ozempic",
+      "category": "health",
+      "benchmark": "XLV",
+      "ticker": "NVO",
+      "role": "beneficiary",
+      "rationale": "Direct obesity and diabetes drug exposure.",
+      "windows": {
+        "5": 0.009168034972295569,
+        "20": -0.0057341585326602384,
+        "60": 0.08206742079663965,
+        "120": 0.3329985851687136,
+        "252": 0.782766987371984,
+        "504": 1.3064007565055769,
+        "756": -0.054634143833704796
+      }
+    }
+  ]
 };
 
 const state = {
