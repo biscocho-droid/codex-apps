@@ -9,3 +9,9 @@
 .table-wrap{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:none;scrollbar-gutter:stable both-edges}
 .table-wrap table{min-width:1040px}
 @media (width<=720px){.table-wrap{overflow:auto}.table-panel{height:560px}}
+
+.company-logo.logo-failed:before{content:attr(data-fallback)}
+.company-logo.logo-failed img{display:none!important}
+.company-logo.small:before{font-size:9px;padding:0 2px}
+.company-logo.large:before{font-size:13px;padding:0 4px}
+
