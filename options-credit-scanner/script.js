@@ -45,6 +45,17 @@ function formatMaybeDelta(value) {
   return formatDelta(value);
 }
 
+function formatScanDate(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -68,7 +79,9 @@ function render() {
 function renderSummary() {
   const data = state.data;
   const status = data.scan.market_status ? ` | market ${data.scan.market_status}` : "";
-  byId("scan-status").textContent = `Last scan ${data.scan.local_time} CT | ${data.scan.mode}${status}`;
+  const scanDate = formatScanDate(data.scan.generated_at);
+  const dateText = scanDate ? ` on ${scanDate}` : "";
+  byId("scan-status").textContent = `Last scan ${data.scan.local_time} CT${dateText} | ${data.scan.mode}${status}`;
   byId("ticker-count").textContent = data.summary.ticker_count;
   byId("candidate-count").textContent = data.summary.candidate_count;
   byId("skipped-count").textContent = data.summary.skipped_for_earnings;
