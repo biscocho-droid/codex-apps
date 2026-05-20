@@ -186,9 +186,137 @@ def market_status(now_ct: datetime) -> str:
     return "closed"
 
 
+def spread_status(delta: float | None, credit: float | None, rules: ScanRules) -> tuple[str, bool]:
+    if delta is None:
+        return "No delta", False
+    if delta < rules.min_short_delta:
+        return "Too aggressive", False
+    if delta > rules.max_short_delta:
+        return "Too low delta", False
+    if credit is None or credit < rules.min_credit:
+        return "Too little credit", False
+    return "Valid", True
+
+
+def build_spread_candidate(
+    symbol: str,
+    spot: float,
+    expiration: str,
+    dte: int,
+    short_strike: float,
+    long_strike: float,
+    short_row: pd.Series,
+    long_row: pd.Series,
+    rules: ScanRules,
+    earnings_date: date | None,
+) -> tuple[dict[str, Any] | None, str]:
+    iv = safe_float(short_row.get("impliedVolatility"))
+    delta = put_delta(spot, short_strike, dte, iv or 0.0, rules.risk_free_rate)
+    short_mid = quote_mid(short_row)
+    long_mid = quote_mid(long_row)
+    credit = round(short_mid - long_mid, 2) if short_mid is not None and long_mid is not None else None
+    status, rules_pass = spread_status(delta, credit, rules)
+
+    if credit is None:
+        return None, status
+
+    max_risk = round(rules.spread_width - credit, 2)
+    if max_risk <= 0:
+        return None, status
+
+    short_ba, short_ba_pass, short_ba_width = bid_ask_quality(short_row, short_mid, rules)
+    long_ba, long_ba_pass, long_ba_width = bid_ask_quality(long_row, long_mid, rules)
+    liquidity, liquidity_pass, liquidity_detail = liquidity_quality(short_row, long_row, rules)
+    if not (short_ba_pass and long_ba_pass and liquidity_pass):
+        return None, "Liquidity/quote filter"
+
+    combined_bid_ask = "tight" if short_ba == "tight" and long_ba == "tight" else "good"
+    min_acceptable_credit = max(rules.min_credit, credit - 0.10)
+    candidate = {
+        "id": f"{symbol}-{expiration}-{short_strike:g}-{long_strike:g}-P",
+        "ticker": symbol,
+        "underlying_price": round(spot, 2),
+        "expiration": expiration,
+        "dte": dte,
+        "short_put": short_strike,
+        "long_put": long_strike,
+        "short_delta": round(delta, 4) if delta is not None else None,
+        "delta_source": "black_scholes_estimate",
+        "credit": credit,
+        "max_risk": max_risk,
+        "credit_to_risk": round(credit / max_risk, 4),
+        "breakeven": round(short_strike - credit, 2),
+        "max_profit_dollars": round(credit * 100, 2),
+        "max_loss_dollars": round(max_risk * 100, 2),
+        "suggested_limit_credit": credit,
+        "minimum_acceptable_credit": round(min_acceptable_credit, 2),
+        "short_mid": short_mid,
+        "long_mid": long_mid,
+        "earnings_date": earnings_date.isoformat() if earnings_date else None,
+        "rules_pass": rules_pass,
+        "status": status,
+        "legs": {
+            "short": contract_snapshot(short_row, short_mid, short_ba, short_ba_width),
+            "long": contract_snapshot(long_row, long_mid, long_ba, long_ba_width),
+        },
+        "liquidity": liquidity_detail,
+        "quality": {
+            "bid_ask": combined_bid_ask,
+            "open_interest": liquidity,
+            "volume": liquidity,
+            "earnings": "ETF" if symbol in {"SPY", "QQQ", "IWM"} else ("clear" if earnings_date else "unknown"),
+        },
+    }
+    return candidate, status
+
+
+def ladder_row(
+    spread: dict[str, Any],
+    selected_short: float,
+    selected_long: float,
+    rules: ScanRules,
+) -> dict[str, Any]:
+    selected = spread["short_put"] == selected_short and spread["long_put"] == selected_long
+    status = "Selected" if selected else spread.get("status", "Valid")
+    return {
+        "short_put": spread["short_put"],
+        "long_put": spread["long_put"],
+        "short_delta": spread["short_delta"],
+        "credit": spread["credit"],
+        "max_risk": spread["max_risk"],
+        "credit_to_risk": spread["credit_to_risk"],
+        "status": status,
+        "selected": selected,
+        "rules_pass": spread.get("rules_pass", False),
+    }
+
+
+def attach_nearby_ladders(candidates: list[dict[str, Any]], all_spreads: list[dict[str, Any]], rules: ScanRules) -> None:
+    grouped: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for spread in all_spreads:
+        grouped.setdefault((spread["ticker"], spread["expiration"]), []).append(spread)
+
+    for spreads in grouped.values():
+        spreads.sort(key=lambda item: item["short_put"], reverse=True)
+
+    for candidate in candidates:
+        peers = grouped.get((candidate["ticker"], candidate["expiration"]), [])
+        selected_index = next((i for i, item in enumerate(peers) if item["id"] == candidate["id"]), None)
+        if selected_index is None:
+            candidate["nearby_spreads"] = []
+            continue
+        start = max(0, selected_index - 3)
+        end = min(len(peers), selected_index + 4)
+        candidate["nearby_spreads"] = [
+            ladder_row(item, candidate["short_put"], candidate["long_put"], rules)
+            for item in peers[start:end]
+        ]
+
+
 def scan_ticker(symbol: str, rules: ScanRules, today: date) -> tuple[list[dict[str, Any]], list[str]]:
     warnings: list[str] = []
     candidates: list[dict[str, Any]] = []
+    all_spreads: list[dict[str, Any]] = []
     ticker = yf.Ticker(symbol)
 
     earnings_date = get_earnings_date(ticker)
@@ -238,70 +366,25 @@ def scan_ticker(symbol: str, rules: ScanRules, today: date) -> tuple[list[dict[s
             if long_row is None:
                 continue
 
-            iv = safe_float(short_row.get("impliedVolatility"))
-            delta = put_delta(spot, short_strike, dte, iv or 0.0, rules.risk_free_rate)
-            if delta is None:
-                continue
-            if not (rules.min_short_delta <= delta <= rules.max_short_delta):
-                continue
-
-            short_mid = quote_mid(short_row)
-            long_mid = quote_mid(long_row)
-            if short_mid is None or long_mid is None:
-                continue
-
-            credit = round(short_mid - long_mid, 2)
-            if credit < rules.min_credit:
-                continue
-
-            max_risk = round(rules.spread_width - credit, 2)
-            if max_risk <= 0:
-                continue
-
-            short_ba, short_ba_pass, short_ba_width = bid_ask_quality(short_row, short_mid, rules)
-            long_ba, long_ba_pass, long_ba_width = bid_ask_quality(long_row, long_mid, rules)
-            liquidity, liquidity_pass, liquidity_detail = liquidity_quality(short_row, long_row, rules)
-            if not (short_ba_pass and long_ba_pass and liquidity_pass):
-                continue
-            combined_bid_ask = "tight" if short_ba == "tight" and long_ba == "tight" else "good"
-            min_acceptable_credit = max(rules.min_credit, credit - 0.10)
-
-            candidates.append(
-                {
-                    "id": f"{symbol}-{expiration}-{short_strike:g}-{long_strike:g}-P",
-                    "ticker": symbol,
-                    "underlying_price": round(spot, 2),
-                    "expiration": expiration,
-                    "dte": dte,
-                    "short_put": short_strike,
-                    "long_put": long_strike,
-                    "short_delta": round(delta, 4),
-                    "delta_source": "black_scholes_estimate",
-                    "credit": credit,
-                    "max_risk": max_risk,
-                    "credit_to_risk": round(credit / max_risk, 4),
-                    "breakeven": round(short_strike - credit, 2),
-                    "max_profit_dollars": round(credit * 100, 2),
-                    "max_loss_dollars": round(max_risk * 100, 2),
-                    "suggested_limit_credit": credit,
-                    "minimum_acceptable_credit": round(min_acceptable_credit, 2),
-                    "short_mid": short_mid,
-                    "long_mid": long_mid,
-                    "earnings_date": earnings_date.isoformat() if earnings_date else None,
-                    "legs": {
-                        "short": contract_snapshot(short_row, short_mid, short_ba, short_ba_width),
-                        "long": contract_snapshot(long_row, long_mid, long_ba, long_ba_width),
-                    },
-                    "liquidity": liquidity_detail,
-                    "quality": {
-                        "bid_ask": combined_bid_ask,
-                        "open_interest": liquidity,
-                        "volume": liquidity,
-                        "earnings": "ETF" if symbol in {"SPY", "QQQ", "IWM"} else ("clear" if earnings_date else "unknown"),
-                    },
-                }
+            spread, _ = build_spread_candidate(
+                symbol,
+                spot,
+                expiration,
+                dte,
+                short_strike,
+                long_strike,
+                short_row,
+                long_row,
+                rules,
+                earnings_date,
             )
+            if spread is None:
+                continue
+            all_spreads.append(spread)
+            if spread["rules_pass"]:
+                candidates.append(spread)
 
+    attach_nearby_ladders(candidates, all_spreads, rules)
     return candidates, warnings
 
 

@@ -40,6 +40,11 @@ function compactSource(value) {
   return value.replaceAll("_", " ");
 }
 
+function formatMaybeDelta(value) {
+  if (value === null || value === undefined) return "--";
+  return formatDelta(value);
+}
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -238,6 +243,7 @@ function showDetail(candidate) {
         </tbody>
       </table>
     </div>
+    ${nearbySpreadsTable(candidate)}
     <ul class="quality-list">
       <li><span>Bid/ask quality</span><strong>${candidate.quality.bid_ask}</strong></li>
       <li><span>Short bid/ask width</span><strong>${optionalPct(shortLeg.bid_ask_width_pct)}</strong></li>
@@ -249,6 +255,53 @@ function showDetail(candidate) {
     </ul>
   `;
   byId("detail-panel").hidden = false;
+}
+
+function nearbySpreadsTable(candidate) {
+  const rows = candidate.nearby_spreads || [];
+  if (!rows.length) return "";
+  return `
+    <section class="nearby-section">
+      <div class="nearby-head">
+        <h3>Nearby $5-Wide Spreads</h3>
+        <span>same expiration</span>
+      </div>
+      <div class="nearby-table-wrap">
+        <table class="nearby-table">
+          <thead>
+            <tr>
+              <th>Sell / Buy</th>
+              <th>Delta</th>
+              <th>Credit</th>
+              <th>Risk</th>
+              <th>Score</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(nearbyRow).join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function nearbyRow(row) {
+  const classes = ["nearby-status"];
+  if (row.selected) classes.push("selected");
+  else if (row.rules_pass) classes.push("valid");
+  else classes.push("outside");
+  return `
+    <tr class="${row.selected ? "selected-row" : ""}">
+      <td>${row.short_put} / ${row.long_put}</td>
+      <td>${formatMaybeDelta(row.short_delta)}</td>
+      <td>${formatMoney(row.credit)}</td>
+      <td>${formatMoney(row.max_risk)}</td>
+      <td>${pct(row.credit_to_risk)}</td>
+      <td><span class="${classes.join(" ")}">${row.status}</span></td>
+    </tr>
+  `;
 }
 
 function closeDetail() {

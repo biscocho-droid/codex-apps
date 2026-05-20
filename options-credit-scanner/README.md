@@ -29,3 +29,6 @@ python3 options-credit-scanner/scanner.py
 The scanner output includes broker-check fields such as suggested limit credit,
 minimum acceptable credit, breakeven, max profit/loss, per-leg bid/ask/mid,
 open interest, volume, and the delta source.
+
+Each candidate also includes a nearby spread ladder for comparable $5-wide
+spreads with the same ticker and expiration.
