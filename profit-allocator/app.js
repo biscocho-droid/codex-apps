@@ -66,7 +66,7 @@ function loadState() {
     const saved = JSON.parse(localStorage.getItem(STORE_KEY));
     if (saved?.buckets?.length) {
       return {
-        total: Number(saved.total) || DEFAULT_STATE.total,
+        total: Number(saved.total) || 2750,
         buckets: saved.buckets.map((bucket, index) => ({
           id: bucket.id || uid(),
           name: bucket.name || `Bucket ${index + 1}`,
@@ -93,6 +93,10 @@ function money(value) {
   }).format(value);
 }
 
+function parseAmount(value) {
+  return Math.max(0, Number(String(value).replace(/[^0-9.]/g, "")) || 0);
+}
+
 function allocated() {
   return state.buckets.reduce((sum, bucket) => sum + bucket.amount, 0);
 }
@@ -108,10 +112,12 @@ function percent(value) {
 
 function setupControls() {
   els.totalProfit.addEventListener("input", (event) => {
-    state.total = Math.max(0, Number(event.target.value) || 0);
+    state.total = parseAmount(event.target.value);
     saveState();
-    render({ buckets: false });
+    renderLiveEdit();
   });
+  els.totalProfit.addEventListener("blur", () => render({ buckets: false }));
+  els.totalProfit.addEventListener("change", () => render({ buckets: false }));
 
   document.getElementById("resetBtn").addEventListener("click", () => {
     localStorage.removeItem(STORE_KEY);
@@ -180,6 +186,19 @@ function render(options = {}) {
   drawBars();
 }
 
+function renderLiveEdit() {
+  const totalAllocated = allocated();
+  const left = remaining();
+  els.allocatedTotal.textContent = money(totalAllocated);
+  els.allocatedPercent.textContent = `${percent(totalAllocated)} of flex cash`;
+  els.remainingTotal.textContent = money(left);
+  els.remainingTotal.classList.toggle("over", left < 0);
+  els.remainingNote.textContent = left < 0 ? "Overallocated" : "Available to route";
+  els.allocationCount.textContent = `${state.buckets.length} bucket${state.buckets.length === 1 ? "" : "s"}`;
+  els.donutRemaining.textContent = money(left);
+  updateVisibleBucketRows();
+}
+
 function renderBuckets() {
   els.list.innerHTML = "";
   state.buckets.forEach((bucket) => {
@@ -197,8 +216,12 @@ function renderBuckets() {
     range.value = bucket.amount;
     percentEl.textContent = percent(bucket.amount);
 
-    name.addEventListener("input", (event) => updateBucket(bucket.id, { name: event.target.value }, { buckets: false }));
-    amount.addEventListener("input", (event) => updateBucket(bucket.id, { amount: Math.max(0, Number(event.target.value) || 0) }, { buckets: false }));
+    name.addEventListener("input", (event) => updateBucketLive(bucket.id, { name: event.target.value }));
+    name.addEventListener("blur", () => render({ buckets: false }));
+    name.addEventListener("change", () => render({ buckets: false }));
+    amount.addEventListener("input", (event) => updateBucketLive(bucket.id, { amount: parseAmount(event.target.value) }));
+    amount.addEventListener("blur", () => render({ buckets: false }));
+    amount.addEventListener("change", () => render({ buckets: false }));
     range.addEventListener("input", (event) => updateBucket(bucket.id, { amount: Number(event.target.value) || 0 }, { buckets: false }));
     row.querySelector(".remove-btn").addEventListener("click", () => removeBucket(bucket.id));
     swatch.addEventListener("click", () => cycleColor(bucket.id));
@@ -211,6 +234,12 @@ function updateBucket(id, patch, renderOptions = {}) {
   state.buckets = state.buckets.map((bucket) => (bucket.id === id ? { ...bucket, ...patch } : bucket));
   saveState();
   render(renderOptions);
+}
+
+function updateBucketLive(id, patch) {
+  state.buckets = state.buckets.map((bucket) => (bucket.id === id ? { ...bucket, ...patch } : bucket));
+  saveState();
+  renderLiveEdit();
 }
 
 function updateVisibleBucketRows() {
