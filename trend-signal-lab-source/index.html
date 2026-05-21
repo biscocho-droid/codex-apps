@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101417">
+  <title>Trend Signal Lab</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Trend-First Market Research</p>
+        <h1>Trend Signal Lab</h1>
+        <p class="hero-text">
+          A static research dashboard for Google Trends-driven market idea generation. The app surfaces
+          signal quality first, then shows which categories and mapped exposures actually held up in backtests.
+        </p>
+      </div>
+      <div class="hero-aside">
+        <div class="status-chip">
+          <span class="status-dot"></span>
+          Static app ready for GitHub Pages
+        </div>
+        <p id="report-date" class="status-note">Latest run</p>
+        <article class="hero-spotlight">
+          <p class="eyebrow">Signal Spotlight</p>
+          <div class="spotlight-main">
+            <strong id="spotlight-trend">--</strong>
+            <span id="spotlight-window">--</span>
+          </div>
+          <div class="spotlight-grid">
+            <div>
+              <span>Excess</span>
+              <strong id="spotlight-excess">--</strong>
+            </div>
+            <div>
+              <span>Hit Rate</span>
+              <strong id="spotlight-hit-rate">--</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="metric-grid" aria-label="Headline Metrics">
+      <article class="metric-card">
+        <span class="metric-label">Signals</span>
+        <strong id="signal-count">0</strong>
+        <p>Unique threshold-crossing events</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Exposures</span>
+        <strong id="exposure-count">0</strong>
+        <p>Mapped ticker tests</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Best Window</span>
+        <strong id="best-window">--</strong>
+        <p id="best-window-note">Excess return vs benchmark</p>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">Strongest Bucket</span>
+        <strong id="best-category">--</strong>
+        <p id="best-category-note">Selected horizon</p>
+      </article>
+    </section>
+
+    <section class="control-bar">
+      <div class="control-copy">
+        <p class="eyebrow">Analysis Controls</p>
+        <h2>Choose the holding window you care about</h2>
+      </div>
+      <div id="window-pills" class="pill-row" aria-label="Holding windows">
+        <button type="button" class="pill" data-window="20">20d</button>
+        <button type="button" class="pill" data-window="60">60d</button>
+        <button type="button" class="pill" data-window="120">120d</button>
+        <button type="button" class="pill active" data-window="252">1Y</button>
+        <button type="button" class="pill" data-window="504">2Y</button>
+        <button type="button" class="pill" data-window="756">3Y</button>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel wide">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current Signal Feed</p>
+            <h2>What deserves attention first</h2>
+          </div>
+        </div>
+        <div id="signal-feed" class="signal-feed"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Trend Detail</p>
+            <h2>Selected research view</h2>
+          </div>
+        </div>
+        <div id="trend-detail" class="trend-detail"></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Window Summary</p>
+            <h2>Does the signal survive by horizon?</h2>
+          </div>
+        </div>
+        <div id="window-summary" class="window-summary-grid"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Current Read</p>
+            <h2>What the latest backtest says</h2>
+          </div>
+        </div>
+        <div id="narrative-card" class="narrative-card"></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Category Ranking</p>
+            <h2>Which theme buckets actually work</h2>
+          </div>
+        </div>
+        <div id="category-legend" class="category-legend"></div>
+        <div id="category-board" class="rank-board"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Trend Families</p>
+            <h2>Best pattern clusters</h2>
+          </div>
+        </div>
+        <div id="trend-board" class="trend-board"></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Signal Timeline</p>
+            <h2>When these trends crossed the threshold</h2>
+          </div>
+        </div>
+        <div id="signal-timeline" class="timeline"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Research Notes</p>
+            <h2>Current operating rules</h2>
+          </div>
+        </div>
+        <ul class="rules-list">
+          <li>Ignore 5-day noise unless it is confirmed by a stronger medium-horizon bucket.</li>
+          <li>Prefer category families that stay positive through 120d and still hold up at 1Y.</li>
+          <li>Treat exposure mapping as a ranking layer, not as proof of causality.</li>
+          <li>Demote themes that only work in one burst or disappear once the benchmark is corrected.</li>
+        </ul>
+      </article>
+
+      <article class="panel full">
+        <div class="panel-head panel-head-stack">
+          <div>
+            <p class="eyebrow">Mapped Exposures</p>
+            <h2>Signal-to-ticker backtest rows</h2>
+          </div>
+          <div class="table-filters">
+            <label class="filter-label" for="category-filter">Category</label>
+            <select id="category-filter">
+              <option value="all">All</option>
+            </select>
+            <label class="filter-label" for="role-filter">Role</label>
+            <select id="role-filter">
+              <option value="all">All</option>
+              <option value="beneficiary">Beneficiary</option>
+              <option value="risk">Risk</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Trend</th>
+                <th>Category</th>
+                <th>Benchmark</th>
+                <th>Ticker</th>
+                <th>Role</th>
+                <th>Selected Excess</th>
+                <th>Hit Profile</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody id="exposure-table-body"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

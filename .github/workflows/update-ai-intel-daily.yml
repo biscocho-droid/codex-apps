@@ -1,0 +1,73 @@
+name: Update AI Intel Daily
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Redundant morning window. GitHub can delay scheduled runs, so the job
+    # checks whether today's Chicago-date archive already exists before writing.
+    - cron: "*/15 9-11 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Check out automation
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: source
+
+      - name: Check out Pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Decide whether to update
+        id: schedule
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          today="$(TZ=America/Chicago date +%F)"
+          if [ -f "pages/ai-intel-daily/archive/$today.json" ]; then
+            echo "AI Intel Daily archive already exists for $today."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "No AI Intel Daily archive exists for $today; running update."
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.schedule.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate free-source AI feed and archive
+        if: steps.schedule.outputs.run == 'true'
+        run: |
+          python3 source/scripts/generate_ai_intel_feed.py \
+            --output pages/ai-intel-daily/data/ai-feed.json \
+            --archive-dir pages/ai-intel-daily/archive \
+            --include-failures
+
+      - name: Commit updated Pages data
+        if: steps.schedule.outputs.run == 'true'
+        working-directory: pages
+        run: |
+          if git diff --quiet -- ai-intel-daily/data/ai-feed.json ai-intel-daily/archive; then
+            echo "No feed changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ai-intel-daily/data/ai-feed.json ai-intel-daily/archive
+          git commit -m "Update AI Intel Daily feed"
+          git push origin gh-pages

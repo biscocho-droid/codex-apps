@@ -1,0 +1,160 @@
+database_path: data/radar.sqlite3
+report_dir: reports
+
+run:
+  lookback_days: 7
+  max_items_per_source: 30
+  user_agent: "AI Beneficiary Stock Radar contact@example.com"
+
+watchlist:
+  - NVDA
+  - AMD
+  - MRVL
+  - NBIS
+  - IREN
+  - ORCL
+  - MSFT
+  - GOOGL
+  - AMZN
+  - META
+
+candidate_tickers:
+  - VRT
+  - ETN
+  - SMCI
+  - ANET
+  - MU
+  - AVGO
+  - TSM
+  - DELL
+  - HPE
+  - CEG
+  - NRG
+  - EQIX
+  - DLR
+  - CLS
+  - FLEX
+
+company_aliases:
+  NVDA:
+    - Nvidia
+    - NVIDIA
+  AMD:
+    - Advanced Micro Devices
+  MRVL:
+    - Marvell
+    - Marvell Technology
+  NBIS:
+    - Nebius
+    - Nebius Group
+  IREN:
+    - IREN
+    - Iris Energy
+  ORCL:
+    - Oracle
+  GOOGL:
+    - Google
+    - Alphabet
+  AMZN:
+    - Amazon
+    - AWS
+  META:
+    - Meta
+    - Facebook
+  VRT:
+    - Vertiv
+  ETN:
+    - Eaton
+  SMCI:
+    - Super Micro
+    - Supermicro
+  ANET:
+    - Arista
+    - Arista Networks
+  CEG:
+    - Constellation Energy
+  NRG:
+    - NRG Energy
+  EQIX:
+    - Equinix
+  DLR:
+    - Digital Realty
+
+notifications:
+  enabled: false
+  discord_webhook_url: ""
+  telegram_bot_token: ""
+  telegram_chat_id: ""
+
+rss_sources:
+  - name: Data Center Dynamics
+    url: https://www.datacenterdynamics.com/en/rss/
+    enabled: true
+  - name: Semiconductor Engineering
+    url: https://semiengineering.com/feed/
+    enabled: true
+  - name: The Register AI
+    url: https://www.theregister.com/software/ai_ml/headlines.atom
+    enabled: true
+  - name: Reuters Technology
+    url: https://www.reutersagency.com/feed/?best-topics=tech&post_type=best
+    enabled: true
+
+sec:
+  enabled: true
+  forms:
+    - 8-K
+    - 10-Q
+    - 10-K
+
+keywords:
+  ai_themes:
+    - artificial intelligence
+    - AI infrastructure
+    - GPU cloud
+    - data center
+    - hyperscale
+    - hyperscaler
+    - inference
+    - agentic
+    - orchestration
+    - liquid cooling
+    - power capacity
+    - megawatt
+    - gigawatt
+    - custom silicon
+    - ASIC
+    - interconnect
+    - optical networking
+    - HBM
+    - Blackwell
+    - Rubin
+    - MI300
+    - MI350
+    - AI cloud
+  narrative_triggers:
+    - under the radar
+    - overlooked
+    - quietly positioned
+    - second-order beneficiary
+    - picks and shovels
+    - hidden AI play
+    - bottleneck
+    - constrained supply
+    - capacity expansion
+    - strategic supplier
+    - new AI workload
+    - wins contract
+    - partnership
+    - backlog
+    - accelerates
+
+scoring:
+  source_quality:
+    sec: 35
+    press_release: 30
+    rss: 18
+  theme_hit: 8
+  trigger_hit: 7
+  watchlist_bonus: 5
+  max_score: 100

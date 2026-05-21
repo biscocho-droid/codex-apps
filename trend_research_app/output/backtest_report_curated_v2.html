@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trend Research Backtest</title>
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --panel: rgba(255, 255, 255, 0.78);
+      --line: rgba(37, 47, 63, 0.12);
+      --ink: #17202a;
+      --muted: #5a6572;
+      --accent: #c25b3c;
+      --accent-soft: rgba(194, 91, 60, 0.12);
+      --green: #176542;
+      --shadow: 0 24px 60px rgba(32, 30, 24, 0.12);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(194, 91, 60, 0.16), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(14, 91, 120, 0.12), transparent 22%),
+        linear-gradient(180deg, #f8f3ea 0%, #ece6db 100%);
+      color: var(--ink);
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    }
+    .shell {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+      display: grid;
+      gap: 16px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .hero {
+      padding: 24px;
+      display: grid;
+      gap: 8px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    h1, h2 {
+      margin: 0;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 0.95;
+      max-width: 760px;
+    }
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 17px;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .metric {
+      grid-column: span 3;
+      padding: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      margin-top: 8px;
+    }
+    .panel {
+      padding: 18px;
+    }
+    .wide {
+      grid-column: span 7;
+    }
+    .narrow {
+      grid-column: span 5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .positive { color: var(--green); }
+    .muted { color: var(--muted); }
+    @media (max-width: 960px) {
+      .metric, .wide, .narrow { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <span class="eyebrow">Trend-First Research / Event Backtests</span>
+      <h1>Emerging search behavior, mapped to listed exposures.</h1>
+      <p class="lede">This report scores trend-signal events, then measures forward stock returns versus SPY across fixed windows. It is designed for idea triage, not automated execution.</p>
+    </section>
+    <section class="grid">
+      <article class='panel metric'><span class='eyebrow'>Trend Families</span><strong>5</strong></article><article class='panel metric'><span class='eyebrow'>Signal Events</span><strong>7</strong></article><article class='panel metric'><span class='eyebrow'>Exposure Tests</span><strong>17</strong></article><article class='panel metric'><span class='eyebrow'>Report Time</span><strong>2026-05-18 19:22</strong></article>
+    </section>
+    <section class="grid">
+      <article class="panel wide">
+        <h2>Window Summary</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Window</th>
+              <th>Samples</th>
+              <th>Avg Stock Return</th>
+              <th>Avg SPY Return</th>
+              <th>Avg Excess Return</th>
+              <th>Hit Rate</th>
+              <th>Avg Max Drawdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>5d</td><td>17</td><td>-0.4%</td><td>0.6%</td><td class=''>-0.9%</td><td>47.1%</td><td>-3.9%</td></tr><tr><td>20d</td><td>17</td><td>2.2%</td><td>0.5%</td><td class='positive'>1.8%</td><td>58.8%</td><td>-8.3%</td></tr><tr><td>60d</td><td>17</td><td>16.5%</td><td>4.7%</td><td class='positive'>11.8%</td><td>76.5%</td><td>-14.1%</td></tr><tr><td>120d</td><td>14</td><td>33.9%</td><td>12.7%</td><td class='positive'>21.2%</td><td>92.9%</td><td>-17.3%</td></tr><tr><td>252d</td><td>11</td><td>90.3%</td><td>27.7%</td><td class='positive'>62.5%</td><td>81.8%</td><td>-20.0%</td></tr><tr><td>504d</td><td>7</td><td>166.0%</td><td>45.6%</td><td class='positive'>120.5%</td><td>85.7%</td><td>-24.9%</td></tr><tr><td>756d</td><td>7</td><td>189.2%</td><td>58.8%</td><td class='positive'>130.4%</td><td>57.1%</td><td>-43.9%</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="panel narrow">
+        <h2>Detected Signals</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Trend</th>
+              <th>Category</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2026-02-01</td><td><span class='tag'>protein soda</span></td><td>food</td><td>50.3</td></tr><tr><td>2025-09-01</td><td><span class='tag'>protein soda</span></td><td>food</td><td>51.5</td></tr><tr><td>2025-03-01</td><td><span class='tag'>chatgpt</span></td><td>internet</td><td>66.8</td></tr><tr><td>2024-10-01</td><td><span class='tag'>robotaxi</span></td><td>internet</td><td>95.0</td></tr><tr><td>2023-03-01</td><td><span class='tag'>chatgpt</span></td><td>internet</td><td>81.2</td></tr><tr><td>2023-03-01</td><td><span class='tag'>weight loss drugs</span></td><td>health</td><td>61.5</td></tr><tr><td>2022-09-01</td><td><span class='tag'>ozempic</span></td><td>health</td><td>56.6</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+    <section class="grid">
+      <article class="panel wide">
+        <h2>Category Breakdown</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Window</th>
+              <th>Samples</th>
+              <th>Avg Excess Return</th>
+              <th>Hit Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>food</td><td>5d</td><td>6</td><td class=''>-3.7%</td><td>33.3%</td></tr><tr><td>food</td><td>20d</td><td>6</td><td class=''>-2.4%</td><td>33.3%</td></tr><tr><td>food</td><td>60d</td><td>6</td><td class=''>-7.6%</td><td>50.0%</td></tr><tr><td>food</td><td>120d</td><td>3</td><td class=''>-1.6%</td><td>66.7%</td></tr><tr><td>food</td><td>252d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>food</td><td>504d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>food</td><td>756d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>health</td><td>5d</td><td>4</td><td class='positive'>0.1%</td><td>25.0%</td></tr><tr><td>health</td><td>20d</td><td>4</td><td class='positive'>6.0%</td><td>75.0%</td></tr><tr><td>health</td><td>60d</td><td>4</td><td class='positive'>17.0%</td><td>100.0%</td></tr><tr><td>health</td><td>120d</td><td>4</td><td class='positive'>33.1%</td><td>100.0%</td></tr><tr><td>health</td><td>252d</td><td>4</td><td class='positive'>86.9%</td><td>100.0%</td></tr><tr><td>health</td><td>504d</td><td>4</td><td class='positive'>123.1%</td><td>100.0%</td></tr><tr><td>health</td><td>756d</td><td>4</td><td class='positive'>63.8%</td><td>50.0%</td></tr><tr><td>internet</td><td>5d</td><td>7</td><td class='positive'>0.8%</td><td>71.4%</td></tr><tr><td>internet</td><td>20d</td><td>7</td><td class='positive'>2.8%</td><td>71.4%</td></tr><tr><td>internet</td><td>60d</td><td>7</td><td class='positive'>25.4%</td><td>85.7%</td></tr><tr><td>internet</td><td>120d</td><td>7</td><td class='positive'>24.2%</td><td>100.0%</td></tr><tr><td>internet</td><td>252d</td><td>7</td><td class='positive'>48.6%</td><td>71.4%</td></tr><tr><td>internet</td><td>504d</td><td>3</td><td class='positive'>117.0%</td><td>66.7%</td></tr><tr><td>internet</td><td>756d</td><td>3</td><td class='positive'>219.3%</td><td>66.7%</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="panel narrow">
+        <h2>Trend Breakdown</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Trend</th>
+              <th>Window</th>
+              <th>Samples</th>
+              <th>Avg Excess Return</th>
+              <th>Hit Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>chatgpt</td><td>5d</td><td>6</td><td class='positive'>2.1%</td><td>83.3%</td></tr><tr><td>chatgpt</td><td>20d</td><td>6</td><td class='positive'>3.9%</td><td>83.3%</td></tr><tr><td>chatgpt</td><td>60d</td><td>6</td><td class='positive'>18.7%</td><td>83.3%</td></tr><tr><td>chatgpt</td><td>120d</td><td>6</td><td class='positive'>27.5%</td><td>100.0%</td></tr><tr><td>chatgpt</td><td>252d</td><td>6</td><td class='positive'>49.9%</td><td>66.7%</td></tr><tr><td>chatgpt</td><td>504d</td><td>3</td><td class='positive'>117.0%</td><td>66.7%</td></tr><tr><td>chatgpt</td><td>756d</td><td>3</td><td class='positive'>219.3%</td><td>66.7%</td></tr><tr><td>ozempic</td><td>5d</td><td>2</td><td class='positive'>0.4%</td><td>50.0%</td></tr><tr><td>ozempic</td><td>20d</td><td>2</td><td class='positive'>4.1%</td><td>50.0%</td></tr><tr><td>ozempic</td><td>60d</td><td>2</td><td class='positive'>9.5%</td><td>100.0%</td></tr><tr><td>ozempic</td><td>120d</td><td>2</td><td class='positive'>17.9%</td><td>100.0%</td></tr><tr><td>ozempic</td><td>252d</td><td>2</td><td class='positive'>77.4%</td><td>100.0%</td></tr><tr><td>ozempic</td><td>504d</td><td>2</td><td class='positive'>152.7%</td><td>100.0%</td></tr><tr><td>ozempic</td><td>756d</td><td>2</td><td class='positive'>64.4%</td><td>50.0%</td></tr><tr><td>protein-soda</td><td>5d</td><td>6</td><td class=''>-3.7%</td><td>33.3%</td></tr><tr><td>protein-soda</td><td>20d</td><td>6</td><td class=''>-2.4%</td><td>33.3%</td></tr><tr><td>protein-soda</td><td>60d</td><td>6</td><td class=''>-7.6%</td><td>50.0%</td></tr><tr><td>protein-soda</td><td>120d</td><td>3</td><td class=''>-1.6%</td><td>66.7%</td></tr><tr><td>protein-soda</td><td>252d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>protein-soda</td><td>504d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>protein-soda</td><td>756d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>robotaxi</td><td>5d</td><td>1</td><td class=''>-6.9%</td><td>0.0%</td></tr><tr><td>robotaxi</td><td>20d</td><td>1</td><td class=''>-3.3%</td><td>0.0%</td></tr><tr><td>robotaxi</td><td>60d</td><td>1</td><td class='positive'>65.8%</td><td>100.0%</td></tr><tr><td>robotaxi</td><td>120d</td><td>1</td><td class='positive'>4.5%</td><td>100.0%</td></tr><tr><td>robotaxi</td><td>252d</td><td>1</td><td class='positive'>40.6%</td><td>100.0%</td></tr><tr><td>robotaxi</td><td>504d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>robotaxi</td><td>756d</td><td>0</td><td class=''>n/a</td><td>n/a</td></tr><tr><td>weight-loss-drugs</td><td>5d</td><td>2</td><td class=''>-0.3%</td><td>0.0%</td></tr><tr><td>weight-loss-drugs</td><td>20d</td><td>2</td><td class='positive'>8.0%</td><td>100.0%</td></tr><tr><td>weight-loss-drugs</td><td>60d</td><td>2</td><td class='positive'>24.4%</td><td>100.0%</td></tr><tr><td>weight-loss-drugs</td><td>120d</td><td>2</td><td class='positive'>48.4%</td><td>100.0%</td></tr><tr><td>weight-loss-drugs</td><td>252d</td><td>2</td><td class='positive'>96.4%</td><td>100.0%</td></tr><tr><td>weight-loss-drugs</td><td>504d</td><td>2</td><td class='positive'>93.5%</td><td>100.0%</td></tr><tr><td>weight-loss-drugs</td><td>756d</td><td>2</td><td class='positive'>63.2%</td><td>50.0%</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+    <section class="panel">
+      <h2>Exposure Backtests</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Trend</th>
+            <th>Benchmark</th>
+            <th>Ticker</th>
+            <th>Role</th>
+            <th>5d Excess</th>
+            <th>20d Excess</th>
+            <th>60d Excess</th>
+            <th>120d Excess</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2026-02-01</td><td>protein soda</td><td>XLP</td><td>PEP</td><td>beneficiary</td><td class='positive'>3.8%</td><td class='positive'>2.4%</td><td class='positive'>2.3%</td><td class=''>n/a</td><td class='muted'>Better-for-you beverage adjacency and distribution scale.</td></tr><tr><td>2026-02-01</td><td>protein soda</td><td>XLP</td><td>MNST</td><td>beneficiary</td><td class=''>-3.7%</td><td class=''>-6.4%</td><td class=''>-3.9%</td><td class=''>n/a</td><td class='muted'>Functional beverage adjacency and innovation leverage.</td></tr><tr><td>2026-02-01</td><td>protein soda</td><td>XLP</td><td>CELH</td><td>beneficiary</td><td class=''>-10.3%</td><td class=''>-12.0%</td><td class=''>-35.0%</td><td class=''>n/a</td><td class='muted'>Health-oriented beverage brand read-through.</td></tr><tr><td>2025-09-01</td><td>protein soda</td><td>XLP</td><td>PEP</td><td>beneficiary</td><td class=''>-3.9%</td><td class=''>-3.5%</td><td class='positive'>0.7%</td><td class='positive'>2.1%</td><td class='muted'>Better-for-you beverage adjacency and distribution scale.</td></tr><tr><td>2025-09-01</td><td>protein soda</td><td>XLP</td><td>MNST</td><td>beneficiary</td><td class='positive'>1.0%</td><td class='positive'>9.6%</td><td class='positive'>21.9%</td><td class='positive'>23.6%</td><td class='muted'>Functional beverage adjacency and innovation leverage.</td></tr><tr><td>2025-09-01</td><td>protein soda</td><td>XLP</td><td>CELH</td><td>beneficiary</td><td class=''>-8.8%</td><td class=''>-4.2%</td><td class=''>-31.7%</td><td class=''>-30.3%</td><td class='muted'>Health-oriented beverage brand read-through.</td></tr><tr><td>2025-03-01</td><td>chatgpt</td><td>QQQ</td><td>MSFT</td><td>beneficiary</td><td class='positive'>2.7%</td><td class='positive'>2.1%</td><td class='positive'>13.4%</td><td class='positive'>15.6%</td><td class='muted'>Platform distribution and enterprise AI monetization.</td></tr><tr><td>2025-03-01</td><td>chatgpt</td><td>QQQ</td><td>NVDA</td><td>beneficiary</td><td class=''>-1.3%</td><td class='positive'>0.5%</td><td class='positive'>13.6%</td><td class='positive'>40.7%</td><td class='muted'>AI compute demand and infrastructure bottleneck exposure.</td></tr><tr><td>2025-03-01</td><td>chatgpt</td><td>QQQ</td><td>GOOGL</td><td>beneficiary</td><td class='positive'>4.3%</td><td class=''>-1.8%</td><td class=''>-1.2%</td><td class='positive'>8.3%</td><td class='muted'>Search and model platform response to generative AI adoption.</td></tr><tr><td>2024-10-01</td><td>robotaxi</td><td>QQQ</td><td>TSLA</td><td>beneficiary</td><td class=''>-6.9%</td><td class=''>-3.3%</td><td class='positive'>65.8%</td><td class='positive'>4.5%</td><td class='muted'>Direct robotaxi narrative and autonomy optionality exposure.</td></tr><tr><td>2023-03-01</td><td>chatgpt</td><td>QQQ</td><td>MSFT</td><td>beneficiary</td><td class='positive'>0.7%</td><td class='positive'>6.3%</td><td class='positive'>15.8%</td><td class='positive'>6.3%</td><td class='muted'>Platform distribution and enterprise AI monetization.</td></tr><tr><td>2023-03-01</td><td>chatgpt</td><td>QQQ</td><td>NVDA</td><td>beneficiary</td><td class='positive'>4.3%</td><td class='positive'>11.3%</td><td class='positive'>50.5%</td><td class='positive'>76.1%</td><td class='muted'>AI compute demand and infrastructure bottleneck exposure.</td></tr><tr><td>2023-03-01</td><td>chatgpt</td><td>QQQ</td><td>GOOGL</td><td>beneficiary</td><td class='positive'>2.0%</td><td class='positive'>4.7%</td><td class='positive'>19.8%</td><td class='positive'>17.7%</td><td class='muted'>Search and model platform response to generative AI adoption.</td></tr><tr><td>2023-03-01</td><td>weight loss drugs</td><td>XLV</td><td>LLY</td><td>beneficiary</td><td class=''>-0.0%</td><td class='positive'>6.2%</td><td class='positive'>35.3%</td><td class='positive'>71.3%</td><td class='muted'>Large-cap anti-obesity leadership and prescribing leverage.</td></tr><tr><td>2023-03-01</td><td>weight loss drugs</td><td>XLV</td><td>NVO</td><td>beneficiary</td><td class=''>-0.5%</td><td class='positive'>9.7%</td><td class='positive'>13.6%</td><td class='positive'>25.4%</td><td class='muted'>Large-cap anti-obesity leadership and prescribing leverage.</td></tr><tr><td>2022-09-01</td><td>ozempic</td><td>XLV</td><td>LLY</td><td>beneficiary</td><td class=''>-0.1%</td><td class='positive'>8.7%</td><td class='positive'>10.9%</td><td class='positive'>2.5%</td><td class='muted'>Direct obesity and diabetes drug exposure.</td></tr><tr><td>2022-09-01</td><td>ozempic</td><td>XLV</td><td>NVO</td><td>beneficiary</td><td class='positive'>0.9%</td><td class=''>-0.6%</td><td class='positive'>8.2%</td><td class='positive'>33.3%</td><td class='muted'>Direct obesity and diabetes drug exposure.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

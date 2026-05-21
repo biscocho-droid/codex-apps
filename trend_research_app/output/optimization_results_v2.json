@@ -1,0 +1,919 @@
+[
+  {
+    "name": "full_lvl18_acc18_z125_p05_b50_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b50_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b50_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z125_p05_b50_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b50_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b50_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z125_p05_b50_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b50_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b50_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z125_p05_b70_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b70_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b70_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z125_p05_b70_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b70_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b70_s45_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 45.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z125_p05_b70_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z125_p05_b70_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "focused_lvl18_acc18_z125_p05_b70_s50_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.25,
+      "min_persistence": 0.5,
+      "baseline_floor": 7.0,
+      "min_score": 50.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "airbnb",
+        "cruise",
+        "klarna",
+        "temu",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "full_lvl18_acc18_z15_p05_b50_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.5,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": []
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  },
+  {
+    "name": "no_bad_families_lvl18_acc18_z15_p05_b50_s40_pk00",
+    "score": 100.85615135288731,
+    "signal_count": 7,
+    "basket_count": 7,
+    "parameters": {
+      "min_level": 18.0,
+      "min_accel_ratio": 1.8,
+      "min_zscore": 1.5,
+      "min_persistence": 0.5,
+      "baseline_floor": 5.0,
+      "min_score": 40.0,
+      "min_peak_ratio": 0.0,
+      "excluded_slugs": [
+        "klarna",
+        "uber-eats"
+      ]
+    },
+    "one_year": {
+      "trading_days": 252,
+      "sample_size": 5,
+      "avg_stock_return": 0.8820024144308587,
+      "avg_benchmark_return": 0.25342194353118286,
+      "avg_excess_return": 0.6285804708996757,
+      "hit_rate": 0.8666666666666666,
+      "avg_max_drawdown": -0.23647297525139388
+    },
+    "two_year": {
+      "trading_days": 504,
+      "sample_size": 3,
+      "avg_stock_return": 1.6177935695024115,
+      "avg_benchmark_return": 0.40728658785200333,
+      "avg_excess_return": 1.2105069816504084,
+      "hit_rate": 0.8888888888888888,
+      "avg_max_drawdown": -0.2540352199844862
+    },
+    "three_year": {
+      "trading_days": 756,
+      "sample_size": 3,
+      "avg_stock_return": 1.6591000173535548,
+      "avg_benchmark_return": 0.5028746160105637,
+      "avg_excess_return": 1.1562254013429911,
+      "hit_rate": 0.5555555555555555,
+      "avg_max_drawdown": -0.45891841783028225
+    }
+  }
+]

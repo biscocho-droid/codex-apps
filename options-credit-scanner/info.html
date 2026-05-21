@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17212b">
+  <title>How It Works | Credit Spread Scanner</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Scanner Guide</p>
+      <h1>How It Works</h1>
+      <p class="scan-status">What the dashboard checks before a spread appears.</p>
+    </div>
+    <nav class="header-actions" aria-label="App navigation">
+      <a class="nav-link" href="index.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="app-shell info-shell">
+    <section class="info-card lead-card">
+      <p class="eyebrow">Purpose</p>
+      <h2>Find candidates, then verify with your broker.</h2>
+      <p>
+        This app scans current option chains for credit spreads that match your rules. It is designed to
+        surface trade ideas quickly on your phone, not place trades or guarantee fills.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Update Schedule</h2>
+      <p>
+        The app refreshes on market weekdays at 9:15 AM, 12:00 PM, and 2:30 PM Central Time. The first scan is
+        intentionally after the opening rush because option quotes can be wider and less stable during the first
+        30-45 minutes after the 8:30 AM CT market open. The midday scan gives a cleaner second look, and the
+        2:30 PM scan captures a near-close view before the market closes at 3:00 PM CT.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Quick Translation</h2>
+      <p>
+        Options are quoted per share, but one standard option contract controls 100 shares. A displayed credit
+        of $1.65 usually means about $165 collected for one spread before commissions and fill differences.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Current Rules</h2>
+      <div class="rule-grid">
+        <div><span>Expiration</span><strong>45-60 DTE</strong></div>
+        <div><span>Spread width</span><strong>$5 wide</strong></div>
+        <div><span>Short Put Delta</span><strong>-0.15 to -0.30</strong></div>
+        <div><span>Short Call Delta</span><strong>0.15 to 0.30</strong></div>
+        <div><span>Minimum credit</span><strong>$0.60</strong></div>
+      </div>
+      <p class="section-note">
+        A spread only appears if it passes the expiration, width, delta, credit, earnings, quote quality, and liquidity checks.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Trade Direction</h2>
+      <p>
+        The scanner looks for both put credit spreads and call credit spreads using the same structure and mirrored delta ranges.
+        Selling a put spread is generally bullish or
+        neutral-to-bullish: you want the underlying to stay above the short put strike or move higher. Selling a call spread is
+        generally bearish or neutral-to-bearish: you want the underlying to stay below the short call strike or move lower.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>What Gets Scanned</h2>
+      <p>
+        The first version scans a focused universe: SPY, QQQ, IWM, AAPL, AMZN, MSFT, NVDA, and TSLA.
+        That list is configurable. More tickers can be added later, but a smaller universe keeps the first
+        mobile dashboard faster and easier to trust.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Selection Process</h2>
+      <ol class="plain-list">
+        <li>Pull the latest option chains for the configured tickers.</li>
+        <li>Keep expirations between 45 and 60 days out.</li>
+        <li>Build $5-wide put credit spreads and call credit spreads.</li>
+        <li>Estimate the short-leg delta when Yahoo does not provide Greeks.</li>
+        <li>Reject spreads outside the target delta range or below the minimum credit.</li>
+        <li>Reject spreads with weak open interest, poor volume, or wide bid/ask quotes.</li>
+        <li>Skip single stocks when earnings are too close.</li>
+        <li>Rank the remaining candidates by credit divided by max risk.</li>
+      </ol>
+    </section>
+
+    <section class="info-card">
+      <h2>How Ranking Works</h2>
+      <p>
+        Candidates are ranked by credit divided by max risk. For a $5-wide spread with $1.00 credit, max risk
+        is $4.00, so the score is 25.0%. Higher scores mean more credit per dollar at risk, but they can also
+        reflect higher underlying risk.
+      </p>
+      <div class="example-box">
+        <span>Example</span>
+        <strong>Sell 520 put / buy 515 put for $0.80 credit</strong>
+        <p>Max risk is $4.20, so credit/risk is 19.0% before commissions and slippage.</p>
+      </div>
+      <p class="section-note">
+        Higher credit/risk is useful, but it is not automatically better. A very high score can also mean the market is pricing
+        in more risk, so liquidity, trend, earnings, and the nearby spread ladder still matter.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>What the Numbers Mean</h2>
+      <div class="definition-list">
+        <div>
+          <strong>Credit</strong>
+          <p>The estimated premium received for opening the spread. $1.65 credit means about $165 per 1 contract spread.</p>
+        </div>
+        <div>
+          <strong>Max Risk</strong>
+          <p>The spread width minus the credit. For a $5-wide spread with $1.65 credit, max risk is $3.35, or about $335.</p>
+        </div>
+        <div>
+          <strong>Credit/risk</strong>
+          <p>The premium divided by max risk. $1.65 / $3.35 = 49.3%. Higher is more premium per dollar at risk.</p>
+        </div>
+        <div>
+          <strong>Try Limit</strong>
+          <p>The scanner's estimated mid-price credit. This is the first limit credit to try in your broker.</p>
+        </div>
+        <div>
+          <strong>Do Not Chase Below</strong>
+          <p>A lower bound for the credit. If the broker cannot fill near this credit, the trade may no longer match the idea.</p>
+        </div>
+        <div>
+          <strong>Breakeven</strong>
+          <p>For puts, breakeven is the short put strike minus the credit. For calls, breakeven is the short call strike plus the credit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Nearby Spread Ladder</h2>
+      <p>
+        Tapping a candidate shows nearby $5-wide spreads with the same expiration and strategy type. This helps compare
+        whether the selected strike is meaningfully better than the strikes directly above or below it.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Why Some Tickers Are Skipped</h2>
+      <p>
+        Single stocks are skipped when Yahoo reports earnings within the next 7 days or within the past 3 days.
+        ETFs do not have company earnings, so they are treated differently.
+      </p>
+    </section>
+
+    <section class="info-card">
+      <h2>Important Limits</h2>
+      <ul class="plain-list">
+        <li>Option Greeks are estimated with Black-Scholes when Yahoo does not provide them.</li>
+        <li>Fills use mid-prices, which may not be available in a live broker order ticket.</li>
+        <li>Yahoo/yfinance data can be delayed, missing, or temporarily unavailable.</li>
+        <li>The scanner is for idea generation; final entry should be checked manually.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

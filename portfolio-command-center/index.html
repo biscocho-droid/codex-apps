@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050607">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Portfolio">
+  <title>Portfolio Command Center</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/portfolio-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Personal Operating System / Wealth</p>
+        <h1>Portfolio Command Center</h1>
+      </div>
+      <div class="topbar-meta">
+        <span id="market-status">Live context</span>
+        <span id="pricing-stamp">Prices 1m ago</span>
+        <div class="view-switch" aria-label="App Views">
+          <button id="dashboard-view-button" type="button" class="view-button active" data-view="dashboard">Dashboard</button>
+          <button id="sheet-view-button" type="button" class="view-button" data-view="sheet">Holdings Sheet</button>
+          <button id="k401-view-button" type="button" class="view-button" data-view="k401">401(k) Modeler</button>
+          <button id="scenarios-view-button" type="button" class="view-button" data-view="scenarios">Scenario Lab</button>
+          <button id="matrix-view-button" type="button" class="view-button" data-view="matrix">Outcome Matrix</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="summary-grid dashboard-view app-view active" aria-label="Portfolio Summary">
+      <article class="summary-card">
+        <span class="card-label">Total Value</span>
+        <strong id="total-value">$0</strong>
+        <p id="total-value-note">USD</p>
+      </article>
+      <article class="summary-card positive">
+        <span class="card-label">Unrealized P/L</span>
+        <strong id="unrealized-pl">$0</strong>
+        <p id="unrealized-pl-note">+0.0% all time</p>
+      </article>
+      <article class="summary-card">
+        <span class="card-label">Cost Basis</span>
+        <strong id="cost-basis">$0</strong>
+        <p id="cost-basis-note">Total capital deployed</p>
+      </article>
+      <article class="summary-card">
+        <span class="card-label">Cash Reserve</span>
+        <strong id="cash-reserve">$0</strong>
+        <p id="cash-reserve-note">Across tracked accounts</p>
+      </article>
+    </section>
+
+    <section class="dashboard-grid dashboard-view app-view active">
+      <article class="panel chart-panel wide">
+        <div class="panel-head">
+          <div>
+            <h2>Portfolio Value</h2>
+            <p id="chart-caption">Past 12 months · seeded local demo</p>
+          </div>
+          <div class="chart-controls">
+            <div class="account-pills" aria-label="Account Views">
+              <button type="button" class="account-pill active" data-account-view="combined">Combined</button>
+              <button type="button" class="account-pill" data-account-view="brokerage">Personal Brokerage</button>
+              <button type="button" class="account-pill" data-account-view="retirement">401(k)</button>
+            </div>
+            <div class="range-pills" aria-label="Chart Ranges">
+              <button type="button" class="range-pill active" data-range="1M">1M</button>
+              <button type="button" class="range-pill" data-range="3M">3M</button>
+              <button type="button" class="range-pill" data-range="1Y">1Y</button>
+              <button type="button" class="range-pill" data-range="All">All</button>
+            </div>
+          </div>
+        </div>
+        <svg id="portfolio-chart" viewBox="0 0 900 360" class="portfolio-chart" role="img" aria-label="Portfolio value chart"></svg>
+      </article>
+
+      <article class="panel insight-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Morning Brief</h2>
+            <p>Investor-profile aware summary</p>
+          </div>
+        </div>
+        <div id="morning-brief" class="brief-text"></div>
+      </article>
+
+      <article class="panel holdings-panel wide">
+        <div class="panel-head">
+          <div>
+            <h2>Holdings</h2>
+            <p id="holdings-caption">Positions, conviction, and live thesis context</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Name</th>
+                <th>Account</th>
+                <th>Shares</th>
+                <th>Avg Cost</th>
+                <th>Price</th>
+                <th>Value</th>
+                <th>P/L</th>
+                <th>Weight</th>
+                <th>Conviction</th>
+              </tr>
+            </thead>
+            <tbody id="holdings-body"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel composition-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Allocation by Asset Class</h2>
+            <p>How capital is actually distributed</p>
+          </div>
+        </div>
+        <div id="asset-allocation" class="allocation-list"></div>
+      </article>
+
+      <article class="panel composition-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Sector Concentration</h2>
+            <p>Exposure map across themes</p>
+          </div>
+        </div>
+        <div id="sector-allocation" class="allocation-list"></div>
+      </article>
+
+      <article class="panel cash-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Cash Tracker</h2>
+            <p>Reserve posture and account balances</p>
+          </div>
+        </div>
+        <div id="cash-accounts" class="account-list"></div>
+      </article>
+
+      <article class="panel performance-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Performance Snapshot</h2>
+            <p>Quick read on posture and risk</p>
+          </div>
+        </div>
+        <div class="mini-metrics">
+          <div class="mini-metric">
+            <span>Largest position</span>
+            <strong id="largest-position">--</strong>
+          </div>
+          <div class="mini-metric">
+            <span>Top winner</span>
+            <strong id="top-winner">--</strong>
+          </div>
+          <div class="mini-metric">
+            <span>Top laggard</span>
+            <strong id="top-laggard">--</strong>
+          </div>
+          <div class="mini-metric">
+            <span>Cash %</span>
+            <strong id="cash-percent">--</strong>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel thesis-panel wide">
+        <div class="panel-head">
+          <div>
+            <h2>Thesis Tracker</h2>
+            <p>Notes and decision quality by holding</p>
+          </div>
+        </div>
+        <div id="thesis-cards" class="thesis-grid"></div>
+      </article>
+
+      <article class="panel profile-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Investor Profile</h2>
+            <p>Supporting context for the portfolio layer</p>
+          </div>
+        </div>
+        <div class="profile-copy">
+          <p><strong id="profile-operating-base">Austin, TX · US tax resident</strong></p>
+          <p id="profile-north-star"></p>
+          <ul id="profile-rules" class="rule-list"></ul>
+        </div>
+      </article>
+
+      <article class="panel strategy-panel">
+        <div class="panel-head">
+          <div>
+            <h2>AI Overlay</h2>
+            <p>Prompting layer against the portfolio state</p>
+          </div>
+        </div>
+        <div class="prompt-list">
+          <button class="prompt-pill" type="button" data-prompt="Stress test my current concentration and tell me where my portfolio breaks the sleep test.">Stress test concentration</button>
+          <button class="prompt-pill" type="button" data-prompt="Summarize which holdings deserve a deeper thesis review this week and why.">Review candidates</button>
+          <button class="prompt-pill" type="button" data-prompt="Write a morning brief based on current winners, laggards, cash, and portfolio rules.">Generate brief</button>
+        </div>
+        <label for="strategy-input">Strategy ask</label>
+        <textarea id="strategy-input" rows="5" placeholder="Ask about allocation, liquidity, thesis drift, or concentration risk."></textarea>
+        <button id="run-overlay" type="button">Run Overlay</button>
+        <div id="overlay-response" class="overlay-response"></div>
+      </article>
+    </section>
+
+    <section id="sheet-view" class="sheet-view app-view" aria-label="Holdings Spreadsheet" hidden>
+      <div class="sheet-toolbar">
+        <div>
+          <p class="eyebrow">Holdings Ledger</p>
+          <h2>Full Position Sheet</h2>
+        </div>
+        <div class="sheet-stats">
+          <span id="sheet-count">0 positions</span>
+          <span id="sheet-value">$0 value</span>
+          <span id="sheet-pl">$0 P/L</span>
+        </div>
+      </div>
+      <div class="sheet-table-wrap">
+        <table class="sheet-table">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Symbol</th>
+              <th>Name</th>
+              <th>Asset Class</th>
+              <th>Sector</th>
+              <th>Shares</th>
+              <th>Avg Price</th>
+              <th>Current Price</th>
+              <th>Cost Basis</th>
+              <th>Market Value</th>
+              <th>Gain/Loss</th>
+              <th>Gain/Loss %</th>
+              <th>Portfolio Weight</th>
+              <th>Conviction</th>
+              <th>Thesis / Note</th>
+            </tr>
+          </thead>
+          <tbody id="sheet-body"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="8">Total</th>
+              <th id="sheet-total-cost">$0</th>
+              <th id="sheet-total-value">$0</th>
+              <th id="sheet-total-pl">$0</th>
+              <th id="sheet-total-pl-pct">0.0%</th>
+              <th>100.0%</th>
+              <th colspan="2"></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="k401-view" class="modeler-view k401-view app-view" aria-label="401k Growth Modeler" hidden>
+      <div class="sheet-toolbar">
+        <div>
+          <p class="eyebrow">Retirement Model</p>
+          <h2>401(k) Growth Modeler</h2>
+        </div>
+        <div class="sheet-stats">
+          <span id="k401-starting-balance">$0 starting</span>
+          <span id="k401-projected-balance">$0 projected</span>
+          <span id="k401-growth-share">0% growth</span>
+        </div>
+      </div>
+
+      <div class="modeler-grid">
+        <article class="panel model-controls-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Assumptions</h2>
+              <p>Defaults use your current 401(k) balance from tracked holdings</p>
+            </div>
+          </div>
+          <div class="input-grid">
+            <label>
+              Current Balance
+              <input id="k401-current-balance" type="number" min="0" step="100">
+            </label>
+            <label>
+              Monthly Contribution
+              <input id="k401-monthly-contribution" type="number" min="0" step="25">
+            </label>
+            <label>
+              Employer Match / Month
+              <input id="k401-employer-match" type="number" min="0" step="25">
+            </label>
+            <label>
+              Annual Raise
+              <input id="k401-annual-raise" type="number" min="0" max="30" step="0.25">
+            </label>
+            <label>
+              Time Horizon
+              <input id="k401-years" type="number" min="1" max="45" step="1">
+            </label>
+            <label>
+              Base Return
+              <input id="k401-base-return" type="number" min="-20" max="30" step="0.25">
+            </label>
+          </div>
+        </article>
+
+        <article class="panel model-chart-panel wide">
+          <div class="panel-head">
+            <div>
+              <h2>Projected Path</h2>
+              <p id="k401-chart-caption">Bear, base, and bull return paths</p>
+            </div>
+          </div>
+          <svg id="k401-chart" viewBox="0 0 900 360" class="projection-chart" role="img" aria-label="401k projected balance chart"></svg>
+        </article>
+
+        <article class="panel model-summary-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Retirement Snapshot</h2>
+              <p>Contribution, growth, and income estimate</p>
+            </div>
+          </div>
+          <div id="k401-summary" class="mini-metrics"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="scenarios-view" class="scenarios-view app-view" aria-label="Portfolio Scenario Lab" hidden>
+      <div class="sheet-toolbar">
+        <div>
+          <p class="eyebrow">Forward Portfolio</p>
+          <h2>Scenario Lab</h2>
+        </div>
+        <div class="sheet-stats">
+          <span id="scenario-current-value">$0 current</span>
+          <span id="scenario-base-value">$0 base case</span>
+          <span id="scenario-bull-value">$0 bull case</span>
+        </div>
+        <div class="scenario-year-switch" aria-label="Scenario target year">
+          <button type="button" class="scenario-year-button active" data-scenario-year="2030">2030</button>
+          <button type="button" class="scenario-year-button" data-scenario-year="2035">2035</button>
+        </div>
+      </div>
+
+      <div class="scenario-grid">
+        <article class="panel model-chart-panel wide">
+          <div class="panel-head">
+            <div>
+              <h2>Portfolio Outcomes</h2>
+              <p id="scenario-horizon-caption">2030 bear/base/bull price targets against today&apos;s share counts</p>
+            </div>
+          </div>
+          <svg id="scenario-chart" viewBox="0 0 900 320" class="bar-chart" role="img" aria-label="Portfolio scenario value chart"></svg>
+        </article>
+
+        <article class="panel model-summary-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Outcome Read</h2>
+              <p>Largest upside and downside drivers</p>
+            </div>
+          </div>
+          <div id="scenario-readout" class="mini-metrics"></div>
+        </article>
+
+        <article class="panel thesis-panel wide">
+          <div class="panel-head">
+            <div>
+              <h2>Holding Cases</h2>
+              <p>Editable targets for bear, base, and bull cases</p>
+            </div>
+          </div>
+          <div id="scenario-cards" class="scenario-card-grid"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="matrix-view" class="matrix-view app-view" aria-label="Portfolio Outcome Matrix" hidden>
+      <div class="sheet-toolbar">
+        <div>
+          <p class="eyebrow">Scenario Table</p>
+          <h2>Portfolio Outcome Matrix</h2>
+        </div>
+        <div class="sheet-stats">
+          <span id="matrix-bear-total">$0 bear</span>
+          <span id="matrix-base-total">$0 base</span>
+          <span id="matrix-bull-total">$0 bull</span>
+        </div>
+        <div class="scenario-year-switch" aria-label="Matrix target year">
+          <button type="button" class="scenario-year-button active" data-scenario-year="2030">2030</button>
+          <button type="button" class="scenario-year-button" data-scenario-year="2035">2035</button>
+        </div>
+      </div>
+      <p id="matrix-horizon-caption" class="view-caption">2030 outcome matrix using static long-range bear/base/bull targets.</p>
+
+      <div class="sheet-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Holding</th>
+              <th>Current Value</th>
+              <th>Bear Value</th>
+              <th>Bear P/L</th>
+              <th>Base Value</th>
+              <th>Base P/L</th>
+              <th>Bull Value</th>
+              <th>Bull P/L</th>
+              <th>Base Weight</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-body"></tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th id="matrix-current-total">$0</th>
+              <th id="matrix-bear-value">$0</th>
+              <th id="matrix-bear-pl">$0</th>
+              <th id="matrix-base-value">$0</th>
+              <th id="matrix-base-pl">$0</th>
+              <th id="matrix-bull-value">$0</th>
+              <th id="matrix-bull-pl">$0</th>
+              <th>100.0%</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+const state = {
+  data: null,
+  candidates: [],
+  ticker: "all",
+  minScore: 0,
+  strategy: "all",
+};
+
+const money = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+function formatMoney(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return "--";
+  return money.format(value);
+}
+
+function pct(value) {
+  return `${(Number(value) * 100).toFixed(1)}%`;
+}
+
+function optionalPct(value) {
+  if (value === null || value === undefined) return "--";
+  return pct(value);
+}
+
+function formatDelta(value) {
+  return Number(value).toFixed(2);
+}
+
+function formatNumber(value) {
+  if (value === null || value === undefined) return "--";
+  return Number(value).toLocaleString("en-US");
+}
+
+function compactSource(value) {
+  if (!value) return "unknown";
+  return titleCase(value.replaceAll("_", " "));
+}
+
+function formatMaybeDelta(value) {
+  if (value === null || value === undefined) return "--";
+  return formatDelta(value);
+}
+
+function titleCase(value) {
+  if (!value) return "--";
+  const acronyms = new Map([
+    ["etf", "ETF"],
+    ["oi", "OI"],
+    ["dte", "DTE"],
+    ["iv", "IV"],
+  ]);
+  return String(value)
+    .split(" ")
+    .map((word) => {
+      if (!word) return "";
+      const key = word.toLowerCase();
+      if (acronyms.has(key)) return acronyms.get(key);
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+}
+
+function directionIcon(candidate) {
+  return candidate.bias === "bearish" ? "↓" : "↑";
+}
+
+function formatScanDate(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function byId(id) {
+  return document.getElementById(id);
+}
+
+async function loadScan() {
+  const response = await fetch("data/latest.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Latest scan failed: ${response.status}`);
+  }
+  state.data = await response.json();
+  state.candidates = [...state.data.candidates].sort((a, b) => b.credit_to_risk - a.credit_to_risk);
+  render();
+}
+
+function render() {
+  renderSummary();
+  renderFilters();
+  renderCandidates();
+}
+
+function renderSummary() {
+  const data = state.data;
+  const scanDate = formatScanDate(data.scan.generated_at);
+  const dateText = scanDate ? ` on ${scanDate}` : "";
+  const marketText = data.scan.market_status ? ` | Market ${titleCase(data.scan.market_status)}` : "";
+  byId("scan-status").textContent = `Last Scan ${data.scan.local_time} CT${dateText} | ${titleCase(data.scan.mode)}${marketText}`;
+  byId("candidate-count").textContent = data.summary.candidate_count;
+  byId("put-count").textContent = data.summary.put_candidate_count ?? 0;
+  byId("call-count").textContent = data.summary.call_candidate_count ?? 0;
+  byId("market-badge").textContent = `${data.rules.min_dte}-${data.rules.max_dte} DTE`;
+  byId("universe-text").textContent = data.tickers.join(", ");
+  renderWarnings(data.warnings || []);
+}
+
+function renderWarnings(warnings) {
+  const panel = byId("warning-panel");
+  const list = byId("warning-list");
+  if (!warnings.length) {
+    panel.hidden = true;
+    list.innerHTML = "";
+    return;
+  }
+  panel.hidden = false;
+  list.innerHTML = warnings.slice(0, 5).map((warning) => `<li>${warning}</li>`).join("");
+}
+
+function renderFilters() {
+  const select = byId("ticker-filter");
+  const tickers = ["all", ...state.data.tickers];
+  const currentOptions = Array.from(select.options).map((option) => option.value);
+  if (currentOptions.join("|") !== tickers.join("|")) {
+      select.innerHTML = tickers
+      .map((ticker) => `<option value="${ticker}">${ticker === "all" ? "All Tickers" : ticker}</option>`)
+      .join("");
+  }
+  select.value = state.ticker;
+}
+
+function filteredCandidates() {
+  return state.candidates.filter((candidate) => {
+    const tickerPass = state.ticker === "all" || candidate.ticker === state.ticker;
+    const scorePass = Number(candidate.credit_to_risk) >= state.minScore;
+    const strategyPass = state.strategy === "all" || candidate.strategy === state.strategy;
+    return tickerPass && scorePass && strategyPass;
+  });
+}
+
+function renderCandidates() {
+  const list = byId("candidate-list");
+  const rows = filteredCandidates();
+  if (!rows.length) {
+    list.innerHTML = `<div class="empty-state">No spreads match the current filters.</div>`;
+    return;
+  }
+
+  list.innerHTML = rows.map((candidate, index) => candidateCard(candidate, index)).join("");
+  list.querySelectorAll("[data-candidate-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const candidate = state.candidates.find((item) => item.id === button.dataset.candidateId);
+      showDetail(candidate);
+    });
+  });
+}
+
+function candidateCard(candidate, index) {
+  const shortStrike = candidate.short_strike ?? candidate.short_put;
+  const longStrike = candidate.long_strike ?? candidate.long_put;
+  const optionLabel = candidate.option_label || "Put";
+  return `
+    <button type="button" class="candidate-card" data-candidate-id="${candidate.id}">
+      <div class="candidate-top">
+        <div class="ticker">${candidate.ticker}</div>
+        <div>
+          <div class="strategy-line">
+            <span>${candidate.strategy_label || "Sell Put Spread"} · ${candidate.bias_label || "Bullish"}</span>
+            <span class="direction-badge ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span>
+          </div>
+          <div class="spread-name">${shortStrike} / ${longStrike} ${optionLabel}</div>
+          <div class="spread-meta">${candidate.dte} DTE | delta ${formatDelta(candidate.short_delta)} | exp ${candidate.expiration}</div>
+        </div>
+        <div class="rank-pill">#${index + 1}</div>
+      </div>
+      <div class="quality-row">
+        <span>${titleCase(candidate.quality.bid_ask)} Quotes</span>
+        <span>${titleCase(candidate.quality.open_interest)} OI</span>
+        <span>Limit ${formatMoney(candidate.suggested_limit_credit || candidate.credit)}</span>
+      </div>
+      <div class="candidate-metrics">
+        <div>
+          <span class="metric-label">Credit</span>
+          <strong class="metric-value positive">${formatMoney(candidate.credit)}</strong>
+          <span class="metric-note">${formatMoney(candidate.max_profit_dollars)} Max Profit</span>
+        </div>
+        <div>
+          <span class="metric-label">Max Risk</span>
+          <strong class="metric-value">${formatMoney(candidate.max_risk)}</strong>
+          <span class="metric-note">${formatMoney(candidate.max_loss_dollars)} Max Loss</span>
+        </div>
+        <div>
+          <span class="metric-label">Credit/Risk</span>
+          <strong class="metric-value positive">${pct(candidate.credit_to_risk)}</strong>
+          <span class="metric-note">Premium vs. Risk</span>
+        </div>
+      </div>
+    </button>
+  `;
+}
+
+function showDetail(candidate) {
+  if (!candidate) return;
+  const shortLeg = candidate.legs?.short || {};
+  const longLeg = candidate.legs?.long || {};
+  const source = state.data?.scan?.data_source || "Yahoo Finance via yfinance";
+  const shortStrike = candidate.short_strike ?? candidate.short_put;
+  const longStrike = candidate.long_strike ?? candidate.long_put;
+  const optionLabel = candidate.option_label || "Put";
+  const optionSymbol = optionLabel === "Call" ? "C" : "P";
+  byId("detail-title").textContent = `${candidate.ticker} ${shortStrike} / ${longStrike} ${optionLabel}`;
+  byId("detail-body").innerHTML = `
+    <div class="direction-panel ${candidate.bias || "bullish"}">
+      <div>
+        <strong>${candidate.strategy_label || "Sell Put Spread"} · ${candidate.bias_label || "Bullish"} <span class="inline-direction ${candidate.bias || "bullish"}">${directionIcon(candidate)}</span></strong>
+        <p>${candidate.desired_move || "Underlying stays above the short put or moves higher."}</p>
+      </div>
+    </div>
+    <div class="broker-check">
+      <div>
+        <span>Try Limit</span>
+        <strong>${formatMoney(candidate.suggested_limit_credit || candidate.credit)}</strong>
+      </div>
+      <div>
+        <span>Do Not Chase Below</span>
+        <strong>${formatMoney(candidate.minimum_acceptable_credit || candidate.credit)}</strong>
+      </div>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <span>Credit</span>
+        <strong>${formatMoney(candidate.credit)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Max Risk</span>
+        <strong>${formatMoney(candidate.max_risk)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Short Delta</span>
+        <strong>${formatDelta(candidate.short_delta)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Score</span>
+        <strong>${pct(candidate.credit_to_risk)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Breakeven</span>
+        <strong>${formatMoney(candidate.breakeven)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Underlying</span>
+        <strong>${formatMoney(candidate.underlying_price)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Max Profit / Loss</span>
+        <strong>${formatMoney(candidate.max_profit_dollars)} / ${formatMoney(candidate.max_loss_dollars)}</strong>
+      </div>
+      <div class="detail-item">
+        <span>Delta Source</span>
+        <strong>${compactSource(candidate.delta_source)}</strong>
+      </div>
+    </div>
+    <div class="leg-table-wrap">
+      <table class="leg-table">
+        <thead>
+          <tr>
+            <th>Leg</th>
+            <th>Bid</th>
+            <th>Ask</th>
+            <th>Mid</th>
+            <th>OI</th>
+            <th>Vol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sell ${shortStrike}${optionSymbol}</td>
+            <td>${formatMoney(shortLeg.bid)}</td>
+            <td>${formatMoney(shortLeg.ask)}</td>
+            <td>${formatMoney(shortLeg.mid)}</td>
+            <td>${formatNumber(shortLeg.open_interest)}</td>
+            <td>${formatNumber(shortLeg.volume)}</td>
+          </tr>
+          <tr>
+            <td>Buy ${longStrike}${optionSymbol}</td>
+            <td>${formatMoney(longLeg.bid)}</td>
+            <td>${formatMoney(longLeg.ask)}</td>
+            <td>${formatMoney(longLeg.mid)}</td>
+            <td>${formatNumber(longLeg.open_interest)}</td>
+            <td>${formatNumber(longLeg.volume)}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    ${nearbySpreadsTable(candidate)}
+    <ul class="quality-list">
+      <li><span>Bid/Ask Quality</span><strong>${titleCase(candidate.quality.bid_ask)}</strong></li>
+      <li><span>Short Bid/Ask Width</span><strong>${optionalPct(shortLeg.bid_ask_width_pct)}</strong></li>
+      <li><span>Long Bid/Ask Width</span><strong>${optionalPct(longLeg.bid_ask_width_pct)}</strong></li>
+      <li><span>Minimum Open Interest</span><strong>${formatNumber(candidate.liquidity?.min_open_interest)}</strong></li>
+      <li><span>Minimum Volume</span><strong>${formatNumber(candidate.liquidity?.min_volume)}</strong></li>
+      <li><span>Earnings</span><strong>${titleCase(candidate.quality.earnings)}</strong></li>
+      <li><span>Data Source</span><strong>${source}</strong></li>
+    </ul>
+  `;
+  byId("detail-panel").hidden = false;
+}
+
+function nearbySpreadsTable(candidate) {
+  const rows = candidate.nearby_spreads || [];
+  if (!rows.length) return "";
+  return `
+    <section class="nearby-section">
+      <div class="nearby-head">
+        <h3>Nearby $5-Wide Spreads</h3>
+        <span>Same Expiration</span>
+      </div>
+      <div class="nearby-table-wrap">
+        <table class="nearby-table">
+          <thead>
+            <tr>
+              <th>Sell / Buy</th>
+              <th>Delta</th>
+              <th>Credit</th>
+              <th>Risk</th>
+              <th>Score</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(nearbyRow).join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function nearbyRow(row) {
+  const classes = ["nearby-status"];
+  if (row.selected) classes.push("selected");
+  else if (row.rules_pass) classes.push("valid");
+  else classes.push("outside");
+  return `
+    <tr class="${row.selected ? "selected-row" : ""}">
+      <td>${row.short_strike ?? row.short_put} / ${row.long_strike ?? row.long_put}</td>
+      <td>${formatMaybeDelta(row.short_delta)}</td>
+      <td>${formatMoney(row.credit)}</td>
+      <td>${formatMoney(row.max_risk)}</td>
+      <td>${pct(row.credit_to_risk)}</td>
+      <td><span class="${classes.join(" ")}">${row.status}</span></td>
+    </tr>
+  `;
+}
+
+function closeDetail() {
+  byId("detail-panel").hidden = true;
+}
+
+function bindEvents() {
+  byId("ticker-filter").addEventListener("change", (event) => {
+    state.ticker = event.target.value;
+    renderCandidates();
+  });
+
+  byId("min-score").addEventListener("change", (event) => {
+    state.minScore = Number(event.target.value);
+    renderCandidates();
+  });
+
+  byId("strategy-filter").addEventListener("change", (event) => {
+    state.strategy = event.target.value;
+    renderCandidates();
+  });
+
+  byId("refresh-button").addEventListener("click", () => {
+    loadScan().catch(showError);
+  });
+
+  byId("close-detail").addEventListener("click", closeDetail);
+}
+
+function showError(error) {
+  byId("scan-status").textContent = "Could not load latest scan";
+  byId("candidate-list").innerHTML = `<div class="empty-state">${error.message}</div>`;
+}
+
+bindEvents();
+loadScan().catch(showError);
