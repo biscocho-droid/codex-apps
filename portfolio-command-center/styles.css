@@ -494,9 +494,13 @@ td {
 }
 
 .chart-legend {
-  fill: #c4ccd4;
+  fill: #f2f6fa;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
+  paint-order: stroke;
+  stroke: rgba(5, 6, 7, 0.72);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .bar-bear {
@@ -512,26 +516,38 @@ td {
 }
 
 .bar-label {
-  fill: var(--ink);
+  fill: #ffffff;
   font-size: 17px;
   font-weight: 900;
+  paint-order: stroke;
+  stroke: rgba(5, 6, 7, 0.74);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .bar-sublabel {
-  fill: #c4ccd4;
+  fill: #eef3f7;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
+  paint-order: stroke;
+  stroke: rgba(5, 6, 7, 0.68);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .chart-grid-line {
-  stroke: rgba(255, 255, 255, 0.07);
+  stroke: rgba(255, 255, 255, 0.11);
   stroke-width: 1;
 }
 
 .chart-axis-label {
-  fill: #b8c0c8;
+  fill: #f0f4f8;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
+  paint-order: stroke;
+  stroke: rgba(5, 6, 7, 0.72);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .chart-line {
@@ -574,14 +590,14 @@ td {
 }
 
 .chart-tooltip-label {
-  fill: #c4ccd4;
+  fill: #f2f6fa;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .chart-tooltip-value {
-  fill: var(--ink);
+  fill: #ffffff;
   font-size: 22px;
   font-weight: 900;
 }
