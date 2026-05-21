@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d1117" />
+    <title>Leftover Cash Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">After-bills money planner</p>
+          <h1>Leftover Cash Planner</h1>
+        </div>
+        <button id="resetBtn" class="icon-btn" type="button" aria-label="Reset allocations" title="Reset allocations">
+          <span aria-hidden="true">↺</span>
+        </button>
+      </header>
+
+      <section class="summary" aria-label="Allocation summary">
+        <article class="balance-panel">
+          <label for="totalProfit">Monthly leftover cash</label>
+          <div class="money-input">
+            <span>$</span>
+            <input id="totalProfit" inputmode="decimal" type="text" value="2750" />
+          </div>
+          <div class="quick-row" aria-label="Quick leftover cash amounts">
+            <button type="button" data-total="2000">$2k</button>
+            <button type="button" data-total="2750">$2.75k</button>
+            <button type="button" data-total="3500">$3.5k</button>
+          </div>
+        </article>
+
+        <article class="stat-panel accent-green">
+          <span>Allocated</span>
+          <strong id="allocatedTotal">$0</strong>
+          <small id="allocatedPercent">0% of flex cash</small>
+        </article>
+
+        <article class="stat-panel accent-gold">
+          <span>Unassigned</span>
+          <strong id="remainingTotal">$0</strong>
+          <small id="remainingNote">Available to route</small>
+        </article>
+      </section>
+
+      <section class="visual-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Mix</p>
+              <h2>Where the money goes</h2>
+            </div>
+            <strong id="allocationCount">0 buckets</strong>
+          </div>
+          <div class="donut-wrap">
+            <canvas id="donutChart" width="360" height="260" aria-label="Allocation donut chart"></canvas>
+            <div class="donut-center">
+              <span>Left</span>
+              <strong id="donutRemaining">$0</strong>
+            </div>
+          </div>
+          <div id="legend" class="legend"></div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Priority</p>
+              <h2>Bucket size</h2>
+            </div>
+          </div>
+          <canvas id="barChart" width="520" height="300" aria-label="Allocation bar chart"></canvas>
+        </article>
+      </section>
+
+      <section class="planner-grid">
+        <article class="panel allocator">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Move money</p>
+              <h2>Allocation sliders</h2>
+            </div>
+            <button id="addBucketBtn" class="add-btn" type="button">+ Bucket</button>
+          </div>
+          <div id="allocationList" class="allocation-list"></div>
+        </article>
+
+        <aside class="panel notes">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Readout</p>
+              <h2>Allocation notes</h2>
+            </div>
+          </div>
+          <div id="insights" class="insights"></div>
+          <div class="preset-stack">
+            <button type="button" data-preset="balanced">Balanced</button>
+            <button type="button" data-preset="growth">Growth heavy</button>
+            <button type="button" data-preset="cash">Cash cushion</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="bucketTemplate">
+      <article class="bucket-row">
+        <div class="bucket-main">
+          <button class="swatch" type="button" aria-label="Change color"></button>
+          <input class="bucket-name" type="text" maxlength="26" />
+          <button class="remove-btn" type="button" aria-label="Remove bucket" title="Remove bucket">×</button>
+        </div>
+        <div class="bucket-values">
+          <label>
+            Dollars
+            <input class="bucket-amount" inputmode="decimal" type="text" />
+          </label>
+          <strong class="bucket-percent">0%</strong>
+        </div>
+        <input class="bucket-range" type="range" min="0" step="25" />
+      </article>
+    </template>
+
+    <script src="app.js?v=20260521-focus2"></script>
+  </body>
+</html>

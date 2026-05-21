@@ -10,6 +10,7 @@ GitHub Pages branch for personal Codex web apps.
 | Monthly Budget | `monthly-budget/` | `https://biscocho-droid.github.io/codex-test-1/monthly-budget/` |
 | S&P 500 Value Finder | `sp500-value-finder/` | `https://biscocho-droid.github.io/codex-test-1/sp500-value-finder/` |
 | Leftover Cash Planner | `profit-allocator/` | `https://biscocho-droid.github.io/codex-test-1/profit-allocator/` |
+| Leftover Cash Planner | `leftover-cash-planner/` | `https://biscocho-droid.github.io/codex-test-1/leftover-cash-planner/` |
 
 The root URL is an app launcher:
 
