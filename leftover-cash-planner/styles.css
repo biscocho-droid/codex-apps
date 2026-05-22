@@ -1,28 +1,36 @@
 :root {
-  --bg: #eef3f0;
-  --ink: #111820;
-  --muted: #66736f;
-  --panel: #ffffff;
-  --line: #d7e0dc;
-  --dark: #0d1117;
-  --green: #19714d;
-  --gold: #c08a2f;
-  --blue: #2869a8;
-  --red: #b94d43;
-  --shadow: 0 18px 48px rgba(19, 31, 28, 0.12);
+  --bg: #07100d;
+  --bg-2: #0b1512;
+  --ink: #f6faf8;
+  --muted: #98aaa3;
+  --soft: #c8d5d0;
+  --panel: rgba(12, 21, 18, 0.92);
+  --panel-2: rgba(15, 27, 23, 0.96);
+  --line: rgba(218, 234, 228, 0.12);
+  --line-strong: rgba(218, 234, 228, 0.24);
+  --green: #47d083;
+  --gold: #f0c766;
+  --blue: #79aefb;
+  --red: #ff746d;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(135deg, rgba(25, 113, 77, 0.12), transparent 34%),
-    linear-gradient(225deg, rgba(40, 105, 168, 0.12), transparent 32%),
-    var(--bg);
+    linear-gradient(135deg, rgba(71, 208, 131, 0.12), transparent 36%),
+    linear-gradient(225deg, rgba(121, 174, 251, 0.1), transparent 34%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -47,15 +55,15 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  min-height: 96px;
+  min-height: 104px;
 }
 
 .eyebrow {
-  margin: 0 0 6px;
-  color: var(--muted);
-  font-size: 0.74rem;
-  font-weight: 850;
-  letter-spacing: 0;
+  margin: 0 0 7px;
+  color: var(--soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -66,12 +74,14 @@ p {
 }
 
 h1 {
-  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  max-width: 820px;
+  font-size: clamp(2.35rem, 6vw, 4.65rem);
   line-height: 0.94;
+  letter-spacing: 0;
 }
 
 h2 {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
 }
 
 .icon-btn,
@@ -81,15 +91,31 @@ h2 {
 .remove-btn {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--ink);
-  font-weight: 800;
+  font-weight: 850;
+}
+
+.icon-btn,
+.add-btn,
+.quick-row button,
+.preset-stack button {
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.icon-btn:hover,
+.add-btn:hover,
+.quick-row button:hover,
+.preset-stack button:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .icon-btn {
   width: 46px;
   height: 46px;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   box-shadow: var(--shadow);
 }
 
@@ -117,15 +143,15 @@ h2 {
 .panel,
 .balance-panel,
 .stat-panel {
-  border: 1px solid rgba(17, 24, 32, 0.09);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
   box-shadow: var(--shadow);
 }
 
 .balance-panel,
 .stat-panel {
-  min-height: 150px;
+  min-height: 156px;
   padding: 18px;
 }
 
@@ -134,8 +160,9 @@ h2 {
 .bucket-values label {
   display: block;
   color: var(--muted);
-  font-size: 0.77rem;
-  font-weight: 850;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -145,8 +172,8 @@ h2 {
   gap: 8px;
   margin-top: 8px;
   color: var(--ink);
-  font-size: clamp(2rem, 7vw, 3.8rem);
-  font-weight: 900;
+  font-size: clamp(2.1rem, 7vw, 3.85rem);
+  font-weight: 950;
   letter-spacing: 0;
 }
 
@@ -164,7 +191,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 13px;
 }
 
 .quick-row button,
@@ -172,6 +199,10 @@ h2 {
 .add-btn {
   min-height: 38px;
   padding: 0 12px;
+}
+
+.quick-row button {
+  color: var(--soft);
 }
 
 .stat-panel {
@@ -200,13 +231,13 @@ h2 {
 .stat-panel strong {
   display: block;
   margin-top: 8px;
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.85rem, 4vw, 3.05rem);
   line-height: 1;
 }
 
 .stat-panel small {
-  color: var(--muted);
-  font-weight: 750;
+  color: var(--soft);
+  font-weight: 800;
 }
 
 .panel {
@@ -222,12 +253,16 @@ h2 {
 }
 
 .panel-head > strong {
-  color: var(--muted);
-  font-size: 0.85rem;
+  min-height: 32px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--soft);
+  font-size: 0.82rem;
 }
 
 .chart-panel {
-  min-height: 360px;
+  min-height: 364px;
 }
 
 .donut-wrap {
@@ -253,13 +288,16 @@ canvas {
 
 .donut-center span {
   color: var(--muted);
-  font-size: 0.8rem;
-  font-weight: 850;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .donut-center strong {
-  font-size: 1.35rem;
+  color: #ffffff;
+  font-size: 1.45rem;
+  font-weight: 950;
 }
 
 .legend,
@@ -306,7 +344,7 @@ canvas {
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fbfdfc;
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .bucket-main,
@@ -330,6 +368,7 @@ canvas {
   border: 0;
   border-radius: 8px;
   background: var(--swatch);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
 }
 
 .bucket-name,
@@ -338,9 +377,16 @@ canvas {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.055);
   color: var(--ink);
-  font-weight: 800;
+  font-weight: 850;
+  outline: 0;
+}
+
+.bucket-name:focus,
+.bucket-amount:focus {
+  border-color: rgba(71, 208, 131, 0.48);
+  box-shadow: 0 0 0 3px rgba(71, 208, 131, 0.14);
 }
 
 .bucket-name {
@@ -356,8 +402,10 @@ canvas {
 
 .bucket-percent {
   min-width: 54px;
+  color: #ffffff;
   text-align: right;
-  font-size: 1.05rem;
+  font-size: 1.06rem;
+  font-weight: 950;
 }
 
 .remove-btn {
@@ -365,12 +413,27 @@ canvas {
   height: 34px;
   padding: 0;
   color: var(--muted);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
+}
+
+.remove-btn:hover {
+  border-color: rgba(255, 116, 109, 0.42);
+  color: #ffd6d3;
 }
 
 .bucket-range {
   width: 100%;
   accent-color: var(--swatch);
+}
+
+.bucket-range::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.bucket-range::-webkit-slider-thumb {
+  margin-top: -5px;
 }
 
 .notes {
@@ -384,6 +447,7 @@ canvas {
 .preset-stack button {
   width: 100%;
   min-height: 44px;
+  text-align: left;
 }
 
 .over {
@@ -409,7 +473,7 @@ canvas {
   }
 
   .hero {
-    min-height: 82px;
+    min-height: 86px;
   }
 
   .panel,

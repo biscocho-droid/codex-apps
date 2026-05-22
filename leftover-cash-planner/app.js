@@ -331,7 +331,7 @@ function drawDonut() {
   const cy = 128;
   const radius = Math.min(100, rect.width * 0.32);
   const width = 24;
-  const segments = [...state.buckets.map((bucket) => ({ ...bucket })), { name: "Unassigned", amount: Math.max(0, remaining()), color: "#c2cbc7" }].filter(
+  const segments = [...state.buckets.map((bucket) => ({ ...bucket })), { name: "Unassigned", amount: Math.max(0, remaining()), color: "#33433d" }].filter(
     (bucket) => bucket.amount > 0,
   );
   const total = segments.reduce((sum, item) => sum + item.amount, 0) || 1;
@@ -367,19 +367,19 @@ function drawBars() {
   const top = 28;
   const width = Math.max(40, rect.width - leftPad - 24);
 
-  ctx.font = "700 13px system-ui, sans-serif";
+  ctx.font = "850 13px system-ui, sans-serif";
   ctx.textBaseline = "middle";
   state.buckets.forEach((bucket, index) => {
     const y = top + index * (barHeight + gap);
     const barWidth = Math.max(2, (bucket.amount / max) * width);
-    ctx.fillStyle = "#66736f";
+    ctx.fillStyle = "#c8d5d0";
     ctx.textAlign = "right";
     ctx.fillText(bucket.name.slice(0, 13), leftPad - 12, y + barHeight / 2);
-    ctx.fillStyle = "#e5ebe8";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
     ctx.fillRect(leftPad, y, width, barHeight);
     ctx.fillStyle = bucket.color;
     ctx.fillRect(leftPad, y, barWidth, barHeight);
-    ctx.fillStyle = "#111820";
+    ctx.fillStyle = "#f6faf8";
     ctx.textAlign = "left";
     ctx.fillText(money(bucket.amount), leftPad + Math.min(barWidth + 8, width - 70), y + barHeight / 2);
   });
