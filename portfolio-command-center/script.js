@@ -140,6 +140,21 @@ const defaultState = {
         "Updated from Webull account positions screenshot shared on May 22, 2026.",
     },
     {
+      ticker: "SOL",
+      name: "Solana",
+      assetClass: "Digital Asset",
+      sector: "Crypto / Layer 1",
+      shares: 25.95,
+      avgCost: 148.1390366088632,
+      price: 86.885,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Aggregated Solana exposure across two separate accounts, tracked as one combined digital-asset position for portfolio visibility.",
+      note:
+        "Combined lots: 4 SOL at $202.46 average cost and 21.95 SOL at $138.24 average cost. Price updates through Coinbase spot data.",
+    },
+    {
       ticker: "MU",
       name: "Micron Technology",
       assetClass: "Equity",
@@ -344,12 +359,17 @@ function loadState() {
     if (!raw) return structuredClone(defaultState);
     const parsed = JSON.parse(raw);
     const history = parsed.history || structuredClone(defaultState.history);
+    const holdings = (parsed.holdings || structuredClone(defaultState.holdings)).map((holding) => ({
+      ...holding,
+      account: holding.account || (String(holding.assetClass).toLowerCase().includes("retirement") ? "retirement" : "brokerage"),
+    }));
+    const existingTickers = new Set(holdings.map((holding) => holding.ticker));
+    const missingDefaultHoldings = defaultState.holdings
+      .filter((holding) => !existingTickers.has(holding.ticker))
+      .map((holding) => structuredClone(holding));
     return {
       profile: parsed.profile || structuredClone(defaultState.profile),
-      holdings: (parsed.holdings || structuredClone(defaultState.holdings)).map((holding) => ({
-        ...holding,
-        account: holding.account || (String(holding.assetClass).toLowerCase().includes("retirement") ? "retirement" : "brokerage"),
-      })),
+      holdings: [...holdings, ...missingDefaultHoldings],
       cashAccounts: (parsed.cashAccounts || structuredClone(defaultState.cashAccounts)).map((account) => ({
         ...account,
         account: account.account || "brokerage",

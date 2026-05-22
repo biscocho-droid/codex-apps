@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update Portfolio Command Center end-of-day prices from Stooq."""
+"""Update Portfolio Command Center market prices."""
 
 from __future__ import annotations
 
@@ -14,7 +14,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-DEFAULT_TICKERS = ["AMD", "TSLA", "CRWV", "CLSK", "AMZN", "SOFI", "COIN", "IBIT", "MU"]
+DEFAULT_TICKERS = ["AMD", "TSLA", "CRWV", "CLSK", "AMZN", "SOFI", "COIN", "IBIT", "SOL", "MU"]
+COINBASE_PRODUCTS = {"SOL": "SOL-USD"}
 
 
 def fetch_stooq_quote(ticker: str) -> dict:
@@ -41,12 +42,38 @@ def fetch_stooq_quote(ticker: str) -> dict:
     }
 
 
+def fetch_coinbase_spot(ticker: str) -> dict:
+    product = COINBASE_PRODUCTS[ticker]
+    url = f"https://api.coinbase.com/v2/prices/{product}/spot"
+    request = urllib.request.Request(url, headers={"User-Agent": "portfolio-command-center/1.0"})
+    with urllib.request.urlopen(request, timeout=20) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    amount = payload.get("data", {}).get("amount")
+    if not amount:
+        raise RuntimeError(f"No Coinbase spot price returned for {ticker}: {payload}")
+
+    now = datetime.now(timezone.utc)
+    return {
+        "price": round(float(amount), 4),
+        "date": now.date().isoformat(),
+        "time": now.time().replace(microsecond=0).isoformat(),
+        "currency": "USD",
+    }
+
+
+def fetch_quote(ticker: str) -> dict:
+    if ticker in COINBASE_PRODUCTS:
+        return fetch_coinbase_spot(ticker)
+    return fetch_stooq_quote(ticker)
+
+
 def load_tickers(path: Path) -> list[str]:
     if not path.exists():
         return DEFAULT_TICKERS
     data = json.loads(path.read_text())
     prices = data.get("prices", {})
-    return sorted(prices.keys()) or DEFAULT_TICKERS
+    return sorted({*DEFAULT_TICKERS, *prices.keys()})
 
 
 def main() -> int:
@@ -60,11 +87,11 @@ def main() -> int:
     failures = {}
 
     for ticker in tickers:
-      try:
-          prices[ticker] = fetch_stooq_quote(ticker)
-      except Exception as exc:  # noqa: BLE001
-          failures[ticker] = str(exc)
-      time.sleep(0.35)
+        try:
+            prices[ticker] = fetch_quote(ticker)
+        except Exception as exc:  # noqa: BLE001
+            failures[ticker] = str(exc)
+        time.sleep(0.35)
 
     if not prices:
         print(f"No prices updated. Failures: {failures}", file=sys.stderr)
@@ -77,7 +104,7 @@ def main() -> int:
     ]
     payload = {
         "asOf": max(as_of_candidates) if as_of_candidates else datetime.now(timezone.utc).isoformat(),
-        "source": "Stooq end-of-day close",
+        "source": "Stooq end-of-day close + Coinbase spot",
         "updatedBy": "github-actions" if "GITHUB_ACTIONS" in __import__("os").environ else "local",
         "prices": prices,
     }
