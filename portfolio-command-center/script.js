@@ -176,7 +176,7 @@ const defaultState = {
       sector: "Growth Equity",
       shares: 17.2,
       avgCost: 773.78,
-      price: 864.546946,
+      price: 773.78,
       account: "retirement",
       conviction: "Retirement",
       thesis:
@@ -191,7 +191,7 @@ const defaultState = {
       sector: "Index Fund",
       shares: 44.33,
       avgCost: 302,
-      price: 145.3632,
+      price: 302.01,
       account: "retirement",
       conviction: "Retirement",
       thesis:
@@ -206,7 +206,7 @@ const defaultState = {
       sector: "Industrial",
       shares: 166.65,
       avgCost: 134.15,
-      price: 128.678592,
+      price: 134.15,
       account: "retirement",
       conviction: "Retirement",
       thesis:
