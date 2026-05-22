@@ -6,6 +6,8 @@ const state = {
   commandHistory: [],
 };
 
+const WATCHLIST_STORAGE_KEY = "aurora-terminal-watchlist-open";
+
 const sectorAliases = {
   TECH: "Information Technology",
   TECHNOLOGY: "Information Technology",
@@ -36,6 +38,8 @@ const macro = [
 const commandInput = document.querySelector("#commandInput");
 const commandForm = document.querySelector("#commandForm");
 const mainView = document.querySelector("#mainView");
+const watchPanel = document.querySelector("#watchPanel");
+const watchToggle = document.querySelector("#watchToggle");
 const watchList = document.querySelector("#watchList");
 const searchResults = document.querySelector("#searchResults");
 const newsFeed = document.querySelector("#newsFeed");
@@ -212,6 +216,28 @@ function renderWatchlist() {
       </div>
     </div>
   `).join("");
+}
+
+function setWatchlistOpen(isOpen, persist = true) {
+  watchPanel.classList.toggle("collapsed", !isOpen);
+  watchToggle.textContent = isOpen ? "Hide" : "Show";
+  watchToggle.setAttribute("aria-expanded", String(isOpen));
+  if (!persist) return;
+  try {
+    localStorage.setItem(WATCHLIST_STORAGE_KEY, isOpen ? "true" : "false");
+  } catch (_error) {
+    // Local storage is optional; the control still works for the current session.
+  }
+}
+
+function hydrateWatchlistPreference() {
+  let saved = "false";
+  try {
+    saved = localStorage.getItem(WATCHLIST_STORAGE_KEY) || "false";
+  } catch (_error) {
+    saved = "false";
+  }
+  setWatchlistOpen(saved === "true", false);
 }
 
 function renderSearch(query = "") {
@@ -530,6 +556,10 @@ function wireEvents() {
     if (button) runCommand(button.dataset.command);
   });
 
+  watchToggle.addEventListener("click", () => {
+    setWatchlistOpen(watchPanel.classList.contains("collapsed"));
+  });
+
   document.body.addEventListener("click", (event) => {
     const row = event.target.closest("[data-symbol]");
     if (row) runCommand(`${row.dataset.symbol} DES`);
@@ -563,6 +593,7 @@ async function init() {
   state.universe = data.constituents;
   state.quotes = state.universe.map(enrich);
   universeCount.textContent = `${data.count} S&P names`;
+  hydrateWatchlistPreference();
   renderWatchlist();
   renderSearch("");
   renderMacro();
