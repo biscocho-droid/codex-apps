@@ -1,4 +1,4 @@
-const STORAGE_KEY = "portfolio_command_center_v5";
+const STORAGE_KEY = "portfolio_command_center_v6";
 const PRICE_DATA_URL = "data/portfolio-prices.json";
 const ACCOUNT_VIEWS = {
   combined: { label: "Combined", chip: "Combined", chartClass: "chart-series-combined", gradient: ["rgba(244,201,106,0.34)", "rgba(244,201,106,0.02)"] },
@@ -174,8 +174,8 @@ const defaultState = {
       name: "Fidelity Growth Company Fund",
       assetClass: "Retirement Fund",
       sector: "Growth Equity",
-      shares: 16.78,
-      avgCost: 736.58,
+      shares: 17.2,
+      avgCost: 773.78,
       price: 864.546946,
       account: "retirement",
       conviction: "Retirement",
@@ -189,8 +189,8 @@ const defaultState = {
       name: "S&P 500 Equity Index Fund",
       assetClass: "Retirement Fund",
       sector: "Index Fund",
-      shares: 43.261,
-      avgCost: 128.64,
+      shares: 44.33,
+      avgCost: 302,
       price: 145.3632,
       account: "retirement",
       conviction: "Retirement",
@@ -204,8 +204,8 @@ const defaultState = {
       name: "Honeywell",
       assetClass: "Retirement Equity",
       sector: "Industrial",
-      shares: 166.6,
-      avgCost: 128.64,
+      shares: 166.65,
+      avgCost: 134.15,
       price: 128.678592,
       account: "retirement",
       conviction: "Retirement",
