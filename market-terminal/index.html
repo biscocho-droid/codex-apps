@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora Market Terminal</title>
+    <meta name="theme-color" content="#06080d" />
+    <meta name="apple-mobile-web-app-title" content="Market Terminal" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark">AX</span>
+          <div>
+            <p class="kicker">Aurora Exchange</p>
+            <h1>Market Terminal</h1>
+          </div>
+        </div>
+        <form class="command-form" id="commandForm" autocomplete="off">
+          <label for="commandInput">Command</label>
+          <input id="commandInput" name="command" type="text" spellcheck="false" value="NVDA DES" />
+          <button type="submit">Run</button>
+        </form>
+        <div class="session-strip" aria-label="Session status">
+          <span id="clock">--:--:--</span>
+          <span id="universeCount">S&P 500</span>
+          <span class="online-dot">Sim Live</span>
+        </div>
+      </header>
+
+      <nav class="function-bar" aria-label="Terminal functions">
+        <button data-command="MARKET">Market</button>
+        <button data-command="MOVERS">Movers</button>
+        <button data-command="HEATMAP">Heatmap</button>
+        <button data-command="SCREEN">Screen</button>
+        <button data-command="NEWS">News</button>
+        <button data-command="PORT">Portfolio</button>
+        <button data-command="HELP">Help</button>
+      </nav>
+
+      <main class="workspace">
+        <aside class="left-rail">
+          <section class="panel watch-panel">
+            <div class="panel-head">
+              <h2>Watchlist</h2>
+              <span id="watchMeta">core book</span>
+            </div>
+            <div class="quote-list" id="watchList"></div>
+          </section>
+
+          <section class="panel search-panel">
+            <div class="panel-head">
+              <h2>Security Search</h2>
+              <span>503 names</span>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+          </section>
+        </aside>
+
+        <section class="center-stage">
+          <div class="terminal-status" id="terminalStatus">
+            <span>Ready</span>
+            <span>Try AAPL GP, MSFT FA, SECTOR TECH, SCREEN PE&lt;20, HELP</span>
+          </div>
+          <div class="hero-grid" id="mainView"></div>
+        </section>
+
+        <aside class="right-rail">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Macro Tape</h2>
+              <span>risk pulse</span>
+            </div>
+            <div class="macro-stack" id="macroStack"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>News Wire</h2>
+              <span id="newsScope">market</span>
+            </div>
+            <div class="news-feed" id="newsFeed"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
