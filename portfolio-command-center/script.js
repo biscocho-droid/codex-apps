@@ -1,4 +1,4 @@
-const STORAGE_KEY = "portfolio_command_center_v6";
+const STORAGE_KEY = "portfolio_command_center_v7";
 const PRICE_DATA_URL = "data/portfolio-prices.json";
 const ACCOUNT_VIEWS = {
   combined: { label: "Combined", chip: "Combined", chartClass: "chart-series-combined", gradient: ["rgba(244,201,106,0.34)", "rgba(244,201,106,0.02)"] },
@@ -234,7 +234,7 @@ const defaultState = {
       employerMatch: 250,
       annualRaisePct: 3,
       years: 25,
-      baseReturnPct: 7,
+      baseReturnPct: 8,
       withdrawalRatePct: 4,
     },
     scenarioTargets: {},
@@ -685,7 +685,8 @@ function areaPath(points, baseline) {
 
 function getSeriesForRange(range) {
   const labels = state.history.labels;
-  const values = state.history[activeAccountView] || state.history.combined;
+  const values = [...(state.history[activeAccountView] || state.history.combined)];
+  values[values.length - 1] = Math.round(aggregateStateFor(activeAccountView).totalValue);
   if (range === "1M") return { labels: labels.slice(-4), values: values.slice(-4) };
   if (range === "3M") return { labels: labels.slice(-6), values: values.slice(-6) };
   if (range === "1Y") return { labels, values };
@@ -854,6 +855,14 @@ function readNumber(input, fallback) {
 
 function defaultScenarioTargets(holding, targetYear) {
   const yearsOut = Math.max(Number(targetYear) - 2026, 1);
+  if (holding.ticker === "SP500") {
+    return {
+      bear: Number((holding.price * (1.05 ** yearsOut)).toFixed(2)),
+      base: Number((holding.price * (1.08 ** yearsOut)).toFixed(2)),
+      bull: Number((holding.price * (1.12 ** yearsOut)).toFixed(2)),
+    };
+  }
+
   const multipliers = targetYear === "2035"
     ? { bear: 1 + yearsOut * 0.005, base: 1 + yearsOut * 0.11, bull: 1 + yearsOut * 0.22 }
     : { bear: 1 - yearsOut * 0.025, base: 1 + yearsOut * 0.13, bull: 1 + yearsOut * 0.28 };
@@ -1048,9 +1057,9 @@ function renderK401Modeler() {
   els.k401BaseReturn.value = settings.baseReturnPct;
 
   const start = Number(settings.currentBalance) || defaultBalance;
-  const bearReturn = Math.max(settings.baseReturnPct - 3, -10);
-  const baseReturn = settings.baseReturnPct;
-  const bullReturn = settings.baseReturnPct + 3;
+  const bearReturn = 5;
+  const baseReturn = 8;
+  const bullReturn = 12;
   const series = [
     { key: "bear", label: `Bear ${bearReturn.toFixed(1)}%`, points: buildK401Projection(start, settings.monthlyContribution, settings.employerMatch, settings.annualRaisePct, settings.years, bearReturn) },
     { key: "base", label: `Base ${baseReturn.toFixed(1)}%`, points: buildK401Projection(start, settings.monthlyContribution, settings.employerMatch, settings.annualRaisePct, settings.years, baseReturn) },
