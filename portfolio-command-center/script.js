@@ -1,4 +1,5 @@
-const STORAGE_KEY = "portfolio_command_center_v4";
+const STORAGE_KEY = "portfolio_command_center_v5";
+const PRICE_DATA_URL = "data/portfolio-prices.json";
 const ACCOUNT_VIEWS = {
   combined: { label: "Combined", chip: "Combined", chartClass: "chart-series-combined", gradient: ["rgba(244,201,106,0.34)", "rgba(244,201,106,0.02)"] },
   brokerage: { label: "Personal Brokerage", chip: "Brokerage", chartClass: "chart-series-brokerage", gradient: ["rgba(114,220,143,0.34)", "rgba(114,220,143,0.02)"] },
@@ -19,139 +20,19 @@ const defaultState = {
   },
   holdings: [
     {
-      ticker: "SOFI",
-      name: "SoFi Technologies",
-      assetClass: "Equity",
-      sector: "Fintech",
-      shares: 247.51393,
-      avgCost: 20.02,
-      price: 15.61,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Fintech and consumer-platform exposure with upside tied to execution, member growth, and credit discipline.",
-      note:
-        "Imported from Webull screenshot on May 14, 2026. Add current thesis and risk rules later.",
-    },
-    {
-      ticker: "COIN",
-      name: "Coinbase Global",
-      assetClass: "Equity",
-      sector: "Crypto Platform",
-      shares: 8,
-      avgCost: 195.35,
-      price: 195.43,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Exchange and crypto-infrastructure exposure that benefits from volume, retail participation, and broader digital-asset adoption.",
-      note:
-        "Keep sized inside crypto-volatility budget.",
-    },
-    {
-      ticker: "IBIT",
-      name: "iShares Bitcoin Trust",
-      assetClass: "ETF",
-      sector: "Digital Asset",
-      shares: 62,
-      avgCost: 51.36,
-      price: 44.82,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Spot bitcoin ETF position for simple listed exposure without direct custody complexity.",
-      note:
-        "Track alongside other crypto-linked holdings so overlap stays visible.",
-    },
-    {
-      ticker: "SOL",
-      name: "Solana",
-      assetClass: "Digital Asset",
-      sector: "Crypto / Layer 1",
-      shares: 25.95,
-      avgCost: 148.1390366088632,
-      price: 84.72,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Aggregated Solana exposure across two separate accounts, tracked as one combined digital-asset position for portfolio visibility.",
-      note:
-        "Combined lots: 4 SOL at $202.46 average cost and 21.95 SOL at $138.24 average cost. Current price sourced from Coinbase on May 18, 2026.",
-    },
-    {
       ticker: "AMD",
       name: "AMD",
       assetClass: "Equity",
       sector: "Semis / AI",
       shares: 10.36349,
       avgCost: 192.52,
-      price: 424.1,
+      price: 449.59,
       account: "brokerage",
       conviction: "Medium",
       thesis:
         "Semiconductor and AI compute exposure with upside tied to product cycles and share capture.",
       note:
-        "Position size can increase only if the thesis strengthens on execution, not just narrative.",
-    },
-    {
-      ticker: "CRWV",
-      name: "CoreWeave",
-      assetClass: "Equity",
-      sector: "AI Infrastructure",
-      shares: 5.37004,
-      avgCost: 108.72,
-      price: 107.3,
-      account: "brokerage",
-      conviction: "Watch",
-      thesis:
-        "AI infrastructure exposure with high operating leverage and high valuation sensitivity.",
-      note:
-        "Added from Webull screenshot on May 18, 2026. Keep thesis tight because this is a high-beta position.",
-    },
-    {
-      ticker: "AMZN",
-      name: "Amazon",
-      assetClass: "Equity",
-      sector: "Platform",
-      shares: 8.33464,
-      avgCost: 255.23,
-      price: 264.14,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Platform and cloud compounder exposure with durable cash-generation and AI leverage through AWS.",
-      note:
-        "Track whether operating discipline and cloud growth stay aligned.",
-    },
-    {
-      ticker: "PLTR",
-      name: "Palantir Technologies",
-      assetClass: "Equity",
-      sector: "AI Software",
-      shares: 2.00746,
-      avgCost: 134.14,
-      price: 133.99,
-      account: "brokerage",
-      conviction: "Watch",
-      thesis:
-        "AI software and government/commercial data-platform exposure with valuation risk that demands disciplined sizing.",
-      note:
-        "Added from Webull screenshot on May 18, 2026.",
-    },
-    {
-      ticker: "MU",
-      name: "Micron Technology",
-      assetClass: "Equity",
-      sector: "Semis / Memory",
-      shares: 4.47184,
-      avgCost: 380.97,
-      price: 724.66,
-      account: "brokerage",
-      conviction: "Medium",
-      thesis:
-        "Memory-cycle and AI infrastructure exposure with sharper cyclicality than the highest-quality semis.",
-      note:
-        "Revisit sizing if cycle enthusiasm outpaces earnings durability.",
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
     },
     {
       ticker: "TSLA",
@@ -160,13 +41,118 @@ const defaultState = {
       sector: "Mobility / Energy",
       shares: 41.83529,
       avgCost: 267.59,
-      price: 422.24,
+      price: 417.85,
       account: "brokerage",
       conviction: "Watch",
       thesis:
         "High-beta operator-led exposure where narrative, execution, and optionality all matter more than simple linear forecasting.",
       note:
-        "Do not let public narrative or price acceleration dictate sizing decisions.",
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "CRWV",
+      name: "CoreWeave",
+      assetClass: "Equity",
+      sector: "AI Infrastructure",
+      shares: 6.3782,
+      avgCost: 107.21,
+      price: 107.58,
+      account: "brokerage",
+      conviction: "Watch",
+      thesis:
+        "AI infrastructure exposure with high operating leverage and high valuation sensitivity.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "CLSK",
+      name: "CleanSpark",
+      assetClass: "Equity",
+      sector: "Bitcoin Mining",
+      shares: 23.38667,
+      avgCost: 15.12,
+      price: 15.76,
+      account: "brokerage",
+      conviction: "Watch",
+      thesis:
+        "Bitcoin-mining equity exposure with high sensitivity to bitcoin price, hash economics, and operating execution.",
+      note:
+        "Added from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "AMZN",
+      name: "Amazon",
+      assetClass: "Equity",
+      sector: "Platform",
+      shares: 8.33464,
+      avgCost: 255.23,
+      price: 268.46,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Platform and cloud compounder exposure with durable cash-generation and AI leverage through AWS.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "SOFI",
+      name: "SoFi Technologies",
+      assetClass: "Equity",
+      sector: "Fintech",
+      shares: 247.51393,
+      avgCost: 20.02,
+      price: 15.65,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Fintech and consumer-platform exposure with upside tied to execution, member growth, and credit discipline.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "COIN",
+      name: "Coinbase Global",
+      assetClass: "Equity",
+      sector: "Crypto Platform",
+      shares: 8,
+      avgCost: 195.35,
+      price: 193.56,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Exchange and crypto-infrastructure exposure that benefits from volume, retail participation, and broader digital-asset adoption.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "IBIT",
+      name: "iShares Bitcoin Trust",
+      assetClass: "ETF",
+      sector: "Digital Asset",
+      shares: 63.5,
+      avgCost: 51.18,
+      price: 44,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Spot bitcoin ETF position for simple listed exposure without direct custody complexity.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
+    },
+    {
+      ticker: "MU",
+      name: "Micron Technology",
+      assetClass: "Equity",
+      sector: "Semis / Memory",
+      shares: 4.47184,
+      avgCost: 380.97,
+      price: 762.1,
+      account: "brokerage",
+      conviction: "Medium",
+      thesis:
+        "Memory-cycle and AI infrastructure exposure with sharper cyclicality than the highest-quality semis.",
+      note:
+        "Updated from Webull account positions screenshot shared on May 22, 2026.",
     },
     {
       ticker: "FGRIX",
@@ -336,6 +322,13 @@ function compactMoney(value) {
     notation: "compact",
     maximumFractionDigits: 1,
   }).format(value || 0);
+}
+
+function formatPriceStamp(priceMeta) {
+  if (!priceMeta?.asOf) return `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  const date = new Date(priceMeta.asOf);
+  if (Number.isNaN(date.getTime())) return `Prices ${priceMeta.asOf}`;
+  return `Prices ${date.toLocaleDateString([], { month: "short", day: "numeric" })} ${date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
 }
 
 function escapeHtml(value) {
@@ -1162,7 +1155,29 @@ function renderAll() {
   renderScenarioLab();
   renderOutcomeMatrix();
   els.marketStatus.textContent = `${model.accountLabel} · ${model.totalPnl >= 0 ? "+" : ""}${pct(model.totalPnlPct)} gain`;
-  els.pricingStamp.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  els.pricingStamp.textContent = formatPriceStamp(priceMeta);
+}
+
+async function hydratePrices() {
+  try {
+    const response = await fetch(`${PRICE_DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) return;
+    const data = await response.json();
+    const prices = data.prices || {};
+    let updated = false;
+    state.holdings = state.holdings.map((holding) => {
+      const quote = prices[holding.ticker];
+      if (!quote || !Number.isFinite(Number(quote.price))) return holding;
+      updated = true;
+      return { ...holding, price: Number(quote.price) };
+    });
+    if (updated) {
+      priceMeta = { asOf: data.asOf, source: data.source };
+      renderAll();
+    }
+  } catch (_error) {
+    // Keep seeded prices if the daily static price feed is unavailable.
+  }
 }
 
 function setActiveRange(range) {
@@ -1207,6 +1222,7 @@ let activeRange = "1Y";
 let activeAccountView = "combined";
 let activeView = "dashboard";
 let activeScenarioYear = "2030";
+let priceMeta = null;
 
 els.rangePills.forEach((pill) => {
   pill.addEventListener("click", () => setActiveRange(pill.dataset.range));
@@ -1272,3 +1288,4 @@ els.runOverlay.addEventListener("click", () => {
 renderAll();
 setActiveScenarioYear(activeScenarioYear);
 setActiveView(activeView);
+hydratePrices();

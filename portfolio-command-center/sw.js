@@ -1,9 +1,10 @@
-const CACHE_NAME = "portfolio-command-center-v8";
+const CACHE_NAME = "portfolio-command-center-v9";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./script.js",
+  "./data/portfolio-prices.json",
   "./manifest.json",
   "./icons/portfolio-icon.svg",
   "./icons/apple-touch-icon.png"
