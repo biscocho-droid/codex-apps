@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="app-version" content="2026-05-27-polygon-options-backtest-v1" />
+    <title>Polygon Options Backtest</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Polygon aggregate bars</p>
+          <h1>Options Spread Backtest</h1>
+        </div>
+        <div class="source-pill" id="source-pill">Loading</div>
+      </header>
+
+      <section class="summary-grid" aria-label="Backtest summary">
+        <div class="metric">
+          <span>Trades</span>
+          <strong id="trade-count">--</strong>
+        </div>
+        <div class="metric">
+          <span>Win Rate</span>
+          <strong id="win-rate">--</strong>
+        </div>
+        <div class="metric">
+          <span>Total P/L</span>
+          <strong id="total-pnl">--</strong>
+        </div>
+        <div class="metric">
+          <span>Avg Return/Risk</span>
+          <strong id="avg-ror">--</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="panel filters" aria-label="Backtest filters and assumptions">
+          <div class="panel-head">
+            <h2>Run</h2>
+            <span id="entry-date">--</span>
+          </div>
+          <dl class="detail-list">
+            <div>
+              <dt>Universe</dt>
+              <dd id="universe">--</dd>
+            </div>
+            <div>
+              <dt>Rules</dt>
+              <dd id="rules">--</dd>
+            </div>
+            <div>
+              <dt>Fill Model</dt>
+              <dd id="fill-model">--</dd>
+            </div>
+          </dl>
+          <div class="notice">
+            <strong>Research data</strong>
+            <p id="limitations">Loading limitations...</p>
+          </div>
+        </aside>
+
+        <section class="panel chart-panel" aria-label="Trade results">
+          <div class="panel-head">
+            <h2>Trade Outcomes</h2>
+            <span id="best-worst">--</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="pnl-chart" width="760" height="260" aria-label="Profit and loss chart"></canvas>
+          </div>
+          <div id="trade-list" class="trade-list"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
