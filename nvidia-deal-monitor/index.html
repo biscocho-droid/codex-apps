@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NVIDIA Deal Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --panel-soft: #eef3f8;
+      --text: #17202a;
+      --muted: #657488;
+      --line: #d9e1ea;
+      --accent: #76b900;
+      --accent-strong: #4b7f00;
+      --cyan: #0f8aa8;
+      --amber: #b66a00;
+      --danger: #b42318;
+      --shadow: 0 18px 40px rgba(20, 32, 48, 0.12);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f141a;
+      --panel: #171e26;
+      --panel-soft: #202a34;
+      --text: #eef4f8;
+      --muted: #a6b3c1;
+      --line: #2e3b49;
+      --accent: #8bd80d;
+      --accent-strong: #a8ee32;
+      --cyan: #48c8e8;
+      --amber: #f5b84b;
+      --danger: #ff8a7a;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .app-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+      color: var(--text);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #76b900;
+      color: #081006;
+      font-weight: 900;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.45rem, 3vw, 2.45rem);
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 9px 12px;
+      cursor: pointer;
+      min-height: 40px;
+      transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #091006;
+      border-color: var(--accent);
+      font-weight: 800;
+    }
+
+    .btn.ghost {
+      background: transparent;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 18px 0;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+    }
+
+    .tab {
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      padding: 11px 10px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--panel);
+      color: var(--text);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .input {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 10px 12px;
+      min-height: 42px;
+      min-width: min(280px, 100%);
+    }
+
+    .toggle {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    .status {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .status.warning {
+      color: var(--amber);
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .feed-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: var(--panel-soft);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.high {
+      border-color: color-mix(in srgb, var(--accent) 65%, var(--line));
+      color: var(--accent-strong);
+    }
+
+    .pill.medium {
+      border-color: color-mix(in srgb, var(--cyan) 65%, var(--line));
+      color: var(--cyan);
+    }
+
+    mark {
+      background: color-mix(in srgb, var(--accent) 24%, transparent);
+      color: inherit;
+      border-radius: 4px;
+      padding: 0 3px;
+    }
+
+    .excerpt {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .ticker-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .manual-ticker {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .manual-ticker input {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--panel-soft);
+    }
+
+    td[contenteditable="true"] {
+      outline: 2px solid transparent;
+      outline-offset: -2px;
+      min-width: 92px;
+    }
+
+    td[contenteditable="true"]:focus {
+      outline-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    .chart-area {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 14px;
+      margin-top: 14px;
+      align-items: stretch;
+    }
+
+    .chart-box {
+      position: relative;
+      min-height: 330px;
+    }
+
+    .chart-empty {
+      position: absolute;
+      inset: 74px 20px 20px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--panel-soft) 45%, transparent);
+      pointer-events: none;
+    }
+
+    .note-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .note-list li + li {
+      margin-top: 7px;
+    }
+
+    .empty {
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .app-shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 14px;
+      }
+
+      .topbar,
+      .toolbar,
+      .chart-area {
+        display: block;
+      }
+
+      .top-actions,
+      .field-row {
+        justify-content: stretch;
+        margin-top: 12px;
+      }
+
+      .btn,
+      .input,
+      .manual-ticker input {
+        width: 100%;
+      }
+
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-box {
+        margin-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">NV</div>
+        <div>
+          <h1>NVIDIA Deal Monitor</h1>
+          <p class="subtitle">Official NVIDIA announcements mapped into ticker research leads.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn ghost" id="themeToggle" type="button">Toggle Theme</button>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="App sections">
+      <button class="tab" type="button" id="liveTab" aria-selected="true" data-panel="livePanel">NVIDIA Deal Monitor</button>
+      <button class="tab" type="button" id="backtestTab" aria-selected="false" data-panel="backtestPanel">Historical Tracker</button>
+    </nav>
+
+    <section class="panel active" id="livePanel" aria-labelledby="liveTab">
+      <div class="toolbar">
+        <div class="field-row">
+          <button class="btn primary" type="button" id="refreshFeed">Refresh Feed</button>
+          <input class="input" id="keywordFilter" type="search" placeholder="Filter: partnership, investment, AI cloud">
+          <label class="toggle">
+            <input id="aiOnly" type="checkbox" checked>
+            AI/deal terms only
+          </label>
+          <label class="toggle">
+            <input id="autoRefresh" type="checkbox">
+            Auto-refresh 6h
+          </label>
+        </div>
+        <p class="status" id="feedStatus">Ready to load NVIDIA official feeds.</p>
+      </div>
+      <div class="feed-grid" id="feedGrid"></div>
+    </section>
+
+    <section class="panel" id="backtestPanel" aria-labelledby="backtestTab">
+      <div class="toolbar">
+        <div class="field-row">
+          <button class="btn primary" type="button" id="addRow">Add Row</button>
+          <button class="btn" type="button" id="saveRows">Save Table</button>
+          <button class="btn ghost" type="button" id="resetRows">Reset Examples</button>
+        </div>
+        <p class="status">Editable research tracker. Returns are manual inputs, not live market data.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table aria-label="Historical NVIDIA deal performance tracker">
+          <thead>
+            <tr>
+              <th>Announcement Date</th>
+              <th>Company</th>
+              <th>Ticker</th>
+              <th>Event Type</th>
+              <th>1-Day %</th>
+              <th>3-Month %</th>
+              <th>6-Month %</th>
+              <th>1-Year %</th>
+              <th>Source</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="backtestRows"></tbody>
+        </table>
+      </div>
+
+      <div class="chart-area">
+        <div class="card chart-box">
+          <h2>Average Return by Horizon</h2>
+          <canvas id="returnsChart" aria-label="Average deal returns chart"></canvas>
+          <p class="chart-empty" id="chartEmpty">Add return percentages in the table to populate this chart.</p>
+        </div>
+        <aside class="card">
+          <h2>Manual Update Notes</h2>
+          <ul class="note-list">
+            <li>Edit any table cell directly, then press Save Table.</li>
+            <li>Use N/A until enough time has passed for that return window.</li>
+            <li>Calculate returns from the announcement close or next regular-session open, then stay consistent.</li>
+            <li>Compare against QQQ, SMH, SPY, or NVDA separately before treating a move as NVIDIA-specific.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      Informational research tool only. It highlights companies NVIDIA publicly names, partners with, funds, or uses in AI infrastructure announcements. It is not financial advice and it does not generate buy or sell signals.
+    </footer>
+  </main>
+
+  <script>
+    // Official NVIDIA feed endpoints. Direct browser fetch can be blocked by CORS,
+    // so the app tries direct URLs first and a public read-only CORS transport second.
+    const NVIDIA_FEEDS = [
+      "https://nvidianews.nvidia.com/releases.xml",
+      "https://nvidianews.nvidia.com/cats/press_release.xml",
+      "https://nvidianews.nvidia.com/rss.xml"
+    ];
+
+    const DEAL_TERMS = [
+      "partnership", "partner", "investment", "invest", "strategic", "agreement",
+      "collaborat", "AI cloud", "AI factory", "data center", "infrastructure",
+      "deploy", "capacity", "purchase commitment", "joint", "NVIDIA will invest"
+    ];
+
+    const TICKER_MAP = {
+      "Nebius": "NBIS",
+      "IREN": "IREN",
+      "Marvell": "MRVL",
+      "Coherent": "COHR",
+      "Corning": "GLW",
+      "Lumentum": "LITE",
+      "Adobe": "ADBE",
+      "ServiceNow": "NOW",
+      "Dell": "DELL",
+      "Dell Technologies": "DELL",
+      "Oracle": "ORCL",
+      "Oracle Cloud": "ORCL",
+      "CoreWeave": "CRWV",
+      "Cloudflare": "NET",
+      "Uber": "UBER",
+      "T-Mobile": "TMUS",
+      "Supermicro": "SMCI",
+      "Super Micro": "SMCI",
+      "Lenovo": "LNVGY",
+      "HPE": "HPE",
+      "IBM": "IBM",
+      "NetApp": "NTAP",
+      "Nutanix": "NTNX",
+      "Synopsys": "SNPS",
+      "Siemens": "SIEGY",
+      "Atlassian": "TEAM",
+      "Box": "BOX",
+      "PayPal": "PYPL",
+      "Pinterest": "PINS",
+      "DigitalOcean": "DOCN",
+      "Arm": "ARM",
+      "Micron": "MU"
+    };
+
+    const SAMPLE_ITEMS = [
+      {
+        title: "NVIDIA and Nebius Partner to Scale Full-Stack AI Cloud",
+        pubDate: "2026-03-11T12:00:00Z",
+        link: "https://nvidianews.nvidia.com/news/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud",
+        summary: "NVIDIA and Nebius Group N.V. (NASDAQ: NBIS) announced a strategic partnership. NVIDIA will invest $2 billion in Nebius to scale full-stack AI cloud infrastructure."
+      },
+      {
+        title: "NVIDIA and IREN Announce Strategic Partnership to Accelerate Deployment of up to 5 Gigawatts of AI Infrastructure",
+        pubDate: "2026-05-07T20:34:00Z",
+        link: "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure",
+        summary: "NVIDIA and IREN Limited (NASDAQ: IREN) announced a strategic partnership to accelerate next-generation AI infrastructure deployment."
+      },
+      {
+        title: "NVIDIA and Corning Announce Long-Term Partnership to Strengthen US Manufacturing for AI Infrastructure",
+        pubDate: "2026-05-06T11:30:00Z",
+        link: "https://nvidianews.nvidia.com/news/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure",
+        summary: "NVIDIA and Corning Incorporated (NYSE: GLW) announced a multiyear commercial and technology partnership for advanced optical connectivity."
+      }
+    ];
+
+    const DEFAULT_BACKTEST_ROWS = [
+      ["2026-03-11", "Nebius Group", "NBIS", "Strategic partnership + NVIDIA investment", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud"],
+      ["2026-05-07", "IREN", "IREN", "Strategic partnership + investment right", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure"],
+      ["2026-03-02", "Marvell", "MRVL", "Strategic partnership / NVLink Fusion", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/"],
+      ["2026-03-02", "Coherent", "COHR", "Strategic optics agreement + NVIDIA investment", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-coherent-announce-strategic-partnership-to-develop-optics-technology-to-scale-next-generation-data-center-architecture"],
+      ["2026-05-06", "Corning", "GLW", "Long-term AI infrastructure manufacturing partnership", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure"],
+      ["2026-03-02", "Lumentum", "LITE", "Strategic optics agreement + NVIDIA investment", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology"]
+    ];
+
+    const state = {
+      feedItems: [],
+      autoTimer: null,
+      chart: null
+    };
+
+    const els = {
+      shell: document.querySelector(".app-shell"),
+      tabs: document.querySelectorAll(".tab"),
+      panels: document.querySelectorAll(".panel"),
+      refreshFeed: document.getElementById("refreshFeed"),
+      keywordFilter: document.getElementById("keywordFilter"),
+      aiOnly: document.getElementById("aiOnly"),
+      autoRefresh: document.getElementById("autoRefresh"),
+      feedStatus: document.getElementById("feedStatus"),
+      feedGrid: document.getElementById("feedGrid"),
+      themeToggle: document.getElementById("themeToggle"),
+      addRow: document.getElementById("addRow"),
+      saveRows: document.getElementById("saveRows"),
+      resetRows: document.getElementById("resetRows"),
+      backtestRows: document.getElementById("backtestRows"),
+      returnsChart: document.getElementById("returnsChart"),
+      chartEmpty: document.getElementById("chartEmpty")
+    };
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function stripHtml(html) {
+      const doc = new DOMParser().parseFromString(html || "", "text/html");
+      return doc.body.textContent.replace(/\s+/g, " ").trim();
+    }
+
+    function formatDate(value) {
+      if (!value) return "Unknown date";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+    }
+
+    function detectTickers(text) {
+      const found = new Map();
+      const haystack = text || "";
+      for (const [company, ticker] of Object.entries(TICKER_MAP)) {
+        const escaped = company.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        if (new RegExp(`\\b${escaped}\\b`, "i").test(haystack)) {
+          found.set(ticker, company);
+        }
+      }
+
+      const explicitTickerMatches = haystack.matchAll(/\b(?:NASDAQ|NYSE):\s*([A-Z]{1,5})\b/g);
+      for (const match of explicitTickerMatches) {
+        found.set(match[1], "Explicit ticker");
+      }
+      return [...found.entries()].map(([ticker, company]) => ({ ticker, company }));
+    }
+
+    function eventStrength(text) {
+      const lower = text.toLowerCase();
+      if (lower.includes("nvidia will invest") || lower.includes("invest $")) return ["Direct investment", "high"];
+      if (lower.includes("purchase commitment") || lower.includes("capacity")) return ["Capacity / purchase signal", "high"];
+      if (lower.includes("strategic partnership") || lower.includes("strategic agreement")) return ["Strategic partnership", "high"];
+      if (lower.includes("collaborat") || lower.includes("partner")) return ["Collaboration", "medium"];
+      return ["NVIDIA mention", "medium"];
+    }
+
+    function highlightTerms(text) {
+      let safe = escapeHtml(text);
+      for (const term of DEAL_TERMS) {
+        const pattern = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        safe = safe.replace(new RegExp(`(${pattern})`, "gi"), "<mark>$1</mark>");
+      }
+      return safe;
+    }
+
+    async function fetchTextWithFallback(url) {
+      try {
+        const direct = await fetch(url, { cache: "no-store" });
+        if (direct.ok) return { text: await direct.text(), viaProxy: false };
+      } catch (error) {
+        // Browser CORS failures land here; the proxy is only a transport fallback.
+      }
+
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+      const proxied = await fetch(proxyUrl, { cache: "no-store" });
+      if (!proxied.ok) throw new Error(`Feed fetch failed: ${proxied.status}`);
+      return { text: await proxied.text(), viaProxy: true };
+    }
+
+    function parseRss(xmlText) {
+      const doc = new DOMParser().parseFromString(xmlText, "application/xml");
+      if (doc.querySelector("parsererror")) throw new Error("NVIDIA feed returned invalid XML.");
+
+      return [...doc.querySelectorAll("item")].map((item) => {
+        const title = item.querySelector("title")?.textContent.trim() || "Untitled";
+        const link = item.querySelector("link")?.textContent.trim() || item.querySelector("guid")?.textContent.trim() || "#";
+        const pubDate = item.querySelector("pubDate")?.textContent.trim() || item.querySelector("modDate")?.textContent.trim() || "";
+        const description = item.querySelector("description")?.textContent || "";
+        const content = item.querySelector("content")?.textContent || "";
+        const summary = stripHtml(description || content).slice(0, 340);
+        return { title, link, pubDate, summary };
+      });
+    }
+
+    async function loadFeed() {
+      els.feedStatus.textContent = "Loading NVIDIA official feeds...";
+      els.feedStatus.classList.remove("warning");
+      els.refreshFeed.disabled = true;
+
+      try {
+        const allItems = [];
+        let usedProxy = false;
+        for (const url of NVIDIA_FEEDS) {
+          const result = await fetchTextWithFallback(url);
+          usedProxy = usedProxy || result.viaProxy;
+          allItems.push(...parseRss(result.text));
+        }
+
+        const unique = new Map();
+        for (const item of allItems) {
+          unique.set(item.link || item.title, item);
+        }
+
+        state.feedItems = [...unique.values()].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        renderFeed();
+        els.feedStatus.textContent = `Loaded ${state.feedItems.length} NVIDIA items${usedProxy ? " using CORS transport fallback" : ""}. Last refresh: ${new Date().toLocaleString()}.`;
+      } catch (error) {
+        state.feedItems = SAMPLE_ITEMS;
+        renderFeed();
+        els.feedStatus.textContent = `Live RSS fetch failed, showing built-in examples. ${error.message}`;
+        els.feedStatus.classList.add("warning");
+      } finally {
+        els.refreshFeed.disabled = false;
+      }
+    }
+
+    function feedMatchesFilters(item) {
+      const combined = `${item.title} ${item.summary}`;
+      const filter = els.keywordFilter.value.trim().toLowerCase();
+      const aiOnly = els.aiOnly.checked;
+      const hasDealTerm = DEAL_TERMS.some((term) => combined.toLowerCase().includes(term.toLowerCase()));
+      if (aiOnly && !hasDealTerm) return false;
+      return !filter || combined.toLowerCase().includes(filter);
+    }
+
+    function renderFeed() {
+      const filtered = state.feedItems.filter(feedMatchesFilters);
+      if (!filtered.length) {
+        els.feedGrid.innerHTML = '<div class="empty">No announcements match the current filters.</div>';
+        return;
+      }
+
+      els.feedGrid.innerHTML = filtered.map((item, index) => {
+        const combined = `${item.title} ${item.summary}`;
+        const tickers = detectTickers(combined);
+        const [strengthLabel, strengthClass] = eventStrength(combined);
+        const tickerHtml = tickers.length
+          ? tickers.map(({ ticker, company }) => `<span class="pill high">${escapeHtml(ticker)} <span aria-hidden="true">·</span> ${escapeHtml(company)}</span>`).join("")
+          : '<span class="pill">No public ticker detected</span>';
+
+        return `
+          <article class="card feed-card" data-feed-index="${index}">
+            <div class="meta">
+              <span>${formatDate(item.pubDate)}</span>
+              <span class="pill ${strengthClass}">${strengthLabel}</span>
+            </div>
+            <h2>${highlightTerms(item.title)}</h2>
+            <p class="excerpt">${highlightTerms(item.summary || "No summary available.")}</p>
+            <div class="ticker-list" data-tickers>${tickerHtml}</div>
+            <div class="manual-ticker">
+              <input class="input" type="text" placeholder="Add ticker manually">
+              <button class="btn" type="button" data-add-ticker>Add</button>
+            </div>
+            <a class="btn" href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer">Open NVIDIA Article</a>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function readSavedRows() {
+      try {
+        return JSON.parse(localStorage.getItem("nvidiaDealRows")) || DEFAULT_BACKTEST_ROWS;
+      } catch {
+        return DEFAULT_BACKTEST_ROWS;
+      }
+    }
+
+    function renderRows(rows = readSavedRows()) {
+      els.backtestRows.innerHTML = rows.map((row, rowIndex) => `
+        <tr data-row="${rowIndex}">
+          ${row.map((cell) => `<td contenteditable="true">${escapeHtml(cell)}</td>`).join("")}
+          <td><button class="btn ghost" type="button" data-delete-row>Delete</button></td>
+        </tr>
+      `).join("");
+      updateChart();
+    }
+
+    function collectRows() {
+      return [...els.backtestRows.querySelectorAll("tr")].map((tr) =>
+        [...tr.querySelectorAll("td[contenteditable='true']")].map((td) => td.textContent.trim())
+      );
+    }
+
+    function saveRows() {
+      localStorage.setItem("nvidiaDealRows", JSON.stringify(collectRows()));
+      updateChart();
+    }
+
+    function parsePercent(value) {
+      const cleaned = String(value).replace("%", "").trim();
+      if (!cleaned || cleaned.toUpperCase() === "N/A") return null;
+      const parsed = Number.parseFloat(cleaned);
+      return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function average(values) {
+      const nums = values.filter((value) => value !== null);
+      if (!nums.length) return null;
+      return nums.reduce((sum, value) => sum + value, 0) / nums.length;
+    }
+
+    function updateChart() {
+      if (!window.Chart) return;
+      const rows = collectRows();
+      const horizons = [
+        { label: "1-Day", index: 4 },
+        { label: "3-Month", index: 5 },
+        { label: "6-Month", index: 6 },
+        { label: "1-Year", index: 7 }
+      ];
+      const data = horizons.map((horizon) => average(rows.map((row) => parsePercent(row[horizon.index]))));
+      const hasData = data.some((value) => value !== null);
+      els.chartEmpty.style.display = hasData ? "none" : "grid";
+
+      if (state.chart) state.chart.destroy();
+      state.chart = new Chart(els.returnsChart, {
+        type: "bar",
+        data: {
+          labels: horizons.map((horizon) => horizon.label),
+          datasets: [{
+            label: "Average return %",
+            data: data.map((value) => value ?? 0),
+            backgroundColor: ["#76b900", "#0f8aa8", "#f5b84b", "#7d5fff"],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => data[context.dataIndex] === null ? "No data yet" : `${context.parsed.y.toFixed(2)}%`
+              }
+            }
+          },
+          scales: {
+            y: {
+              ticks: { callback: (value) => `${value}%` },
+              grid: { color: "rgba(128, 140, 155, 0.18)" }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    els.tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        els.tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+        els.panels.forEach((panel) => panel.classList.toggle("active", panel.id === tab.dataset.panel));
+        updateChart();
+      });
+    });
+
+    els.themeToggle.addEventListener("click", () => {
+      const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+      document.body.dataset.theme = nextTheme;
+      localStorage.setItem("nvidiaDealTheme", nextTheme);
+      updateChart();
+    });
+
+    els.refreshFeed.addEventListener("click", loadFeed);
+    els.keywordFilter.addEventListener("input", renderFeed);
+    els.aiOnly.addEventListener("change", renderFeed);
+
+    els.autoRefresh.addEventListener("change", () => {
+      if (state.autoTimer) clearInterval(state.autoTimer);
+      state.autoTimer = els.autoRefresh.checked ? setInterval(loadFeed, 6 * 60 * 60 * 1000) : null;
+    });
+
+    els.feedGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-add-ticker]");
+      if (!button) return;
+      const card = button.closest(".feed-card");
+      const input = card.querySelector(".manual-ticker input");
+      const value = input.value.trim().toUpperCase();
+      if (!/^[A-Z.]{1,6}$/.test(value)) return;
+      card.querySelector("[data-tickers]").insertAdjacentHTML("beforeend", `<span class="pill high">${escapeHtml(value)} · Manual</span>`);
+      input.value = "";
+    });
+
+    els.addRow.addEventListener("click", () => {
+      const rows = collectRows();
+      rows.unshift([new Date().toISOString().slice(0, 10), "Company", "TICKER", "Event type", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/"]);
+      renderRows(rows);
+    });
+
+    els.saveRows.addEventListener("click", saveRows);
+
+    els.resetRows.addEventListener("click", () => {
+      localStorage.removeItem("nvidiaDealRows");
+      renderRows(DEFAULT_BACKTEST_ROWS);
+    });
+
+    els.backtestRows.addEventListener("click", (event) => {
+      if (!event.target.closest("[data-delete-row]")) return;
+      const row = event.target.closest("tr");
+      row.remove();
+      saveRows();
+    });
+
+    els.backtestRows.addEventListener("input", () => {
+      updateChart();
+    });
+
+    const savedTheme = localStorage.getItem("nvidiaDealTheme");
+    if (savedTheme) document.body.dataset.theme = savedTheme;
+
+    renderRows();
+    loadFeed();
+  </script>
+</body>
+</html>
