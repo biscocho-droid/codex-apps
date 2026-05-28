@@ -218,6 +218,44 @@ const defaultState = {
   cashAccounts: [
     { name: "Brokerage Cash", type: "Investment", balance: 0, account: "brokerage", note: "Cash balance not provided in screenshot yet." },
   ],
+  watchlist: [
+    {
+      ticker: "MRVL",
+      name: "Marvell Technology",
+      assetClass: "Equity",
+      sector: "Semis / AI Infrastructure",
+      priority: "DCA Candidate",
+      status: "Future buy",
+      note: "Semiconductor infrastructure name to revisit when buying power opens up.",
+    },
+    {
+      ticker: "SLV",
+      name: "iShares Silver Trust",
+      assetClass: "ETF",
+      sector: "Silver / Metals",
+      priority: "DCA Candidate",
+      status: "Future buy",
+      note: "Silver ETF exposure for a metals sleeve without individual miner risk.",
+    },
+    {
+      ticker: "OKLO",
+      name: "Oklo",
+      assetClass: "Equity",
+      sector: "Advanced Nuclear",
+      priority: "Watch closely",
+      status: "Future buy",
+      note: "Advanced nuclear exposure to keep on the list for staged entry.",
+    },
+    {
+      ticker: "NASA",
+      name: "NASA ETF",
+      assetClass: "ETF",
+      sector: "Space / Aerospace",
+      priority: "DCA Candidate",
+      status: "Future buy",
+      note: "Space-themed ETF candidate to track as a future allocation idea.",
+    },
+  ],
   history: {
     labels: [
       "Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026",
@@ -313,6 +351,8 @@ const els = {
   matrixBasePl: document.getElementById("matrix-base-pl"),
   matrixBullValue: document.getElementById("matrix-bull-value"),
   matrixBullPl: document.getElementById("matrix-bull-pl"),
+  watchlistCount: document.getElementById("watchlist-count"),
+  watchlistGrid: document.getElementById("watchlist-grid"),
   accountPills: [...document.querySelectorAll(".account-pill")],
   rangePills: [...document.querySelectorAll(".range-pill")],
   promptPills: [...document.querySelectorAll(".prompt-pill")],
@@ -374,6 +414,7 @@ function loadState() {
         ...account,
         account: account.account || "brokerage",
       })),
+      watchlist: parsed.watchlist || structuredClone(defaultState.watchlist),
       planning: {
         ...structuredClone(defaultState.planning),
         ...(parsed.planning || {}),
@@ -658,6 +699,35 @@ function renderTheses(model) {
       `;
       els.thesisCards.appendChild(item);
     });
+}
+
+function renderWatchlist() {
+  const currentTickers = new Set(state.holdings.map((holding) => holding.ticker));
+  const candidates = state.watchlist || [];
+  els.watchlistCount.textContent = `${candidates.length} candidates`;
+  els.watchlistGrid.innerHTML = "";
+
+  candidates.forEach((candidate) => {
+    const isHeld = currentTickers.has(candidate.ticker);
+    const card = document.createElement("article");
+    card.className = "watchlist-card";
+    card.innerHTML = `
+      <div class="watchlist-card-head">
+        <div>
+          <span class="watchlist-ticker">${escapeHtml(candidate.ticker)}</span>
+          <h3>${escapeHtml(candidate.name)}</h3>
+        </div>
+        <span class="watchlist-status">${isHeld ? "Held" : escapeHtml(candidate.status)}</span>
+      </div>
+      <div class="watchlist-meta">
+        <span>${escapeHtml(candidate.assetClass)}</span>
+        <span>${escapeHtml(candidate.sector)}</span>
+        <span>${escapeHtml(candidate.priority)}</span>
+      </div>
+      <p>${escapeHtml(candidate.note)}</p>
+    `;
+    els.watchlistGrid.appendChild(card);
+  });
 }
 
 function renderProfile() {
@@ -1178,6 +1248,7 @@ function renderAll() {
   renderPerformance(model);
   renderBrief(model);
   renderTheses(model);
+  renderWatchlist();
   renderProfile();
   renderChart();
   renderK401Modeler();

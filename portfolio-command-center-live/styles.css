@@ -258,6 +258,7 @@ td {
 
 .sheet-view,
 .modeler-view,
+.watchlist-view,
 .scenarios-view,
 .matrix-view {
   gap: 1rem;
@@ -665,7 +666,8 @@ td {
 .allocation-list,
 .account-list,
 .thesis-grid,
-.scenario-card-grid {
+.scenario-card-grid,
+.watchlist-grid {
   display: grid;
   gap: 0.8rem;
 }
@@ -677,7 +679,8 @@ td {
 .allocation-row,
 .account-row,
 .thesis-card,
-.scenario-card {
+.scenario-card,
+.watchlist-card {
   padding: 0.95rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -688,6 +691,7 @@ td {
 .account-head,
 .thesis-head,
 .scenario-card-head,
+.watchlist-card-head,
 .scenario-result-row {
   display: flex;
   justify-content: space-between;
@@ -697,6 +701,55 @@ td {
 
 .scenario-card-head {
   align-items: start;
+}
+
+.watchlist-card-head {
+  align-items: flex-start;
+}
+
+.watchlist-card h3 {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+}
+
+.watchlist-ticker {
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.55rem;
+  font-weight: 900;
+}
+
+.watchlist-status {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(114, 220, 143, 0.12);
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.watchlist-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.watchlist-meta span {
+  padding: 0.38rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.watchlist-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .scenario-targets {

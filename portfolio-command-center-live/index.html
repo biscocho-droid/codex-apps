@@ -27,6 +27,7 @@
           <button id="dashboard-view-button" type="button" class="view-button active" data-view="dashboard">Dashboard</button>
           <button id="sheet-view-button" type="button" class="view-button" data-view="sheet">Holdings Sheet</button>
           <button id="k401-view-button" type="button" class="view-button" data-view="k401">401(k) Modeler</button>
+          <button id="watchlist-view-button" type="button" class="view-button" data-view="watchlist">Buy List</button>
           <button id="scenarios-view-button" type="button" class="view-button" data-view="scenarios">Scenario Lab</button>
           <button id="matrix-view-button" type="button" class="view-button" data-view="matrix">Outcome Matrix</button>
         </div>
@@ -336,6 +337,21 @@
           <div id="k401-summary" class="mini-metrics"></div>
         </article>
       </div>
+    </section>
+
+    <section id="watchlist-view" class="watchlist-view app-view" aria-label="Future Buy List" hidden>
+      <div class="sheet-toolbar">
+        <div>
+          <p class="eyebrow">Future Buys</p>
+          <h2>Dollar-Cost Average List</h2>
+        </div>
+        <div class="sheet-stats">
+          <span id="watchlist-count">0 candidates</span>
+          <span>Not currently held</span>
+        </div>
+      </div>
+
+      <div id="watchlist-grid" class="watchlist-grid"></div>
     </section>
 
     <section id="scenarios-view" class="scenarios-view app-view" aria-label="Portfolio Scenario Lab" hidden>
