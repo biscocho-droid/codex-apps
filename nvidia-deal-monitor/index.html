@@ -626,21 +626,21 @@
       }
     ];
 
-    const BACKTEST_DATA_VERSION = "2026-05-27-to-date-defaults";
+    const BACKTEST_DATA_VERSION = "2026-05-27-mature-yahoo-windows-v2";
 
     const DEFAULT_BACKTEST_ROWS = [
-      ["2023-05-17", "ServiceNow", "NOW", "Enterprise generative AI partnership", "3.50%", "3.59%", "https://nvidianews.nvidia.com/news/servicenow-and-nvidia-announce-partnership-to-build-generative-ai-across-enterprise-it"],
-      ["2022-10-18", "Oracle", "ORCL", "Multi-year AI adoption partnership", "-1.09%", "197.48%", "https://nvidianews.nvidia.com/news/oracle-nvidia-speed-ai-adoption"],
-      ["2024-02-25", "ServiceNow", "NOW", "Expanded telco-specific GenAI partnership", "-1.61%", "-34.51%", "https://nvidianews.nvidia.com/news/servicenow-nvidia-telco-specific-genai-solutions"],
-      ["2024-03-18", "Oracle", "ORCL", "Sovereign AI collaboration", "1.09%", "53.10%", "https://nvidianews.nvidia.com/news/oracle-nvidia-sovereign-ai"],
-      ["2024-03-18", "Synopsys", "SNPS", "cuLitho semiconductor manufacturing collaboration", "4.30%", "-6.19%", "https://nvidianews.nvidia.com/news/tsmc-synopsys-nvidia-culitho"],
-      ["2025-03-18", "Oracle", "ORCL", "Agentic AI inference collaboration", "2.01%", "29.52%", "https://nvidianews.nvidia.com/news/oracle-and-nvidia-collaborate-to-help-enterprises-accelerate-agentic-ai-inference"],
-      ["2026-03-11", "Nebius Group", "NBIS", "Strategic partnership + NVIDIA investment", "-3.53%", "86.05%", "https://nvidianews.nvidia.com/news/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud"],
-      ["2026-05-07", "IREN", "IREN", "Strategic partnership + investment right", "7.65%", "19.33%", "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure"],
-      ["2026-03-02", "Marvell", "MRVL", "Strategic partnership / NVLink Fusion", "-4.14%", "145.86%", "https://nvidianews.nvidia.com/"],
-      ["2026-03-02", "Coherent", "COHR", "Strategic optics agreement + NVIDIA investment", "-6.06%", "27.19%", "https://nvidianews.nvidia.com/news/nvidia-and-coherent-announce-strategic-partnership-to-develop-optics-technology-to-scale-next-generation-data-center-architecture"],
-      ["2026-05-06", "Corning", "GLW", "Long-term AI infrastructure manufacturing partnership", "0.46%", "5.13%", "https://nvidianews.nvidia.com/news/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure"],
-      ["2026-03-02", "Lumentum", "LITE", "Strategic optics agreement + NVIDIA investment", "-11.34%", "15.20%", "https://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology"]
+      ["2023-05-17", "ServiceNow", "NOW", "Enterprise generative AI partnership", "3.50%", "10.29%", "32.75%", "55.21%", "https://nvidianews.nvidia.com/news/servicenow-and-nvidia-announce-partnership-to-build-generative-ai-across-enterprise-it"],
+      ["2022-10-18", "Oracle", "ORCL", "Multi-year AI adoption partnership", "-1.09%", "29.85%", "45.07%", "63.95%", "https://nvidianews.nvidia.com/news/oracle-nvidia-speed-ai-adoption"],
+      ["2024-02-25", "ServiceNow", "NOW", "Expanded telco-specific GenAI partnership", "-1.61%", "-6.52%", "6.18%", "18.29%", "https://nvidianews.nvidia.com/news/servicenow-nvidia-telco-specific-genai-solutions"],
+      ["2024-03-18", "Oracle", "ORCL", "Sovereign AI collaboration", "1.09%", "13.54%", "29.52%", "18.20%", "https://nvidianews.nvidia.com/news/oracle-nvidia-sovereign-ai"],
+      ["2024-03-18", "Synopsys", "SNPS", "cuLitho semiconductor manufacturing collaboration", "4.30%", "10.65%", "-11.54%", "-20.09%", "https://nvidianews.nvidia.com/news/tsmc-synopsys-nvidia-culitho"],
+      ["2025-03-18", "Oracle", "ORCL", "Agentic AI inference collaboration", "2.01%", "41.60%", "99.61%", "3.35%", "https://nvidianews.nvidia.com/news/oracle-and-nvidia-collaborate-to-help-enterprises-accelerate-agentic-ai-inference"],
+      ["2026-03-11", "Nebius Group", "NBIS", "Strategic partnership + NVIDIA investment", "-3.53%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud"],
+      ["2026-05-07", "IREN", "IREN", "Strategic partnership + investment right", "7.65%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure"],
+      ["2026-03-02", "Marvell", "MRVL", "Strategic partnership / NVLink Fusion", "-4.14%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/"],
+      ["2026-03-02", "Coherent", "COHR", "Strategic optics agreement + NVIDIA investment", "-6.06%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-coherent-announce-strategic-partnership-to-develop-optics-technology-to-scale-next-generation-data-center-architecture"],
+      ["2026-05-06", "Corning", "GLW", "Long-term AI infrastructure manufacturing partnership", "0.46%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-corning-announce-long-term-partnership-to-strengthen-us-manufacturing-for-ai-infrastructure"],
+      ["2026-03-02", "Lumentum", "LITE", "Strategic optics agreement + NVIDIA investment", "-11.34%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology"]
     ];
 
     const state = {
