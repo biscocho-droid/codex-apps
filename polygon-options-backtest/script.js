@@ -36,7 +36,11 @@ function drawChart(trades) {
   ctx.clearRect(0, 0, width, height);
 
   const pad = 34 * ratio;
-  const values = trades.map((trade) => Number(trade.pnl_dollars || 0));
+  let running = 0;
+  const values = trades.map((trade) => {
+    running += Number(trade.pnl_dollars || 0);
+    return running;
+  });
   const min = Math.min(0, ...values);
   const max = Math.max(0, ...values);
   const span = Math.max(1, max - min);
@@ -55,27 +59,32 @@ function drawChart(trades) {
   ctx.font = `${12 * ratio}px Avenir Next, Segoe UI, sans-serif`;
   ctx.fillText("$0", 8 * ratio, zeroY + 4 * ratio);
 
-  const barGap = 12 * ratio;
-  const barW = Math.max(26 * ratio, (chartW - barGap * (trades.length - 1)) / Math.max(1, trades.length));
+  if (!values.length) return;
 
-  trades.forEach((trade, index) => {
-    const value = Number(trade.pnl_dollars || 0);
-    const x = pad + index * (barW + barGap);
+  ctx.strokeStyle = values.at(-1) >= 0 ? "#4fd17a" : "#ff6678";
+  ctx.lineWidth = 2.5 * ratio;
+  ctx.beginPath();
+  values.forEach((value, index) => {
+    const x = pad + (index / Math.max(1, values.length - 1)) * chartW;
     const y = pad + ((max - value) / span) * chartH;
-    const top = Math.min(y, zeroY);
-    const h = Math.max(2 * ratio, Math.abs(zeroY - y));
-
-    ctx.fillStyle = value >= 0 ? "#4fd17a" : "#ff6678";
-    ctx.fillRect(x, top, barW, h);
-
-    ctx.fillStyle = "rgba(255,255,255,.78)";
-    ctx.font = `${11 * ratio}px Avenir Next, Segoe UI, sans-serif`;
-    ctx.fillText(trade.option_type.toUpperCase(), x, height - 10 * ratio);
+    if (index === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
   });
+  ctx.stroke();
+
+  const lastValue = values.at(-1);
+  ctx.fillStyle = lastValue >= 0 ? "#4fd17a" : "#ff6678";
+  ctx.font = `${13 * ratio}px Avenir Next, Segoe UI, sans-serif`;
+  ctx.fillText(`Final ${money.format(lastValue)}`, pad, pad - 10 * ratio);
 }
 
 function renderTrades(trades) {
-  byId("trade-list").innerHTML = trades
+  const sample = trades.slice(0, 80);
+  byId("trade-sample-note").textContent = trades.length > sample.length ? `Showing first ${sample.length} of ${trades.length}` : `${trades.length} trades`;
+  byId("trade-list").innerHTML = sample
     .map((trade) => {
       const pnl = Number(trade.pnl_dollars || 0);
       return `
@@ -102,11 +111,48 @@ function renderTrades(trades) {
     .join("");
 }
 
+function renderExperiments(experiments = []) {
+  byId("experiment-list").innerHTML = experiments
+    .slice(0, 8)
+    .map((row) => {
+      const summary = row.summary || {};
+      const totalPnl = Number(summary.total_pnl_dollars || 0);
+      const ror = Number(summary.avg_return_on_risk || 0);
+      return `
+        <article class="experiment-row">
+          <div>
+            <strong>${row.name.replaceAll("_", " ")}</strong>
+            <span>${row.description}</span>
+          </div>
+          <div class="experiment-metric">
+            <span>Trades</span>
+            <strong>${summary.trade_count || 0}</strong>
+          </div>
+          <div class="experiment-metric">
+            <span>Win Rate</span>
+            <strong>${summary.win_rate === undefined ? "--" : pct.format(summary.win_rate)}</strong>
+          </div>
+          <div class="experiment-metric">
+            <span>Total P/L</span>
+            <strong class="${pnlClass(totalPnl)}">${money.format(totalPnl)}</strong>
+          </div>
+          <div class="experiment-metric">
+            <span>Avg R/R</span>
+            <strong class="${pnlClass(ror)}">${summary.avg_return_on_risk === undefined ? "--" : pct.format(ror)}</strong>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
 function render(data) {
-  const { summary, rules, trades, run, tickers } = data;
+  const { summary, rules, trades, run, tickers, experiments } = data;
 
   byId("source-pill").textContent = "Polygon";
-  byId("entry-date").textContent = run.entry_date;
+  const entryDates = run.entry_dates || [run.entry_date].filter(Boolean);
+  byId("entry-date").textContent =
+    entryDates.length > 1 ? `${entryDates[0]} to ${entryDates.at(-1)} (${entryDates.length} entries)` : entryDates[0];
   byId("universe").textContent = tickers.join(", ");
   byId("rules").textContent = `${rules.min_dte}-${rules.max_dte} DTE, $${rules.spread_width} wide, min $${rules.min_credit.toFixed(2)} credit`;
   byId("fill-model").textContent = `$${rules.fill_haircut.toFixed(2)} per-spread haircut, ${pct.format(rules.profit_target_pct)} profit target, ${rules.stop_loss_multiple}x credit stop`;
@@ -123,6 +169,7 @@ function render(data) {
       : "No trades";
 
   drawChart(trades);
+  renderExperiments(experiments);
   renderTrades(trades);
 }
 

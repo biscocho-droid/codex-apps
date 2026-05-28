@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="app-version" content="2026-05-27-polygon-options-backtest-v1" />
+    <meta name="app-version" content="2026-05-27-polygon-options-backtest-v2" />
     <title>Polygon Options Backtest</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
@@ -65,11 +65,20 @@
 
         <section class="panel chart-panel" aria-label="Trade results">
           <div class="panel-head">
-            <h2>Trade Outcomes</h2>
+            <h2>Equity Curve</h2>
             <span id="best-worst">--</span>
           </div>
           <div class="chart-wrap">
-            <canvas id="pnl-chart" width="760" height="260" aria-label="Profit and loss chart"></canvas>
+            <canvas id="pnl-chart" width="760" height="260" aria-label="Backtest equity curve"></canvas>
+          </div>
+          <div class="panel-head subhead">
+            <h2>Experiment Leaderboard</h2>
+            <span>In-sample filters</span>
+          </div>
+          <div id="experiment-list" class="experiment-list"></div>
+          <div class="panel-head subhead">
+            <h2>Trade Sample</h2>
+            <span id="trade-sample-note">--</span>
           </div>
           <div id="trade-list" class="trade-list"></div>
         </section>

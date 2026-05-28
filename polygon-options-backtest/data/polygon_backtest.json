@@ -6,7 +6,11 @@
     "limitations": [
       "Historical bid/ask quotes were not available to this API key.",
       "Historical open interest was not available to this API key.",
-      "Entry and exit fills use option close prices plus a configurable haircut."
+      "Entry and exit fills use option close prices plus a configurable haircut.",
+      "Experiment rows are in-sample filters over the generated trade set and should be validated out-of-sample."
+    ],
+    "entry_dates": [
+      "2026-02-02"
     ]
   },
   "tickers": [
@@ -127,6 +131,112 @@
       "pnl_dollars": -123.0,
       "return_on_risk": -0.2908,
       "days_held": 11
+    }
+  ],
+  "experiments": [
+    {
+      "name": "calls_only",
+      "description": "Call credit spreads only.",
+      "summary": {
+        "trade_count": 1,
+        "wins": 1,
+        "losses": 0,
+        "win_rate": 1.0,
+        "total_pnl_dollars": 64.0,
+        "avg_pnl_dollars": 64.0,
+        "best_trade_dollars": 64.0,
+        "worst_trade_dollars": 64.0,
+        "avg_return_on_risk": 0.1612
+      }
+    },
+    {
+      "name": "high_credit_to_risk",
+      "description": "Credit/risk >= 20%.",
+      "summary": {
+        "trade_count": 2,
+        "wins": 1,
+        "losses": 1,
+        "win_rate": 0.5,
+        "total_pnl_dollars": -73.0,
+        "avg_pnl_dollars": -36.5,
+        "best_trade_dollars": 64.0,
+        "worst_trade_dollars": -137.0,
+        "avg_return_on_risk": -0.0955
+      }
+    },
+    {
+      "name": "all_trades",
+      "description": "Every simulated spread.",
+      "summary": {
+        "trade_count": 3,
+        "wins": 1,
+        "losses": 2,
+        "win_rate": 0.3333,
+        "total_pnl_dollars": -196.0,
+        "avg_pnl_dollars": -65.33,
+        "best_trade_dollars": 64.0,
+        "worst_trade_dollars": -137.0,
+        "avg_return_on_risk": -0.1606
+      }
+    },
+    {
+      "name": "liquid_entries",
+      "description": "Entry volume >= 100 contracts on both legs.",
+      "summary": {
+        "trade_count": 3,
+        "wins": 1,
+        "losses": 2,
+        "win_rate": 0.3333,
+        "total_pnl_dollars": -196.0,
+        "avg_pnl_dollars": -65.33,
+        "best_trade_dollars": 64.0,
+        "worst_trade_dollars": -137.0,
+        "avg_return_on_risk": -0.1606
+      }
+    },
+    {
+      "name": "conservative_delta",
+      "description": "Short delta absolute value <= 0.22.",
+      "summary": {
+        "trade_count": 0
+      }
+    },
+    {
+      "name": "higher_iv",
+      "description": "Estimated IV >= 30%.",
+      "summary": {
+        "trade_count": 0
+      }
+    },
+    {
+      "name": "balanced_liquid",
+      "description": "Credit/risk >= 18%, volume >= 50, abs(delta) <= 0.25.",
+      "summary": {
+        "trade_count": 1,
+        "wins": 0,
+        "losses": 1,
+        "win_rate": 0.0,
+        "total_pnl_dollars": -123.0,
+        "avg_pnl_dollars": -123.0,
+        "best_trade_dollars": -123.0,
+        "worst_trade_dollars": -123.0,
+        "avg_return_on_risk": -0.2908
+      }
+    },
+    {
+      "name": "puts_only",
+      "description": "Put credit spreads only.",
+      "summary": {
+        "trade_count": 2,
+        "wins": 0,
+        "losses": 2,
+        "win_rate": 0.0,
+        "total_pnl_dollars": -260.0,
+        "avg_pnl_dollars": -130.0,
+        "best_trade_dollars": -123.0,
+        "worst_trade_dollars": -137.0,
+        "avg_return_on_risk": -0.3215
+      }
     }
   ]
 }

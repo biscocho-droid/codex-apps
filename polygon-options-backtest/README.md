@@ -14,4 +14,4 @@ Current limitations:
 - Historical bid/ask quotes are not included.
 - Historical open interest is not included.
 - Fills use option close prices plus a conservative haircut.
-
+- Experiment leaderboard rows are in-sample filters over the generated trade set.

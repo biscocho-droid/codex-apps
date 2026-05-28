@@ -137,6 +137,10 @@ dt {
   margin-bottom: 12px;
 }
 
+.subhead {
+  margin: 16px 0 10px;
+}
+
 .detail-list {
   display: grid;
   gap: 12px;
@@ -197,6 +201,42 @@ canvas {
   margin-top: 12px;
 }
 
+.experiment-list {
+  display: grid;
+  gap: 8px;
+}
+
+.experiment-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.4fr) repeat(4, minmax(84px, 0.7fr));
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0d1216;
+}
+
+.experiment-row strong,
+.experiment-row span {
+  display: block;
+}
+
+.experiment-row strong {
+  font-size: 0.94rem;
+}
+
+.experiment-row span,
+.experiment-metric span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.experiment-metric {
+  display: grid;
+  gap: 3px;
+}
+
 .trade-row {
   display: grid;
   grid-template-columns: 1.2fr 1fr 0.7fr 0.7fr;
@@ -249,11 +289,16 @@ canvas {
   .trade-row {
     grid-template-columns: 1fr 1fr;
   }
+
+  .experiment-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 520px) {
   .summary-grid,
-  .trade-row {
+  .trade-row,
+  .experiment-row {
     grid-template-columns: 1fr;
   }
 
