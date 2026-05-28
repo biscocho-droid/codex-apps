@@ -9,7 +9,7 @@ Static GitHub Pages app for monitoring official NVIDIA announcements and turning
 - Detects common public-company tickers from official NVIDIA announcement text.
 - Supports manual ticker additions inside the live monitor.
 - Includes an editable historical performance tracker with local browser storage.
-- Refreshes performance windows from Yahoo Finance adjusted close data when browser access is available.
+- Refreshes 1-day and since-announcement returns from Yahoo Finance adjusted close data when browser access is available.
 - Shows a simple average-return chart from tracked performance data.
 
 ## Deploy

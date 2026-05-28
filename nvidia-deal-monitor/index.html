@@ -509,7 +509,7 @@
           <button class="btn" type="button" id="saveRows">Save Table</button>
           <button class="btn ghost" type="button" id="resetRows">Reset Examples</button>
         </div>
-        <p class="status" id="marketStatus">Returns use Yahoo Finance adjusted closes when refreshed. Future windows stay N/A.</p>
+        <p class="status" id="marketStatus">Returns use Yahoo Finance adjusted closes when refreshed. Since-announcement return uses the latest available close.</p>
       </div>
 
       <div class="table-wrap">
@@ -521,9 +521,7 @@
               <th>Ticker</th>
               <th>Event Type</th>
               <th>1-Day %</th>
-              <th>3-Month %</th>
-              <th>6-Month %</th>
-              <th>1-Year %</th>
+              <th>Since Announcement %</th>
               <th>Source</th>
               <th></th>
             </tr>
@@ -534,15 +532,15 @@
 
       <div class="chart-area">
         <div class="card chart-box">
-          <h2>Average Return by Horizon</h2>
+          <h2>Average Deal Return</h2>
           <canvas id="returnsChart" aria-label="Average deal returns chart"></canvas>
           <p class="chart-empty" id="chartEmpty">Add return percentages in the table to populate this chart.</p>
         </div>
         <aside class="card">
           <h2>Manual Update Notes</h2>
           <ul class="note-list">
-            <li>Press Update From Yahoo to refresh return windows from adjusted close data.</li>
-            <li>Use N/A until enough time has passed for the 3-month, 6-month, or 1-year window.</li>
+            <li>Press Update From Yahoo to refresh 1-day and since-announcement returns from adjusted close data.</li>
+            <li>Since-announcement return uses the latest available trading close, so recent announcements do not sit at N/A.</li>
             <li>Returns are calculated from the first trading close on or after the announcement date.</li>
             <li>Compare against QQQ, SMH, SPY, or NVDA separately before treating a move as NVIDIA-specific.</li>
           </ul>
@@ -626,7 +624,15 @@
       }
     ];
 
+    const BACKTEST_DATA_VERSION = "2026-05-27-since-announcement";
+
     const DEFAULT_BACKTEST_ROWS = [
+      ["2023-05-17", "ServiceNow", "NOW", "Enterprise generative AI partnership", "3.50%", "10.29%", "32.75%", "55.21%", "https://nvidianews.nvidia.com/news/servicenow-and-nvidia-announce-partnership-to-build-generative-ai-across-enterprise-it"],
+      ["2022-10-18", "Oracle", "ORCL", "Multi-year AI adoption partnership", "-1.09%", "29.85%", "45.07%", "63.95%", "https://nvidianews.nvidia.com/news/oracle-nvidia-speed-ai-adoption"],
+      ["2024-02-25", "ServiceNow", "NOW", "Expanded telco-specific GenAI partnership", "-1.61%", "-6.52%", "6.18%", "18.29%", "https://nvidianews.nvidia.com/news/servicenow-nvidia-telco-specific-genai-solutions"],
+      ["2024-03-18", "Oracle", "ORCL", "Sovereign AI collaboration", "1.09%", "13.54%", "29.52%", "18.20%", "https://nvidianews.nvidia.com/news/oracle-nvidia-sovereign-ai"],
+      ["2024-03-18", "Synopsys", "SNPS", "cuLitho semiconductor manufacturing collaboration", "4.30%", "10.65%", "-11.54%", "-20.09%", "https://nvidianews.nvidia.com/news/tsmc-synopsys-nvidia-culitho"],
+      ["2025-03-18", "Oracle", "ORCL", "Agentic AI inference collaboration", "2.01%", "41.60%", "99.61%", "3.35%", "https://nvidianews.nvidia.com/news/oracle-and-nvidia-collaborate-to-help-enterprises-accelerate-agentic-ai-inference"],
       ["2026-03-11", "Nebius Group", "NBIS", "Strategic partnership + NVIDIA investment", "-3.53%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud"],
       ["2026-05-07", "IREN", "IREN", "Strategic partnership + investment right", "7.65%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure"],
       ["2026-03-02", "Marvell", "MRVL", "Strategic partnership / NVLink Fusion", "-4.14%", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/"],
@@ -824,14 +830,27 @@
 
     function readSavedRows() {
       try {
+        if (localStorage.getItem("nvidiaDealRowsVersion") !== BACKTEST_DATA_VERSION) {
+          localStorage.setItem("nvidiaDealRowsVersion", BACKTEST_DATA_VERSION);
+          localStorage.setItem("nvidiaDealRows", JSON.stringify(DEFAULT_BACKTEST_ROWS));
+          return DEFAULT_BACKTEST_ROWS;
+        }
         return JSON.parse(localStorage.getItem("nvidiaDealRows")) || DEFAULT_BACKTEST_ROWS;
       } catch {
         return DEFAULT_BACKTEST_ROWS;
       }
     }
 
+    function normalizeRow(row) {
+      if (row.length >= 9) {
+        return [row[0], row[1], row[2], row[3], row[4], row[7], row[8]];
+      }
+      if (row.length === 7) return row;
+      return [...row, ...Array(Math.max(0, 7 - row.length)).fill("N/A")].slice(0, 7);
+    }
+
     function renderRows(rows = readSavedRows()) {
-      els.backtestRows.innerHTML = rows.map((row, rowIndex) => `
+      els.backtestRows.innerHTML = rows.map(normalizeRow).map((row, rowIndex) => `
         <tr data-row="${rowIndex}">
           ${row.map((cell, cellIndex) => `<td contenteditable="true" class="${returnClass(cellIndex, cell)}">${escapeHtml(cell)}</td>`).join("")}
           <td><button class="btn ghost" type="button" data-delete-row>Delete</button></td>
@@ -841,7 +860,7 @@
     }
 
     function returnClass(cellIndex, value) {
-      if (cellIndex < 4 || cellIndex > 7) return "";
+      if (cellIndex < 4 || cellIndex > 5) return "";
       const parsed = parsePercent(value);
       if (parsed === null || parsed === 0) return "";
       return parsed > 0 ? "positive" : "negative";
@@ -849,23 +868,18 @@
 
     function collectRows() {
       return [...els.backtestRows.querySelectorAll("tr")].map((tr) =>
-        [...tr.querySelectorAll("td[contenteditable='true']")].map((td) => td.textContent.trim())
+        normalizeRow([...tr.querySelectorAll("td[contenteditable='true']")].map((td) => td.textContent.trim()))
       );
     }
 
     function saveRows() {
+      localStorage.setItem("nvidiaDealRowsVersion", BACKTEST_DATA_VERSION);
       localStorage.setItem("nvidiaDealRows", JSON.stringify(collectRows()));
       updateChart();
     }
 
     function asUnixSeconds(date) {
       return Math.floor(new Date(`${date}T00:00:00Z`).getTime() / 1000);
-    }
-
-    function addMonths(date, months) {
-      const next = new Date(`${date}T00:00:00Z`);
-      next.setUTCMonth(next.getUTCMonth() + months);
-      return next.toISOString().slice(0, 10);
     }
 
     function percentReturn(start, end) {
@@ -899,29 +913,18 @@
         .filter((point) => point.close !== null && point.close !== undefined);
     }
 
-    function firstPointOnOrAfter(points, date) {
-      return points.find((point) => point.date >= date) || null;
-    }
-
     function calculateReturnWindows(points, announcementDate) {
       const baseIndex = points.findIndex((point) => point.date >= announcementDate);
-      if (baseIndex < 0) return ["N/A", "N/A", "N/A", "N/A"];
+      if (baseIndex < 0) return ["N/A", "N/A"];
 
       const base = points[baseIndex];
-      const nowDate = new Date().toISOString().slice(0, 10);
-      const windows = [
-        { type: "trading-day", offset: 1 },
-        { type: "calendar", date: addMonths(announcementDate, 3) },
-        { type: "calendar", date: addMonths(announcementDate, 6) },
-        { type: "calendar", date: addMonths(announcementDate, 12) }
-      ];
+      const nextTradingDay = points[baseIndex + 1];
+      const latestPoint = points[points.length - 1];
 
-      return windows.map((window) => {
-        const target = window.type === "trading-day"
-          ? points[baseIndex + window.offset]
-          : window.date <= nowDate ? firstPointOnOrAfter(points, window.date) : null;
-        return target ? percentReturn(base.close, target.close) : "N/A";
-      });
+      return [
+        nextTradingDay ? percentReturn(base.close, nextTradingDay.close) : "N/A",
+        latestPoint && latestPoint.date > base.date ? percentReturn(base.close, latestPoint.close) : "N/A"
+      ];
     }
 
     async function updateFromYahoo() {
@@ -938,7 +941,9 @@
         try {
           const points = await fetchYahooPrices(ticker.trim().toUpperCase(), announcementDate.trim());
           const returns = calculateReturnWindows(points, announcementDate.trim());
-          row.splice(4, 4, ...returns);
+          const normalized = normalizeRow(row);
+          normalized.splice(4, 2, ...returns);
+          row.splice(0, row.length, ...normalized);
           updated += 1;
         } catch (error) {
           failures.push(`${ticker}: ${error.message}`);
@@ -950,7 +955,7 @@
       els.updateYahoo.disabled = false;
       els.marketStatus.textContent = failures.length
         ? `Updated ${updated} tickers. Some Yahoo Finance lookups failed: ${failures.join("; ")}`
-        : `Updated ${updated} tickers from Yahoo Finance adjusted closes. Future windows remain N/A until their target dates.`;
+        : `Updated ${updated} tickers. Since-announcement uses each ticker's latest available close.`;
       els.marketStatus.classList.toggle("warning", failures.length > 0);
     }
 
@@ -972,9 +977,7 @@
       const rows = collectRows();
       const horizons = [
         { label: "1-Day", index: 4 },
-        { label: "3-Month", index: 5 },
-        { label: "6-Month", index: 6 },
-        { label: "1-Year", index: 7 }
+        { label: "Since Announcement", index: 5 }
       ];
       const data = horizons.map((horizon) => average(rows.map((row) => parsePercent(row[horizon.index]))));
       const hasData = data.some((value) => value !== null);
@@ -988,7 +991,7 @@
           datasets: [{
             label: "Average return %",
             data: data.map((value) => value ?? 0),
-            backgroundColor: ["#76b900", "#0f8aa8", "#f5b84b", "#7d5fff"],
+            backgroundColor: ["#76b900", "#0f8aa8"],
             borderWidth: 0
           }]
         },
@@ -1053,7 +1056,7 @@
 
     els.addRow.addEventListener("click", () => {
       const rows = collectRows();
-      rows.unshift([new Date().toISOString().slice(0, 10), "Company", "TICKER", "Event type", "N/A", "N/A", "N/A", "N/A", "https://nvidianews.nvidia.com/"]);
+      rows.unshift([new Date().toISOString().slice(0, 10), "Company", "TICKER", "Event type", "N/A", "N/A", "https://nvidianews.nvidia.com/"]);
       renderRows(rows);
     });
 
@@ -1062,6 +1065,7 @@
 
     els.resetRows.addEventListener("click", () => {
       localStorage.removeItem("nvidiaDealRows");
+      localStorage.setItem("nvidiaDealRowsVersion", BACKTEST_DATA_VERSION);
       renderRows(DEFAULT_BACKTEST_ROWS);
     });
 
