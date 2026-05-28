@@ -509,7 +509,7 @@
           <button class="btn" type="button" id="saveRows">Save Table</button>
           <button class="btn ghost" type="button" id="resetRows">Reset Examples</button>
         </div>
-        <p class="status" id="marketStatus">Returns use Yahoo Finance adjusted closes when refreshed. Since-announcement return uses the latest available close.</p>
+        <p class="status" id="marketStatus">Returns use Yahoo Finance adjusted closes when refreshed. Future windows stay N/A until their target dates.</p>
       </div>
 
       <div class="table-wrap">
@@ -521,7 +521,9 @@
               <th>Ticker</th>
               <th>Event Type</th>
               <th>1-Day %</th>
-              <th>Since Announcement %</th>
+              <th>3-Month %</th>
+              <th>6-Month %</th>
+              <th>1-Year %</th>
               <th>Source</th>
               <th></th>
             </tr>
@@ -532,15 +534,15 @@
 
       <div class="chart-area">
         <div class="card chart-box">
-          <h2>Average Deal Return</h2>
+          <h2>Average Return by Horizon</h2>
           <canvas id="returnsChart" aria-label="Average deal returns chart"></canvas>
           <p class="chart-empty" id="chartEmpty">Add return percentages in the table to populate this chart.</p>
         </div>
         <aside class="card">
           <h2>Manual Update Notes</h2>
           <ul class="note-list">
-            <li>Press Update From Yahoo to refresh 1-day and since-announcement returns from adjusted close data.</li>
-            <li>Since-announcement return uses the latest available trading close, so recent announcements do not sit at N/A.</li>
+            <li>Press Update From Yahoo to refresh return windows from adjusted close data.</li>
+            <li>Use N/A until enough time has passed for the 3-month, 6-month, or 1-year window.</li>
             <li>Returns are calculated from the first trading close on or after the announcement date.</li>
             <li>Compare against QQQ, SMH, SPY, or NVDA separately before treating a move as NVIDIA-specific.</li>
           </ul>
@@ -842,11 +844,8 @@
     }
 
     function normalizeRow(row) {
-      if (row.length >= 9) {
-        return [row[0], row[1], row[2], row[3], row[4], row[7], row[8]];
-      }
-      if (row.length === 7) return row;
-      return [...row, ...Array(Math.max(0, 7 - row.length)).fill("N/A")].slice(0, 7);
+      if (row.length >= 9) return row.slice(0, 9);
+      return [...row, ...Array(Math.max(0, 9 - row.length)).fill("N/A")].slice(0, 9);
     }
 
     function renderRows(rows = readSavedRows()) {
@@ -860,7 +859,7 @@
     }
 
     function returnClass(cellIndex, value) {
-      if (cellIndex < 4 || cellIndex > 5) return "";
+      if (cellIndex < 4 || cellIndex > 7) return "";
       const parsed = parsePercent(value);
       if (parsed === null || parsed === 0) return "";
       return parsed > 0 ? "positive" : "negative";
@@ -880,6 +879,12 @@
 
     function asUnixSeconds(date) {
       return Math.floor(new Date(`${date}T00:00:00Z`).getTime() / 1000);
+    }
+
+    function addMonths(date, months) {
+      const next = new Date(`${date}T00:00:00Z`);
+      next.setUTCMonth(next.getUTCMonth() + months);
+      return next.toISOString().slice(0, 10);
     }
 
     function percentReturn(start, end) {
@@ -913,18 +918,47 @@
         .filter((point) => point.close !== null && point.close !== undefined);
     }
 
+    function firstPointOnOrAfter(points, date) {
+      return points.find((point) => point.date >= date) || null;
+    }
+
     function calculateReturnWindows(points, announcementDate) {
       const baseIndex = points.findIndex((point) => point.date >= announcementDate);
-      if (baseIndex < 0) return ["N/A", "N/A"];
+      if (baseIndex < 0) return ["N/A", "N/A", "N/A", "N/A"];
 
       const base = points[baseIndex];
-      const nextTradingDay = points[baseIndex + 1];
-      const latestPoint = points[points.length - 1];
-
-      return [
-        nextTradingDay ? percentReturn(base.close, nextTradingDay.close) : "N/A",
-        latestPoint && latestPoint.date > base.date ? percentReturn(base.close, latestPoint.close) : "N/A"
+      const nowDate = new Date().toISOString().slice(0, 10);
+      const windows = [
+        { type: "trading-day", offset: 1 },
+        { type: "calendar", date: addMonths(announcementDate, 3) },
+        { type: "calendar", date: addMonths(announcementDate, 6) },
+        { type: "calendar", date: addMonths(announcementDate, 12) }
       ];
+
+      return windows.map((window) => {
+        const target = window.type === "trading-day"
+          ? points[baseIndex + window.offset]
+          : window.date <= nowDate ? firstPointOnOrAfter(points, window.date) : null;
+        return target ? percentReturn(base.close, target.close) : "N/A";
+      });
+    }
+
+    function availableWindowIndexes(announcementDate) {
+      const nowDate = new Date().toISOString().slice(0, 10);
+      const indexes = [4];
+      if (addMonths(announcementDate, 3) <= nowDate) indexes.push(5);
+      if (addMonths(announcementDate, 6) <= nowDate) indexes.push(6);
+      if (addMonths(announcementDate, 12) <= nowDate) indexes.push(7);
+      return indexes;
+    }
+
+    function needsYahooRefresh(row) {
+      const announcementDate = row[0]?.trim();
+      if (!announcementDate) return false;
+      return availableWindowIndexes(announcementDate).some((index) => {
+        const value = row[index]?.trim().toUpperCase();
+        return !value || value === "N/A";
+      });
     }
 
     async function updateFromYahoo() {
@@ -934,16 +968,19 @@
       els.marketStatus.classList.remove("warning");
 
       let updated = 0;
+      let skipped = 0;
       const failures = [];
       for (const row of rows) {
         const [announcementDate, , ticker] = row;
         if (!announcementDate || !ticker || ticker.toUpperCase() === "TICKER") continue;
+        if (!needsYahooRefresh(row)) {
+          skipped += 1;
+          continue;
+        }
         try {
           const points = await fetchYahooPrices(ticker.trim().toUpperCase(), announcementDate.trim());
           const returns = calculateReturnWindows(points, announcementDate.trim());
-          const normalized = normalizeRow(row);
-          normalized.splice(4, 2, ...returns);
-          row.splice(0, row.length, ...normalized);
+          row.splice(4, 4, ...returns);
           updated += 1;
         } catch (error) {
           failures.push(`${ticker}: ${error.message}`);
@@ -954,8 +991,8 @@
       saveRows();
       els.updateYahoo.disabled = false;
       els.marketStatus.textContent = failures.length
-        ? `Updated ${updated} tickers. Some Yahoo Finance lookups failed: ${failures.join("; ")}`
-        : `Updated ${updated} tickers. Since-announcement uses each ticker's latest available close.`;
+        ? `Updated ${updated} tickers and skipped ${skipped} already-current rows. Some Yahoo Finance lookups failed: ${failures.join("; ")}`
+        : `Updated ${updated} tickers and skipped ${skipped} already-current rows. Future windows remain N/A until their target dates.`;
       els.marketStatus.classList.toggle("warning", failures.length > 0);
     }
 
@@ -977,7 +1014,9 @@
       const rows = collectRows();
       const horizons = [
         { label: "1-Day", index: 4 },
-        { label: "Since Announcement", index: 5 }
+        { label: "3-Month", index: 5 },
+        { label: "6-Month", index: 6 },
+        { label: "1-Year", index: 7 }
       ];
       const data = horizons.map((horizon) => average(rows.map((row) => parsePercent(row[horizon.index]))));
       const hasData = data.some((value) => value !== null);
