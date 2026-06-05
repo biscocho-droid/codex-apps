@@ -1,65 +1,47 @@
 {
-  "asOf": "2026-06-04T23:07:56Z",
+  "asOf": "2026-06-05T23:07:57Z",
+  "failures": {
+    "AMD": "No close price returned for AMD: {'<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex': '(async()=>{const c=\"AAAAAGojVsaF1qX6dFqYuzoc8kf3gaPyNOEdYPMb-o9JJyajkEITIJWgZyQ\"', 'nofollow\"></head><body><noscript>This site requires JavaScript to verify your browser. Please enable JavaScript and reload.</noscript><script nonce=\"IVJFsfjSNTADSdot5CpT_g\">': 'd=4', None: ['t=\"0\".repeat(d)', 'e=new TextEncoder;let n=0;while(1){const h=await crypto.subtle.digest(\"SHA-256\"', 'e.encode(c+n))', 'x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2', '0)).join(\"\");if(x.startsWith(t))break;n++}const r=await fetch(\"/__verify\"', '{method:\"POST\"', 'headers:{\"Content-Type\":\"application/x-www-form-urlencoded\"}', 'body:\"c=\"+encodeURIComponent(c)+\"&n=\"+n', 'credentials:\"same-origin\"});if(r.ok)location.reload()})();']}",
+    "MU": "No close price returned for MU: {'<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex': '(async()=>{const c=\"AAAAAGojVsztpPlqaCap4qKYJSaYGQpMNOEdYBzmdX3_bB564yxdcXc4Sro\"', 'nofollow\"></head><body><noscript>This site requires JavaScript to verify your browser. Please enable JavaScript and reload.</noscript><script nonce=\"rjexPzJVhzy12ctPsmTPSg\">': 'd=4', None: ['t=\"0\".repeat(d)', 'e=new TextEncoder;let n=0;while(1){const h=await crypto.subtle.digest(\"SHA-256\"', 'e.encode(c+n))', 'x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2', '0)).join(\"\");if(x.startsWith(t))break;n++}const r=await fetch(\"/__verify\"', '{method:\"POST\"', 'headers:{\"Content-Type\":\"application/x-www-form-urlencoded\"}', 'body:\"c=\"+encodeURIComponent(c)+\"&n=\"+n', 'credentials:\"same-origin\"});if(r.ok)location.reload()})();']}",
+    "SOFI": "No close price returned for SOFI: {'<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex': '(async()=>{const c=\"AAAAAGojVs018lwBh8G6lI8HRdSRaFR7NOEdYCjJJaS1G0Td-U9zttOZl4U\"', 'nofollow\"></head><body><noscript>This site requires JavaScript to verify your browser. Please enable JavaScript and reload.</noscript><script nonce=\"rempfrmbqSu917TN7tsRqA\">': 'd=4', None: ['t=\"0\".repeat(d)', 'e=new TextEncoder;let n=0;while(1){const h=await crypto.subtle.digest(\"SHA-256\"', 'e.encode(c+n))', 'x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2', '0)).join(\"\");if(x.startsWith(t))break;n++}const r=await fetch(\"/__verify\"', '{method:\"POST\"', 'headers:{\"Content-Type\":\"application/x-www-form-urlencoded\"}', 'body:\"c=\"+encodeURIComponent(c)+\"&n=\"+n', 'credentials:\"same-origin\"});if(r.ok)location.reload()})();']}",
+    "TSLA": "No close price returned for TSLA: {'<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"robots\" content=\"noindex': '(async()=>{const c=\"AAAAAGojVs6V2mUMKO2uHtvBOj4mbHyTNOEdYIgtwKnPaD0OfmQqm_pIasA\"', 'nofollow\"></head><body><noscript>This site requires JavaScript to verify your browser. Please enable JavaScript and reload.</noscript><script nonce=\"zEI-E6RXloVGK4LvjBTCHA\">': 'd=4', None: ['t=\"0\".repeat(d)', 'e=new TextEncoder;let n=0;while(1){const h=await crypto.subtle.digest(\"SHA-256\"', 'e.encode(c+n))', 'x=Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2', '0)).join(\"\");if(x.startsWith(t))break;n++}const r=await fetch(\"/__verify\"', '{method:\"POST\"', 'headers:{\"Content-Type\":\"application/x-www-form-urlencoded\"}', 'body:\"c=\"+encodeURIComponent(c)+\"&n=\"+n', 'credentials:\"same-origin\"});if(r.ok)location.reload()})();']}"
+  },
   "prices": {
-    "AMD": {
-      "currency": "USD",
-      "date": "2026-06-04",
-      "price": 523.2,
-      "time": "22:00:19"
-    },
     "AMZN": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 253.79,
-      "time": "22:00:19"
+      "date": "2026-06-05",
+      "price": 246.0,
+      "time": "22:00:18"
     },
     "CLSK": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 16.785,
-      "time": "22:00:18"
+      "date": "2026-06-05",
+      "price": 15.59,
+      "time": "22:00:19"
     },
     "COIN": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 164.181,
+      "date": "2026-06-05",
+      "price": 152.49,
       "time": "22:00:19"
     },
     "CRWV": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 108.045,
-      "time": "22:00:17"
+      "date": "2026-06-05",
+      "price": 100.39,
+      "time": "22:00:19"
     },
     "IBIT": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 36.0,
+      "date": "2026-06-05",
+      "price": 34.15,
       "time": "22:00:18"
-    },
-    "MU": {
-      "currency": "USD",
-      "date": "2026-06-04",
-      "price": 997.17,
-      "time": "22:00:18"
-    },
-    "SOFI": {
-      "currency": "USD",
-      "date": "2026-06-04",
-      "price": 17.15,
-      "time": "22:00:19"
     },
     "SOL": {
       "currency": "USD",
-      "date": "2026-06-04",
-      "price": 68.7,
-      "time": "23:07:56"
-    },
-    "TSLA": {
-      "currency": "USD",
-      "date": "2026-06-04",
-      "price": 418.45,
-      "time": "22:00:19"
+      "date": "2026-06-05",
+      "price": 64.575,
+      "time": "23:07:57"
     }
   },
   "source": "Stooq end-of-day close + Coinbase spot",
