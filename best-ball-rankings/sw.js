@@ -1,4 +1,4 @@
-const CACHE_NAME = "best-ball-rankings-v2";
+const CACHE_NAME = "nfl-rankings-v3-2026-06-14";
 const APP_SHELL = [
   "./",
   "index.html",
