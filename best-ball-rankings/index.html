@@ -30,21 +30,17 @@
           <span>Search</span>
           <input id="searchInput" type="search" placeholder="Player or team" autocomplete="off">
         </label>
-        <div class="segmented" role="group" aria-label="Filter by position">
-          <button class="active" type="button" data-position="ALL">All</button>
-          <button type="button" data-position="RB">RB</button>
-          <button type="button" data-position="WR">WR</button>
-        </div>
+        <div id="positionFilters" class="segmented" role="group" aria-label="Filter by position"></div>
       </section>
 
       <section class="summary-grid" aria-label="Position summary">
         <article>
-          <span class="summary-label">Top RB</span>
-          <strong id="topRb">-</strong>
+          <span class="summary-label">Positions shown</span>
+          <strong id="positionsShown">-</strong>
         </article>
         <article>
-          <span class="summary-label">Top WR</span>
-          <strong id="topWr">-</strong>
+          <span class="summary-label">Top player shown</span>
+          <strong id="topPlayer">-</strong>
         </article>
         <article>
           <span class="summary-label">Average rank shown</span>
@@ -53,9 +49,9 @@
       </section>
 
       <section class="toolbar" aria-label="Sort and view options">
-        <button class="icon-button active" type="button" data-sort="overall" title="Sort by overall rank" aria-label="Sort by overall rank">#</button>
-        <button class="icon-button" type="button" data-sort="position" title="Sort by position rank" aria-label="Sort by position rank">POS</button>
-        <button class="icon-button" type="button" id="tierToggle" title="Group by tiers" aria-label="Group by tiers">T</button>
+        <span class="toolbar-label">Sort</span>
+        <button class="sort-button active" type="button" data-sort="overall" title="Sort by overall rank" aria-label="Sort by overall rank">Overall</button>
+        <button class="sort-button" type="button" data-sort="position" title="Sort by position rank" aria-label="Sort by position rank">Pos Rank</button>
       </section>
 
       <section id="rankings" class="rankings" aria-live="polite"></section>

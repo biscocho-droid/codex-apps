@@ -96,7 +96,6 @@ h1 {
 }
 
 .controls,
-.toolbar,
 .summary-grid {
   display: grid;
   gap: 10px;
@@ -148,7 +147,7 @@ h1 {
 }
 
 .segmented button,
-.icon-button {
+.sort-button {
   min-width: 48px;
   height: 46px;
   border: 1px solid var(--line);
@@ -159,7 +158,7 @@ h1 {
 }
 
 .segmented button.active,
-.icon-button.active {
+.sort-button.active {
   border-color: rgba(36, 195, 142, 0.78);
   background: rgba(36, 195, 142, 0.18);
   color: #dffbef;
@@ -194,8 +193,23 @@ h1 {
 }
 
 .toolbar {
+  display: flex;
+  align-items: center;
   justify-content: end;
+  gap: 8px;
   margin-bottom: 10px;
+}
+
+.toolbar-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sort-button {
+  min-width: 92px;
+  padding: 0 12px;
 }
 
 .rankings {
@@ -305,6 +319,16 @@ h1 {
   background: rgba(99, 166, 255, 0.22);
 }
 
+.badge.qb {
+  color: #fff4e0;
+  background: rgba(255, 203, 102, 0.2);
+}
+
+.badge.te {
+  color: #ffeef1;
+  background: rgba(255, 107, 107, 0.2);
+}
+
 .rank-score {
   display: grid;
   justify-items: end;
@@ -344,10 +368,11 @@ h1 {
 
   .segmented {
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .segmented button {
-    flex: 1;
+    flex: 1 1 30%;
   }
 
   .summary-grid {

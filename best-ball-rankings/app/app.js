@@ -1,9 +1,18 @@
 const state = {
-  position: "ALL",
+  positions: new Set(),
   search: "",
-  sort: "overall",
-  tiers: false
+  sort: "overall"
 };
+
+const positionOrder = ["QB", "RB", "WR", "TE", "K", "DEF"];
+const positions = [...new Set((window.RANKINGS_DATA?.players || []).map(player => player.position))]
+  .sort((a, b) => {
+    const aIndex = positionOrder.indexOf(a);
+    const bIndex = positionOrder.indexOf(b);
+    return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex) || a.localeCompare(b);
+  });
+
+state.positions = new Set(positions);
 
 const positionCounts = {};
 const data = (window.RANKINGS_DATA?.players || []).map((player, index) => {
@@ -20,12 +29,11 @@ const elements = {
   searchInput: document.querySelector("#searchInput"),
   visibleCount: document.querySelector("#visibleCount"),
   emptyState: document.querySelector("#emptyState"),
-  topRb: document.querySelector("#topRb"),
-  topWr: document.querySelector("#topWr"),
+  positionFilters: document.querySelector("#positionFilters"),
+  positionsShown: document.querySelector("#positionsShown"),
+  topPlayer: document.querySelector("#topPlayer"),
   avgRank: document.querySelector("#avgRank"),
-  positionButtons: [...document.querySelectorAll("[data-position]")],
-  sortButtons: [...document.querySelectorAll("[data-sort]")],
-  tierToggle: document.querySelector("#tierToggle")
+  sortButtons: [...document.querySelectorAll("[data-sort]")]
 };
 
 function initials(name) {
@@ -50,7 +58,7 @@ function tierFor(rank) {
 function filteredPlayers() {
   const query = state.search.trim().toLowerCase();
   const shown = data.filter(player => {
-    const positionMatch = state.position === "ALL" || player.position === state.position;
+    const positionMatch = state.positions.has(player.position);
     const queryMatch = !query || [player.name, player.team, player.position].join(" ").toLowerCase().includes(query);
     return positionMatch && queryMatch;
   });
@@ -84,7 +92,6 @@ function playerMarkup(player) {
         <div class="player-meta">
           <span class="badge ${player.position.toLowerCase()}">${player.position}${player.positionRank}</span>
           <span>${player.team}</span>
-          <span>${tierFor(player.expertRank)}</span>
         </div>
       </div>
       <div class="rank-score">
@@ -97,15 +104,29 @@ function playerMarkup(player) {
 
 function renderSummary(players) {
   elements.visibleCount.textContent = players.length;
-  const topRb = data.find(player => player.position === "RB");
-  const topWr = data.find(player => player.position === "WR");
+  const topPlayer = players[0];
+  const allSelected = state.positions.size === positions.length;
+  const positionText = allSelected ? "All" : positions.filter(position => state.positions.has(position)).join(" + ");
   const avg = players.length
     ? players.reduce((sum, player) => sum + player.expertRank, 0) / players.length
     : 0;
 
-  elements.topRb.textContent = topRb ? `${topRb.name} (${topRb.team})` : "-";
-  elements.topWr.textContent = topWr ? `${topWr.name} (${topWr.team})` : "-";
+  elements.positionsShown.textContent = positionText || "-";
+  elements.topPlayer.textContent = topPlayer ? `${topPlayer.name} (${topPlayer.team})` : "-";
   elements.avgRank.textContent = players.length ? avg.toFixed(1) : "-";
+}
+
+function renderPositionFilters() {
+  const allSelected = state.positions.size === positions.length;
+  const buttons = [
+    `<button class="${allSelected ? "active" : ""}" type="button" data-position="ALL" aria-pressed="${allSelected}">All</button>`,
+    ...positions.map(position => {
+      const active = state.positions.has(position);
+      return `<button class="${active ? "active" : ""}" type="button" data-position="${position}" aria-pressed="${active}">${position}</button>`;
+    })
+  ];
+
+  elements.positionFilters.innerHTML = buttons.join("");
 }
 
 function render() {
@@ -115,7 +136,7 @@ function render() {
 
   for (const player of players) {
     const tier = tierFor(player.expertRank);
-    if (state.tiers && tier !== lastTier) {
+    if (tier !== lastTier) {
       parts.push(`<h2 class="tier-heading">${tier}</h2>`);
       lastTier = tier;
     }
@@ -124,6 +145,7 @@ function render() {
 
   elements.rankings.innerHTML = parts.join("");
   elements.emptyState.hidden = players.length > 0;
+  renderPositionFilters();
   renderSummary(players);
 }
 
@@ -132,13 +154,24 @@ elements.searchInput.addEventListener("input", event => {
   render();
 });
 
-for (const button of elements.positionButtons) {
-  button.addEventListener("click", () => {
-    state.position = button.dataset.position;
-    elements.positionButtons.forEach(item => item.classList.toggle("active", item === button));
-    render();
-  });
-}
+elements.positionFilters.addEventListener("click", event => {
+  const button = event.target.closest("[data-position]");
+  if (!button) return;
+
+  const position = button.dataset.position;
+  if (position === "ALL") {
+    state.positions = new Set(positions);
+  } else if (state.positions.size === positions.length) {
+    state.positions = new Set([position]);
+  } else if (state.positions.has(position)) {
+    state.positions.delete(position);
+    if (state.positions.size === 0) state.positions.add(position);
+  } else {
+    state.positions.add(position);
+  }
+
+  render();
+});
 
 for (const button of elements.sortButtons) {
   button.addEventListener("click", () => {
@@ -147,12 +180,6 @@ for (const button of elements.sortButtons) {
     render();
   });
 }
-
-elements.tierToggle.addEventListener("click", () => {
-  state.tiers = !state.tiers;
-  elements.tierToggle.classList.toggle("active", state.tiers);
-  render();
-});
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
