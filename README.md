@@ -12,7 +12,7 @@ GitHub Pages branch for personal Codex web apps.
 | Trend Signal Lab | `trend-signal-lab/` | `https://biscocho-droid.github.io/codex-apps/trend-signal-lab/` |
 | AI Intel Daily | `ai-intel-daily/` | `https://biscocho-droid.github.io/codex-apps/ai-intel-daily/` |
 | NVIDIA Deal Monitor | `nvidia-deal-monitor/` | `https://biscocho-droid.github.io/codex-apps/nvidia-deal-monitor/` |
-| 2026 Best Ball Rankings | `best-ball-rankings/` | `https://biscocho-droid.github.io/codex-apps/best-ball-rankings/` |
+| 2026 NFL Rankings | `best-ball-rankings/` | `https://biscocho-droid.github.io/codex-apps/best-ball-rankings/` |
 | Options Credit Scanner | `options-credit-scanner/` | `https://biscocho-droid.github.io/codex-apps/options-credit-scanner/` |
 | Polygon Options Backtest | `polygon-options-backtest/` | `https://biscocho-droid.github.io/codex-apps/polygon-options-backtest/` |
 | Leftover Cash Planner | `leftover-cash-planner/` | `https://biscocho-droid.github.io/codex-apps/leftover-cash-planner/` |

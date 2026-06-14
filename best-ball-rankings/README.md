@@ -1,6 +1,6 @@
-# 2026 Best Ball Rankings
+# 2026 NFL Rankings
 
-Personal fantasy football rankings app for the QB/RB/WR/TE best ball CSV snapshot dated June 14, 2026.
+Personal fantasy football rankings app for the QB/RB/WR/TE rankings CSV snapshot dated June 14, 2026.
 
 ## Local Use
 

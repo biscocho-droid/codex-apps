@@ -109,7 +109,7 @@ async function main() {
     .sort((a, b) => a.expertRank - b.expertRank || a.name.localeCompare(b.name));
 
   const payload = {
-    title: "2026 Best Ball Rankings",
+    title: "2026 NFL Rankings",
     sourceDate: "2026-06-14",
     generatedAt: new Date().toISOString(),
     players

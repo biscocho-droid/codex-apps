@@ -1,7 +1,7 @@
 window.RANKINGS_DATA = {
-  "title": "2026 Best Ball Rankings",
+  "title": "2026 NFL Rankings",
   "sourceDate": "2026-06-14",
-  "generatedAt": "2026-06-14T22:39:08.460Z",
+  "generatedAt": "2026-06-14T22:41:51.420Z",
   "players": [
     {
       "id": "5daf3960-25f3-402a-800a-41f8ae4c38b5",
