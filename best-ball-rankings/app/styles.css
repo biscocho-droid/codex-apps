@@ -1,0 +1,375 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f141b;
+  --panel: #171d25;
+  --panel-2: #1f2630;
+  --text: #f4f7fb;
+  --muted: #9ca8b7;
+  --line: #2d3745;
+  --green: #24c38e;
+  --gold: #ffcb66;
+  --red: #ff6b6b;
+  --blue: #63a6ff;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(36, 195, 142, 0.14), transparent 290px),
+    var(--bg);
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: max(18px, env(safe-area-inset-top)) 14px max(28px, env(safe-area-inset-bottom));
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 2px 18px;
+}
+
+.kicker,
+.snapshot,
+.summary-label,
+.player-meta,
+.rank-label {
+  color: var(--muted);
+}
+
+.kicker {
+  margin: 0 0 4px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 4.5rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.snapshot {
+  margin: 10px 0 0;
+  font-size: 0.94rem;
+}
+
+.count-card {
+  display: grid;
+  min-width: 86px;
+  padding: 12px 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 29, 37, 0.82);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.count-card span {
+  font-size: 1.65rem;
+  font-weight: 900;
+}
+
+.count-card small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.controls,
+.toolbar,
+.summary-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.controls {
+  grid-template-columns: 1fr auto;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  padding: 10px 0;
+  background: rgba(15, 20, 27, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.search {
+  display: grid;
+  gap: 6px;
+}
+
+.search span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.search input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  outline: none;
+  padding: 0 14px;
+}
+
+.search input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(36, 195, 142, 0.16);
+}
+
+.segmented,
+.toolbar {
+  display: flex;
+  align-items: end;
+  gap: 6px;
+}
+
+.segmented button,
+.icon-button {
+  min-width: 48px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 900;
+}
+
+.segmented button.active,
+.icon-button.active {
+  border-color: rgba(36, 195, 142, 0.78);
+  background: rgba(36, 195, 142, 0.18);
+  color: #dffbef;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 4px 0 12px;
+}
+
+.summary-grid article {
+  min-height: 78px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.summary-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.summary-grid strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolbar {
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
+.rankings {
+  display: grid;
+  gap: 8px;
+}
+
+.tier-heading {
+  position: sticky;
+  top: 76px;
+  z-index: 2;
+  margin: 12px 0 2px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 203, 102, 0.3);
+  border-radius: 8px;
+  background: rgba(36, 29, 17, 0.92);
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.player-card {
+  display: grid;
+  grid-template-columns: 50px 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015)), var(--panel);
+}
+
+.rank-block {
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+}
+
+.overall-rank {
+  font-size: 1.34rem;
+  font-weight: 950;
+}
+
+.rank-label {
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+
+.headshot {
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  object-fit: cover;
+  object-position: top center;
+}
+
+.fallback-photo {
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.player-main {
+  min-width: 0;
+}
+
+.player-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.02rem;
+  font-weight: 900;
+}
+
+.player-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-width: 34px;
+  justify-content: center;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.badge.rb {
+  color: #e8fff6;
+  background: rgba(36, 195, 142, 0.22);
+}
+
+.badge.wr {
+  color: #edf5ff;
+  background: rgba(99, 166, 255, 0.22);
+}
+
+.rank-score {
+  display: grid;
+  justify-items: end;
+  gap: 3px;
+  min-width: 58px;
+}
+
+.rank-score strong {
+  font-size: 1rem;
+}
+
+.rank-score span {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.empty {
+  padding: 30px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    align-items: stretch;
+  }
+
+  .count-card {
+    align-self: end;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented {
+    align-items: center;
+  }
+
+  .segmented button {
+    flex: 1;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-card {
+    grid-template-columns: 42px 50px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .headshot {
+    width: 48px;
+    height: 48px;
+  }
+
+  .overall-rank {
+    font-size: 1.12rem;
+  }
+
+  .rank-score {
+    min-width: 48px;
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f141b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Best Ball">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>2026 Best Ball RB/WR Rankings</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="app/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="kicker">Fantasy Football</p>
+          <h1>2026 Best Ball Rankings</h1>
+          <p class="snapshot">RB + WR rankings snapshot: June 14, 2026</p>
+        </div>
+        <div class="count-card" aria-label="Player count">
+          <span id="visibleCount">0</span>
+          <small>players</small>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Ranking controls">
+        <label class="search">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Player or team" autocomplete="off">
+        </label>
+        <div class="segmented" role="group" aria-label="Filter by position">
+          <button class="active" type="button" data-position="ALL">All</button>
+          <button type="button" data-position="RB">RB</button>
+          <button type="button" data-position="WR">WR</button>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Position summary">
+        <article>
+          <span class="summary-label">Top RB</span>
+          <strong id="topRb">-</strong>
+        </article>
+        <article>
+          <span class="summary-label">Top WR</span>
+          <strong id="topWr">-</strong>
+        </article>
+        <article>
+          <span class="summary-label">Average rank shown</span>
+          <strong id="avgRank">-</strong>
+        </article>
+      </section>
+
+      <section class="toolbar" aria-label="Sort and view options">
+        <button class="icon-button active" type="button" data-sort="overall" title="Sort by overall rank" aria-label="Sort by overall rank">#</button>
+        <button class="icon-button" type="button" data-sort="position" title="Sort by position rank" aria-label="Sort by position rank">POS</button>
+        <button class="icon-button" type="button" id="tierToggle" title="Group by tiers" aria-label="Group by tiers">T</button>
+      </section>
+
+      <section id="rankings" class="rankings" aria-live="polite"></section>
+      <p id="emptyState" class="empty" hidden>No players match that filter.</p>
+    </main>
+
+    <script src="data/rankings-data.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>
