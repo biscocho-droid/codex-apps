@@ -36,3 +36,15 @@ http://127.0.0.1:8765/
 The app is static. It does not connect to a backend or database.
 
 Edits made inside the app are saved in the browser with `localStorage`, so they are specific to the device and browser being used.
+
+## Themes
+
+The dashboard includes five browser-saved visual themes:
+
+- Calm Money (default)
+- Midnight
+- Editorial
+- Ocean Glass
+- Plum & Gold
+
+Changing the theme does not change or reset budget data.

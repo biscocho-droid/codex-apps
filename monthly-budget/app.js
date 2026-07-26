@@ -56,6 +56,7 @@ const BASE_DATA = {
 const state = {
   month: 0,
   view: localStorage.getItem("financeOS.view") || "overview",
+  theme: localStorage.getItem("financeOS.theme") || "calm",
   edits: JSON.parse(localStorage.getItem("financeOS.edits") || "{}"),
   goals: JSON.parse(localStorage.getItem("financeOS.goals") || "{}"),
   income: Number(localStorage.getItem("financeOS.income") || BASE_DATA.takeHome),
@@ -185,8 +186,24 @@ function switchMonth(index) {
   render();
 }
 
+function setTheme(theme) {
+  const themes = ["calm", "midnight", "editorial", "ocean", "plum"];
+  state.theme = themes.includes(theme) ? theme : "calm";
+  document.documentElement.dataset.theme = state.theme;
+  localStorage.setItem("financeOS.theme", state.theme);
+  const selector = document.getElementById("themeSelect");
+  if (selector) selector.value = state.theme;
+  drawTrend();
+  drawCategories();
+}
+
 function setupControls() {
   document.querySelectorAll(".nav-btn").forEach((btn) => btn.addEventListener("click", () => switchView(btn.dataset.view)));
+  const themeSelect = document.getElementById("themeSelect");
+  if (themeSelect) {
+    themeSelect.value = state.theme;
+    themeSelect.addEventListener("change", (event) => setTheme(event.target.value));
+  }
   document.getElementById("resetBtn").addEventListener("click", () => {
     state.edits = {};
     state.income = BASE_DATA.takeHome;
@@ -550,6 +567,7 @@ function setupCanvas(canvas, height = 300) {
 
 function drawTrend() {
   const { ctx, width, height } = setupCanvas(document.getElementById("trendChart"), 260);
+  if (width < 200) return;
   const a = allocationSummary();
   const steps = [
     { label: "Take-home", value: takeHome(), delta: takeHome(), type: "start" },
@@ -567,7 +585,7 @@ function drawTrend() {
   const y = (value) => pad.top + chartH - (Math.max(0, value) / max) * chartH;
 
   ctx.font = "12px Inter, system-ui";
-  ctx.strokeStyle = "#dbe4df";
+  ctx.strokeStyle = cssColor("--chart-line", "#dbe4df");
   ctx.lineWidth = 1;
   [0, 0.5, 1].forEach((ratio) => {
     const yy = pad.top + chartH - ratio * chartH;
@@ -585,14 +603,19 @@ function drawTrend() {
     const top = y(Math.max(startValue, endValue));
     const bottom = y(Math.min(startValue, endValue));
     const h = Math.max(4, bottom - top);
-    const color = step.type === "start" ? "#16784f" : step.type === "end" ? "#b3832f" : "#be4d3f";
+    const color =
+      step.type === "start"
+        ? cssColor("--green", "#16784f")
+        : step.type === "end"
+          ? cssColor("--gold", "#b3832f")
+          : cssColor("--red", "#be4d3f");
 
     ctx.fillStyle = color;
     roundRect(ctx, x, top, barW, h, 8);
     ctx.fill();
 
     if (step.type === "outflow") {
-      ctx.strokeStyle = "#9fb2aa";
+      ctx.strokeStyle = cssColor("--chart-guide", "#9fb2aa");
       ctx.setLineDash([4, 4]);
       ctx.beginPath();
       ctx.moveTo(x - gap, y(prev));
@@ -601,10 +624,10 @@ function drawTrend() {
       ctx.setLineDash([]);
     }
 
-    ctx.fillStyle = "#10201d";
+    ctx.fillStyle = cssColor("--ink", "#10201d");
     ctx.textAlign = "center";
     ctx.fillText(step.label, x + barW / 2, height - 24);
-    ctx.fillStyle = "#62716d";
+    ctx.fillStyle = cssColor("--muted", "#62716d");
     const label = step.type === "outflow" ? `-${money(Math.abs(step.delta))}` : money(step.delta);
     ctx.fillText(label, x + barW / 2, Math.max(14, top - 8));
     ctx.textAlign = "left";
@@ -624,7 +647,7 @@ function drawLine(ctx, values, x, y, color) {
     ctx.arc(x(i), y(value), i === state.month ? 5 : 3.5, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
-    ctx.strokeStyle = "#fff";
+    ctx.strokeStyle = cssColor("--panel", "#fff");
     ctx.lineWidth = 2;
     ctx.stroke();
   });
@@ -632,6 +655,7 @@ function drawLine(ctx, values, x, y, color) {
 
 function drawCategories() {
   const { ctx, width, height } = setupCanvas(document.getElementById("categoryChart"), 300);
+  if (width < 220) return;
   const totals = BASE_DATA.categories
     .map((category, index) => ({ ...category, value: categoryTotal(index) }))
     .sort((left, right) => right.value - left.value);
@@ -641,15 +665,15 @@ function drawCategories() {
   ctx.font = "12px Inter, system-ui";
   totals.forEach((item, index) => {
     const y = index * rowH + 12;
-    ctx.fillStyle = "#13202b";
+    ctx.fillStyle = cssColor("--ink", "#13202b");
     ctx.fillText(item.name, 0, y + 12);
-    ctx.fillStyle = "#e5ebef";
+    ctx.fillStyle = cssColor("--chart-track", "#e5ebef");
     roundRect(ctx, left, y, width - left - 72, 12, 6);
     ctx.fill();
     ctx.fillStyle = item.color;
     roundRect(ctx, left, y, ((width - left - 72) * item.value) / max, 12, 6);
     ctx.fill();
-    ctx.fillStyle = "#607080";
+    ctx.fillStyle = cssColor("--muted", "#607080");
     ctx.textAlign = "right";
     ctx.fillText(money(item.value), width - 4, y + 12);
     ctx.textAlign = "left";
@@ -657,14 +681,19 @@ function drawCategories() {
 }
 
 function roundRect(ctx, x, y, w, h, r) {
-  const radius = Math.min(r, w / 2, h / 2);
   ctx.beginPath();
+  if (w <= 0 || h <= 0) return;
+  const radius = Math.max(0, Math.min(r, w / 2, h / 2));
   ctx.moveTo(x + radius, y);
   ctx.arcTo(x + w, y, x + w, y + h, radius);
   ctx.arcTo(x + w, y + h, x, y + h, radius);
   ctx.arcTo(x, y + h, x, y, radius);
   ctx.arcTo(x, y, x + w, y, radius);
   ctx.closePath();
+}
+
+function cssColor(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
 function render() {
@@ -682,5 +711,6 @@ function render() {
 }
 
 setupControls();
+setTheme(state.theme);
 switchView(state.view);
 window.addEventListener("resize", render);
