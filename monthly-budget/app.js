@@ -56,7 +56,6 @@ const BASE_DATA = {
 const state = {
   month: 0,
   view: localStorage.getItem("financeOS.view") || "overview",
-  theme: localStorage.getItem("financeOS.theme") || "orbital",
   edits: JSON.parse(localStorage.getItem("financeOS.edits") || "{}"),
   goals: JSON.parse(localStorage.getItem("financeOS.goals") || "{}"),
   income: Number(localStorage.getItem("financeOS.income") || BASE_DATA.takeHome),
@@ -186,24 +185,8 @@ function switchMonth(index) {
   render();
 }
 
-function setTheme(theme) {
-  const themes = ["orbital", "calm", "midnight", "editorial", "ocean", "plum"];
-  state.theme = themes.includes(theme) ? theme : "orbital";
-  document.documentElement.dataset.theme = state.theme;
-  localStorage.setItem("financeOS.theme", state.theme);
-  const selector = document.getElementById("themeSelect");
-  if (selector) selector.value = state.theme;
-  drawTrend();
-  drawCategories();
-}
-
 function setupControls() {
   document.querySelectorAll(".nav-btn").forEach((btn) => btn.addEventListener("click", () => switchView(btn.dataset.view)));
-  const themeSelect = document.getElementById("themeSelect");
-  if (themeSelect) {
-    themeSelect.value = state.theme;
-    themeSelect.addEventListener("change", (event) => setTheme(event.target.value));
-  }
   document.getElementById("resetBtn").addEventListener("click", () => {
     state.edits = {};
     state.income = BASE_DATA.takeHome;
@@ -735,6 +718,5 @@ function render() {
 }
 
 setupControls();
-setTheme(state.theme);
 switchView(state.view);
 window.addEventListener("resize", render);

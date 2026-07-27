@@ -6,12 +6,8 @@
     <title>Orbital Treasury — Finance OS</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%2307131b' stroke='%2348f1ec' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23b8ff5d'/%3E%3Cellipse cx='32' cy='32' rx='29' ry='13' fill='none' stroke='%2338a9ff' stroke-width='2' transform='rotate(-22 32 32)'/%3E%3C/svg%3E" />
     <script>
-      const savedTheme = localStorage.getItem("financeOS.theme");
-      const orbitalUpgradeApplied = localStorage.getItem("financeOS.orbitalV1");
-      const initialTheme = orbitalUpgradeApplied ? savedTheme || "orbital" : "orbital";
-      document.documentElement.dataset.theme = initialTheme;
-      localStorage.setItem("financeOS.theme", initialTheme);
-      localStorage.setItem("financeOS.orbitalV1", "1");
+      document.documentElement.dataset.theme = "orbital";
+      localStorage.removeItem("financeOS.theme");
     </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -42,17 +38,6 @@
             <h1 id="viewTitle">Monthly Budget</h1>
           </div>
           <div class="top-actions">
-            <label class="theme-picker" for="themeSelect">
-              <span>Theme</span>
-              <select id="themeSelect" aria-label="Choose dashboard theme">
-                <option value="orbital">Orbital Treasury</option>
-                <option value="calm">Calm Money</option>
-                <option value="midnight">Midnight</option>
-                <option value="editorial">Editorial</option>
-                <option value="ocean">Ocean Glass</option>
-                <option value="plum">Plum &amp; Gold</option>
-              </select>
-            </label>
             <button id="resetBtn" class="ghost-btn">Reset Edits</button>
             <span class="plan-pill">Monthly Plan</span>
           </div>
