@@ -1,11 +1,16 @@
 <!doctype html>
-<html lang="en" data-theme="calm">
+<html lang="en" data-theme="orbital">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monthly Budget</title>
+    <title>Orbital Treasury — Finance OS</title>
     <script>
-      document.documentElement.dataset.theme = localStorage.getItem("financeOS.theme") || "calm";
+      const savedTheme = localStorage.getItem("financeOS.theme");
+      const orbitalUpgradeApplied = localStorage.getItem("financeOS.orbitalV1");
+      const initialTheme = orbitalUpgradeApplied ? savedTheme || "orbital" : "orbital";
+      document.documentElement.dataset.theme = initialTheme;
+      localStorage.setItem("financeOS.theme", initialTheme);
+      localStorage.setItem("financeOS.orbitalV1", "1");
     </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -16,7 +21,7 @@
           <span class="brand-mark">F</span>
           <div>
             <strong>Finance OS</strong>
-            <small>2026 budget</small>
+            <small>Orbital Treasury</small>
           </div>
         </div>
         <nav class="nav" aria-label="Dashboard views">
@@ -39,11 +44,12 @@
             <label class="theme-picker" for="themeSelect">
               <span>Theme</span>
               <select id="themeSelect" aria-label="Choose dashboard theme">
+                <option value="orbital">Orbital Treasury</option>
                 <option value="calm">Calm Money</option>
                 <option value="midnight">Midnight</option>
                 <option value="editorial">Editorial</option>
                 <option value="ocean">Ocean Glass</option>
-                <option value="plum">Plum & Gold</option>
+                <option value="plum">Plum &amp; Gold</option>
               </select>
             </label>
             <button id="resetBtn" class="ghost-btn">Reset Edits</button>
@@ -52,45 +58,98 @@
         </header>
 
         <section class="view active" id="overview">
-          <section class="command-strip" aria-label="Financial command summary">
-            <div class="command-main">
-              <p class="eyebrow">Monthly net cash</p>
-              <h2 id="commandHeadline">$0</h2>
-              <span id="commandSubtext"></span>
-            </div>
-            <div class="command-metric">
-              <span>Routed</span>
-              <strong id="commandAllocated">$0</strong>
-            </div>
-            <div class="command-icon" aria-hidden="true">
-              <span>$</span>
+          <section class="orbital-command" aria-label="Orbital financial command center">
+            <header class="orbit-status">
+              <div>
+                <span class="signal-dot" aria-hidden="true"></span>
+                <span>Plan status</span>
+                <strong id="orbitStatusLabel">Stable</strong>
+              </div>
+              <div class="orbit-progress" aria-label="Monthly routing progress">
+                <span>Monthly routing</span>
+                <i><b id="orbitProgressBar"></b></i>
+              </div>
+              <div class="command-metric">
+                <span>Routed</span>
+                <strong id="commandAllocated">$0</strong>
+              </div>
+            </header>
+
+            <div class="orbital-grid">
+              <aside class="orbit-left-rail">
+                <p class="eyebrow">System map</p>
+                <section class="allocation-rail" id="monthRail" aria-label="Monthly allocation summary"></section>
+              </aside>
+
+              <div class="orbit-viewport">
+                <div class="orbit-month">
+                  <span>Monthly trajectory</span>
+                  <strong>2026 · Current Plan</strong>
+                </div>
+                <div class="orbit-system" aria-label="Monthly cash orbit">
+                  <div class="orbit-ring orbit-ring-outer"></div>
+                  <div class="orbit-ring orbit-ring-middle"></div>
+                  <div class="orbit-ring orbit-ring-inner"></div>
+                  <span class="orbit-tracer tracer-one"></span>
+                  <span class="orbit-tracer tracer-two"></span>
+
+                  <article class="orbit-node node-bills">
+                    <span class="node-icon">▣</span>
+                    <small>Bills</small>
+                    <strong id="orbitBills">$0</strong>
+                  </article>
+                  <article class="orbit-node node-living">
+                    <span class="node-icon">⌂</span>
+                    <small>Living</small>
+                    <strong id="orbitLiving">$0</strong>
+                  </article>
+                  <article class="orbit-node node-goals">
+                    <span class="node-icon">◎</span>
+                    <small>Goals</small>
+                    <strong id="orbitGoals">$0</strong>
+                  </article>
+                  <article class="orbit-node node-income">
+                    <span class="node-icon">↗</span>
+                    <small>Take-home</small>
+                    <strong id="orbitIncome">$0</strong>
+                  </article>
+
+                  <div class="orbit-core">
+                    <span>Free cash</span>
+                    <h2 id="commandHeadline">$0</h2>
+                    <strong id="commandSubtext">Available</strong>
+                  </div>
+                </div>
+                <p class="orbit-caption">Every dollar has a trajectory. You control the orbit.</p>
+              </div>
+
+              <aside class="orbit-right-rail">
+                <p class="eyebrow">Command metrics</p>
+                <div class="kpi-grid">
+                  <article class="kpi accent-green">
+                    <span>Take-home</span>
+                    <strong id="takeHome">$0</strong>
+                    <small>Monthly baseline</small>
+                  </article>
+                  <article class="kpi accent-red">
+                    <span>Planned spend</span>
+                    <strong id="plannedSpend">$0</strong>
+                    <small id="spendNote">Budgeted lines</small>
+                  </article>
+                  <article class="kpi accent-blue">
+                    <span>Cash left</span>
+                    <strong id="cashLeft">$0</strong>
+                    <small id="cashNote">After spending</small>
+                  </article>
+                  <article class="kpi accent-gold">
+                    <span>Budget score</span>
+                    <strong id="budgetScore">0</strong>
+                    <small>Plan health signal</small>
+                  </article>
+                </div>
+              </aside>
             </div>
           </section>
-
-          <section class="allocation-rail" id="monthRail" aria-label="Monthly allocation summary"></section>
-
-          <div class="kpi-grid">
-            <article class="kpi accent-green">
-              <span>Take-home</span>
-              <strong id="takeHome">$0</strong>
-              <small>Monthly baseline from your sheet</small>
-            </article>
-            <article class="kpi accent-red">
-              <span>Planned spend</span>
-              <strong id="plannedSpend">$0</strong>
-              <small id="spendNote">Budgeted lines for selected month</small>
-            </article>
-            <article class="kpi accent-blue">
-              <span>Cash left</span>
-              <strong id="cashLeft">$0</strong>
-              <small id="cashNote">After planned spending</small>
-            </article>
-            <article class="kpi accent-gold">
-              <span>Budget score</span>
-              <strong id="budgetScore">0</strong>
-              <small>Blend of cash left and savings</small>
-            </article>
-          </div>
 
           <div class="content-grid">
             <div class="main-stack">
@@ -106,7 +165,9 @@
                     <span><i class="dot gold"></i>End</span>
                   </div>
                 </div>
-                <canvas id="trendChart"></canvas>
+                <canvas id="trendChart" role="img" aria-label="Monthly cash-flow chart">
+                  Monthly cash-flow chart showing take-home, bills, living expenses, goals, and net cash.
+                </canvas>
               </article>
 
               <article class="panel wide">
@@ -116,7 +177,9 @@
                     <h2>Category Breakdown</h2>
                   </div>
                 </div>
-                <canvas id="categoryChart"></canvas>
+                <canvas id="categoryChart" role="img" aria-label="Monthly category breakdown chart">
+                  Monthly category breakdown chart showing spending totals by category.
+                </canvas>
               </article>
             </div>
 

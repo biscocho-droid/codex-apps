@@ -39,9 +39,10 @@ Edits made inside the app are saved in the browser with `localStorage`, so they 
 
 ## Themes
 
-The dashboard includes five browser-saved visual themes:
+The dashboard includes six browser-saved visual themes:
 
-- Calm Money (default)
+- Orbital Treasury (default)
+- Calm Money
 - Midnight
 - Editorial
 - Ocean Glass

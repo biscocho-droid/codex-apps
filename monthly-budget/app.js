@@ -56,7 +56,7 @@ const BASE_DATA = {
 const state = {
   month: 0,
   view: localStorage.getItem("financeOS.view") || "overview",
-  theme: localStorage.getItem("financeOS.theme") || "calm",
+  theme: localStorage.getItem("financeOS.theme") || "orbital",
   edits: JSON.parse(localStorage.getItem("financeOS.edits") || "{}"),
   goals: JSON.parse(localStorage.getItem("financeOS.goals") || "{}"),
   income: Number(localStorage.getItem("financeOS.income") || BASE_DATA.takeHome),
@@ -170,7 +170,7 @@ function switchView(view) {
   document.querySelectorAll(".view").forEach((el) => el.classList.toggle("active", el.id === view));
   document.querySelectorAll(".nav-btn").forEach((btn) => btn.classList.toggle("active", btn.dataset.view === view));
   const titles = {
-    overview: "Monthly Budget",
+    overview: "Orbital Treasury",
     paychecks: "Paycheck Split",
     categories: "Categories",
     calendar: "Bills Calendar",
@@ -187,8 +187,8 @@ function switchMonth(index) {
 }
 
 function setTheme(theme) {
-  const themes = ["calm", "midnight", "editorial", "ocean", "plum"];
-  state.theme = themes.includes(theme) ? theme : "calm";
+  const themes = ["orbital", "calm", "midnight", "editorial", "ocean", "plum"];
+  state.theme = themes.includes(theme) ? theme : "orbital";
   document.documentElement.dataset.theme = state.theme;
   localStorage.setItem("financeOS.theme", state.theme);
   const selector = document.getElementById("themeSelect");
@@ -244,13 +244,20 @@ function renderKpis() {
   const allocatedPct = income ? Math.round(((income - allocation.net) / income) * 100) : 0;
 
   document.getElementById("commandHeadline").textContent = money(allocation.net);
-  document.getElementById("commandSubtext").textContent = "";
+  document.getElementById("commandSubtext").textContent = allocation.net >= 0 ? "Available" : "Over plan";
   document.getElementById("commandAllocated").textContent = `${allocatedPct}%`;
+  document.getElementById("orbitBills").textContent = money(allocation.bills);
+  document.getElementById("orbitLiving").textContent = money(allocation.living);
+  document.getElementById("orbitGoals").textContent = money(allocation.goals);
+  document.getElementById("orbitIncome").textContent = money(income);
+  document.getElementById("orbitProgressBar").style.width = `${Math.max(0, Math.min(100, allocatedPct))}%`;
+  const score = budgetScore();
+  document.getElementById("orbitStatusLabel").textContent = score >= 75 ? "Excellent" : score >= 50 ? "Stable" : "Needs attention";
 
   document.getElementById("takeHome").textContent = money(income);
   document.getElementById("plannedSpend").textContent = money(spend);
   document.getElementById("cashLeft").textContent = money(left);
-  document.getElementById("budgetScore").textContent = budgetScore();
+  document.getElementById("budgetScore").textContent = score;
   document.getElementById("spendNote").textContent = spend ? "Budgeted lines for selected month" : "No expense rows filled for this month";
   document.getElementById("cashNote").textContent = left >= 0 ? "After planned spending" : "Over monthly take-home";
 }
@@ -566,9 +573,14 @@ function setupCanvas(canvas, height = 300) {
 }
 
 function drawTrend() {
-  const { ctx, width, height } = setupCanvas(document.getElementById("trendChart"), 260);
+  const trendCanvas = document.getElementById("trendChart");
+  const { ctx, width, height } = setupCanvas(trendCanvas, 260);
   if (width < 200) return;
   const a = allocationSummary();
+  trendCanvas.setAttribute(
+    "aria-label",
+    `Cash-flow chart: ${money(takeHome())} take-home, ${money(a.bills)} bills, ${money(a.living)} living expenses, ${money(a.goals)} goals, and ${money(a.net)} net cash.`,
+  );
   const steps = [
     { label: "Take-home", value: takeHome(), delta: takeHome(), type: "start" },
     { label: "Bills", value: takeHome() - a.bills, delta: -a.bills, type: "outflow" },
@@ -654,11 +666,16 @@ function drawLine(ctx, values, x, y, color) {
 }
 
 function drawCategories() {
-  const { ctx, width, height } = setupCanvas(document.getElementById("categoryChart"), 300);
+  const categoryCanvas = document.getElementById("categoryChart");
+  const { ctx, width, height } = setupCanvas(categoryCanvas, 300);
   if (width < 220) return;
   const totals = BASE_DATA.categories
     .map((category, index) => ({ ...category, value: categoryTotal(index) }))
     .sort((left, right) => right.value - left.value);
+  categoryCanvas.setAttribute(
+    "aria-label",
+    `Category breakdown: ${totals.map((item) => `${item.name} ${money(item.value)}`).join(", ")}.`,
+  );
   const max = Math.max(...totals.map((item) => item.value), 1);
   const left = 132;
   const rowH = height / totals.length;
