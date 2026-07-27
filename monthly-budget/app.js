@@ -251,8 +251,15 @@ function renderKpis() {
   document.getElementById("orbitGoals").textContent = money(allocation.goals);
   document.getElementById("orbitIncome").textContent = money(income);
   document.getElementById("orbitProgressBar").style.width = `${Math.max(0, Math.min(100, allocatedPct))}%`;
+  document.getElementById("routingPercentDisplay").textContent = `${allocatedPct}%`;
+  document.getElementById("routeBills").textContent = money(allocation.bills);
+  document.getElementById("routeLiving").textContent = money(allocation.living);
+  document.getElementById("routeGoals").textContent = money(allocation.goals);
+  document.getElementById("routeIncome").textContent = money(income);
+  document.getElementById("routeCash").textContent = money(allocation.net);
   const score = budgetScore();
-  document.getElementById("orbitStatusLabel").textContent = score >= 75 ? "Excellent" : score >= 50 ? "Stable" : "Needs attention";
+  document.getElementById("orbitStatusLabel").textContent =
+    allocation.net > takeHome() * 0.2 ? "Healthy" : allocation.net >= 0 ? "Stable" : "Needs attention";
 
   document.getElementById("takeHome").textContent = money(income);
   document.getElementById("plannedSpend").textContent = money(spend);
@@ -488,7 +495,7 @@ function renderPlanner() {
     <section class="planner-summary">
       <label class="planner-income">
         <span>Monthly take-home</span>
-        <input id="incomeInput" type="number" min="0" step="1" value="${takeHome()}" />
+        <input id="incomeInput" type="number" min="0" step="1" value="${takeHome()}" aria-label="Monthly take-home" />
       </label>
       <div>
         <span>Total planned expenses</span>

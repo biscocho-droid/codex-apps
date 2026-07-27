@@ -77,16 +77,65 @@
 
             <div class="orbital-grid">
               <aside class="orbit-left-rail">
-                <p class="eyebrow">System map</p>
-                <section class="allocation-rail" id="monthRail" aria-label="Monthly allocation summary"></section>
+                <article class="telemetry-panel">
+                  <div class="telemetry-month">
+                    <span>Month</span>
+                    <strong>‹ &nbsp; 2026 PLAN &nbsp; ›</strong>
+                  </div>
+                  <div class="telemetry-item cyan">
+                    <span>Cash inflow</span>
+                    <strong id="takeHome">$0</strong>
+                    <small>This month</small>
+                    <svg viewBox="0 0 180 42" aria-hidden="true">
+                      <path d="M2 34 C20 29,30 35,45 29 S70 31,82 21 S105 27,118 16 S145 23,158 8 S172 16,178 3"></path>
+                    </svg>
+                  </div>
+                  <div class="telemetry-item orange">
+                    <span>Cash outflow</span>
+                    <strong id="plannedSpend">$0</strong>
+                    <small id="spendNote">This month</small>
+                    <svg viewBox="0 0 180 42" aria-hidden="true">
+                      <path d="M2 34 C20 36,30 28,44 32 S66 22,82 27 S103 18,119 21 S145 13,158 16 S172 7,178 4"></path>
+                    </svg>
+                  </div>
+                  <div class="telemetry-item lime">
+                    <span>Net position</span>
+                    <strong id="cashLeft">$0</strong>
+                    <small id="cashNote">Free cash</small>
+                    <svg viewBox="0 0 180 42" aria-hidden="true">
+                      <path d="M2 35 C18 30,30 36,45 31 S66 33,80 24 S101 28,116 18 S142 22,155 10 S170 13,178 2"></path>
+                    </svg>
+                  </div>
+                  <div class="telemetry-upcoming">
+                    <span>Upcoming</span>
+                    <div><i class="orange-dot"></i>Rent due day 1 <strong>$1,641</strong></div>
+                    <div><i class="cyan-dot"></i>Car payment day 15 <strong>$500</strong></div>
+                  </div>
+                </article>
+                <section class="allocation-rail orbit-data-cache" id="monthRail" aria-label="Monthly allocation summary"></section>
               </aside>
 
               <div class="orbit-viewport">
-                <div class="orbit-month">
-                  <span>Monthly trajectory</span>
-                  <strong>2026 · Current Plan</strong>
-                </div>
                 <div class="orbit-system" aria-label="Monthly cash orbit">
+                  <div class="orbit-calendar" aria-hidden="true">
+                    <strong>2026 PLAN</strong>
+                    <div>
+                      <span>28</span><span>30</span><span>1</span><span>3</span><span>5</span><span>7</span>
+                      <span>9</span><span>11</span><span class="today">12</span><span>16</span><span>20</span><span>24</span><span>28</span><span>31</span>
+                    </div>
+                  </div>
+                  <svg class="orbit-flows" viewBox="0 0 100 100" aria-hidden="true">
+                    <defs>
+                      <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z"></path></marker>
+                      <marker id="arrowCyan" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z"></path></marker>
+                      <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z"></path></marker>
+                      <marker id="arrowGold" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z"></path></marker>
+                    </defs>
+                    <path class="flow-blue" d="M20 27 C10 43 24 61 44 53" marker-end="url(#arrowBlue)"></path>
+                    <path class="flow-cyan" d="M80 27 C90 43 76 61 56 53" marker-end="url(#arrowCyan)"></path>
+                    <path class="flow-orange" d="M22 76 C35 88 48 72 46 58" marker-end="url(#arrowOrange)"></path>
+                    <path class="flow-gold" d="M78 76 C65 88 52 72 54 58" marker-end="url(#arrowGold)"></path>
+                  </svg>
                   <div class="orbit-ring orbit-ring-outer"></div>
                   <div class="orbit-ring orbit-ring-middle"></div>
                   <div class="orbit-ring orbit-ring-inner"></div>
@@ -124,29 +173,30 @@
               </div>
 
               <aside class="orbit-right-rail">
-                <p class="eyebrow">Command metrics</p>
-                <div class="kpi-grid">
-                  <article class="kpi accent-green">
-                    <span>Take-home</span>
-                    <strong id="takeHome">$0</strong>
-                    <small>Monthly baseline</small>
-                  </article>
-                  <article class="kpi accent-red">
-                    <span>Planned spend</span>
-                    <strong id="plannedSpend">$0</strong>
-                    <small id="spendNote">Budgeted lines</small>
-                  </article>
-                  <article class="kpi accent-blue">
-                    <span>Cash left</span>
-                    <strong id="cashLeft">$0</strong>
-                    <small id="cashNote">After spending</small>
-                  </article>
-                  <article class="kpi accent-gold">
-                    <span>Budget score</span>
+                <article class="routing-panel">
+                  <p class="eyebrow">Routing summary</p>
+                  <div class="routing-ring">
+                    <div><strong id="routingPercentDisplay">0%</strong><span>Routed</span></div>
+                  </div>
+                  <div class="routing-legend">
+                    <div><i class="blue-dot"></i><span>Bills</span><strong id="routeBills">$0</strong></div>
+                    <div><i class="cyan-dot"></i><span>Living</span><strong id="routeLiving">$0</strong></div>
+                    <div><i class="orange-dot"></i><span>Goals</span><strong id="routeGoals">$0</strong></div>
+                    <div><i class="gold-dot"></i><span>Take-home</span><strong id="routeIncome">$0</strong></div>
+                    <div><i class="lime-dot"></i><span>Free cash</span><strong id="routeCash">$0</strong></div>
+                  </div>
+                  <div class="forecast">
+                    <span>Cash flow forecast</span>
+                    <svg viewBox="0 0 190 70" aria-hidden="true">
+                      <path d="M2 61 C20 55,30 57,45 48 S68 54,81 42 S103 45,117 32 S143 38,157 20 S176 22,188 5"></path>
+                    </svg>
+                    <div><span>Now</span><span>Next</span><span>Goal</span></div>
+                  </div>
+                  <div class="score-signal">
+                    <span>Plan signal</span>
                     <strong id="budgetScore">0</strong>
-                    <small>Plan health signal</small>
-                  </article>
-                </div>
+                  </div>
+                </article>
               </aside>
             </div>
           </section>
