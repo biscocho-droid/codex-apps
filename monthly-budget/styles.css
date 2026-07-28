@@ -2549,11 +2549,11 @@ html[data-theme="orbital"] .orbit-system {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  height: 82px;
-  border-top: 8px solid;
+  top: 34px;
+  left: 12%;
+  width: 76%;
+  height: 70px;
+  border-top: 5px solid;
   border-color: var(--cyan);
   border-radius: 50% 50% 0 0;
   opacity: 0.72;
@@ -2567,24 +2567,6 @@ html[data-theme="orbital"] .orbit-system {
   color: #d1e4e9;
   font-size: 0.72rem;
   letter-spacing: 0.32em;
-}
-
-.orbit-calendar > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.61rem;
-}
-
-.orbit-calendar .today {
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--green);
-  border-radius: 50%;
-  color: var(--green);
-  box-shadow: 0 0 12px rgba(184, 255, 93, 0.35);
 }
 
 html[data-theme="orbital"] .orbit-ring-outer {
@@ -3033,8 +3015,11 @@ html[data-theme="orbital"] .nav-btn.active::before {
     font-size: 0.54rem;
   }
 
-  .orbit-calendar > div {
-    font-size: 0.45rem;
+  .orbit-calendar::before {
+    top: 30px;
+    left: 20%;
+    width: 60%;
+    height: 48px;
   }
 
   html[data-theme="orbital"] .orbit-node {
