@@ -2299,31 +2299,8 @@ html[data-theme="orbital"] .topbar > div:first-child {
   display: none;
 }
 
-html[data-theme="orbital"] .top-actions {
-  align-items: center;
-  position: fixed;
-  z-index: 43;
-  top: 28px;
-  right: 40px;
-}
-
 html[data-theme="orbital"] .plan-pill {
   display: none;
-}
-
-html[data-theme="orbital"] #resetBtn {
-  width: 46px;
-  height: 46px;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  font-size: 0;
-}
-
-html[data-theme="orbital"] #resetBtn::before {
-  content: "⚙";
-  color: var(--ink);
-  font-size: 1.25rem;
 }
 
 html[data-theme="orbital"] .brand {
@@ -3013,12 +2990,6 @@ html[data-theme="orbital"] .nav-btn.active::before {
   html[data-theme="orbital"] .topbar {
     min-height: 74px;
     padding-top: 0;
-  }
-
-  html[data-theme="orbital"] .top-actions {
-    width: auto;
-    top: 18px;
-    right: 18px;
   }
 
   html[data-theme="orbital"] .orbit-status {

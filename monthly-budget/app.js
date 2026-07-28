@@ -187,15 +187,6 @@ function switchMonth(index) {
 
 function setupControls() {
   document.querySelectorAll(".nav-btn").forEach((btn) => btn.addEventListener("click", () => switchView(btn.dataset.view)));
-  document.getElementById("resetBtn").addEventListener("click", () => {
-    state.edits = {};
-    state.income = BASE_DATA.takeHome;
-    state.paycheckAssignments = {};
-    localStorage.removeItem("financeOS.edits");
-    localStorage.removeItem("financeOS.income");
-    localStorage.removeItem("financeOS.paycheckAssignments");
-    render();
-  });
   document.getElementById("scenarioSpend").addEventListener("input", updateScenario);
   const paycheckEditBtn = document.getElementById("paycheckEditBtn");
   if (paycheckEditBtn) {
