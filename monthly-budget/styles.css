@@ -818,6 +818,29 @@ input[type="range"] {
   font-weight: 850;
 }
 
+html[data-theme="orbital"] .paycheck-card {
+  background:
+    linear-gradient(145deg, rgba(33, 104, 126, 0.1), transparent 48%),
+    #07131b;
+}
+
+html[data-theme="orbital"] .paycheck-item-main strong,
+html[data-theme="orbital"] .paycheck-item > b {
+  color: #f1fbff;
+}
+
+html[data-theme="orbital"] .paycheck-item-assign select {
+  border-color: rgba(97, 198, 229, 0.34);
+  background: #0b1b25;
+  color: #f1fbff;
+}
+
+html[data-theme="orbital"] .paycheck-buffer {
+  border: 1px solid rgba(184, 255, 93, 0.2);
+  background: rgba(184, 255, 93, 0.08);
+  color: #c9ff83;
+}
+
 .calendar-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
