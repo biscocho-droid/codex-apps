@@ -53,6 +53,18 @@ const BASE_DATA = {
   ],
 };
 
+const CUSTOM_STRUCTURE_KEY = "financeOS.customStructure";
+const customStructure = JSON.parse(localStorage.getItem(CUSTOM_STRUCTURE_KEY) || '{"categories":[],"lines":{}}');
+
+Object.entries(customStructure.lines || {}).forEach(([categoryName, lineNames]) => {
+  const category = BASE_DATA.categories.find((item) => item.name === categoryName);
+  if (!category) return;
+  lineNames.forEach((name) => category.lines.push(line(name, empty())));
+});
+(customStructure.categories || []).forEach((category) => {
+  BASE_DATA.categories.push(cat(category.name, category.color || "#5b6778", (category.lines || []).map((name) => line(name, empty()))));
+});
+
 const state = {
   month: 0,
   view: localStorage.getItem("financeOS.view") || "overview",
@@ -77,6 +89,51 @@ function cat(name, color, lines) {
 
 function line(name, values) {
   return { name, values };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function saveCustomStructure() {
+  localStorage.setItem(CUSTOM_STRUCTURE_KEY, JSON.stringify(customStructure));
+}
+
+function addExpense(categoryIndex, name, amount) {
+  const category = BASE_DATA.categories[categoryIndex];
+  const cleanName = name.trim();
+  if (!category || !cleanName) return false;
+  if (category.lines.some((item) => item.name.toLowerCase() === cleanName.toLowerCase())) return false;
+
+  category.lines.push(line(cleanName, empty()));
+  const customCategory = (customStructure.categories || []).find((item) => item.name === category.name);
+  if (customCategory) {
+    customCategory.lines = customCategory.lines || [];
+    customCategory.lines.push(cleanName);
+  } else {
+    customStructure.lines = customStructure.lines || {};
+    customStructure.lines[category.name] = customStructure.lines[category.name] || [];
+    customStructure.lines[category.name].push(cleanName);
+  }
+  saveCustomStructure();
+  setValue(categoryIndex, category.lines.length - 1, amount);
+  return true;
+}
+
+function addCategory(name, color) {
+  const cleanName = name.trim();
+  if (!cleanName || BASE_DATA.categories.some((item) => item.name.toLowerCase() === cleanName.toLowerCase())) return false;
+  const category = { name: cleanName, color: color || "#5b6778", lines: [] };
+  customStructure.categories = customStructure.categories || [];
+  customStructure.categories.push({ ...category });
+  BASE_DATA.categories.push(cat(category.name, category.color, []));
+  saveCustomStructure();
+  return true;
 }
 
 function money(value) {
@@ -480,30 +537,48 @@ function renderPlanner() {
         <strong data-planner-cash-left>${money(cashLeft())}</strong>
       </div>
     </section>
+    <section class="planner-actions">
+      <button class="ghost-btn" id="showCategoryForm" type="button">+ Add category</button>
+      <form class="planner-add-form" id="categoryForm" hidden>
+        <label>Category name<input name="categoryName" required maxlength="40" placeholder="e.g. Education" /></label>
+        <label>Color<input name="categoryColor" type="color" value="#5b6778" /></label>
+        <button class="ghost-btn" type="submit">Create category</button>
+        <button class="text-btn" type="button" data-cancel-category>Cancel</button>
+        <span class="form-error" role="alert"></span>
+      </form>
+    </section>
   `;
   plannerRows.innerHTML += BASE_DATA.categories
     .map((category, ci) => {
       const rows = category.lines
         .map((item, li) => {
           const current = valueFor(ci, li);
-          if (spending() && current === 0) return "";
           return `
           <div class="planner-row">
-            <div><strong>${item.name}</strong></div>
-            <input type="number" min="0" step="1" value="${current}" data-ci="${ci}" data-li="${li}" aria-label="${item.name} amount" />
+            <div><strong>${escapeHtml(item.name)}</strong></div>
+            <input type="number" min="0" step="1" value="${current}" data-ci="${ci}" data-li="${li}" aria-label="${escapeHtml(item.name)} amount" />
             <b>${money(current)}</b>
           </div>
         `;
         })
         .join("");
-      if (!rows) return "";
       return `
         <section class="planner-group">
           <div class="planner-group-head">
-            <strong>${category.name}</strong>
-            <span data-category-total="${ci}">${money(categoryTotal(ci))}</span>
+            <strong>${escapeHtml(category.name)}</strong>
+            <div class="planner-group-tools">
+              <span data-category-total="${ci}">${money(categoryTotal(ci))}</span>
+              <button type="button" data-show-expense="${ci}" aria-label="Add expense to ${escapeHtml(category.name)}">+ Add expense</button>
+            </div>
           </div>
-          ${rows}
+          ${rows || '<p class="planner-empty">No expenses yet.</p>'}
+          <form class="planner-add-form expense-form" data-expense-form="${ci}" hidden>
+            <label>Expense name<input name="expenseName" required maxlength="60" placeholder="e.g. Property tax" /></label>
+            <label>Monthly amount<input name="expenseAmount" type="number" min="0" step="0.01" value="0" required /></label>
+            <button class="ghost-btn" type="submit">Add expense</button>
+            <button class="text-btn" type="button" data-cancel-expense="${ci}">Cancel</button>
+            <span class="form-error" role="alert"></span>
+          </form>
         </section>
       `;
     })
@@ -533,6 +608,47 @@ function renderPlanner() {
     incomeInput.addEventListener("change", render);
     incomeInput.addEventListener("blur", render);
   }
+
+  document.getElementById("showCategoryForm")?.addEventListener("click", () => {
+    const form = document.getElementById("categoryForm");
+    form.hidden = false;
+    form.elements.categoryName.focus();
+  });
+  document.querySelector("[data-cancel-category]")?.addEventListener("click", () => {
+    document.getElementById("categoryForm").hidden = true;
+  });
+  document.getElementById("categoryForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!addCategory(form.elements.categoryName.value, form.elements.categoryColor.value)) {
+      form.querySelector(".form-error").textContent = "Enter a unique category name.";
+      return;
+    }
+    render();
+  });
+  document.querySelectorAll("[data-show-expense]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const form = document.querySelector(`[data-expense-form="${button.dataset.showExpense}"]`);
+      form.hidden = false;
+      form.elements.expenseName.focus();
+    });
+  });
+  document.querySelectorAll("[data-cancel-expense]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelector(`[data-expense-form="${button.dataset.cancelExpense}"]`).hidden = true;
+    });
+  });
+  document.querySelectorAll("[data-expense-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const categoryIndex = Number(form.dataset.expenseForm);
+      if (!addExpense(categoryIndex, form.elements.expenseName.value, form.elements.expenseAmount.value)) {
+        form.querySelector(".form-error").textContent = "Enter a unique expense name.";
+        return;
+      }
+      render();
+    });
+  });
 }
 
 function updateScenario() {
