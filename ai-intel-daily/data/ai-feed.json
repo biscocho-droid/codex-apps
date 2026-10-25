@@ -1,22 +1,12 @@
 {
-  "generatedAt": "2026-10-24T12:58:33+00:00",
+  "generatedAt": "2026-10-25T13:25:07+00:00",
   "sourcePolicy": "Free public RSS/Atom/news feeds only. No paid feeds and no API keys.",
   "itemCount": 80,
-  "sourceCount": 13,
+  "sourceCount": 15,
   "topThemes": [
     {
-      "tag": "models",
-      "count": 40,
-      "tickers": [
-        "MSFT",
-        "GOOGL",
-        "META",
-        "AMZN"
-      ]
-    },
-    {
       "tag": "agents",
-      "count": 33,
+      "count": 30,
       "tickers": [
         "MSFT",
         "GOOGL",
@@ -26,18 +16,27 @@
       ]
     },
     {
-      "tag": "security",
-      "count": 25,
+      "tag": "funding",
+      "count": 21,
       "tickers": [
-        "CRWD",
-        "PANW",
-        "ZS",
-        "NET"
+        "QQQ",
+        "ARKK",
+        "IGV"
+      ]
+    },
+    {
+      "tag": "models",
+      "count": 19,
+      "tickers": [
+        "MSFT",
+        "GOOGL",
+        "META",
+        "AMZN"
       ]
     },
     {
       "tag": "cloud",
-      "count": 21,
+      "count": 16,
       "tickers": [
         "MSFT",
         "GOOGL",
@@ -47,223 +46,52 @@
       ]
     },
     {
-      "tag": "chips",
-      "count": 19,
+      "tag": "security",
+      "count": 15,
       "tickers": [
-        "NVDA",
-        "AMD",
-        "TSM",
-        "AVGO",
-        "MU",
-        "SMH"
+        "CRWD",
+        "PANW",
+        "ZS",
+        "NET"
       ]
     },
     {
-      "tag": "research",
-      "count": 17,
+      "tag": "policy",
+      "count": 12,
       "tickers": [
-        "NVDA",
-        "MSFT",
-        "GOOGL",
-        "META"
+        "QQQ",
+        "SMH",
+        "XLK"
       ]
     }
   ],
   "sourceGroups": [
     {
       "group": "AI infrastructure",
-      "count": 9
+      "count": 2
     },
     {
       "group": "Cloud",
-      "count": 12
+      "count": 10
     },
     {
       "group": "Free tech coverage",
-      "count": 5
+      "count": 7
     },
     {
       "group": "Official labs",
-      "count": 17
+      "count": 8
     },
     {
       "group": "Research",
-      "count": 16
+      "count": 4
     },
     {
       "group": "Web discovery",
-      "count": 21
+      "count": 49
     }
   ],
   "items": [
-    {
-      "id": "db3366cd9eea3724",
-      "title": "SIM-UT: A User Simulation based Evaluation Framework for Medical Triage Chatbots",
-      "url": "https://arxiv.org/abs/2610.30412",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30412v1 Announce Type: new Abstract: LLM-based chat agents are increasingly used for complex, multi-turn, multilingual medical triage in low- and middle-income countries (LMICs), yet evaluation methods focus on single-turn, English-only benchmarks that primarily test the chatbots' knowledge. In practice, users are often confused, overwhelmed, or...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "healthcare",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "ISRG"
-      ],
-      "signalScore": 100,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "bc32e6fd539afb28",
-      "title": "UniGuard: Multi-View Guardrail Learning for Cross-Interface Safety Generalization",
-      "url": "https://arxiv.org/abs/2610.30742",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30742v1 Announce Type: new Abstract: Guardrail models are increasingly used as safety layers for LLMs and agentic systems, but most are trained on fixed prompt or response interfaces and become unreliable when the same safety case appears as a conversation, agent trajectory, multi-agent trace, or policy-conditioned input. We propose UniGuard, a...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "policy"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 99,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "b4435e27560b8a19",
-      "title": "Scaling Laws for Safety Probes",
-      "url": "https://arxiv.org/abs/2610.30678",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30678v1 Announce Type: cross Abstract: Safety probes trained on a model's activations are a standard tool for monitoring language models in real time. Each time a new model is released or a new harm area needs to be monitored, the probe must be retrained, which requires new labels and a choice of probe architecture. Yet neither the model nor the...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "cloud",
-        "security",
-        "policy"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET",
-        "NVDA"
-      ],
-      "signalScore": 99,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "ae4b0aa0bd2f3f91",
-      "title": "TauIndianBankBench: Procedure-Aware, Action-Oriented Evaluation of Tool-Using Conversational Agents",
-      "url": "https://arxiv.org/abs/2610.30161",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30161v1 Announce Type: new Abstract: Many Indian banks serve customers through FAQ pages and scripted chatbots. Assistants based on language models could respond faster and carry out requests such as blocking a card, but only if they give correct information and follow the bank's rules. These rules prescribe a procedure, a set of required steps,...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "enterprise",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META"
-      ],
-      "signalScore": 98,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "afcaf3859d9325bc",
-      "title": "IFC-MCQ: Automatically Generating Multiple-Choice Benchmarks for Evaluating LLM Agents on IFC Data Retrieval",
-      "url": "https://arxiv.org/abs/2610.30533",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30533v1 Announce Type: new Abstract: Industry Foundation Classes (IFC), the standard for building information exchange in architecture, engineering, and construction (AEC), is increasingly queried through large language models (LLMs) using natural language. Evaluating these systems at scale is difficult because free-text answers require costly...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "92a5cc7c4c09a286",
-      "title": "Beyond Watching and Searching: Benchmarking Agents for Video-centered Deep Research Reports",
-      "url": "https://arxiv.org/abs/2610.31158",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.31158v1 Announce Type: cross Abstract: Deep research agents synthesize open-web evidence into long reports, but current benchmarks do not evaluate research centered on a source video. We introduce Video-Centered Deep Research Report Generation. Given a video and user request, an agent identifies research questions, retrieves external multimodal...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
     {
       "id": "659154139ae9b318",
       "title": "Securing our frontier model training environment",
@@ -288,201 +116,6 @@
         "META",
         "MSFT",
         "NET"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "e8a381eb8b3c1453",
-      "title": "NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations",
-      "url": "https://blogs.nvidia.com/blog/european-retail-open-models-robotics/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:23+00:00",
-      "summary": "European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a digital twin. Frontier Results With Open Models Retail leaders and technology companies across Europe are using...",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "chips",
-        "cloud",
-        "robotics"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "ISRG",
-        "META"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "156ba725f4de147e",
-      "title": "FusionEval: Benchmarking Model Fusion for Large Language Models",
-      "url": "https://arxiv.org/abs/2610.30162",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30162v1 Announce Type: new Abstract: Model fusion aims to integrate the capabilities of multi-expert models into a single model. Existing evaluations offer limited coverage of reasoning with long chains of thought and tool use, while strong average performance can mask substantial losses in individual expert capabilities. We introduce...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "13390d04dc9a5fed",
-      "title": "How Ground Truth Shapes Retrieval Scores: Evidence-Aware Evaluation of a Retrieval-Augmented Generation System for Breast Lesions",
-      "url": "https://arxiv.org/abs/2610.31606",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.31606v1 Announce Type: new Abstract: Purpose: To describe an evidence-aware retrieval evaluation protocol for a clinical retrieval-augmented generation (RAG) system over breast lesion management literature, addressing the dependence of retrieval scores on annotation coverage. Methods: An 18-document corpus and an 18-query development benchmark,...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "healthcare",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "ISRG",
-        "LLY",
-        "META"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "543ab51fd985afc1",
-      "title": "Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems",
-      "url": "https://arxiv.org/abs/2610.30418",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30418v1 Announce Type: cross Abstract: Modern LLM agents can retrieve information from accessible documents, and then disclose a sensitive conclusion assembled from them. This mosaic effect creates a critical risk for agents operating over confidential data. We quantify its realization with 30 synthetic cybersecurity, medical, and military...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "healthcare",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "ISRG",
-        "LLY",
-        "META"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "7e6112b61f612cd3",
-      "title": "SCOPE: Compiling Natural-Language Policies into Neurosymbolic Predicate Programs",
-      "url": "https://arxiv.org/abs/2610.31062",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.31062v1 Announce Type: cross Abstract: Policy enforcement for LLM agents has shifted from single-turn content moderation to compound, application-specific policies evaluated over multi-turn transcripts and tool-call trajectories. Fine-tuned guardrail models are efficient but degrade on compound policies, and while LLM-as-a-judge approaches...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "policy"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "3d3cd2670fd33163",
-      "title": "Initial Evaluation of Potential Bias in Coverage of Humans in Wikidata",
-      "url": "https://arxiv.org/abs/2609.22375",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2609.22375v2 Announce Type: replace-cross Abstract: Introduction. Open collaborative knowledge graphs such as Wikidata increasingly ground agentic artificial intelligence, information retrieval, and language modeling systems, making systematic auditing of their demographic representation and overall equity a research imperative. Methods. Herein, we...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "5c6916d22c1a5738",
-      "title": "What the Specification Did Not Say: Specification-Oracle Gaps in Test-Graded Coding-Agent Benchmarks",
-      "url": "https://arxiv.org/abs/2610.30635",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-10-24T04:00:00+00:00",
-      "summary": "arXiv:2610.30635v1 Announce Type: new Abstract: Coding-agent benchmarks often describe a task in natural language but grade it with tests taken from the upstream project. Passing those tests can require information the description never states: a constant's name, a module path, an exact message. We call this a specification-oracle gap: where it exists, a...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
       ],
       "signalScore": 95,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
@@ -510,7 +143,7 @@
         "PANW",
         "ZS"
       ],
-      "signalScore": 95,
+      "signalScore": 93,
       "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
     },
     {
@@ -536,61 +169,7 @@
         "MU",
         "NVDA"
       ],
-      "signalScore": 95,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "17ec2c5748ece78c",
-      "title": "Cloud Deployment Incoming: ‘Call of Duty: Modern Warfare 4’ Arrives on GeForce NOW",
-      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-call-of-duty-modern-warfare-4/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T13:00:20+00:00",
-      "summary": "Lock in and load out this GFN Thursday. Call of Duty: Modern Warfare 4 arrives on GeForce NOW at launch, bringing a new campaign, multiplayer action and DMZ, high-stakes extraction mode to supported devices. The campaign also gets an enhanced look: GeForce RTX 5080-class performance arrives for Ultimate members, bringing support for ray-tracing features in...",
-      "sourceWeight": 5,
-      "tags": [
-        "chips",
-        "cloud"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 95,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "84327dec85359755",
-      "title": "NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models",
-      "url": "https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:27+00:00",
-      "summary": "To help developers rapidly build world models, which help physical AI systems understand and simulate the real world, NVIDIA has expanded the Cosmos platform with new training tools, simulation checkpoints and Cosmos Data Factory blueprints. Ranking top five on six different open models leaderboards, the NVIDIA Cosmos platform gives world model builders...",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "chips",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU"
-      ],
-      "signalScore": 95,
+      "signalScore": 93,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -616,34 +195,7 @@
         "MU",
         "NVDA"
       ],
-      "signalScore": 93,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "2903677adcaf0bf7",
-      "title": "NVIDIA Open Models Power a New Wave of European Public Sector Projects",
-      "url": "https://blogs.nvidia.com/blog/european-public-sector-open-models/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:02+00:00",
-      "summary": "Governments need modern solutions to serve the public while keeping sensitive information under their control. Open models provide a path forward, letting governments evaluate them, adapt them to local languages and public services, run them on infrastructure they control, apply their own safeguards and keep sensitive data within controlled environments....",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "chips",
-        "security"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU"
-      ],
-      "signalScore": 93,
+      "signalScore": 91,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -665,7 +217,7 @@
         "MSFT",
         "ORCL"
       ],
-      "signalScore": 92,
+      "signalScore": 90,
       "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
     },
     {
@@ -693,7 +245,7 @@
         "MSFT",
         "NET"
       ],
-      "signalScore": 91,
+      "signalScore": 89,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -718,60 +270,8 @@
         "NOW",
         "NVDA"
       ],
-      "signalScore": 91,
+      "signalScore": 89,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "c816f1c1bbe20961",
-      "title": "Leading European Financial Services Organizations Embrace Open Models to Build Proprietary Intelligence",
-      "url": "https://blogs.nvidia.com/blog/european-financial-services-organizations-open-models-proprietary-intelligence/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:56+00:00",
-      "summary": "At GTC Berlin, banks, payment companies and financial data providers are showing what production-scale intelligence looks like — built on NVIDIA accelerated computing, powered by open weight models and running on their own infrastructure. Revolut is rebuilding its technology stack on a single foundation model PRAGMA, powered by NVIDIA accelerated...",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "chips"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 91,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "5e67f5ab6eaebc90",
-      "title": "Pioneers Across Europe Deploy NVIDIA Earth-2 Open Models to Power Real-World Weather and Climate Prediction",
-      "url": "https://blogs.nvidia.com/blog/europe-earth-2-open-models-weather-climate-prediction/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:19+00:00",
-      "summary": "Weather forecasts shape more than daily plans; timely weather information is crucial for energy producers, insurers and transport operators to plan around changing conditions. A global forecast can show a storm taking shape, but decisions about solar farms, shipping routes or insured property depend on what happens locally. NVIDIA Earth-2 gives developers...",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "chips"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 91,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
       "id": "c90ce0fb2fa7a86c",
@@ -791,77 +291,35 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 90,
+      "signalScore": 88,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "64771ac7441b59e0",
-      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-22T00:00:00+00:00",
-      "summary": "Uber is rolling out ChatGPT Work to more than 30,000 employees, helping teams research, analyze data, create presentations, and complete complex workflows.",
-      "sourceWeight": 5,
+      "id": "d29eacedfb4950c5",
+      "title": "Nvidia discusses $2,000-per-GPU annual software fee for running agents on AI infrastructure — firm already charges more than twice that amount for its AI Enterprise software...",
+      "url": "https://news.google.com/rss/articles/CBMizwJBVV95cUxNVEpXZFd5Q2JyNFYyWHpGb1QwWWFZZ3paclJmT0NwTFNpakwwR2l5aDZDNkRyTWVoOUdFanJQd2dWMDJ3QlJxc2NRbllGXy0zU2JiUmJwSkVhaFlES1hXU2hhMFN6S0FLZjJKemtsS1JwWXdZb3QwQUV6QzRhUzZnVUllcHE4Mi0tQ2ZUUHBLc2hHM1ZNbm1xdkJMclUxcTBEcVdrZkZjYnRVRlpFODNNVTBoS0hZaGxwYVktTW85Z2djVWlId2dldzQ2dVVBLXk2dldmdUFGMnJrY19CUXQtbG16NzNiMFJmR3pGb0pOMDFacEJwdGJmYVVUYmVUZGhyeVNDaWNuZVlxZ1VPdlNlMGJGSlc1T3RfOEliZDZ3ZnJFRVZXWHltWFI4SUFsTE41eThnRUJkMU8zVE1mcWQ1N0JvM29BV3Q0MHZDUXdFVQ?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T13:00:00+00:00",
+      "summary": "Nvidia discusses $2,000-per-GPU annual software fee for running agents on AI infrastructure — firm already charges more than twice that amount for its AI Enterprise software platform Tom's Hardware",
+      "sourceWeight": 1,
       "tags": [
         "agents",
-        "research"
+        "chips",
+        "enterprise"
       ],
       "watchlist": [
         "ADBE",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 90,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "60a5f9b244cb8dae",
-      "title": "What FDE means at OpenAI",
-      "url": "https://openai.com/index/forward-deployed-engineering-means",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-22T06:00:00+00:00",
-      "summary": "What forward deployed engineering means at OpenAI",
-      "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 89,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "e74dec402b981f80",
-      "title": "How Companies Are Using NVIDIA DSX to Break the Power Bottleneck",
-      "url": "https://blogs.nvidia.com/blog/dsx-power/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-10-22T05:00:25+00:00",
-      "summary": "Companies around the world are building on the NVIDIA DSX AI Factory Platform to plan, simulate and run the grid and the AI factory as one system, from the substation to the rack. Their adoption of the platform responds to an acute problem. Power is now the biggest bottleneck in infrastructure. More than $300 billion […]",
-      "sourceWeight": 5,
-      "tags": [
-        "chips"
-      ],
-      "watchlist": [
         "AMD",
         "AVGO",
+        "CRM",
+        "GOOGL",
+        "MSFT",
         "MU",
-        "NVDA",
-        "SMH",
-        "TSM"
+        "NOW"
       ],
-      "signalScore": 89,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
+      "signalScore": 86,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
       "id": "ba03f9ecaf098294",
@@ -881,7 +339,7 @@
         "MSFT",
         "NVDA"
       ],
-      "signalScore": 88,
+      "signalScore": 86,
       "angle": "Capability frontier signal; watch whether research converts into products or infra demand."
     },
     {
@@ -905,71 +363,22 @@
         "MSFT",
         "ORCL"
       ],
-      "signalScore": 88,
+      "signalScore": 86,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "dbcd0ec75ace9746",
-      "title": "Broad access through consistent standards",
-      "url": "https://openai.com/index/broad-access-through-consistent-standards",
-      "source": "OpenAI News",
+      "id": "2005fdc8a1aa9ebb",
+      "title": "Beyond tree cover: mapping the world’s forest types",
+      "url": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/",
+      "source": "Google DeepMind",
       "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T21:00:00+00:00",
-      "summary": "How OpenAI works with distribution partners to uphold consistent safeguards, support responsible access, and clarify expectations in our Usage Policies.",
+      "publishedAt": "2026-10-22T14:30:24+00:00",
+      "summary": "A global map categorizing every 10-meter patch of land on Earth into distinct forest types.",
       "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 88,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "73986fb61eb85779",
-      "title": "How AT&T is rethinking in-house legal work with OpenAI",
-      "url": "https://openai.com/index/att-legal",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T17:00:00+00:00",
-      "summary": "AT&T is working with OpenAI to make legal knowledge easier to access. Learn how its LegalEdge team is rethinking intake and scaling legal judgment.",
-      "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 88,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "b74f8d7bcc180f3f",
-      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
-      "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T13:00:00+00:00",
-      "summary": "From local businesses to global brands, more advertisers can now reach people as they explore, compare and decide what to buy in ChatGPT.",
-      "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 88,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+      "tags": [],
+      "watchlist": [],
+      "signalScore": 86,
+      "angle": "Monitor for follow-up coverage before mapping this into a market theme."
     },
     {
       "id": "c2ffcc9b744c0288",
@@ -995,7 +404,7 @@
         "NOW",
         "NVDA"
       ],
-      "signalScore": 87,
+      "signalScore": 85,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1023,7 +432,7 @@
         "MSFT",
         "MU"
       ],
-      "signalScore": 87,
+      "signalScore": 85,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1051,7 +460,7 @@
         "MSFT",
         "MU"
       ],
-      "signalScore": 87,
+      "signalScore": 85,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1079,59 +488,8 @@
         "MSFT",
         "MU"
       ],
-      "signalScore": 87,
+      "signalScore": 85,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "469f011de0543fe7",
-      "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
-      "url": "https://huggingface.co/blog/nvidia/kumo-relational",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T18:26:30+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "chips",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AVGO",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA",
-        "SMH"
-      ],
-      "signalScore": 86,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "5f6fed9de98a8f00",
-      "title": "How Specializing the Vocabulary of SLMs Can Cut Inference Cost by 77% in Real Applications",
-      "url": "https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T17:35:36+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA",
-        "ORCL"
-      ],
-      "signalScore": 86,
-      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
     },
     {
       "id": "920ab995e7fb3a00",
@@ -1157,7 +515,7 @@
         "MSFT",
         "NOW"
       ],
-      "signalScore": 85,
+      "signalScore": 83,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1184,29 +542,35 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 85,
+      "signalScore": 83,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "98f88d96ee36e1fb",
-      "title": "Ensemble forecasting with IBM Granite time-series models",
-      "url": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-22T07:51:31+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
+      "id": "5f051eae0b02a189",
+      "title": "Daytona Raises $60 Million to Build Cloud Infrastructure for AI Agents - WeRSM",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSVlhQWVQdnZYTWJ4dkpKTXJhckxNMThjUzBvV2MwenMtaDRmWFktTmdFYXU3alFqb292SEpCUDNWa0g1N3lGU3VEM0VxTDhwZjBkTmw1NEZZVGRRWDk5Z2VVQVVCOTlFNG14TkhEakpQaFNJbjFYYjB2dkJwMU04UA?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T14:19:06+00:00",
+      "summary": "Daytona Raises $60 Million to Build Cloud Infrastructure for AI Agents WeRSM",
+      "sourceWeight": 1,
       "tags": [
-        "models"
+        "agents",
+        "cloud",
+        "funding"
       ],
       "watchlist": [
+        "ADBE",
         "AMZN",
+        "ARKK",
+        "CRM",
         "GOOGL",
-        "META",
-        "MSFT"
+        "IGV",
+        "MSFT",
+        "NOW"
       ],
-      "signalScore": 85,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+      "signalScore": 82,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
       "id": "d916339823259f0c",
@@ -1226,7 +590,7 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 84,
+      "signalScore": 82,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1247,7 +611,7 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 84,
+      "signalScore": 82,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1274,51 +638,62 @@
         "NOW",
         "NVDA"
       ],
-      "signalScore": 84,
+      "signalScore": 82,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
-      "id": "97700e69763d83e2",
-      "title": "Profiling TorchNeuron (Part 1): System-level profiling on AWS Trainium.",
-      "url": "https://huggingface.co/blog/amazon/profiling-torchneuron-part-1",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T16:04:43+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
+      "id": "acd37b2e0da9db56",
+      "title": "Nvidia’s Jensen Huang Says AI Agents Have Sent Token, GPU Demand ‘Through the Roof’: Gene Munster Sees 15 Million Bot Users Soaring to Billions - Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQOG1EcXoxY09jT1IzdTlXRlZBZ1kyMEozME5xSFJyeWRsVXBUdFd3aTJ3eDFxbzFvdFZHaWVRLXgyRFp0dWpMaGRVdHdsUVI4OEVsR19yczBzTm1aTjg5MFBXWW1odklWQVlxbVh2d2xZU2ViSkl3TEpSMzAwLV85VVZFeWxBQ1pWcDVZclZtOFNuQ1BJSWc?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T01:30:00+00:00",
+      "summary": "Nvidia’s Jensen Huang Says AI Agents Have Sent Token, GPU Demand ‘Through the Roof’: Gene Munster Sees 15 Million Bot Users Soaring to Billions Yahoo Finance",
+      "sourceWeight": 1,
       "tags": [
-        "cloud"
+        "agents",
+        "chips"
       ],
       "watchlist": [
-        "AMZN",
+        "ADBE",
+        "AMD",
+        "AVGO",
         "CRM",
         "GOOGL",
         "MSFT",
-        "ORCL"
+        "MU",
+        "NOW"
       ],
-      "signalScore": 84,
-      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
+      "signalScore": 81,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
-      "id": "95fe35950c0a2823",
-      "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
-      "url": "https://huggingface.co/blog/ibm-granite/granite-speech-5",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-10-21T14:58:18+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
+      "id": "8bc7bfd58255dc45",
+      "title": "JPMorgan And Citi Limit AI Agents As PHP Flaws Raise Security Alarms (68 characters) - Forbes",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQSzJ2aGpOYXd5VGphNlVjenNNdmtRZmlld000bXpMRUtPU1dZRWJzeVg5YVR0STBMUmRaNDREVVFWTTI0eXpxTzFkNkdXY0ZaTmFEb01qSzlrWnJ0dTIwT2ZrNTFTd2V5QUxMZ0N2ZjVyZGdRdFpYVG5BSFU4X1pZWlZFd2l4XzFzTW1RX19vNnJFYXhXQzBYWWVxRlJzbkEtb2Rrd1BCQ0R2bzhWUjIxLUczRUs4VDRpVXFGNm1LMA?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T01:19:43+00:00",
+      "summary": "JPMorgan And Citi Limit AI Agents As PHP Flaws Raise Security Alarms (68 characters) Forbes",
+      "sourceWeight": 1,
       "tags": [
-        "models"
+        "agents",
+        "cloud",
+        "security",
+        "policy"
       ],
       "watchlist": [
+        "ADBE",
         "AMZN",
+        "CRM",
+        "CRWD",
         "GOOGL",
-        "META",
-        "MSFT"
+        "MSFT",
+        "NET",
+        "NOW"
       ],
-      "signalScore": 84,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+      "signalScore": 81,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
       "id": "c5d7e23d516d23e9",
@@ -1338,7 +713,7 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 83,
+      "signalScore": 81,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1363,90 +738,140 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 83,
+      "signalScore": 81,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
-      "id": "aa95b00b941f0031",
-      "title": "5 production challenges in multi-agent systems and how Deep Insight solved them",
-      "url": "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-10-21T23:36:47+00:00",
-      "summary": "Many teams build a multi-agent AI prototype in days but hit a wall in production. This post defines five production challenges (orchestration, per-agent model selection, reliable operation, secure code execution, and monitoring) and shows how Deep Insight, an open source multi-agent system on AWS, solves each.",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "ORCL"
-      ],
-      "signalScore": 83,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "f86504f035000b61",
-      "title": "Adaptive agentic intelligence framework using Strands Agents",
-      "url": "https://aws.amazon.com/blogs/machine-learning/adaptive-agentic-intelligence-framework-using-strands-agents/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-10-21T21:23:26+00:00",
-      "summary": "The Adaptive Agentic Intelligence Framework (AAIF), built with Strands Agents, handles routine tasks locally with small language models and routes complex requests to cloud models through Amazon Bedrock. This post walks through building AAIF with local SLMs through Ollama and Amazon Bedrock, using an Internet of Things monitoring scenario.",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "ORCL"
-      ],
-      "signalScore": 83,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "faab9c33642302e2",
-      "title": "VBC’s shift to performance, AI agents on the org chart, LEAD is a no-go, and why health systems should prep for mandatory risk models (with Tim Elliott, CEO of Navvis) -...",
-      "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxQRzhYTmpkRWdIZEFJNWNWaVU4RmhUQ1llQXY3TDdwODVBVEh0SFJfX3FSbFFMa3RVbFZieDk0b0d3WFhSU0VaeWx0QjFRVTRwUHpYUzI5SllOMWJDRDhCQWRVZXVkaWRyX0czc1dRUmE4aEpXMFl3TkhfQmN3b2huTURiQW1YZkxyRmxaQkRrekd4UmRjTXNGYzRfNkdqZzdxSkhydGJLR1lGSjFfYUdmYXhLS3BMc0xVZG5JWGg4ZVFtYkt2NGFJMXV1c1F4eVpXSVZlcjZ5YTRBNUpMaEY0TWpWWXJESEVMWGNTbWFYXzVyUUJRZkliWFdIWld4VlpZc3EyZm5IZ2dPXy1vOUdXLUJDSjY?oc=5",
+      "id": "a9c44d4ee0e21e52",
+      "title": "Former Unit 8200 Officers Raise $34 Million for Agentic SecOps Startup Mave - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxONDFvRlVTQS1XV2ZKUlZHSkhsNlBQUU04YWVGQVV3T2VpczltZERrX1RwQlBxN3VEUm1iRU8zU0tIYzl6Z3BBaHVnZnh6UHNGNkdCaE42Z2ZrY2tBRlhsWDJ2ekhfaVhINGQ4U3dtS25SdTFBRzA2ems1cHhVWGdSRVBsTE1iaDdpbm1HbmtVQzZiQmdwZXl0ZVMwbkJuRVZVYXhaSFYxWdIBrAFBVV95cUxNd3lYZXRWN2RfcGpBNGVoRjYwQ2hMX2RfR2NEbVR4Z0Y2N19kMVh4UlplZXZ4TjJzclAtYXNzeTBLODhpOXNQZFFQX3FvMm9INTZnRzJ4VzFwbXdnYzVKOWVQa2ZSYkM2Q0p1Z2s3OVpwNjRFRjFSUE43V05lNUtjSjZhT3gxd1pIa1JpNFV5ZXlHX3FrSkdRa2FjVkltcHY0aGpoTkZSalhOS2RH?oc=5",
       "source": "AI agents",
       "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-24T02:47:00+00:00",
-      "summary": "VBC’s shift to performance, AI agents on the org chart, LEAD is a no-go, and why health systems should prep for mandatory risk models (with Tim Elliott, CEO of Navvis) Hospitalogy",
+      "publishedAt": "2026-10-25T11:00:00+00:00",
+      "summary": "Former Unit 8200 Officers Raise $34 Million for Agentic SecOps Startup Mave SecurityWeek",
+      "sourceWeight": 1,
+      "tags": [
+        "agents",
+        "security",
+        "funding"
+      ],
+      "watchlist": [
+        "ADBE",
+        "ARKK",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 80,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "e9640fd5df59f9bc",
+      "title": "OpenAI used AI agents to hack its own defenses before resuming model training - CTech",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBmeHNlQ2lqRGNTeDI2V3FjcTR2czdKOGdaajhGRzZ1MnhRRGhrMUVEYnRmTkdFZHJUS3lJUHl4NzlGcFN3LTFyZTh6TDVpcmZPWDlpbV9Sc284cW8zczVlSDhmTWpiX0E?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:14:00+00:00",
+      "summary": "OpenAI used AI agents to hack its own defenses before resuming model training CTech",
       "sourceWeight": 1,
       "tags": [
         "models",
         "agents",
-        "healthcare",
-        "security"
+        "research"
       ],
       "watchlist": [
         "ADBE",
         "AMZN",
         "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 80,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "941f1a269e253f0b",
+      "title": "Week in review: PHP vulnerabilities patched, exploited Palo Alto GlobalProtect VPN flaw - Help Net Security",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOaXJxMWhTU2hHODZhZ0lJUDJVbWk3S085RVFvaDdnQnpyQVB5R0VJOXktcWd6akJpcnVNZUwyNmFveDFNcXZzSXNHWFBjWmdYRVdWYy1fcExIZHN3WU4yNUR2NEF0a3d1Tm45UmFiamJkTS1VdWdkR2hOTE5nRXRtenpHeldHSDV1Q1JOZHlxekFYZ0hEdm1jRV9TdlhWcTNDY1BmdDZqZlVTc3pVSGdIY0Q3ejNfaXp5b0xIZERyc1BvZm1JSnc2Rw?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:00:56+00:00",
+      "summary": "Week in review: PHP vulnerabilities patched, exploited Palo Alto GlobalProtect VPN flaw Help Net Security",
+      "sourceWeight": 1,
+      "tags": [
+        "agents",
+        "security",
+        "policy"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
         "CRWD",
         "GOOGL",
-        "ISRG",
-        "LLY",
-        "META"
+        "MSFT",
+        "NET",
+        "NOW",
+        "PANW"
       ],
-      "signalScore": 82,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+      "signalScore": 80,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "3a21a2903bc9d338",
+      "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Texarkana Gazette",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQMlcyblB3c0R3a2lkNWR3ejNtdERmeFp2REc5YWszeEViTE1nSDhHT3lXYkZmVGl1VnVzZlJ4ODY0Q0l1eGVEcExmWjFzNnE1VjFqUkdYNlJmSFM0OUVFVWRkU1EwaUlyUjVWeHR3UHQ0V2FWWG45cWo5UHg3TGVaUWNvQnFmTUU5WDZvYzZlSUxKUnI0MmdPYQ?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T23:00:00+00:00",
+      "summary": "AI agents are only as good as the personal information you share. That raises privacy concerns Texarkana Gazette",
+      "sourceWeight": 1,
+      "tags": [
+        "agents",
+        "funding"
+      ],
+      "watchlist": [
+        "ADBE",
+        "ARKK",
+        "CRM",
+        "GOOGL",
+        "IGV",
+        "MSFT",
+        "NOW",
+        "QQQ"
+      ],
+      "signalScore": 80,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "0b1fbf6592c0bd00",
+      "title": "U.S. Lawmakers Press AI Founders to Focus on Products and Safety - TOKENPOST",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5TWThPTndkSzN1bTFxWXQxUl9USzBXVkFWaUZGSzNNVzk0enF1bDdtQXNBdjM1MDZhRnNNQjNTaVZTd1ZGOS12cnN5VnowV0Jkdk1VTkhpTExMb2c?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T16:55:44+00:00",
+      "summary": "U.S. Lawmakers Press AI Founders to Focus on Products and Safety TOKENPOST",
+      "sourceWeight": 1,
+      "tags": [
+        "security",
+        "policy"
+      ],
+      "watchlist": [
+        "CRWD",
+        "NET",
+        "PANW",
+        "QQQ",
+        "SMH",
+        "XLK",
+        "ZS"
+      ],
+      "signalScore": 80,
+      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
     },
     {
       "id": "51fd2b1659017ebb",
@@ -1472,7 +897,7 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 82,
+      "signalScore": 80,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1493,7 +918,7 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 82,
+      "signalScore": 80,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1517,7 +942,7 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 82,
+      "signalScore": 80,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1541,87 +966,168 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 82,
+      "signalScore": 80,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
-      "id": "390fedfaf0b9f956",
-      "title": "DeepSeek reportedly raises $15B days after US restrictions",
-      "url": "https://techcrunch.com/2026/10/22/deepseek-reportedly-raises-15b-days-after-us-restrictions/",
-      "source": "TechCrunch AI",
-      "sourceGroup": "Free tech coverage",
-      "publishedAt": "2026-10-22T13:11:13+00:00",
-      "summary": "DeepSeek has reportedly raised $15 billion in one of China's largest funding rounds, just days after the U.S. ordered federal agencies to remove its technology over national security concerns.",
-      "sourceWeight": 2,
+      "id": "6d2ff6940e68cc72",
+      "title": "Rising Star, Major Launch: MEDIA META's New Self-Developed AEO Platform Reshapes Global Brand AI Growth Logic - 24-7 Press Release",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPWW1WNzBTb0NHY0tLUGJOUDIzT2JpWTlBeVNnYzRNQ09vVWpDQUFTNU9peVVBSV9fbGV2bU1WT0NITUNvNkZkZFBWeHVqTXZ0dHE5R2xvTjNwM0d4Mk5zR0RPS2FLTWVCLXU5RHBnck9aZXlwbGVldGNFRENLTWxTcU5UNGZlNmw2aGZ5QnJ5ZWdlS2VQcjhXR0VYcm41bU9tTUhFcy1meS1WUXhPM1ZNQnlyOWtnektmczJQc29OWEVqeFBmS050QnFsbW5SZnBDaWVHal9POUQ1Z0FiUjVNcXduOENrcDVLTDhjU1dON0gzZw?oc=5",
+      "source": "Meta AI discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T07:02:36+00:00",
+      "summary": "Rising Star, Major Launch: MEDIA META's New Self-Developed AEO Platform Reshapes Global Brand AI Growth Logic 24-7 Press Release",
+      "sourceWeight": 1,
       "tags": [
-        "security",
+        "models"
+      ],
+      "watchlist": [
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 79,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "693dc83f2d7e17b7",
+      "title": "DeepSeek Raises $15 Billion, Defying US AI Dominance - Digital Pakistan",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdk5MX19XSmpJY0RfcjM3cUdrS0FoZ0J0dWhaRmNidXV2T0FTUWJNNHRuODNSTjJRMUhCM25pcXYtcUNIU1FPN1hjSVhkdVlyNEVOZG1DY3JyNWRHRHBoYXEzTy1WcjFERjcxdTRVSnNiTXRaNEEwamtZV1pJa0xhaEZjd1k?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T06:00:03+00:00",
+      "summary": "DeepSeek Raises $15 Billion, Defying US AI Dominance Digital Pakistan",
+      "sourceWeight": 1,
+      "tags": [
         "funding"
       ],
       "watchlist": [
         "ARKK",
-        "CRWD",
         "IGV",
-        "NET",
-        "PANW",
-        "QQQ",
-        "ZS"
+        "QQQ"
       ],
-      "signalScore": 82,
-      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+      "signalScore": 79,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
     },
     {
-      "id": "5647e9e051ee21a7",
-      "title": "How U.S. Hunger connects leaders and data using Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-u-s-hunger-connects-leaders-and-data-using-amazon-quick/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-10-21T19:19:50+00:00",
-      "summary": "U.S. Hunger, a nonprofit addressing food insecurity, uses Amazon Quick to connect organizational data with leadership decisions. Leaders explore applicant data directly, share KPI definitions and financial context in Quick Spaces, and investigate policy questions with Quick Research.",
-      "sourceWeight": 3,
+      "id": "9e053277a16ad5d0",
+      "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+      "url": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+      "source": "TechCrunch AI",
+      "sourceGroup": "Free tech coverage",
+      "publishedAt": "2026-10-24T19:00:00+00:00",
+      "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+      "sourceWeight": 2,
       "tags": [
-        "cloud",
-        "security",
-        "policy",
-        "research"
+        "funding"
       ],
       "watchlist": [
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET",
-        "NVDA"
+        "ARKK",
+        "IGV",
+        "QQQ"
       ],
-      "signalScore": 82,
-      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
+      "signalScore": 79,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
     },
     {
-      "id": "01ee86fb37d4d473",
-      "title": "A timeline of developments in AI safety since the attack on Hugging Face - Tech Xplore",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBDMVcxbzNHMVQ3dEVCbGMzQzJ3bGFxUWNLU3g1MU5jZzN0UUh4OG9COTh6RkNNUnYzUjdPZjZoUzVjY3FfZjZjRjVBNjdBcllsdU53RU1JaVpDaUw0aVZET00wQlp4V0dSV2o2bzR3?oc=5",
+      "id": "eef097dc34fc9e46",
+      "title": "AWS says its AI security agent fixes 89% of bugs — but there’s a catch - The New Stack",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTnk4WGwyemZBZm5VWjZfOElWcEVwaVA3SG9BMWJWQlpxRTdPYWpXNTB3Q0M3dm5TQldLWUM5NzdJM19aT0ktaGNSSXpBTHF1YVYtZ0JGc1BrZ2VjTU12MDFpMDROWHMwbWJUSnRQbTUwWU9FUFdpaE1neTVHY2RITU95d3lUU2E2eTZpeWlpRWlKaGRZ?oc=5",
       "source": "AI agents",
       "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-24T09:28:34+00:00",
-      "summary": "A timeline of developments in AI safety since the attack on Hugging Face Tech Xplore",
+      "publishedAt": "2026-10-24T14:34:57+00:00",
+      "summary": "AWS says its AI security agent fixes 89% of bugs — but there’s a catch The New Stack",
       "sourceWeight": 1,
       "tags": [
         "agents",
+        "cloud",
         "security"
       ],
       "watchlist": [
         "ADBE",
+        "AMZN",
         "CRM",
         "CRWD",
         "GOOGL",
         "MSFT",
         "NET",
-        "NOW",
-        "PANW"
+        "NOW"
       ],
-      "signalScore": 81,
+      "signalScore": 79,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "d2e06deb7820568e",
+      "title": "Here are the top AI agents that can live in your text messages",
+      "url": "https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "source": "TechCrunch AI",
+      "sourceGroup": "Free tech coverage",
+      "publishedAt": "2026-10-24T14:00:00+00:00",
+      "summary": "We created a list of the most notable AI agents that can live in your text messages, from general assistants to agents designed for families, travel, and work.",
+      "sourceWeight": 2,
+      "tags": [
+        "agents"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW"
+      ],
+      "signalScore": 79,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "6da0331ec022073e",
+      "title": "The Agentic Enterprise: Orchestrating People, Processes and AI Agents with ServiceNow - Capgemini",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOYUpCNlNlc0s2MmxWTVBSMVgyaWJCLXd6RkJDd3lGb1BDaHJZS0JqMU9tN255SFEwRWJpRFViQ2trZ1d4NmVNN1V0aFpNcnhFWE50V1pFTy04UTJ1TjNRYlhORWRjY3h3MnpWR2VWMTR0aEd1TldvZWJjVVlNTzhNc2Ezd21jY184eFZRS2hGTWZVQ21FcG5OTWdFb1RlQWVCQmVOSkRLdG9jOHR6V2p2QWRoUVl5eVY3N1U4S1BPR1NLUFJRdUhZ?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T10:24:45+00:00",
+      "summary": "The Agentic Enterprise: Orchestrating People, Processes and AI Agents with ServiceNow Capgemini",
+      "sourceWeight": 1,
+      "tags": [
+        "agents",
+        "enterprise"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW",
+        "ORCL"
+      ],
+      "signalScore": 79,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "9038856accca3b8c",
+      "title": "Startup Funding Bhubaneswar-Based Curebay Raises Rs 100 Crore To Expand Rural Healthcare Network - Argus English",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQUWx2OXFiaENubkJWbmdKNTRkSnA3bXEtRDd2OWxsZFRxakhTT1pPNTgtNWg2Mkt0RmowVmxxWFo5V0llWlU0MGp1M3Z3bnd0YTdkNmF2RVJyd2VLS2JfdUk0QzE0UHliTW40Smk4LTlLQ3R2Tlp2N0NWNVFzdlpRODM2LWtJQlIzbzNiWGJKUVNNU3pLT3F4aWdIVFZBS29HWDR0bXdRTUpZSl84OHdNUA?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T04:30:55+00:00",
+      "summary": "Startup Funding Bhubaneswar-Based Curebay Raises Rs 100 Crore To Expand Rural Healthcare Network Argus English",
+      "sourceWeight": 1,
+      "tags": [
+        "healthcare",
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "ISRG",
+        "LLY",
+        "NVO",
+        "QQQ",
+        "TMO",
+        "XLV"
+      ],
+      "signalScore": 79,
+      "angle": "AI life-sciences signal; watch drug discovery, medtech, and healthcare data platforms."
     },
     {
       "id": "8eaf915549297dc8",
@@ -1646,17 +1152,117 @@
         "ORCL",
         "QQQ"
       ],
-      "signalScore": 81,
+      "signalScore": 79,
       "angle": "AI software monetization signal; watch SaaS attach rates and seat expansion."
     },
     {
-      "id": "970e51250af0e33a",
-      "title": "Mave Raises $28M Series A, Bringing Total Funding to $34M for Agentic SecOps - Unite.AI",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE45QktZZnlFd3UyZWNXNTQyVlFWMWhiemdKSGREZU5iVnptUFVYdXIyMkN1ZWVJVUE1MDVkU3J5SEZwc0QyX1h0Zl9yblNWMXprOUZiZUxGZDc0Smt3cEhrVzJ5XzlGTkh1eGd2SnhoXzlLUF9fRHNTR2pzeE9oQQ?oc=5",
+      "id": "c79e8b70ee91d99d",
+      "title": "AI Agents Are Splitting The Customer Relationship Into Pieces - Forbes",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQYzBacnFXX29yWngzelFsOTd5S3dxTHBQeDJGai1kcTBlSFJ6ZlhPdFg0bFZheHpSUkV1c1BldHhCN0V1VmNKMjZIaEUtUDR5UG1SMGtoZ0l1WkZ2RnF5U0dMdGxqNkU3RVY1YkQ2em41TXB4cm9LLTExQUl4LUQ5YXNyVnpwRVUtVU5paDZIQmphMVVJMGJ6NXJaTEV6bmluWDlaelVRcjBuaXJETDhXV2VRQVIwaXM?oc=5",
+      "source": "AI agents",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T13:00:00+00:00",
+      "summary": "AI Agents Are Splitting The Customer Relationship Into Pieces Forbes",
+      "sourceWeight": 1,
+      "tags": [
+        "agents",
+        "enterprise"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW",
+        "ORCL"
+      ],
+      "signalScore": 78,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "298b5cbac0ceb357",
+      "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone - The Decoder",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQNjI2ck9BdmpPVFZVby1WajQyQ0d5ZW5mTlBpRWcxRUJ3NjZTdFNHU2lOSVNPRU5iSGdrc05WdGpBTmtheDNHVlQ3R2MyVFY2ZnFrQXpGX0RZYWk1dDRDU2ZGUEFvSEduS1c0M3ppM01Ob3p2eTZrbWNQdkxSRVFtY1JUVjd0YWNhcWFTaFJCUV9XUGxyMHEtVURIWThrenlyY1VMR3hNY3Z0WTdBcWhzM2hHTDFzbHIy?oc=5",
+      "source": "Anthropic discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:18:25+00:00",
+      "summary": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone The Decoder",
+      "sourceWeight": 1,
+      "tags": [
+        "models",
+        "agents"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW"
+      ],
+      "signalScore": 78,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "3e1c9cd20a44ca64",
+      "title": "The House | The UK's AI Security Institute: As Calls For Regulation Grow, Is It Still Fit For Purpose? - Politics Home",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNelZSTXpYVm5iblRDSWRVcDFkazFWV0tNOXQ4NlRSYnpuUXdNckIyenJUdUtsal9NYURkV0xrYTlKUXA4VHlwZTgxamhWckNWajNiTXFvWGRYQXY1R0ltdGYySFVYTks4LWltdGRmTS05dThraEdzUWpaMjd4WmZsUnVyWmhQcGtobVRJckZqeUVYNVlTSkhQaVlSM0RTZjhuMHhERHg0dnlhVFk?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:02:36+00:00",
+      "summary": "The House | The UK's AI Security Institute: As Calls For Regulation Grow, Is It Still Fit For Purpose? Politics Home",
+      "sourceWeight": 1,
+      "tags": [
+        "security",
+        "policy"
+      ],
+      "watchlist": [
+        "CRWD",
+        "NET",
+        "PANW",
+        "QQQ",
+        "SMH",
+        "XLK",
+        "ZS"
+      ],
+      "signalScore": 78,
+      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+    },
+    {
+      "id": "3481f73bc5fc3be0",
+      "title": "From video production to medical devices: a string of early-stage investments, plus late-stage proptech mega-deals - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBNbzE5UDhHQjkwZXZvMmVENldrM1pNVTJ3dzZUTmRMM19taDBWcHVSYUxldl9jZnZ4WGw3ajdmRzBJaGFkbHJzZk9rOEpjSWNPekJLSjdSSmlYMU80Ni03eVlINENGQm5OeUF2LUl3?oc=5",
       "source": "AI startup funding",
       "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-22T15:06:02+00:00",
-      "summary": "Mave Raises $28M Series A, Bringing Total Funding to $34M for Agentic SecOps Unite.AI",
+      "publishedAt": "2026-10-25T08:18:16+00:00",
+      "summary": "From video production to medical devices: a string of early-stage investments, plus late-stage proptech mega-deals 머니투데이",
+      "sourceWeight": 1,
+      "tags": [
+        "healthcare",
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "ISRG",
+        "LLY",
+        "NVO",
+        "QQQ",
+        "TMO",
+        "XLV"
+      ],
+      "signalScore": 78,
+      "angle": "AI life-sciences signal; watch drug discovery, medtech, and healthcare data platforms."
+    },
+    {
+      "id": "b08e5de2351f02b8",
+      "title": "How to Write an AI Agent Data Residency Clause Before Europe Signs - Startup Fortune",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWlZuLUpTTURJUDl6YU9qZ01OQkxiM3ZnY1pRU2hHd200VE56TmhtQkwxTWZyVEZxZ01nMzl5VHJ6eV94cDl3bzVXTDNBZ3RkX2NMc3E5OF9lUTR3RnhCSUlpQzc2RFlKTEdCMllQR0hvdXpxaDAxOG52U0YwZUZxNDVIS19BVEFINkNSOVhtRXg1bXgxR3BZTlFn?oc=5",
+      "source": "Mistral AI discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T07:08:08+00:00",
+      "summary": "How to Write an AI Agent Data Residency Clause Before Europe Signs Startup Fortune",
       "sourceWeight": 1,
       "tags": [
         "agents",
@@ -1672,8 +1278,166 @@
         "NOW",
         "QQQ"
       ],
-      "signalScore": 81,
+      "signalScore": 78,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "c7de3fb61e0181c4",
+      "title": "NVIDIA, Competitors Vie for Robotics Developer Dominance - 조선일보",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNVRfamt5V2FBX20tYkZ4amhid0VxSXZBak9zTXp4VjBWWUVfc2xZUkpCMl9ZQ0ZSbFY4ellyU0ZfVVpQRFByNzAzM2V6cktkNnFqMXNrTnhUQXZSNndJMnZRXzVGLUR4RXNvVms3WXFYNmxDbWxyVkpLeDdEdEFZLXo4ZWFZcWNv?oc=5",
+      "source": "AI chips",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T05:14:53+00:00",
+      "summary": "NVIDIA, Competitors Vie for Robotics Developer Dominance 조선일보",
+      "sourceWeight": 1,
+      "tags": [
+        "chips",
+        "robotics"
+      ],
+      "watchlist": [
+        "AMD",
+        "AVGO",
+        "BOTZ",
+        "ISRG",
+        "MU",
+        "NVDA",
+        "ROK",
+        "SMH"
+      ],
+      "signalScore": 78,
+      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
+    },
+    {
+      "id": "9718b7d64387f7c9",
+      "title": "UK government sets out US$800mil of AI security funding - KLSE Screener",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNWVJsWG1RRFlGYXlvT1VILWsxVl96WWNGNlY3VFhreG42SmtMbU52bDYwdFNMY1ZOTDhDODAyRjJzdS0zNkM1REd3eW91RW5oSkFkNjhnWExfaXM0MmltVjM5RUlQN21xb3ZUYzZYb2JEc2RNN3ZqeXN4My1SdEVvRVFuLXprVE1qdTVPeFpZQXQ3b2VTQWFZTVNPR3VGeTg2bXQxTVUzMks?oc=5",
+      "source": "Google DeepMind discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T04:50:46+00:00",
+      "summary": "UK government sets out US$800mil of AI security funding KLSE Screener",
+      "sourceWeight": 1,
+      "tags": [
+        "security",
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "CRWD",
+        "IGV",
+        "NET",
+        "PANW",
+        "QQQ",
+        "ZS"
+      ],
+      "signalScore": 78,
+      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+    },
+    {
+      "id": "fca35a2881c525f6",
+      "title": "Karta AI Raises $3M Seed Funding for Voice AI - KARV Tech Insider",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNjhDcUNneXE3bG5PWUMtUElVOUdRajFqajRJaFhId3oyek93VmpUSzJOMktibWxzSmpJN2owOGRZSm5vdEJHRU15WVlXSmdwYm1fQ0JET2cyUVl2NldsOG05TzB2TV80Y3R4SmpZTE5JNjJRckd4OUtXMVlUZGt6UjItZndQeEFtdlZNQWNwdm5VZW9FN1g1SEhvM2o2clFRQ3ZuME9YanZtYWJtVHljZk1xeGUzZjJI?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T00:00:00+00:00",
+      "summary": "Karta AI Raises $3M Seed Funding for Voice AI KARV Tech Insider",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 78,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
+    },
+    {
+      "id": "eddbf2d86c6e3287",
+      "title": "EC-Council Releases ADG 2.0 and Offers Its AI Governance Crosswalks Free to Every Government, Regulator, and Standards Body as Nations Split on AI Rules - CISO Mag",
+      "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOa0pydzJpT3daeEo0Q3BtdGZ6ejZGMXprT0ExdVFoelJRTXhPbllFZUVGcDVDYmV3a2NjdjhmZWZuZmFtcTJHeEp6QXI5TWpNYzJ6dW9OM01mMlhpdnZpemNLVHVtUG5sOVd1elJoUUJicWZtOWNvMXdDRWg1Ml91S1NObzhfRmJ2elJXZXpTX2djWmh2X0NwdmU1Ull3U01FVnZpUzVSeG53aFdTSW5mZERxMWhCUVJpTHFpLTd6NFBRb1JNTHlRMEd0SFpUOUtCZk03WjFEUnFqYkpQVkZuTjlpQlNkb1czSmFzN3FXVlFteXFLZk16NDJOYVRzRTZu0gGGAkFVX3lxTE50dWxpTTZialNHQWRzNVVIeFZQYTd3cTUyTHdrQnhvYndEWDRTc0RLN2x2UzA5VHBCQ0ZmWUU0N2NmUnY4cDRyb3lCdFVjbHJXOVNzejAzOXlCeDQ5b0RKNXVRcEY1VGpRNFBrQUI0NkszSU1fVUhiUm5FbkZTc1ZGUFR2Ml9aOWg5cWZ1Sk9RZk5YUEZremZyemdOODBKMUI0YWFmY3NsYUJ3QnNXb3RhcktmYnJYUmU3cmZXUGM2SmRWMFdaTjZtbkVVV0dxY0R2UXJVY2JCWU01TXRhd1NwU24tVjkweFFwN2FKa1VWMzl2N0haYzdCdm40V0J1RWZ4bFBieWc?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T19:41:32+00:00",
+      "summary": "EC-Council Releases ADG 2.0 and Offers Its AI Governance Crosswalks Free to Every Government, Regulator, and Standards Body as Nations Split on AI Rules CISO Mag",
+      "sourceWeight": 1,
+      "tags": [
+        "policy"
+      ],
+      "watchlist": [
+        "QQQ",
+        "SMH",
+        "XLK"
+      ],
+      "signalScore": 78,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
+    },
+    {
+      "id": "25df070c49f478b1",
+      "title": "DeepSeek Raises $15 Billion to Challenge Top US AI Companies - TechJuice",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1aNHJKQ3dNeFVhVk5xWW5rcHd1aTJvaUIybzJsUGNrSW9kMDlZb3RzNlQya1ZYYnpQUWFzRkhFX1ExNVRQU0xNR294UjZLRjdjOEpZTUNUTmVENVBIWWl6LW1OZFRzRXhSazg0TkUta04?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T18:46:15+00:00",
+      "summary": "DeepSeek Raises $15 Billion to Challenge Top US AI Companies TechJuice",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 78,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
+    },
+    {
+      "id": "21222565e8a69421",
+      "title": "Chinese AI startup DeepSeek raises $15 billion ahead of potential IPO - The Daily Star",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZXZzblRac211RElKalkxTVo3bDNHMGFtMU5Hc3BXVmRzN3k5NjBkbXpua3B4ZFN6bFVnRHJHakxKRnZSTWF5VTJHS2s3MV8yZXlGRkh2LXk4aDZXWTlkWUI1SDZrOW9oMEpoaFZqNklVaWp4U3JDblJTaDJUNG1hLXVPMkNjbWY1WkRoUTRBeTJJN3RFVXRJemtyd1hvZVdmcExHeHNtbksxNzZ5OG9JdE5scWtHVjZEN0h4M1dFTUs?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T16:28:39+00:00",
+      "summary": "Chinese AI startup DeepSeek raises $15 billion ahead of potential IPO The Daily Star",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 78,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
+    },
+    {
+      "id": "57343ea7ad084f79",
+      "title": "Made in Israel: Startup Nation’s cyber sector draws billions as AI reshapes security - Israel Today",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOWnB4QUhRU21KQXFqbzJ1TllrZW5EQXEzcDd3eFRiU2c3a21TcHd0MXZHNXBJLTdsWjFsSHlPTkZnVURReVNXUjBHTkxOOXdFVl8xR3R5N04xTDhOQ19fd3YtT29LSHljSjd6VEttR0lHcDFZRWNUbmpoR0g2cExQWDk5UmpEaEVucWM3Y280a09sTnlRVDhwQTZUclhxR2t5Skd1QXZUWVJ1ektPNmFpZFZDTnNBZFhMcmc?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T11:24:24+00:00",
+      "summary": "Made in Israel: Startup Nation’s cyber sector draws billions as AI reshapes security Israel Today",
+      "sourceWeight": 1,
+      "tags": [
+        "cloud",
+        "security",
+        "funding"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 78,
+      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
     },
     {
       "id": "f673006002dbe864",
@@ -1695,7 +1459,7 @@
         "SMH",
         "XLK"
       ],
-      "signalScore": 80,
+      "signalScore": 78,
       "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
     },
     {
@@ -1719,7 +1483,7 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 80,
+      "signalScore": 78,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1744,110 +1508,101 @@
         "XLK",
         "ZS"
       ],
-      "signalScore": 80,
+      "signalScore": 78,
       "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
     },
     {
-      "id": "e4827a6db3dcc011",
-      "title": "Wall Street raises alarms over rogue AI agents accessing bank accounts - Fox Business",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5hYmhtak9wSDd6MGtKS1dpcVdlODVHa2RnOHZKUVRYWUNDMDVPeHZwQ20tckE3czgxWEEzNGVGZl9vQ0RCaXZSa3FlQlJkdXFsa1pkVXdpMl9wdmM?oc=5",
-      "source": "AI agents",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T20:32:53+00:00",
-      "summary": "Wall Street raises alarms over rogue AI agents accessing bank accounts Fox Business",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "ARKK",
-        "CRM",
-        "GOOGL",
-        "IGV",
-        "MSFT",
-        "NOW",
-        "QQQ"
-      ],
-      "signalScore": 80,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "1b62b716aecb4d5b",
-      "title": "Vertical Semiconductor Signs Letter Of Intent For Up To $73 Million In CHIPS Act Funding To Advance AI Data Center Power Technology - Pulse 2.0",
-      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQcEJ0cXBobnFhM3llNjREUkIxSVBuMGc2RXNLa0Mxa0h0elByYXJGQ3Y3NXdvaE1pRTZOcnlkR1JXZjdqaEdqcXZnS0ttODBacGZ2Mkd3aFI5NHg4S1lSNnYxbmpnUlpzUU1GTVpmLWNDaUlMN1FGSDNZYl9xWXRQVWNNelpwOTR6eVdSM3BHTDRWT2dzRHJDdThtbVZ3cE55d0NqaU5UaWFNNnZGX2NjUUllb2N1cEt5ZVhvbVI0eDFvN19xNlJKTU9iZU90bzBzcnlOcGdGbmtfT0hxTDBvSm5ub2Q?oc=5",
+      "id": "5f9b792c7d6749ea",
+      "title": "HKEX Expands Tech Benchmarks With AI and Semiconductor Indexes - Analytics Insight",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOOXdDRUphQWRrVFhQdC1HcHZCTGxvdGNHcG13ZkVRbXFYUTR2QldPa0NBQzJ4MWs5d1hDb0pMRWxyUmpaZ2w1MHFnM2dabGx4ZGY0WUdsUVVtUGdSNzRzaWctLU1YTTRqRHE4M1cxQ2lVV2F4ZHFTZHVVa1lmZkFUamJMY0dKejM3dUttVjJ0Q3gzWGtVNklCREk5djhhNDBjbG5yamZFU3AxbHBRamlz0gGvAUFVX3lxTE45d0NFSmFBZGtUWFB0LUdwdkJMbG90Y0dwbXdmRVFtcVhRNHZCV09rQ0FDMngxazl3WENvSkxFbHJSalpnbDUwcWczZ1psbHhkZjRZR2xRVW1QZ1I3NHNpZy0tTVhNNGpEcTgzVzFDaVVXYXhkcVNkdVVrWWZmQVRqYkxjR0p6Mzd1S21WMnRDeDNYa1U2SUJESTl2OGE0MGNsbnJqZkVTcDFscFFqaXM?oc=5",
       "source": "AI chips",
       "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-22T20:30:39+00:00",
-      "summary": "Vertical Semiconductor Signs Letter Of Intent For Up To $73 Million In CHIPS Act Funding To Advance AI Data Center Power Technology Pulse 2.0",
+      "publishedAt": "2026-10-23T19:53:22+00:00",
+      "summary": "HKEX Expands Tech Benchmarks With AI and Semiconductor Indexes Analytics Insight",
       "sourceWeight": 1,
       "tags": [
-        "chips",
-        "cloud",
-        "funding"
+        "models",
+        "chips"
       ],
       "watchlist": [
         "AMD",
         "AMZN",
-        "ARKK",
         "AVGO",
-        "CRM",
         "GOOGL",
-        "IGV",
-        "MSFT"
+        "META",
+        "MSFT",
+        "MU",
+        "NVDA"
       ],
-      "signalScore": 80,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
+      "signalScore": 78,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "11310b92d80e3a6f",
-      "title": "Poland to become second EU member of global healthcare AI network - ET Enterprise AI",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQdGhnQndWVlRtREVLZC1aQzlLZV9WeXBOam9NQ2FiZ3ItMTZNNFp2SnJtdUdLcDNua2ZlbVYwV1hfck8wN0tWMnIyVUpZWi1YXzh1TnhNUkp4VHA5RmZndG1KOGNucGUwSFNxWU16TXdJQk8xN0RXLVd5SVFjc2pIU2s1RGFzbVBXOFJEZFJuZ0h5MWkzTlRqS0ZYZU1KV0YzMlR2dUhoYnpvSS1CSjVXRU9PMXdvQXVrakhJenMwR0hrZjVlRzBtTW1ab0lWdncwV2JjMld30gHbAUFVX3lxTFBFem9HbFdrX19GQ1hBb2JqaENxbjVtRVNjMlVXTW1wM2d6S3h5MWY5LVl6clI3VkVoTzZIbmNMUFp4WlN3TWhTN181SGU1UWdSNkRtZFUzOVRuLWsydDRDYl9aYWdkd042MEhCQWNHLVVfLTBaaWFJYXIyQTdXalBlems0WVpKN3JzLVgxcjZtbXRmTnY3SHpsYlI4WnFEYWVrYjF6MVdma2R4eVVCd2tucGx5bWtBZXBfdVlSa1R1TGhRLUlVWDBGZnlhdXNSaHpudWtldWUyOFNOdw?oc=5",
-      "source": "AI regulation",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-22T14:45:41+00:00",
-      "summary": "Poland to become second EU member of global healthcare AI network ET Enterprise AI",
-      "sourceWeight": 1,
+      "id": "707274f13275dad1",
+      "title": "Orchestrating SageMaker AI endpoint auto scaling with AWS CDK",
+      "url": "https://aws.amazon.com/blogs/machine-learning/orchestrating-sagemaker-ai-endpoint-auto-scaling-with-aws-cdk/",
+      "source": "AWS Machine Learning",
+      "sourceGroup": "Cloud",
+      "publishedAt": "2026-10-23T16:30:10+00:00",
+      "summary": "Updating a SageMaker AI endpoint that has Application Auto Scaling registered makes AWS CloudFormation and AWS CDK deployments fail. This post shows how to build a reusable AWS CDK construct with CloudFormation custom resources that deregisters and re-registers auto scaling automatically, so you can update the endpoint and its scaling in a single deployment.",
+      "sourceWeight": 3,
       "tags": [
-        "healthcare",
-        "enterprise",
-        "policy"
+        "cloud"
       ],
       "watchlist": [
-        "ADBE",
+        "AMZN",
         "CRM",
-        "ISRG",
-        "LLY",
+        "GOOGL",
         "MSFT",
-        "NOW",
-        "NVO",
         "ORCL"
       ],
-      "signalScore": 80,
-      "angle": "AI life-sciences signal; watch drug discovery, medtech, and healthcare data platforms."
+      "signalScore": 78,
+      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
     },
     {
-      "id": "a5175df12a27b221",
-      "title": "1Password Surpasses $500 Million in Revenue as AI Agents Drive Growth - WSJ",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxORXljclZmdVFRV191aFRnMS1iaGpDMkwzR0lDeDhmTE41U0JTTFdQQ1RWUlJCRzdCX1hHYm9qVzhmVUFzR2Yxb2tyR3llWXk3RmhCWE9aVHliWVk2RDEtUG1hNFVZWWpPZW9Gb0dvSUJjcGxLUVphOFVFNlE0RTZiRnljemNrdWtsZC1JaEo4R2JEN3M2eHRQTzJfLWM0dFFDVlVDbWZMdnc?oc=5",
-      "source": "AI agents",
+      "id": "f1f04a630ee9da72",
+      "title": "Businesses Face N100m Penalty, As FCCPC Plans AI Marketing Regulation - LEADERSHIP Newspapers",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNM0ZuWmdkTDJUY0ZQbkJReHJGVGFuTHl1U2dET2FwR1N1SGxxUWtrSy1HS2FPMzczV2RfdHA0emN6dWZ0LTZ4VjhKZTlqUGFIWEMyM05mV3JhWFZvcExDcTlUeWduYTlpbkN3WnNkU1NXRV9zWFFKR2NCM2ZlZ2pvWnRRNFYzdndYU1V4VjVDcTdPZUs0dWc?oc=5",
+      "source": "AI regulation",
       "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-24T10:44:38+00:00",
-      "summary": "1Password Surpasses $500 Million in Revenue as AI Agents Drive Growth WSJ",
+      "publishedAt": "2026-10-24T23:09:15+00:00",
+      "summary": "Businesses Face N100m Penalty, As FCCPC Plans AI Marketing Regulation LEADERSHIP Newspapers",
       "sourceWeight": 1,
       "tags": [
-        "agents"
+        "policy",
+        "research"
       ],
       "watchlist": [
-        "ADBE",
-        "CRM",
         "GOOGL",
+        "META",
         "MSFT",
-        "NOW"
+        "NVDA",
+        "QQQ",
+        "SMH",
+        "XLK"
       ],
-      "signalScore": 79,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+      "signalScore": 77,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
+    },
+    {
+      "id": "7f459376de7bab14",
+      "title": "Year-old AI startup Flapping Airplanes raises $1 billion in Series A funding - The Daily Star",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNQzJMVkVBX2xfQXhJSUFsenVYbGNOUlljNTFwRnZHY2l0bmhfcWM1VVZJdExpMTNIWFlrbWdHQWVHYmFoZk9MLVZXdUkxOXpEU29XS3BBdzV6QkNtTW1sU3dDX3EyNEU1MnZhVmpWa1U3YjBQSFFxN3B5Y010dTJKQmplTjdEQlJoQ2tESGxCOWxfalBidmZmOTlxajcyaC0zd21BbmN5OUljSkhlT0RnMnNscWxJQnV4Rm5feWRWQlNQemxpSVBJ?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T11:25:14+00:00",
+      "summary": "Year-old AI startup Flapping Airplanes raises $1 billion in Series A funding The Daily Star",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 77,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
     },
     {
       "id": "c5cf66a14dcaf831",
@@ -1867,8 +1622,28 @@
         "PANW",
         "ZS"
       ],
-      "signalScore": 79,
+      "signalScore": 77,
       "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+    },
+    {
+      "id": "135c178c9c6e0bc1",
+      "title": "Y Combinator-backed Firstwork raises $15 million Series A, takes total funding to $20 million - Indian Startup News",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxObDlPN2JWaVpwUFZNalJJZktmbE9mRndmcVYtZW04U1hhZERxMi1VUUM0YnFXWEFaM1p3cnpzbFJUcTBKb0ZiNWtqWWVWelB4Y0JqcGxBS1c1SVR3LWM3WlJPR0ktUmduT09WNTk4V3l1bXotcTY1TDg4aE9ZeXlzNHpKSWg2SVJjVzVrWk8wNzY5Mm9UTmE4Vk5zWFVQQ3oxdk1YNElscHVuYUhhYlIyelM4ZGFULU1fUDl2TDBCR2JfN3BHbVAwNWN2MlFHZXVlMGVj0gHTAUFVX3lxTE5sOU83YlZpWnBQVk1qUklmS2ZsT2ZGd2ZxVi1lbThTWGFkRHEyLVVRQzRicVdYQVozWndyenNsUlRxMEpvRmI1a2pZZVZ6UHhjQmpwbEFLVzVJVHctYzdaUk9HSS1SZ25PT1Y1OThXeXVtei1xNjVMODhoT1l5eXM0ekpJaDZJUmNXNWtaTzA3Njkyb1ROYThWTnNYVVBDejF2TVg0SWxwdW5hSGFiUjJ6UzhkYVQtTV9QOXZMMEJHYl83cEdtUDA1Y3YyUUdldWUwZWM?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T08:39:51+00:00",
+      "summary": "Y Combinator-backed Firstwork raises $15 million Series A, takes total funding to $20 million Indian Startup News",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 77,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
     },
     {
       "id": "a2d619ed286c0d65",
@@ -1887,7 +1662,27 @@
         "IGV",
         "QQQ"
       ],
-      "signalScore": 79,
+      "signalScore": 77,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
+    },
+    {
+      "id": "c26df04139694567",
+      "title": "AI code testing startup Blacksmith raises $66 million at $1 billion valuation - Indian Startup News",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLUJEZDVwRXZyMjJyakZLWmlXUFVBUk9Cdk9GcTB4dElhdFEwOWZ4MTNhc09oMkFfbjJPcnZfX2ZTWU1LYzBiRTkxTW9pelFOVnZ5cUUyZ1RXRnd2dWJIbkJOemZfanBMcUp5ZVV4MDUySVVCZ0JyTkFQaEVqaUdqdk90OHVRMDZhMFgzYWUtaU0wN3RVOEoyQ1ZjTWc0bmwtWGVHV2lob0JkVWFoaWR6cDkxYXJJVmRwYlp5NTlSd9IBvwFBVV95cUxQLUJEZDVwRXZyMjJyakZLWmlXUFVBUk9Cdk9GcTB4dElhdFEwOWZ4MTNhc09oMkFfbjJPcnZfX2ZTWU1LYzBiRTkxTW9pelFOVnZ5cUUyZ1RXRnd2dWJIbkJOemZfanBMcUp5ZVV4MDUySVVCZ0JyTkFQaEVqaUdqdk90OHVRMDZhMFgzYWUtaU0wN3RVOEoyQ1ZjTWc0bmwtWGVHV2lob0JkVWFoaWR6cDkxYXJJVmRwYlp5NTlSdw?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-24T07:51:07+00:00",
+      "summary": "AI code testing startup Blacksmith raises $66 million at $1 billion valuation Indian Startup News",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 77,
       "angle": "Private-market signal; watch categories attracting capital and possible public comps."
     },
     {
@@ -1910,190 +1705,8 @@
         "SMH",
         "TSM"
       ],
-      "signalScore": 79,
+      "signalScore": 77,
       "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "87b4b54280ec241c",
-      "title": "Hong Kong Stock Exchange Launches Twin AI and Semiconductor Indexes, Simultaneously Licenses China Southern Asset Management to Issue ETF Targeting Mainland China - BigGo Finance",
-      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1JTXB1d1c3VmhoZkZzeEZpN2FudjFsWDZFcnVIYzd0Q3VVd3pTd1dDcTBqUFh0U2JCbzZzalJWb3ZkVzVKVXg3T3NpSzZ3OFJ2dTd5MHhXTmRHWWh0VWJjOU1yREtEc0c4dUw0T3JyeDFlSk9kUVE?oc=5",
-      "source": "AI chips",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-24T01:25:00+00:00",
-      "summary": "Hong Kong Stock Exchange Launches Twin AI and Semiconductor Indexes, Simultaneously Licenses China Southern Asset Management to Issue ETF Targeting Mainland China BigGo Finance",
-      "sourceWeight": 1,
-      "tags": [
-        "chips"
-      ],
-      "watchlist": [
-        "AMD",
-        "AVGO",
-        "MU",
-        "NVDA",
-        "SMH",
-        "TSM"
-      ],
-      "signalScore": 79,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "76639de3f165324f",
-      "title": "Introducing Agentic Evaluation in FAITH - Cisco Blogs",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE01VldFQngxeVVWNERhN2FMMk5JWE9IQmdhS3NrcmxoSm1HUkh5a1lja255WjNMeG5qSU1PVkNrb1Rrc3NZTW9xMnBpZjhpUVBpS3B5ZWw5bEEtSzJXQjNFaEdLYlA0Vmdwb1dHTHE1V1dFMG9J?oc=5",
-      "source": "AI agents",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T21:00:11+00:00",
-      "summary": "Introducing Agentic Evaluation in FAITH Cisco Blogs",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 79,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "287a09fc3252315e",
-      "title": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation | NVIDIA Technical Blog - NVIDIA Developer",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOZ2xvNHk5ejQzcXU5NzBBdm1kSU0tOHJIa3NVeFdlWmJ2ektrdFlpbW1VOUhFWGRIcTdwS0xTRlJsa0lWYkRjMkM0eUpMYkdCUDlaRUJNalZ5OGRKbFhfOHRhNjhIQmY3bEVHUXlQbFJ6cFNxUC1GWlBSUjlpYUpPbVMtNnNXMmlCNk9XTzFnZXJoT3d1VnA0ZHR0WVgydEtPMHc4TjZB?oc=5",
-      "source": "AI agents",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T15:10:13+00:00",
-      "summary": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation | NVIDIA Technical Blog NVIDIA Developer",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "chips",
-        "robotics"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMD",
-        "AVGO",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "ISRG",
-        "MSFT"
-      ],
-      "signalScore": 79,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "4860f4367e7fa4ca",
-      "title": "How Heavy AI Rules Risk Killing Africa’s Homegrown Startups - TechAfrica News",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPXzlpeUtuMFdWMUdDYXhXTWowemhWQXI1NjVXOWxfbzdyQkFuSnZmeEZpeTRSalF4THd0NUVtOHRTRXEwUWNzZWZxMjR0eGIwczdiNVFucVIwU2I0UjlGTnlxb3kwZ2R3UWp1SmhxZk8taGJVYXBsbjJCY1hfeDZmU1RIUFdhcEwyVzNRaTlkYUJEdXkyRk95b0JIV0FmUQ?oc=5",
-      "source": "AI regulation",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T13:13:47+00:00",
-      "summary": "How Heavy AI Rules Risk Killing Africa’s Homegrown Startups TechAfrica News",
-      "sourceWeight": 1,
-      "tags": [
-        "security",
-        "policy",
-        "funding"
-      ],
-      "watchlist": [
-        "ARKK",
-        "CRWD",
-        "IGV",
-        "NET",
-        "PANW",
-        "QQQ",
-        "SMH",
-        "XLK"
-      ],
-      "signalScore": 79,
-      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
-    },
-    {
-      "id": "f3a0340b15da9703",
-      "title": "Steep bill for AI buildout punishes Meta, other tech favorites - ET Enterprise AI",
-      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOX3czMllWSWNYZ2lnMVBULWtCYXptbHh6VVNNUUI1RE51cGJaZ1FFOW5hakhNeVFRSDRESERSazJEcUtrTktRS1gzQmVXLUgwcV9uWU5GMTE1Ul90eExNTEpNc3c4YTcydVNDbEp2blRqbUJUd01XelJpeFBTWHVreUJJTTU4cVZob1hvc2ZIbndLbWVQOWJKek5oZFlsUWF1ZWViMExwWFY3VHhsVENnaExSN3FlRUhuOXUxNk9nakpHM3V6NFk5TU5KUjFnQmNN0gHWAUFVX3lxTE1mNXhYbjhYSlFIbjhvZ2JGMVFvRXhvTlFTZGVqOHhfRnRndFA1T3NwUkZXbE9FZEdHQjBlNUoxYmRuZ0FfV1lUSURFNC1ZeWRMYkhrWmlWUjVBQzFoSDZ6ZEpreWRUVFNvckVVc3MyNGFMQU1RZVlyQXJKLXZlNUFxcnItbXhvZkpxUWhvVzdTQUExbFlsc29abG5TcHZjYUNCcEI0ME50bGRmQXMzZEhhckhYZVdKNnRrR092X1RoODZqWHR0eHh1TkdPdU8tRmhqR2Z5YlE?oc=5",
-      "source": "AI chips",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T12:34:21+00:00",
-      "summary": "Steep bill for AI buildout punishes Meta, other tech favorites ET Enterprise AI",
-      "sourceWeight": 1,
-      "tags": [
-        "chips",
-        "enterprise"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMD",
-        "AVGO",
-        "CRM",
-        "MSFT",
-        "MU",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 79,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "17153387ffb5f287",
-      "title": "Tower Semiconductor, Semtech Expand SiGe Partnership for Data Centers - I-Connect007",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNLTZtLXBxbGoyTWllTWFDMjM4eG1iSVpNaHNkWXBWTmI4WUc1dDlRRXlZeFJHOVNFcGxkSVo0LURpaGZSYWZ4MEd1SXdTSVZvLUY3ajczQ19zWDhZcFI2VmpBYnZrUGdyNm9xRG1tSWx4bFM4S2J3elRLb3lFZUZWU3ZKdDlfdEtWdUxpNl84RHYyNTcyVXdhTXcwRUhtaWxSX2U4VHR3OTNjWXlxTWRpcE1aWXNVQ1J0TVE?oc=5",
-      "source": "AI chips",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T12:16:00+00:00",
-      "summary": "Tower Semiconductor, Semtech Expand SiGe Partnership for Data Centers I-Connect007",
-      "sourceWeight": 1,
-      "tags": [
-        "chips",
-        "cloud"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 79,
-      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
-    },
-    {
-      "id": "f499d36052bd4952",
-      "title": "Axios Live: AI agents are changing how money moves - Axios",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOT2dXblFUOTJjck83VTE1RGlCRHVabkJQSkNGb2N5MDF2cUw0Nm1rQ1NEazNMQUhDV0lQOFJCN2V1cE82QVpiZkt3THVVeEt6Tm9fZDNocFBtdkdFQ3pOUndHTnBUSU9fQ3I4RDlxV0J6TFZoUTRrbHZKNzFvVDRad3hMN3NLOEJBNEE?oc=5",
-      "source": "AI regulation",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-10-23T09:06:13+00:00",
-      "summary": "Axios Live: AI agents are changing how money moves Axios",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "policy"
-      ],
-      "watchlist": [
-        "ADBE",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "NOW",
-        "QQQ",
-        "SMH",
-        "XLK"
-      ],
-      "signalScore": 79,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
       "id": "b7a39d16201699f9",
@@ -2117,16 +1730,268 @@
         "NOW",
         "NVDA"
       ],
-      "signalScore": 79,
+      "signalScore": 77,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "246948019445474c",
+      "title": "Chinese hackers spied on thousands of companies after breaching IT giant ConnectWise",
+      "url": "https://techcrunch.com/2026/10/22/chinese-hackers-spied-on-thousands-of-companies-after-breaching-it-giant-connectwise/",
+      "source": "TechCrunch AI",
+      "sourceGroup": "Free tech coverage",
+      "publishedAt": "2026-10-22T16:47:17+00:00",
+      "summary": "Microsoft points the blame for ConnectWise's breach at a China-aligned hacker, which relied on AI agents to rapidly hack into thousands of its customers.",
+      "sourceWeight": 2,
+      "tags": [
+        "agents",
+        "enterprise"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW",
+        "ORCL"
+      ],
+      "signalScore": 77,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "886c53b07312273c",
+      "title": "AI Won’t Fix the Founder Payout Problem. It Could Make It Worse. - Substack",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ENjN1R0ZFY2xqcnpidXhzbkRmX05rSW84Vi1KdFdldmREaWh2NURKV19pWXBYZEZQbGhXa0ZOU3VNWmppWUMzSENFajR4WHRGekRBbzFRSkdRMjNxelpvTVNLNjRGR2d3MUVyald0d19fMVp5NHJjbHJ3Yw?oc=5",
+      "source": "AI startup funding",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T12:58:53+00:00",
+      "summary": "AI Won’t Fix the Founder Payout Problem. It Could Make It Worse. Substack",
+      "sourceWeight": 1,
+      "tags": [
+        "funding"
+      ],
+      "watchlist": [
+        "ARKK",
+        "IGV",
+        "QQQ"
+      ],
+      "signalScore": 76,
+      "angle": "Private-market signal; watch categories attracting capital and possible public comps."
+    },
+    {
+      "id": "12b9eafa9e992e69",
+      "title": "UK Launches £100 Million AI Biosecurity Lab with Google, OpenAI, and Anthropic - TipRanks",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNakItN3ZfRm8yQzZ1OEpfZ0RkRnBfY3U5ektYX19sVHhxNUl2MFNCcTV5QVh1dk81WmJNLWJxcFFDcUFwSU1wdmxHZjJacVB1RWw0a0xiOXpscmZqVzlWYUhXY3pteGlZeUhtMWpNbVJaaTRsR3daZlY3Z2E3V1JKVDdScENFRURtLUlpbkk2WVpNUUhvWjE1cjFBTXI3Zk96MnFWNDlMelc?oc=5",
+      "source": "Google DeepMind discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T12:03:15+00:00",
+      "summary": "UK Launches £100 Million AI Biosecurity Lab with Google, OpenAI, and Anthropic TipRanks",
+      "sourceWeight": 1,
+      "tags": [
+        "security"
+      ],
+      "watchlist": [
+        "CRWD",
+        "NET",
+        "PANW",
+        "ZS"
+      ],
+      "signalScore": 76,
+      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+    },
+    {
+      "id": "a8b2dc2998b5edb2",
+      "title": "Claude Enterprise will combine chat and Cowork by default on November 16 - MIXED Reality News",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQM0dpVmpyaE0taTRpZEwtbmxBZG9sTGxDZUJoczRDZzJIaHppV1Zka0hJZlQ5QmlENVZPSmF6S01TdFhMcDJ3dGpfdzZ1Mm1qMFZhMExLTEdNN3lFTlBQa2JLT1pCenZyQVVLZm9XSEJIclNTLWpzTkd5VWZSbmVPYk93?oc=5",
+      "source": "Anthropic discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T11:33:20+00:00",
+      "summary": "Claude Enterprise will combine chat and Cowork by default on November 16 MIXED Reality News",
+      "sourceWeight": 1,
+      "tags": [
+        "enterprise"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "MSFT",
+        "NOW",
+        "ORCL"
+      ],
+      "signalScore": 76,
+      "angle": "AI software monetization signal; watch SaaS attach rates and seat expansion."
+    },
+    {
+      "id": "851e18330a3d3f00",
+      "title": "Anthropic Launches OSS Scanner, a Free AI Vulnerability Scanner - MarkTechPost",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMFM1ZFlGVDdIend1emlIOGt4S1RhZ2xNVzdJU2lweGtXZFpFUWF2Q0cxVHRMTWRTVURCODR0bDA4aG1selVHaWJWZFhpc0xGVXhrN2Q3VnJDaXRjZEU5OGlOWnRFUG1EY3E4RTBLNUNTS1RvZHZXWWk3cmFsNDV0R0c2VFdyOVFiSUhfYkJkNzYwQVJzX1FkM09DSXU4MEhEZGdteXhOQllJUTZJLXfSAa4BQVVfeXFMTTBTNWRZRlQ3SHp3dXppSDhreEtUYWdsTVc3SVNpcHhrV2RaRVFhdkNHMVR0TE1kU1VEQjg0dGwwOGhtbHpVR2liVmRYaXNMRlV4azdkN1ZyQ2l0Y2RFOThpTlp0RVBtRGNxOEUwSzVDU0tUb2R2V1lpN3JhbDQ1dEdHNlRXcjlRYklIX2JCZDc2MEFSc19RZDNPQ0l1ODBIRGRnbXl4TkJZSVE2SS13?oc=5",
+      "source": "Anthropic discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T11:32:29+00:00",
+      "summary": "Anthropic Launches OSS Scanner, a Free AI Vulnerability Scanner MarkTechPost",
+      "sourceWeight": 1,
+      "tags": [
+        "models"
+      ],
+      "watchlist": [
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 76,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "8450ab5123836dc9",
+      "title": "Voters call for local AI safeguards as data centre concern rises - SMH.com.au",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNQ2RjRFE1dzMxTzI0dmlMM25RT21fcDBmQ3lwR1UzQVhQRncyQ1ljcjVPVHY0Q2xDSXc2ci1mWlg0cTVZTWtac1hVUFNIbE5zLVJuMVJKVEFpdXlCMTR3RXRNQ09aZm9HQ1JMYjdaUGlmRFdoLUtGR0dPek5Ja2J6aGlNdkROaWZtaWtIUkhiR0NYTDljT1pDbHRXY0t1clU2T2IyQmh3OGdGQ0J6dWFNQ2VENTBCZWxnUXBERWtOS0ZrMzQ?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T11:30:00+00:00",
+      "summary": "Voters call for local AI safeguards as data centre concern rises SMH.com.au",
+      "sourceWeight": 1,
+      "tags": [
+        "policy"
+      ],
+      "watchlist": [
+        "QQQ",
+        "SMH",
+        "XLK"
+      ],
+      "signalScore": 76,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
+    },
+    {
+      "id": "929bf225a874b648",
+      "title": "Meta says its Muse AI agent can manage your money. Should you let it? - San Francisco Chronicle",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPOWlsNDJwQ0pVNjh0eENIME9OY3B1SWhRSlR5S01MYW1uN3pTNFJjaTFiNWlvYTQ1REF0Ym1QMkNwYlp6VVpaeE93QU5yZzI2MU5qOWxTSEZ0YXJ4VzE5QkkzYm5QVXVtSFVOMEx5YzdYV1ctNG9ZU2FfNldJTGpJYXJxVlIxU1JTb2tSZg?oc=5",
+      "source": "Meta AI discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T11:15:22+00:00",
+      "summary": "Meta says its Muse AI agent can manage your money. Should you let it? San Francisco Chronicle",
+      "sourceWeight": 1,
+      "tags": [
+        "agents"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW"
+      ],
+      "signalScore": 76,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "638c43a9aaa5e1bb",
+      "title": "When AI agents run your life - Vox",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPUlUxWHp4ZmZWcUR2azNkdF9GYWNEZUhxeFN2VzBYYjNFZXd2bVJsQmZ0Z1VUQXl3SnFaUUpGZWx0akVKdG1nQ0drZ2xFZGdTU2JfWGVIRkFyR2FpVHlTTU5jZ3djUHhuVW53ODdCeExHYzdMUXZuN3U1eG9TUVFYc1VxV0F4SkJaRHc?oc=5",
+      "source": "Meta AI discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T11:00:00+00:00",
+      "summary": "When AI agents run your life Vox",
+      "sourceWeight": 1,
+      "tags": [
+        "agents"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW"
+      ],
+      "signalScore": 76,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "6e215303d2d91171",
+      "title": "How AI Regulation Could Help the Public—and Investors Too - WSJ",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNUDhKY05RNmdWcC1qQU9sRE93R09fUjdJVEMwbmNpZ2l1QXRBMTIzYXE4Qmdtd0NzWTZWbGxEdlJmZGNCSGtsTkh3RVEwWFJ3SmZHM0paVzA4QjlKZWd3dzJpLTA3RU90X09JZG9wOTJyekhha05QZGZvVFZTN1BRTzBNcXlkRlBPaVd1cWo4WWM4YTZVdkhEZjVabjhiVENkVEFMRGZfeEVBNG1CQ3ZFNWE0UE1LOVp1cE1xRWY2UkU5ZFJqeHRtQ19OODJ1YnBTaS1na3pqWHJHMXZIMmFhRQ?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T10:10:30+00:00",
+      "summary": "How AI Regulation Could Help the Public—and Investors Too WSJ",
+      "sourceWeight": 1,
+      "tags": [
+        "policy"
+      ],
+      "watchlist": [
+        "QQQ",
+        "SMH",
+        "XLK"
+      ],
+      "signalScore": 76,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
+    },
+    {
+      "id": "74383a8fdda6aabb",
+      "title": "Penggunaan teknologi kecerdasan buatan (AI) dan penyebaran kandungan berkaitan agama, kaum serta institusi diraja (3R) antara perkara yang perlu diberi perhatian sepanjang kempen...",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNa3FQZnh5bHU5eFUtR1BvOHRiLVdXcU5hMFA3bmlDSE0ta01ITXpGTm5XVWZTZko3eGFwQlpoNWk3R2RnUGtTZ3F4YmRhRjJtNTJhWnFFYTZpOUE4eHMzWlhqQ3FaUUs3d2dDNHZPVmFNaHJRSzNfdHN5Ni0tNTNZU0hNUS14amg4dDlmQTRGQjhNVjF3cE5BV1JUa3dSU2VjbXlQcktZWnNZdTZhbVN5NnU2MEZLb1ROV1FxeW5HM3Z5WGphWjJZTjY3YzNkeEs4ZW52enF5dVVVelhtN3c?oc=5",
+      "source": "AI regulation",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:10:00+00:00",
+      "summary": "Penggunaan teknologi kecerdasan buatan (AI) dan penyebaran kandungan berkaitan agama, kaum serta institusi diraja (3R) antara perkara yang perlu diberi perhatian sepanjang kempen pilihan raya bagi memastikan keharmonian masyarakat terus terpelih Facebook",
+      "sourceWeight": 1,
+      "tags": [
+        "policy"
+      ],
+      "watchlist": [
+        "QQQ",
+        "SMH",
+        "XLK"
+      ],
+      "signalScore": 76,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
+    },
+    {
+      "id": "1ac3cba74dcc687d",
+      "title": "Investments in emerging sectors rise, but bank and NBFC financing remain limited: Report - ANI News",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPc3lKUUh3aTdhY1ktRzEwbUE2Qm5IWmxNOHNFQ1ozSnlwRGxPc3EwNnZ1WWNpdHZWcnp2WElGTlhIZS16VzNoQkhZaWREWUFncTJXbW9QUFNIcDFuTkdGak5aaDBnWE5PMmNWR1lTRU1QYm16WFJsTm5pTFZxWG80NGRrSnJobFE3cXZieG9QczA3YnhnSkM1S3NPdFA2d2JxSFZFQ0IycmhpUV82MWpSNGM1RXJ2Q1EzaUtpOHMzbnZucWZRRmFTMzVJaDZsRi01bjM4?oc=5",
+      "source": "AI chips",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:05:00+00:00",
+      "summary": "Investments in emerging sectors rise, but bank and NBFC financing remain limited: Report ANI News",
+      "sourceWeight": 1,
+      "tags": [
+        "chips"
+      ],
+      "watchlist": [
+        "AMD",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "SMH",
+        "TSM"
+      ],
+      "signalScore": 76,
+      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
+    },
+    {
+      "id": "dd5cbcc8409c9365",
+      "title": "Put Your A.I. Agents to Work With These 5 Killer Tasks - The New York Times",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNaEJEeDdVWlV4QVNFelhJZjU0Q244SzdNbUZsQjNGaTc1dTNxLWNwZHVkS2dXdG8yazhvTFk4MGNNM255OXZrejA5MHpIWmVqMUxiRE5wS0JveWUzdjVOc1VjZGEtU3FFRlNGOHNadGJPaUJHVFUyUGZiamxubS1LZUZvMFZBQXlfclp6dGFoT3VDS2otVTc2YU5sMFVMd3FWOXc?oc=5",
+      "source": "Meta AI discovery",
+      "sourceGroup": "Web discovery",
+      "publishedAt": "2026-10-25T09:01:00+00:00",
+      "summary": "Put Your A.I. Agents to Work With These 5 Killer Tasks The New York Times",
+      "sourceWeight": 1,
+      "tags": [
+        "agents"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "MSFT",
+        "NOW"
+      ],
+      "signalScore": 76,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     }
   ],
   "failedSources": [
-    {
-      "source": "Google DeepMind",
-      "url": "https://deepmind.google/blog/rss.xml",
-      "error": "not well-formed (invalid token): line 1, column 0"
-    },
     {
       "source": "Meta AI",
       "url": "https://ai.meta.com/blog/rss/",
