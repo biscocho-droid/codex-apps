@@ -1,17 +1,28 @@
 {
-  "generatedAt": "2026-11-04T16:39:12+00:00",
+  "generatedAt": "2026-11-05T16:55:07+00:00",
   "sourcePolicy": "Free public RSS/Atom/news feeds only. No paid feeds and no API keys.",
   "itemCount": 80,
-  "sourceCount": 10,
+  "sourceCount": 11,
   "topThemes": [
     {
       "tag": "models",
-      "count": 61,
+      "count": 63,
       "tickers": [
         "MSFT",
         "GOOGL",
         "META",
         "AMZN"
+      ]
+    },
+    {
+      "tag": "agents",
+      "count": 49,
+      "tickers": [
+        "MSFT",
+        "GOOGL",
+        "CRM",
+        "NOW",
+        "ADBE"
       ]
     },
     {
@@ -25,19 +36,8 @@
       ]
     },
     {
-      "tag": "agents",
-      "count": 39,
-      "tickers": [
-        "MSFT",
-        "GOOGL",
-        "CRM",
-        "NOW",
-        "ADBE"
-      ]
-    },
-    {
       "tag": "security",
-      "count": 31,
+      "count": 40,
       "tickers": [
         "CRWD",
         "PANW",
@@ -46,19 +46,19 @@
       ]
     },
     {
-      "tag": "cloud",
-      "count": 15,
+      "tag": "robotics",
+      "count": 14,
       "tickers": [
-        "MSFT",
-        "GOOGL",
-        "AMZN",
-        "ORCL",
-        "CRM"
+        "TSLA",
+        "ISRG",
+        "ROK",
+        "TER",
+        "BOTZ"
       ]
     },
     {
       "tag": "funding",
-      "count": 14,
+      "count": 12,
       "tickers": [
         "QQQ",
         "ARKK",
@@ -69,47 +69,158 @@
   "sourceGroups": [
     {
       "group": "AI infrastructure",
-      "count": 2
+      "count": 5
     },
     {
       "group": "Cloud",
-      "count": 9
+      "count": 3
+    },
+    {
+      "group": "Free tech coverage",
+      "count": 1
     },
     {
       "group": "Official labs",
-      "count": 16
+      "count": 15
     },
     {
       "group": "Research",
-      "count": 51
-    },
-    {
-      "group": "Web discovery",
-      "count": 2
+      "count": 56
     }
   ],
   "items": [
     {
-      "id": "5cc43dfa8e19565f",
-      "title": "RoboScope Kit: Unified Interfaces for Fast and Scalable Embodied-AI Evaluation",
-      "url": "https://arxiv.org/abs/2611.03850",
+      "id": "28557b9b4fa8108d",
+      "title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+      "url": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+      "source": "NVIDIA Blog",
+      "sourceGroup": "AI infrastructure",
+      "publishedAt": "2026-11-05T16:00:00+00:00",
+      "summary": "Larger models, longer contexts and agentic applications are increasing GPU memory pressure while supply tightens and prices rise — a trend expected to continue through the near term. NVIDIA works closely with memory partners to rapidly adopt the latest memory technologies. NVIDIA was first to adopt HBM3e and HBM4 technologies into an accelerated computing...",
+      "sourceWeight": 5,
+      "tags": [
+        "models",
+        "agents",
+        "chips"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 100,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "32a7e1ef6470c6b5",
+      "title": "Safety, or Just Capability? A Validity Audit of Agent-Safety Benchmarks",
+      "url": "https://arxiv.org/abs/2607.28685",
       "source": "arXiv cs.AI",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03850v1 Announce Type: cross Abstract: Simulation benchmarks are the standard way to compare robot policies, but each benchmark brings its own evaluator, observation layout, and action convention, and evaluation is slow: 500 RoboTwin Easy episodes with one simulator and one model on one GPU take 359.7 minutes. Profiling the official StarVLA...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2607.28685v2 Announce Type: replace Abstract: Agent-safety benchmarks measure different behaviors, and their scores get quoted interchangeably as an agent's safety. We treat four of them (R-Judge, InjecAgent, AgentHarm, AgentDojo) as measurements to be validated, running each under its official implementation and author-provided scorer on up to 22...",
       "sourceWeight": 3,
       "tags": [
         "models",
-        "chips",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 100,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "e4e87d829db49bd2",
+      "title": "AvalancheBench: Evaluating Enterprise Agent-Driven Semantic Query Processing Through Latent World Recovery",
+      "url": "https://arxiv.org/abs/2605.24183",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2605.24183v2 Announce Type: replace-cross Abstract: As LLMs improve, data agents are emerging as a new interface for analytics, while semantic query processing engines use LLMs to operate over structured and unstructured data. Existing benchmarks largely evaluate agents and semantic query engines in isolation, leaving it unclear whether agents can...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "enterprise",
+        "security"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 100,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "42b99908dbdbadf6",
+      "title": "LITMUS: Benchmarking Behavioral Jailbreaks of LLM Agents in Real OS Environments",
+      "url": "https://arxiv.org/abs/2605.10779",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2605.10779v2 Announce Type: replace-cross Abstract: The rapid proliferation of LLM-based autonomous agents in real operating system environments introduces a new category of safety risk beyond content safety: behavior jailbreak, where an adversary induces an agent to execute dangerous OS-level operations with irreversible consequences. Existing...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
         "robotics",
         "security"
       ],
       "watchlist": [
-        "AMD",
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "ISRG",
+        "META"
+      ],
+      "signalScore": 100,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "078f79516c93d6f4",
+      "title": "Beyond Infraction Scores: Failure-Boundary Profiles for Closed-Loop Evaluation of Driving and Robot Navigation Agents",
+      "url": "https://arxiv.org/abs/2611.06453",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06453v1 Announce Type: cross Abstract: Closed-loop driving benchmarks in CARLA rank agents by a driving score that multiplies route completion by an infraction penalty. This score does not distinguish an agent that stops in front of an obstacle from one that pushes past it. In a corridor closed by two parked cars, for example, one agent that...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
+        "security"
+      ],
+      "watchlist": [
+        "ADBE",
         "AMZN",
         "ARKK",
-        "AVGO",
         "BOTZ",
+        "CRM",
         "CRWD",
         "GOOGL",
         "IGV"
@@ -118,41 +229,13 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "4908366f0f6d6ea0",
-      "title": "SLATE: A Large-Scale Benchmark for Long-Horizon API Selection in E-commerce Tool Use",
-      "url": "https://arxiv.org/abs/2611.03982",
+      "id": "a735ec69dcee1ece",
+      "title": "Task-Efficient Agent Evaluation Using Cached Traces",
+      "url": "https://arxiv.org/abs/2611.06803",
       "source": "arXiv cs.AI",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03982v1 Announce Type: cross Abstract: Enterprises increasingly want LLM agents to automate standard operating procedures over their software stacks -- mapping each step of a procedure to the right call among thousands of internal APIs, without hand-authored step-to-API mappings. The core difficulty is API selection at scale: choosing and...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "enterprise",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 100,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "2f42896861477b65",
-      "title": "VagueBench: Benchmarking the Robustness of Embodied Agents on Ambient Context Illusions",
-      "url": "https://arxiv.org/abs/2611.03765",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03765v1 Announce Type: new Abstract: Embodied agents are increasingly deployed in open-world environments, yet current robustness evaluations remain biased toward hazardous instructions and jailbreak vulnerabilities. A more fundamental issue is largely overlooked: agents are rarely tested under semantically sufficient but contextually minimal...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06803v1 Announce Type: new Abstract: Efficient benchmarking estimates a system's full benchmark performance from a small number of task executions. Standard approaches rely solely on the binary correctness of executions from a collection of already-evaluated reference systems. An agentic system, however, produces a rich trace for each execution...",
       "sourceWeight": 3,
       "tags": [
         "models",
@@ -174,26 +257,26 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "08b9ff7295ea2b34",
-      "title": "A Self-Evolving Agent for Longitudinal Personal Health Management",
-      "url": "https://arxiv.org/abs/2607.13940",
+      "id": "5ab66ea51ddfe6e1",
+      "title": "TherapyGym: Evaluating and Aligning Clinical Fidelity and Safety in Therapy Chatbots",
+      "url": "https://arxiv.org/abs/2603.18008",
       "source": "arXiv cs.AI",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2607.13940v2 Announce Type: replace Abstract: Medical large language models and agents show strong single-encounter question answering and evidence interpretation but struggle to accumulate and govern experience across encounters. We present HealthJev, an open-source agent separating shared safety rules and medical knowledge from a private...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2603.18008v2 Announce Type: replace-cross Abstract: Large language models (LLMs) are increasingly used for mental-health support; yet prevailing evaluation methods--fluency metrics, preference tests, and generic dialogue benchmarks--fail to capture the clinically critical dimensions of psychotherapy. We introduce THERAPYGYM, a framework that...",
       "sourceWeight": 3,
       "tags": [
         "models",
-        "agents",
         "healthcare",
-        "security"
+        "security",
+        "funding"
       ],
       "watchlist": [
-        "ADBE",
         "AMZN",
-        "CRM",
+        "ARKK",
         "CRWD",
         "GOOGL",
+        "IGV",
         "ISRG",
         "LLY",
         "META"
@@ -202,13 +285,41 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "f12de876001c7b77",
-      "title": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous Operator Agents",
-      "url": "https://arxiv.org/abs/2610.10942",
+      "id": "a287ecd60f0ba719",
+      "title": "RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development",
+      "url": "https://arxiv.org/abs/2610.26826",
       "source": "arXiv cs.AI",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2610.10942v2 Announce Type: replace Abstract: Reinforcement learning environments are now a primary lever for improving large language model (LLM) capabilities in post-training, yet most agentic benchmarks remain static: the world moves only when the agent acts, the reward is a terminal verdict, and the pass bar is set arbitrarily. We introduce...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2610.26826v2 Announce Type: replace-cross Abstract: Beyond basic tool use and coding skills, effectively incorporating visual references into agentic generation is equally essential for applying AI agents to real-world productivity tasks. We study this crucial capability through webpage development, a practical and readily evaluable setting in which...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "enterprise",
+        "security"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 99,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "c30852d10e0a2f0c",
+      "title": "StoreBench: A Live-Commerce Environment for Evaluating and Training Autonomous Operator Agents",
+      "url": "https://arxiv.org/abs/2610.10942",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2610.10942v2 Announce Type: replace-cross Abstract: Reinforcement learning environments are now a primary lever for improving large language model (LLM) capabilities in post-training, yet most agentic benchmarks remain static: the world moves only when the agent acts, the reward is a terminal verdict, and the pass bar is set arbitrarily. We introduce...",
       "sourceWeight": 3,
       "tags": [
         "models",
@@ -230,47 +341,461 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "744edad66c48fda5",
-      "title": "Rethinking Next-Visit Diagnosis Prediction Beyond Aggregate Metrics: Retrieval--Memory Multi-Agent Adjudication",
-      "url": "https://arxiv.org/abs/2611.03826",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03826v1 Announce Type: cross Abstract: Next-visit diagnosis prediction forecasts the diagnoses documented at a patient's next encounter, turning retrospective electronic health records into prospective clinical prediction. However, conventional aggregate evaluation obscures its multifaceted nature: distributionally, models must handle...",
-      "sourceWeight": 3,
+      "id": "6d9e6d207496e5e2",
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "source": "OpenAI News",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-04T00:00:00+00:00",
+      "summary": "DevRev uses GPT-6.1 Sol to power Computer and Operator, balancing reasoning, speed, and cost for enterprise service.",
+      "sourceWeight": 5,
       "tags": [
         "models",
         "agents",
-        "healthcare",
-        "security"
+        "robotics",
+        "enterprise"
       ],
       "watchlist": [
         "ADBE",
         "AMZN",
-        "ARKK",
+        "BOTZ",
         "CRM",
-        "CRWD",
         "GOOGL",
-        "IGV",
-        "ISRG"
+        "ISRG",
+        "META",
+        "MSFT"
       ],
-      "signalScore": 98,
+      "signalScore": 99,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "f60b7bb5b2a08cc1",
-      "title": "Agentic AI in medicine: architectures, applications, evaluation, and challenges for clinical translation",
-      "url": "https://arxiv.org/abs/2607.25489",
-      "source": "arXiv cs.CV",
+      "id": "afc80090a41b2f75",
+      "title": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
+      "url": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
+      "source": "NVIDIA Blog",
+      "sourceGroup": "AI infrastructure",
+      "publishedAt": "2026-11-05T16:00:05+00:00",
+      "summary": "Chris Alexiuk has a simple rule about open source AI: If you believe in it, be loud about it. “We should be shouting about this technology from the rooftops,” said Alexiuk, a Toronto-based senior product research engineer in deep learning at NVIDIA who specializes in making open large language models (LLMs) practical for working developers. […]",
+      "sourceWeight": 5,
+      "tags": [
+        "models",
+        "chips",
+        "research"
+      ],
+      "watchlist": [
+        "AMD",
+        "AMZN",
+        "AVGO",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "MU",
+        "NVDA"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "e225d8cf65676dbb",
+      "title": "MA-SafeDiffuser: Safe Multi-Agent Planning with Diffusion Probabilistic Models",
+      "url": "https://arxiv.org/abs/2611.05524",
+      "source": "arXiv cs.AI",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2607.25489v2 Announce Type: replace Abstract: Large language models and multimodal foundation models are enabling medical artificial intelligence (AI) systems to move beyond isolated prediction and undertake multistep clinical tasks that require planning, tool use, memory, iterative correction, and coordination among specialized agents. However, the...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05524v1 Announce Type: new Abstract: We propose MA-SafeDiffuser, a multi-agent extension of SafeDiffuser that equips diffusion-based trajectory planners with finite-time diffusion invariance guarantees for joint-agent safety specifications. Building on the single-agent construction that embeds control barrier function (CBF) constraints into...",
       "sourceWeight": 3,
       "tags": [
         "models",
         "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "295a539b382dc2ca",
+      "title": "ViBench 2.0: A Benchmark for Long-Horizon Software Building",
+      "url": "https://arxiv.org/abs/2611.05620",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05620v1 Announce Type: new Abstract: On Replit, our agentic engineering platform, users now build entire products without writing code, through successive feature requests to an agent. Yet existing coding benchmarks evaluate single, fully specified tasks, and many are near saturation. We introduce ViBench 2.0, a benchmark for long-horizon...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "bcb1d1d4edca0265",
+      "title": "PersonaCodeBench: Evaluating Coding Agents in Persona-driven Human-Interactive Sessions",
+      "url": "https://arxiv.org/abs/2611.05739",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05739v1 Announce Type: new Abstract: Coding agents must deliver correct software while respecting users' expertise, preferences, and working conditions. Existing benchmarks increasingly incorporate interaction, yet personalized requirement fulfillment remains underexplored. We introduce PersonaCodeBench, which turns user characteristics into...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "0a7b98caaf55cd57",
+      "title": "LifeVal: Evaluating AI Model Performance on Personalized Agentic Consumer Tasks",
+      "url": "https://arxiv.org/abs/2611.06687",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06687v1 Announce Type: new Abstract: We introduce LifeVal, a benchmark evaluating AI model performance on personalized agentic consumer tasks. LifeVal covers the most valuable life tasks that a personalized digital superassistant could automate, representing over 1.7 trillion US dollars in annual willingness-to-pay across 148 consumer task...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "7974b0974d80102b",
+      "title": "FrontierPhysics: Evaluating Agents for End-to-End Physics Research",
+      "url": "https://arxiv.org/abs/2611.06910",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06910v1 Announce Type: new Abstract: AI agents are playing an increasingly important role in physics research. However, existing physics benchmarks only evaluate fixed questions, isolated sub-tasks, or paper reproduction with given solutions, and rarely check research quality alongside correctness. We introduce FrontierPhysics, an end-to-end...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "5c75f0a25b485147",
+      "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+      "url": "https://arxiv.org/abs/2611.06911",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06911v1 Announce Type: new Abstract: Self-Driving Chemical Laboratories (SDCLs) are moving chemical experimentation toward embodied automation, where machines must perceive laboratory scenes, reason about experimental states, and act under physical, procedural, and safety constraints. Although Multimodal Large Language Models (MLLMs) are...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "837540b82472da21",
+      "title": "How Finely Can Vision-Language Models See Biology? Bio-VQA: A Benchmark for Taxonomic, Morphological, Spatial and Individual Reasoning",
+      "url": "https://arxiv.org/abs/2611.05559",
+      "source": "arXiv cs.AI",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05559v1 Announce Type: cross Abstract: In biodiversity monitoring, a single image raises several questions: which taxon, how many, which trait, and whether the individual has been seen before. Vision-language models (VLMs) could answer all of these from the image, but their ability is largely untested in biology, as existing benchmarks focus...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
         "healthcare",
+        "funding",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "GOOGL",
+        "IGV",
+        "ISRG",
+        "LLY",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "8fdbbb953e2c24fb",
+      "title": "WASP-Mem: Let Agent Organize Procedural Memory. Human Spend Effort on Diagnosis",
+      "url": "https://arxiv.org/abs/2611.04003",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.04003v1 Announce Type: cross Abstract: LLM agents struggle to automate complex enterprise procedures because static, pre-built harness cannot capture proprietary policies, undocumented behaviors, or state-dependent recovery paths that surface only during execution. Procedural memory accrued from agent experience offers a training-free path to...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "enterprise",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "d9577e94640120dd",
+      "title": "Voluntary Servitude: Weaponized Safety Warning Mechanisms for Controlling AI Agents",
+      "url": "https://arxiv.org/abs/2611.04393",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.04393v1 Announce Type: cross Abstract: LLM agents increasingly act on information retrieved from public sources they treat as credible, which turns a manipulated recommendation into a transaction, a dependency, or a decision with physical consequences. The security literature models this threat as instruction injection, in which an adversary...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "6a871d105c736751",
+      "title": "RecoAtlas: A Benchmark and RL Environment for LLM Recommendation Agents Optimizing Set-Level Utility",
+      "url": "https://arxiv.org/abs/2605.18805",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2605.18805v2 Announce Type: replace-cross Abstract: LLM recommender agents increasingly produce structured reports: sets of items accompanied by natural-language justifications. Yet existing benchmarks often focus on reranking small candidate sets or judging reports primarily by semantic plausibility, providing limited support for evaluating and...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "d4f407d3b5f5a8a9",
+      "title": "WayPOP: A Panoramic Open-Set Panoptic Tracking Benchmark",
+      "url": "https://arxiv.org/abs/2611.05801",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05801v1 Announce Type: new Abstract: Holistic perception for autonomous agents requires reliably segmenting and associating scene elements across time and camera views, including objects outside a fixed semantic taxonomy. Existing open-set panoptic benchmarks focus on individual images or views, while panoramic tracking benchmarks assume...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 97,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "d9d01220af782d30",
+      "title": "‘Hogwarts Legacy’ Gets a Magical NVIDIA DLSS 5 Upgrade on GeForce NOW",
+      "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5/",
+      "source": "NVIDIA Blog",
+      "sourceGroup": "AI infrastructure",
+      "publishedAt": "2026-11-05T14:00:34+00:00",
+      "summary": "Hogwarts Legacy receives an NVIDIA DLSS 5 upgrade with 3D-Guided Neural Rendering today, bringing lifelike lighting and materials to the wizarding world on GeForce NOW. Blizzard Entertainment’s World of Warcraft: Forever also opens a new chapter in Azeroth, with a launch-week access reward available for GeForce NOW members. Meanwhile, Ubisoft brings fresh...",
+      "sourceWeight": 5,
+      "tags": [
+        "chips"
+      ],
+      "watchlist": [
+        "AMD",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "SMH",
+        "TSM"
+      ],
+      "signalScore": 96,
+      "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
+    },
+    {
+      "id": "72150dcae2d4d642",
+      "title": "EMBERS: Empirically Motivated Robustness Testing of Deep Research Systems via Defect-Guided Fuzzing",
+      "url": "https://arxiv.org/abs/2611.03723",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.03723v1 Announce Type: cross Abstract: Deep Research (DR) systems extend large language models into autonomous agents that decompose complex information needs, iteratively search the web, and synthesize evidence to answer challenging questions. However, their multi-stage execution may introduce robustness risks, as variations in user questions...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
         "security"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "ISRG",
+        "META"
+      ],
+      "signalScore": 96,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "982234c63ea1b733",
+      "title": "Hybrid acoustic and pretrained embedding feature fusion for unmanned aerial vehicle detection using stacking ensemble learning under a leakage-aware evaluation protocol",
+      "url": "https://arxiv.org/abs/2611.04714",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.04714v1 Announce Type: cross Abstract: Small multirotor drones produce a characteristic acoustic signature, and microphones offer a low-cost way to detect them. High accuracies have been reported on public drone audio benchmarks, often with random clip-level splits of datasets built from a few long recordings and pieces of existing sound...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "robotics",
+        "security",
+        "funding"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "BOTZ",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "ISRG",
+        "META"
+      ],
+      "signalScore": 96,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "eb59b971d9f9e175",
+      "title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents",
+      "url": "https://arxiv.org/abs/2606.26080",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2606.26080v2 Announce Type: replace Abstract: Process reward models enable fine-grained, step-level evaluation of LLMs, yet building them for agentic settings remains prohibitively difficult: long-horizon interactions, irreversible actions, and stochastic environment feedback make both human annotation and Monte Carlo estimation infeasible at scale....",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "funding"
       ],
       "watchlist": [
         "ADBE",
@@ -280,9 +805,65 @@
         "CRWD",
         "GOOGL",
         "IGV",
-        "ISRG"
+        "META"
       ],
-      "signalScore": 98,
+      "signalScore": 96,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "3b2621f23f365170",
+      "title": "Payoff scaling shapes cooperation in LLM agents across languages",
+      "url": "https://arxiv.org/abs/2601.19082",
+      "source": "arXiv cs.LG",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2601.19082v3 Announce Type: replace-cross Abstract: Large language models (LLMs) are increasingly deployed as autonomous agents that negotiate, coordinate, and make decisions on behalf of human users. Understanding how they cooperate is therefore important for AI governance and machine behaviour research. We examine two factors: payoff magnitude and...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
+        "policy"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 96,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "faf07ee75781ddcb",
+      "title": "Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents",
+      "url": "https://arxiv.org/abs/2608.15008",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2608.15008v2 Announce Type: replace Abstract: Memory is becoming core infrastructure for long-horizon LLM agents, yet existing evaluations offer limited guidance on which memory substrate, namely the underlying medium in which memory is represented and stored, should be used under different operating regimes. We introduce a unified suite of 26...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "funding"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "ARKK",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "META"
+      ],
+      "signalScore": 96,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -309,339 +890,7 @@
         "MSFT",
         "NET"
       ],
-      "signalScore": 98,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "49531760c0f6e642",
-      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
-      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-04T07:00:00+00:00",
-      "summary": "Daybreak Red brings GPT-5.6 Cyber to approved customers in AWS GovCloud (US-East) through Amazon Bedrock for authorized cybersecurity work.",
-      "sourceWeight": 5,
-      "tags": [
-        "cloud",
-        "enterprise",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "MSFT",
-        "NET",
-        "NOW"
-      ],
-      "signalScore": 97,
-      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
-    },
-    {
-      "id": "2da89c5411e55050",
-      "title": "LOLPlay: Benchmarking Real-Time Visual Agents in League of Legends",
-      "url": "https://arxiv.org/abs/2611.03685",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03685v1 Announce Type: new Abstract: Visual agents need to coordinate reasoning and action while their environment evolves during inference. We introduce LOLPlay, a benchmark in native \\emph{League of Legends} with 36 champion-specific tasks spanning resource management, combat, cooperation, and objectives. Agents interact through screenshots...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "04ba3b45aecfdcff",
-      "title": "Counterexample-driven autonomous research with application to excess radiated energy in a Z-pinch",
-      "url": "https://arxiv.org/abs/2611.03721",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.03721v1 Announce Type: new Abstract: Recent breakthroughs in artificial-intelligence-assisted mathematics show that open-ended machine search can outperform human mathematicians, yet transferring this paradigm to physics requires refactoring the research workflow. We introduce Simjecture, an open-source framework in which language-model agents...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "robotics",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "ISRG",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "412bf022a71e4df8",
-      "title": "WASP-Mem: Let Agent Organize Procedural Memory. Human Spend Effort on Diagnosis",
-      "url": "https://arxiv.org/abs/2611.04003",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04003v1 Announce Type: new Abstract: LLM agents struggle to automate complex enterprise procedures because static, pre-built harness cannot capture proprietary policies, undocumented behaviors, or state-dependent recovery paths that surface only during execution. Procedural memory accrued from agent experience offers a training-free path to...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "enterprise",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "a1fcc0962b33eae3",
-      "title": "Silent Instrument Errors Reorder Agent Leaderboards",
-      "url": "https://arxiv.org/abs/2611.04399",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04399v1 Announce Type: new Abstract: On a public agent leaderboard, a general-purpose agent trails a scaffold built for an airline customer-service benchmark by 13 points on the tasks that touch its database, and a reader could conclude that generality costs accuracy. The gap comes from the grader. The general agent often ends its conversations...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "enterprise",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "0187f22c93f80514",
-      "title": "Voluntary Servitude: Weaponized Safety Warning Mechanisms for Controlling AI Agents",
-      "url": "https://arxiv.org/abs/2611.04393",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04393v1 Announce Type: cross Abstract: LLM agents increasingly act on information retrieved from public sources they treat as credible, which turns a manipulated recommendation into a transaction, a dependency, or a decision with physical consequences. The security literature models this threat as instruction injection, in which an adversary...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "b8be5472cf68753a",
-      "title": "$\\tau$-Rec-Books: A Disclosure-Controlled Benchmark for Requirement Elicitation in Agentic Recommender Systems",
-      "url": "https://arxiv.org/abs/2611.04459",
-      "source": "arXiv cs.AI",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04459v1 Announce Type: cross Abstract: While conversational recommendation systems provide a more natural user interface, they face the challenge of progressively discovering a user's needs before they can recommend an item that satisfies them. To evaluate the ability of AI agents at this elicitation process, we introduce $\\tau$-Rec-Books, a...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "040be37d78034777",
-      "title": "PersonaFuse: A Situation-Aware Post-Training Framework for Adaptive LLM Behavior in Enterprise Tasks",
-      "url": "https://arxiv.org/abs/2509.07370",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2509.07370v3 Announce Type: replace Abstract: Large language models (LLMs) are increasingly deployed in enterprise settings to support task execution and workflow automation. Despite the strong performance of general-purpose models on standard benchmarks, organizations often need to adapt them to domain-specific tasks and operational constraints in...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "enterprise",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 97,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "982234c63ea1b733",
-      "title": "Hybrid acoustic and pretrained embedding feature fusion for unmanned aerial vehicle detection using stacking ensemble learning under a leakage-aware evaluation protocol",
-      "url": "https://arxiv.org/abs/2611.04714",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04714v1 Announce Type: cross Abstract: Small multirotor drones produce a characteristic acoustic signature, and microphones offer a low-cost way to detect them. High accuracies have been reported on public drone audio benchmarks, often with random clip-level splits of datasets built from a few long recordings and pieces of existing sound...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "robotics",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
-        "BOTZ",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "ISRG",
-        "META"
-      ],
       "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "919dd59e2c62bc86",
-      "title": "Cities Worldwide Build and Scale AI Services With NVIDIA Physical and Agentic AI",
-      "url": "https://blogs.nvidia.com/blog/cities-physical-agentic-ai-applications/",
-      "source": "NVIDIA Blog",
-      "sourceGroup": "AI infrastructure",
-      "publishedAt": "2026-11-03T07:00:12+00:00",
-      "summary": "Cities generate enormous amounts of data from cameras, sensors and operational systems, but turning it into useful action — for planning, maintenance and public services — remains a challenge. Physical and agentic AI offer new ways to close that gap, from digital twins for infrastructure planning to vision and service agents, while keeping local...",
-      "sourceWeight": 5,
-      "tags": [
-        "agents",
-        "chips"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMD",
-        "AVGO",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "MU",
-        "NOW"
-      ],
-      "signalScore": 96,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "fd491502b1a2bb53",
-      "title": "LifeVal",
-      "url": "https://openai.com/index/lifeval",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-02T09:00:00+00:00",
-      "summary": "Introducing LifeVal, a benchmark measuring how well AI helps people complete everyday tasks, from finding childcare to managing finances and government paperwork.",
-      "sourceWeight": 5,
-      "tags": [
-        "models",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET",
-        "NVDA",
-        "PANW"
-      ],
-      "signalScore": 96,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "b416ecaa63239f20",
-      "title": "How Indegene is modernizing and scaling enterprise data quality in life sciences",
-      "url": "https://aws.amazon.com/blogs/machine-learning/how-indegene-is-modernizing-and-scaling-enterprise-data-quality-in-life-sciences/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-04T16:25:57+00:00",
-      "summary": "This post explores how Indegene built a production-grade, LLM-powered Data Quality Agent in its NEXT Unified Data Platform on AWS. The agent generates context-aware data quality rules, validates them, and produces ready-to-run SQL and Python under human-in-the-loop governance, helping life sciences organizations scale enterprise data quality.",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud",
-        "enterprise"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "ORCL"
-      ],
-      "signalScore": 95,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -650,7 +899,7 @@
       "url": "https://arxiv.org/abs/2611.04492",
       "source": "arXiv cs.LG",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
       "summary": "arXiv:2611.04492v1 Announce Type: cross Abstract: Predicting how the world evolves in response to robot actions is central to policy learning, evaluation, and planning. However, many action-conditioned world models predict future observations in 2D image or video space without explicitly modeling the underlying 3D scene, making spatial consistency across...",
       "sourceWeight": 3,
       "tags": [
@@ -678,7 +927,7 @@
       "url": "https://arxiv.org/abs/2602.16346",
       "source": "arXiv cs.LG",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
       "summary": "arXiv:2602.16346v5 Announce Type: replace-cross Abstract: LLM-based agents execute real-world workflows via tools and memory. These affordances enable ill-intended adversaries to also use these agents to carry out complex misuse scenarios. Existing agent misuse benchmarks largely test single-prompt instructions, leaving a gap in measuring how agents end up...",
       "sourceWeight": 3,
       "tags": [
@@ -705,7 +954,7 @@
       "url": "https://arxiv.org/abs/2606.16988",
       "source": "arXiv cs.LG",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
       "summary": "arXiv:2606.16988v2 Announce Type: replace-cross Abstract: Benchmark scores tell you what an agent got right; they do not tell you how it got there. In this work, we introduce methods for comparing agents procedurally in different contexts, where the model, tasks, and approaches vary. We compare ten agents and find that they are identifiable by their...",
       "sourceWeight": 3,
       "tags": [
@@ -727,58 +976,192 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "0b7e49d8e10e4a06",
-      "title": "Outdated numeric values from Norwegian statutes and regulations in a further-trained model and its base model: a preregistered paired comparison of Borealis 2 and Gemma 4",
-      "url": "https://arxiv.org/abs/2611.02334",
+      "id": "f30f97bb4381e51d",
+      "title": "TandemBench: Benchmarking Decision Models for Multi-Agent Collaboration",
+      "url": "https://arxiv.org/abs/2611.05827",
       "source": "arXiv cs.CL",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.02334v2 Announce Type: replace Abstract: We compare how often two released language models give outdated numeric values from Norwegian statutes and regulations: NbAiLab/borealis2-26b-a4b-preview (Borealis 2), which the National Library of Norway further trained from google/gemma-4-26B-A4B-it (Gemma 4), and Gemma 4 itself. The study was...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05827v1 Announce Type: new Abstract: Decision models choose among predefined options in tasks such as routing and action selection. In multi-agent collaboration, a decision determines how members divide work, exchange resources, and act in parallel. We introduce TandemBench, a benchmark of 1,200 questions in multi-agent cooking scenarios where...",
       "sourceWeight": 3,
       "tags": [
         "models",
-        "policy",
+        "agents",
         "research"
       ],
       "watchlist": [
+        "ADBE",
         "AMZN",
+        "CRM",
         "GOOGL",
         "META",
         "MSFT",
-        "NVDA",
-        "QQQ",
-        "SMH",
-        "XLK"
+        "NOW",
+        "NVDA"
       ],
       "signalScore": 95,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "cf5c96987f892fa9",
-      "title": "When Cell Crops Share a Parent: Measuring and Isolating Acquisition Leakage in Cervical Cytology Benchmarks",
-      "url": "https://arxiv.org/abs/2611.05145",
-      "source": "arXiv cs.CV",
+      "id": "3106ab9d01330728",
+      "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+      "url": "https://arxiv.org/abs/2611.06856",
+      "source": "arXiv cs.CL",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05145v1 Announce Type: new Abstract: Public cervical cytology benchmarks release many cell crops cut from far fewer microscope fields or slides and are often split at the crop level, so test cells share acquisition parents with training cells. In a preregistered study, crop-level splitting raised SIPaKMeD accuracy by 0.97 percentage points...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06856v1 Announce Type: cross Abstract: We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of agent-driven image generation. The task requires retrieving dispersed visual evidence, rejecting distractors, binding entities and relations, and...",
       "sourceWeight": 3,
       "tags": [
         "models",
-        "funding",
+        "agents",
         "research"
       ],
       "watchlist": [
+        "ADBE",
         "AMZN",
-        "ARKK",
+        "CRM",
         "GOOGL",
-        "IGV",
         "META",
         "MSFT",
-        "NVDA",
-        "QQQ"
+        "NOW",
+        "NVDA"
       ],
       "signalScore": 95,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "0d7d447f2cf2bda7",
+      "title": "LLM Agents Already Know When to Call Tools -- Even Without Reasoning",
+      "url": "https://arxiv.org/abs/2605.09252",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2605.09252v3 Announce Type: replace Abstract: Tool-augmented LLM agents tend to call tools indiscriminately, even when the model can answer directly. Each unnecessary call wastes API fees and latency, yet no existing benchmark systematically studies when a tool call is actually needed. We propose When2Tool, a benchmark of 18 environments (15...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 95,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "ed0e3831e93d5ac5",
+      "title": "Visual Token Routing: Learning to keep tokens that matter",
+      "url": "https://arxiv.org/abs/2611.06854",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06854v1 Announce Type: new Abstract: Computer-use agents (CUAs) have recently achieved superhuman performance on several long-horizon benchmarks. However, their computational cost limits their use in long-horizon tasks and real-time domains such as video games. A key bottleneck is representing each screenshot as thousands of visual tokens, which...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 95,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "6c6a3391a008bf39",
+      "title": "AgentCount: An Agentic Workflow for Traceable Colony Counting and Insight Generation from Agar Plate Images",
+      "url": "https://arxiv.org/abs/2611.05398",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05398v1 Announce Type: cross Abstract: Colony counting is commonly used to evaluate microbial populations in food safety testing and microbiological studies. Despite its wide application, manual counting is time-consuming and operator-dependent, and the final count often lacks a record of the objects included in the measurement. To address these...",
+      "sourceWeight": 3,
+      "tags": [
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET",
+        "NOW"
+      ],
+      "signalScore": 95,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "49531760c0f6e642",
+      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
+      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
+      "source": "OpenAI News",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-04T07:00:00+00:00",
+      "summary": "Daybreak Red brings GPT-5.6 Cyber to approved customers in AWS GovCloud (US-East) through Amazon Bedrock for authorized cybersecurity work.",
+      "sourceWeight": 5,
+      "tags": [
+        "cloud",
+        "enterprise",
+        "security"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "MSFT",
+        "NET",
+        "NOW"
+      ],
+      "signalScore": 95,
+      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
+    },
+    {
+      "id": "b52045502a82833f",
+      "title": "Agentic cheminformatics with Google Antigravity",
+      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+      "source": "Google DeepMind",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-03T17:01:49+00:00",
+      "summary": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
+      "sourceWeight": 5,
+      "tags": [
+        "agents",
+        "healthcare"
+      ],
+      "watchlist": [
+        "ADBE",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "LLY",
+        "MSFT",
+        "NOW",
+        "NVO"
+      ],
+      "signalScore": 95,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
       "id": "acc01b71e8963df9",
@@ -786,7 +1169,7 @@
       "url": "https://arxiv.org/abs/2611.04073",
       "source": "arXiv cs.LG",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
       "summary": "arXiv:2611.04073v1 Announce Type: new Abstract: Recent work has improved computer-use agents (CUAs) by combining retrieved task-relevant tutorials and look-ahead planning using world models with MLLM judges. However, the contribution of each component -- tutorials, the judge, and the world model -- to overall improvement has not been evaluated in...",
       "sourceWeight": 3,
       "tags": [
@@ -809,26 +1192,355 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "f99d3f03261ad625",
-      "title": "ModelBlaster: Closing the Performance Gap through Learning-Augmented Agents Across Models, Kernels and Hardware Backends",
-      "url": "https://arxiv.org/abs/2611.04104",
-      "source": "arXiv cs.LG",
+      "id": "d871fca126c5a06b",
+      "title": "When Do Summaries Become Instructions? Unsupported Policy in LLM Agents' Self-Written Handoff Summaries",
+      "url": "https://arxiv.org/abs/2611.06545",
+      "source": "arXiv cs.CL",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04104v1 Announce Type: new Abstract: Optimizing accelerator code across hardware architectures is difficult. ML compilers search predefined spaces of schedules and micro-kernels, while LLM-guided optimization can explore alternative algorithms, operator decompositions, and hardware-specific techniques. However, existing LLM agents typically...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06545v1 Announce Type: new Abstract: Long-running LLM agents compact their context, replacing most history with a summary. We ask whether handoff summaries state permissions or requirements the record does not support, whether such sentences change what the next instance (the successor) does, and where they come from. Synthetic tool-use tasks...",
       "sourceWeight": 3,
       "tags": [
         "models",
         "agents",
-        "chips",
+        "policy",
         "research"
       ],
       "watchlist": [
         "ADBE",
-        "AMD",
         "AMZN",
-        "AVGO",
         "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "56a4701057f9ef41",
+      "title": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?",
+      "url": "https://arxiv.org/abs/2611.06483",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06483v1 Announce Type: cross Abstract: While multi-turn agentic reinforcement learning (RL) excels on long-horizon tasks, its performance gains remain highly sensitive to interaction constraints. Evaluating across sampling breadth $K$ and interaction depth $T$ via $Pass@(K,T)$, we show that trajectory-level RL advantages depend on sufficient...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "6a779392c74f162c",
+      "title": "CyclicJudge: Mitigating Judge Bias Efficiently in LLM-based Evaluation",
+      "url": "https://arxiv.org/abs/2603.01865",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2603.01865v4 Announce Type: replace Abstract: LLM-as-judge evaluation has become standard practice for open-ended model assessment; however, judges exhibit systematic biases that cannot be averaged out by increasing the number of scenarios or generations. These biases are often similar in magnitude to the model differences that benchmarks are...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "security",
+        "funding",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "750ebfbe976b6923",
+      "title": "Towards On-Policy Data Evolution for Visual-Native Multimodal Deep Search Agents",
+      "url": "https://arxiv.org/abs/2605.10832",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2605.10832v3 Announce Type: replace Abstract: Multimodal deep search requires an agent to solve open-world problems by chaining search, tool use, and visual reasoning over evolving textual and visual context. Two bottlenecks limit current systems. First, existing tool-use harnesses treat images returned by search, browsing, or transformation as...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "policy",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "74413b1dfd098a78",
+      "title": "Language Models as AI Research World Models",
+      "url": "https://arxiv.org/abs/2610.12235",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2610.12235v2 Announce Type: replace Abstract: AI research agents automate the cycle of proposing, implementing, and evaluating experiments, opening a path toward recursive self-improvement. Yet their ability to propose experiments outpaces their capacity to execute them in real environments, making outcome prediction a key capability for sustained...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "bd1d74458dc2aabf",
+      "title": "MotoVerse: A Benchmark for Predictive Perception of Motorized Two-Wheelers in Dense Unstructured Traffic",
+      "url": "https://arxiv.org/abs/2611.06007",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06007v1 Announce Type: new Abstract: Motorized Two-Wheelers (MTWs) dominate personal transport across much of the Global South, yet remain largely overlooked in predictive perception research for autonomous driving and ADAS. We introduce MotoVerse, a benchmark for predictive perception from an MTW's ego-centric perspective. MotoVerse comprises...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "195d5728e0408ba4",
+      "title": "Beyond Scene Shortcuts: Action-Centric Video-Text Alignment for Fine-Grained Action Understanding",
+      "url": "https://arxiv.org/abs/2611.06302",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06302v1 Announce Type: new Abstract: Fine-grained action understanding requires vision-language models to ground what an agent does, how it acts, and why it acts in spatio-temporal evidence. However, richer supervision can backfire: fine-tuned models may generate detailed action descriptions grounded in static scenes and salient objects rather...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "e914f6c897095122",
+      "title": "Benchmarking Fine-Grained Visual Reasoning for Remote Sensing in Urban Management",
+      "url": "https://arxiv.org/abs/2611.06770",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06770v1 Announce Type: new Abstract: Fine-grained visual reasoning is essential for remote sensing in urban management, yet remains underexplored in the evaluation of multimodal large language models (MLLMs). We introduce UMBench, a fine-grained urban remote sensing benchmark built from unmanned aerial vehicle (UAV) images for multiple urban...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "security",
+        "funding",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "1152667d39372428",
+      "title": "Driving Video Retrieval for Complex Queries with Structured Grounding",
+      "url": "https://arxiv.org/abs/2606.09109",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2606.09109v4 Announce Type: replace Abstract: Video retrieval at scale is central to data curation and safety validation in autonomous driving, where users want to find not only scenes but also dynamic events such as cut-ins and hard braking. Existing vision-language and keyword-based retrieval methods often miss these events because the relevant...",
+      "sourceWeight": 3,
+      "tags": [
+        "agents",
+        "robotics",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "BOTZ",
+        "CRM",
+        "CRWD",
+        "GOOGL",
+        "ISRG",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 94,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "147ffb969ea9a931",
+      "title": "AbsoluteDegradation: A Physics-Inspired Synthetic Film-Degradation Pipeline and Archival Film Restoration Benchmark",
+      "url": "https://arxiv.org/abs/2607.02131",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2607.02131v2 Announce Type: replace Abstract: Restoring archival film remains a fundamentally challenging problem due to the absence of paired training data and the lack of standardized evaluation benchmarks. Pristine versions of deteriorated footage are physically unrecoverable, requiring supervised methods to rely on synthetic data that often fail...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "security",
+        "funding",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "ARKK",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "META",
+        "MSFT",
+        "NET"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "c0c8388f2ec2c491",
+      "title": "MM-VeriAgent: Learning to Use Extensive Tools to Verify Multimodal Misinformation with Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2609.30698",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2609.30698v2 Announce Type: replace Abstract: Real-world multimodal misinformation often involves mixed forgery sources, requiring sample-specific detection strategies. Existing tool-augmented methods rely on predefined workflows or inference-time planning, limiting adaptability or increasing inference cost. To address this issue, we introduce...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "cloud",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "70bdd59de4dce7a1",
+      "title": "Marathoner: Ultra-Long-Horizon Autonomous Intelligence",
+      "url": "https://arxiv.org/abs/2609.34378",
+      "source": "arXiv cs.CV",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2609.34378v2 Announce Type: replace Abstract: Humans naturally possess the ability to work persistently toward long-term goals. Given a challenging task, humans can continuously work for months or even years to accomplish a specific objective. In this paper, we propose Marathoner, an autonomous agentic model possessing the ability of...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "robotics",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "BOTZ",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "68042b47a5b973d1",
+      "title": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+      "url": "https://huggingface.co/blog/phonon-tts",
+      "source": "Hugging Face Blog",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-05T00:00:00+00:00",
+      "summary": "No feed summary provided. Open the source for details.",
+      "sourceWeight": 4,
+      "tags": [
+        "models"
+      ],
+      "watchlist": [
+        "AMZN",
         "GOOGL",
         "META",
         "MSFT"
@@ -837,396 +1549,241 @@
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "fd7ae8ef22dc19f0",
-      "title": "DRAP: Dynamics-Risk Adaptive Plasticity for Continual Learning in Physical AI",
-      "url": "https://arxiv.org/abs/2611.05029",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05029v1 Announce Type: new Abstract: Continual learning in physical AI differs from conventional continual learning because small per-step policy errors can accumulate over a trajectory. Each deviation may move the agent outside the training distribution, increase subsequent prediction errors, and ultimately cause closed-loop task failure. This...",
+      "id": "a95f5ffa258df1b4",
+      "title": "Use decision models with Amazon Bedrock AgentCore Evaluations",
+      "url": "https://aws.amazon.com/blogs/machine-learning/use-decision-models-with-amazon-bedrock-agentcore-evaluations/",
+      "source": "AWS Machine Learning",
+      "sourceGroup": "Cloud",
+      "publishedAt": "2026-11-04T18:46:36+00:00",
+      "summary": "Some agent-evaluation questions are narrow and repeatable, and decision models answer exactly that kind of question. This post shows how to connect two decision models, Jev and Strands Decider, to Amazon Bedrock AgentCore Evaluations through code-based evaluators, and how to validate a decision-model check before you gate a release on it.",
       "sourceWeight": 3,
       "tags": [
+        "models",
         "agents",
-        "security",
-        "policy",
-        "research"
+        "cloud",
+        "security"
       ],
       "watchlist": [
         "ADBE",
+        "AMZN",
+        "ARKK",
         "CRM",
         "CRWD",
         "GOOGL",
-        "META",
+        "IGV",
+        "META"
+      ],
+      "signalScore": 94,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "919dd59e2c62bc86",
+      "title": "Cities Worldwide Build and Scale AI Services With NVIDIA Physical and Agentic AI",
+      "url": "https://blogs.nvidia.com/blog/cities-physical-agentic-ai-applications/",
+      "source": "NVIDIA Blog",
+      "sourceGroup": "AI infrastructure",
+      "publishedAt": "2026-11-03T07:00:12+00:00",
+      "summary": "Cities generate enormous amounts of data from cameras, sensors and operational systems, but turning it into useful action — for planning, maintenance and public services — remains a challenge. Physical and agentic AI offer new ways to close that gap, from digital twins for infrastructure planning to vision and service agents, while keeping local...",
+      "sourceWeight": 5,
+      "tags": [
+        "agents",
+        "chips"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMD",
+        "AVGO",
+        "CRM",
+        "GOOGL",
         "MSFT",
-        "NET",
+        "MU",
         "NOW"
       ],
       "signalScore": 94,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
-      "id": "ee5762da00dca275",
-      "title": "Stabilizing On-Policy Targeted Guidance in Agentic Reinforcement Learning",
-      "url": "https://arxiv.org/abs/2611.05266",
-      "source": "arXiv cs.LG",
+      "id": "93f15aa61d8bd3fe",
+      "title": "Decompose the Distillation: Interpretable Single-Pass Guidance for Diffusion Models",
+      "url": "https://arxiv.org/abs/2611.05755",
+      "source": "arXiv cs.CV",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05266v1 Announce Type: new Abstract: Naive on-policy RL is often bottlenecked by the capabilities of the base model --- insufficient coverage can result in an inability to learn from certain rewards. At the same time, rewards in modern post-training systems often come from rich textual sources, e.g. judge models with a rubric of criteria. Can we...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05755v1 Announce Type: new Abstract: Classifier-Free Guidance is a widely used inference-time guidance rule for conditional image generation with diffusion models, which exposes a guidance scale that adjusts conditioning strength after training. This flexibility requires conditional and unconditional model evaluations at every sampling step, so...",
       "sourceWeight": 3,
       "tags": [
         "models",
-        "agents",
-        "policy",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "33804059a22e0a92",
-      "title": "Accelerating Offloading-Based MoE Inference by Interleaving Concurrent Requests",
-      "url": "https://arxiv.org/abs/2611.04794",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04794v1 Announce Type: cross Abstract: Expert offloading enables large mixture-of-experts (MoE) language models to run locally, but conventional batching stalls the GPU while missing experts are fetched. A popular remedy, known as prefetching, is to predict what experts will be needed soon and fetch them using idle link bandwidth. Imprecise...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "chips",
         "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "bf1d49409b728016",
-      "title": "Imitation Dominates Reinforcement: Direct In-Context RL Is Closer to ICL Than RL",
-      "url": "https://arxiv.org/abs/2610.11152",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2610.11152v4 Announce Type: replace Abstract: LLM agents increasingly improve at inference time by accumulating experience in context rather than by updating parameters. This process is often described as in-context reinforcement learning (ICRL). Whether in-context learning (ICL) can actually play the role of RL, however, has not been tested. We...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "4ab3e21ad7fec204",
-      "title": "CVE-Conditioned Exploit Generation with LLMs: A Data-Centric Study of Benchmarking and Fine-Tuning",
-      "url": "https://arxiv.org/abs/2606.15123",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2606.15123v2 Announce Type: replace-cross Abstract: We study the task of CVE-conditioned exploit generation, where a model drafts proof-of-concept (PoC) exploits given software vulnerability context. We adopt a data-centric approach, constructing a high-quality dataset via multi-stage preprocessing and introducing a scalable evaluation framework with...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
         "security",
-        "funding",
-        "research"
+        "funding"
       ],
       "watchlist": [
         "AMZN",
         "ARKK",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "d48dc34aa6c0a07c",
-      "title": "Dual-Node NVIDIA DGX Spark over Tailscale: A Remote-Access Testbed for Distributed LLM Training and Cyber-Threat-Intelligence Fine-Tuning",
-      "url": "https://arxiv.org/abs/2608.07226",
-      "source": "arXiv cs.LG",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2608.07226v2 Announce Type: replace-cross Abstract: Practical evidence for multi-node training on desktop-class accelerators remains limited. This report presents a proof-of-concept deployment of distributed NanoChat pretraining across two NVIDIA DGX Spark systems, each with a GB10 Grace Blackwell system-on-chip and 128 GB of unified memory,...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "chips",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "2c67557514cd4aad",
-      "title": "Multicultural Spyfall: Assessing LLMs through a Dynamic Multilingual Social Deduction Game",
-      "url": "https://arxiv.org/abs/2601.09017",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2601.09017v2 Announce Type: replace Abstract: The rapid advancement of Large Language Models (LLMs) has necessitated more robust evaluation methods that go beyond static benchmarks, which are increasingly prone to data saturation and leakage. In this paper, we propose a dynamic benchmarking framework for evaluating multilingual and multicultural...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "security",
-        "funding",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "c1bd02a0e1fef058",
-      "title": "SEAL: Synergistic Co-Evolution of Agents and Learning Environments",
-      "url": "https://arxiv.org/abs/2605.24426",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2605.24426v2 Announce Type: replace Abstract: Large language model (LLM) agents increasingly learn through interaction, yet their training process often evolves unevenly: the policy changes with experience while the learning environment continues to provide largely fixed forms of support. As training progresses, this creates a growing mismatch...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "policy",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
         "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "0aed995559360d87",
-      "title": "Weather Adaptive Autonomous Driving",
-      "url": "https://arxiv.org/abs/2611.04305",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04305v1 Announce Type: new Abstract: Camera object detectors lose recall in rain, fog, snow and sand, and the confidence threshold at which a detector is deployed decides how many objects it misses and how many false alarms it raises. We study how a frozen detector should make this decision in adverse weather. We first reproduce SeqCRC, a...",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "robotics",
-        "funding",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "ARKK",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "IGV",
-        "ISRG",
-        "META"
-      ],
-      "signalScore": 94,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "f9cf8c559cb2d41b",
-      "title": "NightIQA: A Comprehensive Dataset and Benchmark for MLLM-Based Nighttime Image Quality Assessment",
-      "url": "https://arxiv.org/abs/2611.04811",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04811v1 Announce Type: new Abstract: Nighttime images are inherently susceptible to complex, compound degradations, making accurate quality assessment exceptionally challenging. Score-based IQA methods condense quality into a single number, lacking the multi-dimensional, language-grounded reasoning required for nighttime evaluation. Multimodal...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "security",
-        "funding",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
         "CRWD",
         "GOOGL",
         "IGV",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "41630ae0ad6cd8bc",
-      "title": "Visibility-Aware Reference Generation for Benchmarking Visual 3D Reconstruction in Vegetation-Rich Environments",
-      "url": "https://arxiv.org/abs/2611.05361",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05361v1 Announce Type: new Abstract: Reliable evaluation of visual 3D reconstruction and depth estimation in vegetation-rich outdoor environments is limited by the scarcity of geometric ground-truth data and the cost of complete scanner surveys. We present a LiDARbased reference-generation pipeline for evaluating the zero-shot performance of...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "security",
-        "funding",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "8f3ca5d238cf7828",
-      "title": "BEVTraj: Map-Free Multimodal Trajectory Prediction with Sensor-Derived BEV Context and Sparse Goal Reasoning",
-      "url": "https://arxiv.org/abs/2509.10080",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2509.10080v3 Announce Type: replace Abstract: Trajectory prediction is a key task in autonomous driving, where a model must forecast plausible future motions of surrounding agents from dynamic histories and scene context. Many recent methods use high-definition (HD) maps to provide explicit road topology and semantic constraints, but such maps are...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "robotics",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "ISRG",
         "META",
         "MSFT"
       ],
-      "signalScore": 94,
+      "signalScore": 93,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "2b0282ba22068332",
-      "title": "Evaluation of Visual Processing Should Be Human-Centered, Not Metric-Centered",
-      "url": "https://arxiv.org/abs/2603.00643",
-      "source": "arXiv cs.CV",
+      "id": "b416ecaa63239f20",
+      "title": "How Indegene is modernizing and scaling enterprise data quality in life sciences",
+      "url": "https://aws.amazon.com/blogs/machine-learning/how-indegene-is-modernizing-and-scaling-enterprise-data-quality-in-life-sciences/",
+      "source": "AWS Machine Learning",
+      "sourceGroup": "Cloud",
+      "publishedAt": "2026-11-04T16:25:57+00:00",
+      "summary": "This post explores how Indegene built a production-grade, LLM-powered Data Quality Agent in its NEXT Unified Data Platform on AWS. The agent generates context-aware data quality rules, validates them, and produces ready-to-run SQL and Python under human-in-the-loop governance, helping life sciences organizations scale enterprise data quality.",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "cloud",
+        "enterprise"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "ORCL"
+      ],
+      "signalScore": 93,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "cd8e302627df3769",
+      "title": "A thousand fewer paths to root",
+      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
+      "source": "OpenAI News",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-04T08:00:00+00:00",
+      "summary": "OpenAI built an autonomous pipeline that found, validated, and generated patches for 948 local privilege-escalation vulnerabilities in the Linux kernel.",
+      "sourceWeight": 5,
+      "tags": [
+        "agents",
+        "robotics"
+      ],
+      "watchlist": [
+        "ADBE",
+        "BOTZ",
+        "CRM",
+        "GOOGL",
+        "ISRG",
+        "MSFT",
+        "NOW",
+        "ROK"
+      ],
+      "signalScore": 93,
+      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "c6e48e3c7be63953",
+      "title": "SRRM: A Retrieval-Reconstruction Benchmark for Evaluating Long-Context Memory in Small Language Models",
+      "url": "https://arxiv.org/abs/2611.05386",
+      "source": "arXiv cs.CL",
       "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2603.00643v4 Announce Type: replace Abstract: This position paper argues that the evaluation of modern visual processing systems should no longer be driven primarily by single-metric image quality assessment benchmarks, particularly in the era of generative and perception-oriented methods. Image restoration exemplifies this divergence: while...",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05386v1 Announce Type: new Abstract: Small Language Models (SLMs) are increasingly deployed on consumer-grade hardware, yet their ability to preserve information across progressively longer contexts remains insufficiently understood. Existing benchmarks primarily evaluate retrieval-oriented tasks, providing limited insight into whether...",
       "sourceWeight": 3,
       "tags": [
         "models",
         "security",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET",
+        "NVDA",
+        "PANW"
+      ],
+      "signalScore": 92,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "61623c5005514feb",
+      "title": "Cognitive Bias Signatures in Search-Equipped LLM Agents: A Stage-Resolved Analysis",
+      "url": "https://arxiv.org/abs/2611.05720",
+      "source": "arXiv cs.CL",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05720v1 Announce Type: new Abstract: Search can help LLM agents correct mistakes, but their starting conditions may shape which evidence they find and use. Drawing on cognitive-bias paradigms, we develop a controlled search harness to examine result order, records of prior work, and initial hypotheses while holding each question and document...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "agents",
+        "research"
+      ],
+      "watchlist": [
+        "ADBE",
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NOW",
+        "NVDA"
+      ],
+      "signalScore": 92,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "2c754b3044dd04bc",
+      "title": "TestBED: An Open-Source Toolkit for Bayesian Experimental Design",
+      "url": "https://arxiv.org/abs/2611.06633",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06633v1 Announce Type: new Abstract: Bayesian experimental design (BED) is a principled framework for intelligent data acquisition with applications across a wide range of scientific and industrial domains. However, the development and adoption of BED remains hindered by a lack of standardised software and benchmarks. Existing methods are...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
         "funding",
         "research"
       ],
       "watchlist": [
         "AMZN",
         "ARKK",
-        "CRWD",
         "GOOGL",
         "IGV",
         "META",
         "MSFT",
-        "NET"
+        "NVDA",
+        "QQQ"
       ],
-      "signalScore": 94,
+      "signalScore": 92,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "45faa541e4d02b7a",
-      "title": "Railway Artificial Intelligence Learning Benchmark (RAIL-BENCH): A Benchmark Suite for Perception in the Railway Domain",
-      "url": "https://arxiv.org/abs/2604.22507",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2604.22507v2 Announce Type: replace Abstract: Benchmark suites are crucial for advancing computer vision research, providing not only curated datasets but also standardized evaluation protocols for reproducible comparison. The railway domain lacks such resources, hindering progress in automated train operation. To address this gap, we present...",
-      "sourceWeight": 3,
+      "id": "1e6aeaf7d6f142ff",
+      "title": "Setting a new standard for responsible AI infrastructure",
+      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "source": "OpenAI News",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-05T02:00:00+00:00",
+      "summary": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+      "sourceWeight": 5,
       "tags": [
-        "models",
-        "security",
-        "funding",
-        "research"
+        "policy"
       ],
       "watchlist": [
-        "AMZN",
-        "ARKK",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META",
-        "MSFT",
-        "NET"
+        "QQQ",
+        "SMH",
+        "XLK"
       ],
-      "signalScore": 94,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+      "signalScore": 92,
+      "angle": "Regulatory signal; watch compliance costs and platform concentration effects."
     },
     {
       "id": "8fa8d796504bd4ec",
@@ -1248,7 +1805,7 @@
         "SMH",
         "TSM"
       ],
-      "signalScore": 94,
+      "signalScore": 92,
       "angle": "AI compute demand signal; watch accelerator, memory, foundry, and networking exposure."
     },
     {
@@ -1270,8 +1827,36 @@
         "NOW",
         "ORCL"
       ],
-      "signalScore": 94,
+      "signalScore": 92,
       "angle": "AI software monetization signal; watch SaaS attach rates and seat expansion."
+    },
+    {
+      "id": "ddc06b883b9fcfd9",
+      "title": "Flexible Intensities Matter: A Comprehensive Re-evaluation of Hawkes Processes and Neural Temporal Point Processes",
+      "url": "https://arxiv.org/abs/2611.06348",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06348v1 Announce Type: cross Abstract: Temporal point processes (TPPs) are the canonical framework for event sequence data, with applications spanning seismology, social media, and electronic health records. Recently, neural TPPs have been reported to substantially outperform classical TPPs, such as Hawkes processes, but these comparisons pitted...",
+      "sourceWeight": 3,
+      "tags": [
+        "healthcare",
+        "security",
+        "funding",
+        "research"
+      ],
+      "watchlist": [
+        "ARKK",
+        "CRWD",
+        "GOOGL",
+        "IGV",
+        "ISRG",
+        "LLY",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 91,
+      "angle": "AI life-sciences signal; watch drug discovery, medtech, and healthcare data platforms."
     },
     {
       "id": "04faa6079668a57f",
@@ -1291,332 +1876,28 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 93,
+      "signalScore": 91,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
-      "id": "563cad842398ecc2",
-      "title": "Computational Phenomenology of Borderline Personality Disorder: A Comparative Evaluation of LLM-Simulated Expert Personas and Human Clinical Experts",
-      "url": "https://arxiv.org/abs/2508.19008",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2508.19008v3 Announce Type: cross Abstract: Building on a human-led thematic analysis of clinical life-story interviews (> 150,000 words) with inpatients with Borderline Personality Disorder, this study examines the capacity of large language models (OpenAI's GPT, Google's Gemini, and Anthropic's Claude) to support qualitative clinical analysis. The...",
-      "sourceWeight": 3,
+      "id": "c73fc01b6478ed5d",
+      "title": "Introducing Images 2.6",
+      "url": "https://openai.com/index/introducing-images-2-6",
+      "source": "OpenAI News",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-04T00:00:00+00:00",
+      "summary": "Images 2.6 brings faster image generation, GIF creation, more precise editing, and new API controls across ChatGPT, Codex, and the API.",
+      "sourceWeight": 5,
       "tags": [
-        "models",
-        "healthcare",
-        "security",
-        "funding"
+        "models"
       ],
       "watchlist": [
         "AMZN",
-        "ARKK",
-        "CRWD",
         "GOOGL",
-        "IGV",
-        "ISRG",
-        "LLY",
-        "META"
-      ],
-      "signalScore": 93,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "f7aeaf92411e0fa4",
-      "title": "Multi-Path Mamba Diffusion for 3D Point Cloud Semantic Scene Completion",
-      "url": "https://arxiv.org/abs/2611.04583",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04583v1 Announce Type: new Abstract: 3D semantic scene completion plays a critical role in enabling various downstream tasks within autonomous systems by estimating both missing geometric structures and semantic information in scene data. In this work, we introduce a unique neural framework that integrates state space modeling with...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud",
-        "robotics"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "BOTZ",
-        "CRM",
-        "GOOGL",
-        "ISRG",
         "META",
         "MSFT"
       ],
-      "signalScore": 93,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "10d529a13f53c07f",
-      "title": "Do Multi-Turn Conversational Capabilities Carry Over from Text to Speech? A Parallel Multilingual Benchmark",
-      "url": "https://arxiv.org/abs/2611.04390",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04390v1 Announce Type: new Abstract: Successful multi-turn voice interaction requires models to retain information from earlier turns, follow persistent instructions, and track revisions to conversational state. These abilities are usually evaluated from transcripts, leaving open whether successes demonstrated from text carry over when the same...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET",
-        "NVDA",
-        "PANW"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "a54e1545329aa316",
-      "title": "Typological Feature Induction as a Benchmark for Inductive Metalinguistic Reasoning",
-      "url": "https://arxiv.org/abs/2611.04421",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04421v1 Announce Type: new Abstract: Existing metalinguistic reasoning benchmarks require both inference of rules and their application, making failures hard to diagnose. We introduce typological feature induction (TFI) which targets the former step. Given sentences in an unnamed language paired with translations in a known pivot language,...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA",
-        "ORCL"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "eaa8045c8d66bed3",
-      "title": "TEMPO: Time Series Understanding via Discrete Tokenization",
-      "url": "https://arxiv.org/abs/2611.04482",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04482v1 Announce Type: new Abstract: Time-series interpretation often requires both numerical observations and textual context. Integrating these inputs into a pretrained language model raises a representation question: how should a signal enter the model's token sequence? We present TEMPO, which extends an LLM's vocabulary with discrete codes...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "funding",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "ARKK",
-        "GOOGL",
-        "IGV",
-        "META",
-        "MSFT",
-        "NVDA",
-        "QQQ"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "dad4a8c7eeccfc15",
-      "title": "TraceRouter++: Causal Semantic Routing Realignment via Optimal Transport",
-      "url": "https://arxiv.org/abs/2611.04878",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04878v1 Announce Type: new Abstract: Despite their remarkable capabilities, large foundation models (LFMs) remain susceptible to adversarial manipulation. Current safety intervention methods primarily rely on the \\textit{locality hypothesis}, rigidly suppressing isolated neurons or features. However, harmful semantics manifest as distributed,...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "security",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "CRWD",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NET",
-        "NVDA",
-        "PANW"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "0b348dc5582ab79d",
-      "title": "ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents",
-      "url": "https://arxiv.org/abs/2611.05036",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05036v1 Announce Type: new Abstract: Large language models are deployed as long-horizon agents that compose diverse tools across MCP services into executable workflows. Existing MCP environment-scaling methods are data-centric: they first synthesize a database and scenario, then derive tools and tasks from them. As a result, tool interfaces may...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "ae8f30dfacd1425e",
-      "title": "MDSKILL: Learning to Internalize Skill Memory through Multi-View Distillation for Efficient Dynamic Agent Self-Evolution",
-      "url": "https://arxiv.org/abs/2611.05313",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.05313v1 Announce Type: new Abstract: Skill memories encode past experiences as textual prompts to improve reinforcement learning (RL) for self-evolving agents. Complementing RL, On-Policy Self-Distillation (OPSD) provides dense, fine-grained supervision to internalize knowledge from skill-guided trajectories and accelerate policy learning....",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "policy",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA",
-        "QQQ"
-      ],
-      "signalScore": 92,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "47521b4136260ca9",
-      "title": "TRIAGE: Reliability- and Load-Conditioned Escalation for Two-Tier LLM Serving with a Semantic Evidence Judge",
-      "url": "https://arxiv.org/abs/2611.01174",
-      "source": "arXiv cs.CL",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.01174v1 Announce Type: cross Abstract: Two-tier LLM serving escalates selected requests from a small model to a large one, but prompt-based routers cannot see whether retrieved evidence supports an answer, and they treat the GPU cost of an escalation as constant. We study TRIAGE, which conditions escalation on a post-generation reliability state...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "chips",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "1c44938af9dc9a14",
-      "title": "Mamba3R: Fixed-Capacity Selective State Memory for Long-Sequence 3D Reconstruction",
-      "url": "https://arxiv.org/abs/2611.04221",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04221v1 Announce Type: new Abstract: Streaming 3D reconstruction must maintain geometric quality over long inputs within a fixed GPU budget. A pretrained recurrent model provides bounded state, but freezing its backbone also fixes its learned state-observation interactions. We introduce Mamba3R, a jointly designed state-memory adapter that...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "chips",
-        "research"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU",
-        "NVDA"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "66a7937edff12f10",
-      "title": "VidUEU-Agent: A Data-Curation Agent for Multimodal Understanding, Editing, and Unified Tasks",
-      "url": "https://arxiv.org/abs/2611.04418",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04418v1 Announce Type: new Abstract: The advancement of multimodal learning is heavily constrained by the scarcity and high annotation cost of high-quality instruction data. While raw videos offer an abundant and dynamic source of visual knowledge, transforming them into precise instruction data remains highly challenging. To bridge this gap, we...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 92,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "9a599447772ba093",
-      "title": "iMED: A Multi-Endoscope Dataset for Surgical 3D Perception",
-      "url": "https://arxiv.org/abs/2611.04755",
-      "source": "arXiv cs.CV",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04755v1 Announce Type: new Abstract: We introduce iMED, the first synchronized multi-endoscope dataset for robot-assisted minimally invasive surgery (RAMIS), designed to address a fundamental limitation in surgical vision benchmarking: the absence of independent held-out viewpoints. Existing surgical datasets capture single-trajectory sequences...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "robotics",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "BOTZ",
-        "GOOGL",
-        "ISRG",
-        "META",
-        "MSFT",
-        "NVDA",
-        "ROK"
-      ],
-      "signalScore": 92,
+      "signalScore": 90,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1642,8 +1923,142 @@
         "PANW",
         "ZS"
       ],
-      "signalScore": 92,
+      "signalScore": 90,
       "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
+    },
+    {
+      "id": "7261873c8c311934",
+      "title": "A low-rank decoder bottleneck bounds reliability in foundation-model perturbation prediction",
+      "url": "https://arxiv.org/abs/2611.05849",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.05849v1 Announce Type: cross Abstract: Foundation-model predictors of perturbation response are evaluated primarily by aggregate accuracy. Using their predictions to prioritize experiments requires assessing each prediction's reliability. We audit the state-transition (ST) decoder used in STATE across three encoders (SE-600M, scGPT, and...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET",
+        "NVDA",
+        "PANW"
+      ],
+      "signalScore": 89,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "9b3a25d4a180acfb",
+      "title": "Schr\\\"odinger--F\\\"ollmer Actor--Critic: Diffusion Policy Improvement with Finite-Sample Analysis",
+      "url": "https://arxiv.org/abs/2609.33239",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2609.33239v3 Announce Type: replace Abstract: Diffusion policies represent multimodal action distributions, but a $Q$-weighted update does not specify how to sample from the resulting target distribution. We propose Schr\\\"odinger--F\\\"ollmer Actor--Critic (SFAC), an offline-to-online reinforcement learning (RL) method for Kullback--Leibler...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "policy",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA",
+        "QQQ",
+        "SMH",
+        "XLK"
+      ],
+      "signalScore": 89,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "664305147b887e0a",
+      "title": "ESS-Flow: Training-free guidance as Bayesian inference in source space",
+      "url": "https://arxiv.org/abs/2510.05849",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2510.05849v2 Announce Type: replace-cross Abstract: Guiding pretrained flow-based generative models for conditional generation or to produce samples with desired target properties enables solving diverse tasks without retraining on paired data. We present ESS-Flow, a gradient-free method that leverages the Gaussian prior of the source distribution in...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "cloud",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA",
+        "ORCL"
+      ],
+      "signalScore": 89,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "f4e1ca7e3552bc2b",
+      "title": "Decoupling Distance and Networks: Hybrid Graph Attention-Geostatistical Methods for Spatio-temporal Risk Mapping",
+      "url": "https://arxiv.org/abs/2603.08393",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2603.08393v3 Announce Type: replace-cross Abstract: Accurate spatial prediction and rigorous uncertainty quantification are central to modern spatial epidemiology and environmental risk analysis. We introduce a statistically principled hybrid modelling framework that integrates the nonlinear, attention-based representation learning capabilities of a...",
+      "sourceWeight": 3,
+      "tags": [
+        "models",
+        "security",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "CRWD",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NET",
+        "NVDA",
+        "PANW"
+      ],
+      "signalScore": 89,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
+    },
+    {
+      "id": "649eef9f19438515",
+      "title": "Optimal distribution-free sequential change detection with conformal martingales",
+      "url": "https://arxiv.org/abs/2609.27179",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2609.27179v2 Announce Type: replace-cross Abstract: We study the challenging problem of distribution-free sequential changepoint detection for independent observations with unknown and \\emph{completely unrestricted} pre- and post-change laws. For over two decades, the primary existing solution for this problem has employed Vovk's conformal test...",
+      "sourceWeight": 3,
+      "tags": [
+        "cloud",
+        "policy",
+        "research"
+      ],
+      "watchlist": [
+        "AMZN",
+        "CRM",
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA",
+        "ORCL",
+        "QQQ"
+      ],
+      "signalScore": 89,
+      "angle": "Cloud AI demand signal; watch hyperscaler capex, inference margins, and platform lock-in."
     },
     {
       "id": "8a0f6f3c8dc3c60c",
@@ -1669,7 +2084,7 @@
         "MSFT",
         "NOW"
       ],
-      "signalScore": 91,
+      "signalScore": 89,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
     },
     {
@@ -1691,8 +2106,50 @@
         "MSFT",
         "NOW"
       ],
-      "signalScore": 91,
+      "signalScore": 89,
       "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
+    },
+    {
+      "id": "903bc6f4d99421f4",
+      "title": "Offline Learning of Reserve Prices from Censored Bids",
+      "url": "https://arxiv.org/abs/2611.06067",
+      "source": "arXiv stat.ML",
+      "sourceGroup": "Research",
+      "publishedAt": "2026-11-05T05:00:00+00:00",
+      "summary": "arXiv:2611.06067v1 Announce Type: cross Abstract: We study how a seller can learn a reserve price for a second-price auction from censored historical bid data. Because values below past reserves are unobserved, even unlimited data may not reveal which reserve earns the most revenue. Under a monotone hazard rate (MHR) assumption, we characterize exactly...",
+      "sourceWeight": 3,
+      "tags": [
+        "research"
+      ],
+      "watchlist": [
+        "GOOGL",
+        "META",
+        "MSFT",
+        "NVDA"
+      ],
+      "signalScore": 88,
+      "angle": "Capability frontier signal; watch whether research converts into products or infra demand."
+    },
+    {
+      "id": "829838e1b7b8236e",
+      "title": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+      "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+      "source": "Hugging Face Blog",
+      "sourceGroup": "Official labs",
+      "publishedAt": "2026-11-04T17:50:10+00:00",
+      "summary": "No feed summary provided. Open the source for details.",
+      "sourceWeight": 4,
+      "tags": [
+        "models"
+      ],
+      "watchlist": [
+        "AMZN",
+        "GOOGL",
+        "META",
+        "MSFT"
+      ],
+      "signalScore": 88,
+      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
       "id": "f86aa2bc672dd539",
@@ -1712,7 +2169,7 @@
         "META",
         "MSFT"
       ],
-      "signalScore": 90,
+      "signalScore": 88,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     },
     {
@@ -1733,355 +2190,20 @@
         "PANW",
         "ZS"
       ],
-      "signalScore": 90,
-      "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
-    },
-    {
-      "id": "614963259912275e",
-      "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/agentic-engineering-intelligence-with-amazon-nova-multimodal-embeddings-and-amazon-bedrock-agentcore/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-02T17:01:16+00:00",
-      "summary": "Learn how to build a multi-agent engineering assistant that compresses aerospace component substitution evaluation from days to minutes, using Amazon Nova Multimodal Embeddings, Amazon Bedrock AgentCore, and the Strands Agents SDK to assemble substitution evidence while keeping the engineer as the decision-maker.",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "agents",
-        "cloud",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "META"
-      ],
-      "signalScore": 89,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "75f7b1cac16c8571",
-      "title": "Scaling Git at OpenAI",
-      "url": "https://openai.com/index/scaling-git-at-openai",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-02T15:30:00+00:00",
-      "summary": "How OpenAI built Pando, a Git-compatible backend designed for the scale of development that Codex makes possible.",
-      "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 89,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "f30c4efd64ec0dc8",
-      "title": "Introducing the Grid Protectors Program",
-      "url": "https://openai.com/index/grid-protectors-program",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-02T15:00:00+00:00",
-      "summary": "OpenAI’s Grid Protectors Program will work with utilities to help future compute campuses support grid reliability and protect consumer electricity costs.",
-      "sourceWeight": 5,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 89,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "615a28bf37f9193a",
-      "title": "Smart Approvals in Amazon Quick: Human oversight where it matters",
-      "url": "https://aws.amazon.com/blogs/machine-learning/smart-approvals-in-amazon-quick-human-oversight-where-it-matters/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-04T16:33:03+00:00",
-      "summary": "Smart Approvals in Amazon Quick reviews eligible agent actions within your existing controls, reducing unnecessary approval prompts while keeping consequential decisions with a person. See how policy sets the boundary, how a classifier reviews actions, and how AWS CloudTrail and Amazon CloudWatch Logs support audit.",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "cloud",
-        "policy"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "NOW",
-        "ORCL",
-        "QQQ"
-      ],
-      "signalScore": 88,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "38ea2944612a9dbb",
-      "title": "StateBench: Testing how language models track state changes over long documents",
-      "url": "https://huggingface.co/blog/allenai/statebench",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-03T17:15:21+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 88,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "4c5f9cf22decf749",
-      "title": "OpenAI appoints Dan Driscoll as Senior Counselor for National Security Modernization",
-      "url": "https://openai.com/index/dan-driscoll-joins-openai",
-      "source": "OpenAI News",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-02T00:00:00+00:00",
-      "summary": "OpenAI appoints Dan Driscoll to advise on responsible AI for national security modernization, cyber resilience, and collaboration with U.S. allies.",
-      "sourceWeight": 5,
-      "tags": [
-        "security"
-      ],
-      "watchlist": [
-        "CRWD",
-        "NET",
-        "PANW",
-        "ZS"
-      ],
       "signalScore": 88,
       "angle": "AI risk/security signal; watch cybersecurity demand and governance tooling."
     },
     {
-      "id": "654d55eb2bc258f2",
-      "title": "PanelGP: A Probabilistic Factor Model for Asset-Return Panels",
-      "url": "https://arxiv.org/abs/2611.04040",
-      "source": "arXiv stat.ML",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04040v1 Announce Type: cross Abstract: We develop PanelGP, a conditional factor model for large panels of stock returns in which firm characteristics determine the factor loadings and economic conditions determine the expected factors. Both relations are estimated nonparametrically with Gaussian-process priors. The kernel choice nests...",
-      "sourceWeight": 3,
+      "id": "a7327fdd9172ff48",
+      "title": "Dropbox acquires Tigris Data for $350M to bolster its AI infrastructure",
+      "url": "https://techcrunch.com/2026/11/05/dropbox-acquires-tigris-data-for-350m-to-bolster-its-ai-iinfrastructure/",
+      "source": "TechCrunch AI",
+      "sourceGroup": "Free tech coverage",
+      "publishedAt": "2026-11-05T15:19:05+00:00",
+      "summary": "The deal is expected to support the development of DBX Agent Cloud, a new storage platform aimed at developers building AI models and agents.",
+      "sourceWeight": 2,
       "tags": [
         "models",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA"
-      ],
-      "signalScore": 87,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "759d2ca16e52b7bf",
-      "title": "A Bayesian-Geometric Reading of Classical Model-Based Optimal Design",
-      "url": "https://arxiv.org/abs/2611.04450",
-      "source": "arXiv stat.ML",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04450v1 Announce Type: cross Abstract: The classical model-based optimal design criteria (D-, T-, L-, C-, and A-optimality) are usually motivated via the Cram\\'er--Rao bound as optimizing scalar functions of the Fisher information matrix (FIM). This paper offers a complementary reading in which each criterion appears asymptotically as $N \\to...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA"
-      ],
-      "signalScore": 87,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "37037f3175a03ed1",
-      "title": "Directional Statistics in Signal Processing: A Geometry Driven Overview of Models, Learning, and Applications",
-      "url": "https://arxiv.org/abs/2611.04595",
-      "source": "arXiv stat.ML",
-      "sourceGroup": "Research",
-      "publishedAt": "2026-11-04T05:00:00+00:00",
-      "summary": "arXiv:2611.04595v1 Announce Type: cross Abstract: Many signal-processing objects are defined by periodicity, normalization, sign or global-phase ambiguity, basis invariance, or positive-semidefinite constraints and therefore cannot be modeled faithfully in ordinary Euclidean space. This paper develops a geometry driven framework for directional statistics...",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "research"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NVDA"
-      ],
-      "signalScore": 87,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "9c74e8f055fea335",
-      "title": "Bring structured and unstructured data together with Amazon Quick",
-      "url": "https://aws.amazon.com/blogs/machine-learning/bring-structured-and-unstructured-data-together-with-amazon-quick/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-03T16:49:29+00:00",
-      "summary": "Amazon Quick brings structured and unstructured data together in one experience. In this post, you connect Amazon S3 as a knowledge base, enrich a dataset, build a Space, and create a custom chat agent that answers business questions across both data types through a single conversational interface.",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "cloud",
-        "research"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "NOW",
-        "NVDA"
-      ],
-      "signalScore": 87,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "9d5a3b4adb9693fe",
-      "title": "ServiceNow on-behalf-of token exchange with Bedrock AgentCore Gateway",
-      "url": "https://aws.amazon.com/blogs/machine-learning/servicenow-on-behalf-of-token-exchange-with-bedrock-agentcore-gateway/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-03T16:47:40+00:00",
-      "summary": "Learn how to configure Amazon Bedrock AgentCore Gateway for an on-behalf-of (OBO) token exchange with Microsoft Entra ID, so an AI agent can call the ServiceNow REST API while preserving the calling user's identity. AgentCore Gateway performs the exchange natively, with no interceptor Lambda or custom code.",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "cloud",
-        "enterprise"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "GOOGL",
-        "MSFT",
-        "NOW",
-        "ORCL"
-      ],
-      "signalScore": 87,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "93b99826d1165715",
-      "title": "Build a semantic layer for agentic AI with EDB Postgres AI and Amazon Bedrock AgentCore",
-      "url": "https://aws.amazon.com/blogs/machine-learning/build-a-semantic-layer-for-agentic-ai-with-edb-postgres-ai-and-amazon-bedrock-agentcore/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-03T16:41:13+00:00",
-      "summary": "Learn how to build a governed semantic layer for agentic AI inside EDB Postgres AI and query it from a Strands Agents agent on Amazon Bedrock AgentCore. Business meaning, join paths, and access control all live in Postgres, with GRANT and row-level security enforcing what each agent can read.",
-      "sourceWeight": 3,
-      "tags": [
-        "agents",
-        "cloud",
-        "security"
-      ],
-      "watchlist": [
-        "ADBE",
-        "AMZN",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "MSFT",
-        "NET",
-        "NOW"
-      ],
-      "signalScore": 87,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "adb699efe464e1c3",
-      "title": "Building ultra-low-latency voice AI applications on AWS",
-      "url": "https://aws.amazon.com/blogs/machine-learning/building-ultra-low-latency-voice-ai-applications-on-aws/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-03T16:40:54+00:00",
-      "summary": "Learn how Cartesia, an AWS Partner, uses purpose-built State Space Models and AWS infrastructure to deliver sub-100ms text-to-speech and speech-to-text at global scale, and how to deploy its Sonic model on Amazon SageMaker AI or self-managed Amazon EC2 GPU instances.",
-      "sourceWeight": 3,
-      "tags": [
-        "models",
-        "chips",
-        "cloud"
-      ],
-      "watchlist": [
-        "AMD",
-        "AMZN",
-        "AVGO",
-        "CRM",
-        "GOOGL",
-        "META",
-        "MSFT",
-        "MU"
-      ],
-      "signalScore": 87,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "3ad5285513799150",
-      "title": "Palette: teaching a small model to build decks in your design language",
-      "url": "https://huggingface.co/blog/ibm-research/palette-deck-building",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-03T16:35:36+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 87,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "9f053f3e4a893519",
-      "title": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code",
-      "url": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code/",
-      "source": "AWS Machine Learning",
-      "sourceGroup": "Cloud",
-      "publishedAt": "2026-11-04T16:30:40+00:00",
-      "summary": "In production AI agents, context management is the real bottleneck. This post presents a four-layer context engineering framework (architecture, prompts, file-based tools, and verification agents), implemented in working code from Deep Insight, an open source multi-agent data analysis solution on the Strands Agents SDK and Amazon Bedrock AgentCore.",
-      "sourceWeight": 3,
-      "tags": [
         "agents",
         "cloud"
       ],
@@ -2090,116 +2212,16 @@
         "AMZN",
         "CRM",
         "GOOGL",
+        "META",
         "MSFT",
         "NOW",
         "ORCL"
       ],
-      "signalScore": 86,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "51261cc94aad2fb2",
-      "title": "Ex-Microsoft Defender lead raises $15M to find the attacks AI security agents are missing - Tech Funding News",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5tYUJJekhZNXJtVDFjekpIVTRELVpJMl8zYjBnekVHeDhsYzVmX0NUYkkybTI0eXRQeWw3UF9Eb3hNdjI5YXduMDhOZFN3VnJadDZoREg0Rld6SG5JanBzTHQtb1VWX29vTTBpOVNUVm1BQ2t3VnJyNUZnM2NIR00?oc=5",
-      "source": "AI agents",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-11-04T14:30:51+00:00",
-      "summary": "Ex-Microsoft Defender lead raises $15M to find the attacks AI security agents are missing Tech Funding News",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "security",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "ARKK",
-        "CRM",
-        "CRWD",
-        "GOOGL",
-        "IGV",
-        "MSFT",
-        "NET"
-      ],
-      "signalScore": 86,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "93d9c3de2a6b9fbd",
-      "title": "Sentra Raises $150M to Secure Enterprise Data for AI Agents - Unite.AI",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9BeU9QLVk5aDN0TXFCVUQyUVk2Z0pWanZXZ1V4X0JqS01KSkhUb3ZNYXVrQ1ktLUQ0dF9DWjNCeUlmRWFBR0ExUkVycDlZaWkyYnVwUl9iNkkyMmJKV2RIMHpkdndiNTNuRU9VT3hkMA?oc=5",
-      "source": "AI agents",
-      "sourceGroup": "Web discovery",
-      "publishedAt": "2026-11-04T12:30:00+00:00",
-      "summary": "Sentra Raises $150M to Secure Enterprise Data for AI Agents Unite.AI",
-      "sourceWeight": 1,
-      "tags": [
-        "agents",
-        "enterprise",
-        "funding"
-      ],
-      "watchlist": [
-        "ADBE",
-        "ARKK",
-        "CRM",
-        "GOOGL",
-        "IGV",
-        "MSFT",
-        "NOW",
-        "ORCL"
-      ],
-      "signalScore": 86,
-      "angle": "Automation adoption signal; watch enterprise software and workflow platform beneficiaries."
-    },
-    {
-      "id": "ec9f97f63a5649bd",
-      "title": "CWE-bench v2: More coverage, quality, and transparency",
-      "url": "https://huggingface.co/blog/cwe-bench",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-03T00:00:00+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 86,
-      "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
-    },
-    {
-      "id": "4d346d550d8964b5",
-      "title": "Transformers Model Integration Contracts",
-      "url": "https://huggingface.co/blog/transformers-mic",
-      "source": "Hugging Face Blog",
-      "sourceGroup": "Official labs",
-      "publishedAt": "2026-11-03T00:00:00+00:00",
-      "summary": "No feed summary provided. Open the source for details.",
-      "sourceWeight": 4,
-      "tags": [
-        "models"
-      ],
-      "watchlist": [
-        "AMZN",
-        "GOOGL",
-        "META",
-        "MSFT"
-      ],
-      "signalScore": 86,
+      "signalScore": 87,
       "angle": "Model capability signal; watch platform distribution, developer adoption, and monetization."
     }
   ],
   "failedSources": [
-    {
-      "source": "Google DeepMind",
-      "url": "https://deepmind.google/blog/rss.xml",
-      "error": "not well-formed (invalid token): line 1, column 0"
-    },
     {
       "source": "Meta AI",
       "url": "https://ai.meta.com/blog/rss/",
